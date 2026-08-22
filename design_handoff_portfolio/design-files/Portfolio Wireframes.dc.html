@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#f0eee9;font-family:system-ui,-apple-system,sans-serif}
+a{color:#2a78d6}a:hover{color:#1a5aa8}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-sub{margin:0 0 22px;font:400 12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5);max-width:760px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.6 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.wf{width:440px;font-family:system-ui,sans-serif;color:#1a1a1a}
+.sec{padding:16px 20px;border-bottom:1px dashed rgba(0,0,0,.16)}
+.sec:last-child{border-bottom:0}
+.tag{font:600 8.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#9a9a95;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid rgba(0,0,0,.2)}
+.navi{font:500 9.5px/1 system-ui;color:#666}
+.logo{font:700 12px/1 system-ui;letter-spacing:-.02em}
+.ln{height:7px;background:#e4e2dd;border-radius:2px}
+.ln.d{background:#cfccc6}
+.h1{font:800 30px/1.02 system-ui;letter-spacing:-.035em;margin:0}
+.h2{font:800 20px/1.05 system-ui;letter-spacing:-.03em;margin:0}
+.num{font:800 26px/1 system-ui;letter-spacing:-.04em}
+.img{background:repeating-linear-gradient(45deg,#f2f0eb,#f2f0eb 5px,#e7e4de 5px,#e7e4de 10px);border:1px solid rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;font:500 8.5px/1.3 ui-monospace,Menlo,monospace;color:#8d8a84;text-align:center;padding:4px}
+.note{font:600 12px/1.25 Caveat,cursive;color:#2a78d6}
+.acc{color:#2a78d6}
+.row{display:flex;gap:10px}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">홈페이지 구조 4방향 — Header / Hero / Impact / Selected Work</span></div>
+<p class="dv-sub">전부 같은 콘텐츠(히어로 메시지 · 지표 4개 · 프로젝트 3개)를 담고 있고, 다른 건 <b>정보의 무게중심</b>입니다. 1a는 문장, 1b는 목록, 1c는 사람, 1d는 숫자를 먼저 보여줍니다. 회색 사선 = 실제 스크린샷 자리(가짜 UI 안 그림). 파란 손글씨 = 설계 메모.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Editorial Statement — 문장이 주인공, 잡지 표지형</div>
+<div class="dv-card"><div class="wf">
+<div class="nav"><span class="logo">서인하</span><span style="flex:1"></span><span class="navi">WORK</span><span class="navi">EXPERIENCE</span><span class="navi">ABOUT</span><span class="navi acc">Resume ↗</span><span class="navi" style="color:#bbb">KR/EN</span></div>
+
+<div class="sec" style="padding:34px 20px 30px">
+<div class="tag">Hero — 100vh</div>
+<h1 class="h1" style="margin-top:14px">I turn player needs<br>into community<br>experiences.</h1>
+<div style="margin-top:14px;font:500 9.5px/1 ui-monospace,Menlo,monospace;color:#777">GAME COMMUNITY · LIVE OPS · SERVICE PLANNING · GLOBAL</div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:5px;max-width:280px"><div class="ln"></div><div class="ln"></div><div class="ln" style="width:70%"></div></div>
+<div class="row" style="margin-top:16px"><div style="border:1px solid #1a1a1a;padding:6px 14px;font:600 9px/1 system-ui">VIEW WORK</div><div style="border:1px solid #ccc;padding:6px 14px;font:600 9px/1 system-ui;color:#777">RESUME</div></div>
+<div class="note" style="margin-top:14px">헤드라인 외엔 아무것도 없음 — 스크롤 유도는 하단 지표 한 줄</div>
+</div>
+
+<div class="sec" style="background:#fafaf8">
+<div class="tag">Impact strip</div>
+<div class="row" style="margin-top:10px;align-items:flex-end">
+<div style="flex:1"><div class="num">03</div><div style="font:500 8px/1.3 system-ui;color:#777;margin-top:4px">LIVE GAME SERVICES</div></div>
+<div style="flex:1;border-left:1px solid #e0ddd7;padding-left:10px"><div class="num">10K+</div><div style="font:500 8px/1.3 system-ui;color:#777;margin-top:4px">CUMULATIVE USERS</div></div>
+<div style="flex:1;border-left:1px solid #e0ddd7;padding-left:10px"><div class="num">220K+</div><div style="font:500 8px/1.3 system-ui;color:#777;margin-top:4px">PAGEVIEWS</div></div>
+<div style="flex:1;border-left:1px solid #e0ddd7;padding-left:10px"><div class="num">4.84</div><div style="font:500 8px/1.3 system-ui;color:#777;margin-top:4px">SATISFACTION /5.0</div></div>
+</div>
+</div>
+
+<div class="sec">
+<div class="row" style="align-items:baseline"><h2 class="h2">Selected Work</h2><span style="flex:1"></span><span style="font:400 8.5px/1.4 system-ui;color:#888;max-width:150px">Three games.<br>Three communities.</span></div>
+
+<div style="margin-top:16px">
+<div class="row" style="align-items:baseline"><span class="tag">01 / Live Service</span></div>
+<div class="img" style="height:120px;margin-top:6px">Sky Planner — 서비스 전체 화면 (full-bleed, 화면 폭 꽉 참)</div>
+<div class="row" style="margin-top:8px;align-items:flex-start">
+<div style="flex:1"><div style="font:700 15px/1.1 system-ui;letter-spacing:-.02em">Sky Planner</div><div style="font:400 9px/1.4 system-ui;color:#666;margin-top:4px">Sky 유저의 반복 질문을 기능과 이벤트로 해결한 1인 라이브 서비스</div></div>
+<div style="width:100px;text-align:right"><div style="font:700 14px/1 system-ui">MAU 1.7K</div><div style="font:400 8px/1.3 system-ui;color:#888;margin-top:3px">Live Ops · Growth · Data</div></div>
+</div>
+</div>
+
+<div style="margin-top:22px">
+<span class="tag">02 / Community Product</span>
+<div class="row" style="margin-top:6px"><div class="img" style="flex:1;height:88px">Identity5 Pick — 툴 화면</div><div style="width:120px;display:flex;flex-direction:column;gap:5px;padding-top:4px"><div style="font:700 13px/1.1 system-ui">Identity5 Pick</div><div class="ln"></div><div class="ln" style="width:80%"></div><div style="font:500 8px/1.3 ui-monospace,Menlo;color:#888;margin-top:2px">800+ SKIN RECORDS</div></div></div>
+</div>
+
+<div style="margin-top:22px">
+<span class="tag">03 / Global Community</span>
+<div class="row" style="margin-top:6px"><div style="width:130px;display:flex;flex-direction:column;gap:5px;padding-top:4px"><div style="font:700 13px/1.1 system-ui">Heartopia Archive</div><div class="ln"></div><div class="ln" style="width:70%"></div><div style="font:500 8px/1.3 ui-monospace,Menlo;color:#888;margin-top:2px">26 TEMPLATES / 54 PARTS</div></div><div class="img" style="flex:1;height:88px">Heartopia — 도안 아카이브 화면</div></div>
+<div class="note" style="margin-top:10px">3개가 서로 다른 레이아웃 — 같은 템플릿처럼 안 보이게</div>
+</div>
+</div>
+</div></div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Index / Ledger — 프로젝트 목록이 주인공, 운영자 문서 톤</div>
+<div class="dv-card"><div class="wf">
+<div class="nav"><span class="logo">SEO INHA</span><span class="navi" style="color:#999">Game Community &amp; Live Ops</span><span style="flex:1"></span><span class="navi">WORK</span><span class="navi">EXP</span><span class="navi">ABOUT</span><span class="navi acc">Resume ↗</span></div>
+
+<div class="sec" style="padding:26px 20px 22px">
+<div class="tag">Hero — 60vh, 좌우 비대칭</div>
+<div class="row" style="margin-top:12px;align-items:flex-start">
+<div style="flex:1.5"><h1 class="h1" style="font-size:25px">유저의 목소리를<br>발견하고, 실제<br>경험으로 만듭니다.</h1></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:5px;padding-top:6px"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln" style="width:60%"></div><div style="font:600 8.5px/1 system-ui;margin-top:6px" class="acc">VIEW WORK →</div></div>
+</div>
+</div>
+
+<div class="sec" style="padding:10px 20px">
+<div class="row" style="justify-content:space-between"><span style="font:600 9px/1 ui-monospace,Menlo">3 LIVE SERVICES</span><span style="font:600 9px/1 ui-monospace,Menlo">10K+ USERS</span><span style="font:600 9px/1 ui-monospace,Menlo">220K+ PV</span><span style="font:600 9px/1 ui-monospace,Menlo">4.84/5.0</span></div>
+<div class="note" style="margin-top:6px">지표는 얇은 한 줄 — 티커처럼</div>
+</div>
+
+<div class="sec">
+<h2 class="h2">Selected Work</h2>
+<div class="note" style="margin-top:6px">번호·연도·역할이 붙은 인덱스 행 → hover 시 우측에 프리뷰 이미지 뜸</div>
+
+<div style="margin-top:14px;border-top:1px solid #1a1a1a">
+<div class="row" style="padding:12px 0;border-bottom:1px solid #e2dfd9;align-items:center;background:#fbfbf9">
+<span style="width:22px;font:600 9px ui-monospace,Menlo;color:#999">01</span>
+<div style="flex:1"><div style="font:700 17px/1 system-ui;letter-spacing:-.02em">Sky Planner</div><div style="font:400 8.5px/1.3 system-ui;color:#777;margin-top:4px">Live Operations · Community · Growth · Data</div></div>
+<div class="img" style="width:110px;height:56px">hover preview</div>
+<span style="width:56px;text-align:right;font:600 9px ui-monospace,Menlo">MAU 1.7K</span>
+</div>
+<div class="row" style="padding:12px 0;border-bottom:1px solid #e2dfd9;align-items:center">
+<span style="width:22px;font:600 9px ui-monospace,Menlo;color:#999">02</span>
+<div style="flex:1"><div style="font:700 17px/1 system-ui;letter-spacing:-.02em">Identity5 Pick</div><div style="font:400 8.5px/1.3 system-ui;color:#777;margin-top:4px">Player Insight · VOC · UGC Tools · Localization</div></div>
+<span style="width:70px;text-align:right;font:600 9px ui-monospace,Menlo;color:#999">800+ SKINS</span>
+</div>
+<div class="row" style="padding:12px 0;border-bottom:1px solid #e2dfd9;align-items:center">
+<span style="width:22px;font:600 9px ui-monospace,Menlo;color:#999">03</span>
+<div style="flex:1"><div style="font:700 17px/1 system-ui;letter-spacing:-.02em">Heartopia Archive</div><div style="font:400 8.5px/1.3 system-ui;color:#777;margin-top:4px">Creator Relations · Global Community · Trust</div></div>
+<span style="width:70px;text-align:right;font:600 9px ui-monospace,Menlo;color:#999">26 TEMPLATES</span>
+</div>
+</div>
+
+<div style="margin-top:18px">
+<div class="tag">아래로 계속 — 각 프로젝트 전개 블록</div>
+<div class="img" style="height:100px;margin-top:6px">선택된 프로젝트 대표 스크린샷</div>
+<div class="row" style="margin-top:6px"><div class="img" style="flex:1;height:52px">기능 컷</div><div class="img" style="flex:1;height:52px">이벤트 컷</div><div class="img" style="flex:1;height:52px">오프라인 사진</div></div>
+</div>
+</div>
+</div></div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Sticky Split — 좌측 고정 프로필 + 우측 스크롤, 케이스 스터디형</div>
+<div class="dv-card"><div class="wf">
+<div class="row" style="min-height:560px">
+<div style="width:150px;border-right:1px solid rgba(0,0,0,.18);padding:16px 14px;display:flex;flex-direction:column;gap:12px;background:#fbfaf7">
+<div class="tag">Sticky column</div>
+<div class="logo" style="font-size:14px">서인하<br><span style="font:400 9px/1.4 system-ui;color:#777">Game Community<br>&amp; Live Operations</span></div>
+<div class="img" style="height:80px">프로필 사진<br>(선택)</div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="navi">WORK</span><span class="navi">EXPERIENCE</span><span class="navi">ABOUT</span><span class="navi acc">RESUME ↗</span></div>
+<div style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font:600 8px ui-monospace,Menlo;color:#999">KR / EN</span><span style="font:600 8px ui-monospace,Menlo;color:#999">EMAIL · GITHUB</span></div>
+<div class="note">스크롤해도 좌측 고정 → "사람"이 계속 보임</div>
+</div>
+
+<div style="flex:1">
+<div class="sec" style="padding:24px 18px">
+<h1 class="h1" style="font-size:23px">I turn player<br>needs into<br>community<br>experiences.</h1>
+<div style="margin-top:12px;display:flex;flex-direction:column;gap:5px"><div class="ln"></div><div class="ln"></div><div class="ln" style="width:65%"></div></div>
+</div>
+<div class="sec" style="padding:14px 18px;background:#fafaf8">
+<div class="row"><div style="flex:1"><div class="num" style="font-size:20px">03</div><div style="font:500 7.5px system-ui;color:#777">SERVICES</div></div><div style="flex:1"><div class="num" style="font-size:20px">10K+</div><div style="font:500 7.5px system-ui;color:#777">USERS</div></div><div style="flex:1"><div class="num" style="font-size:20px">220K+</div><div style="font:500 7.5px system-ui;color:#777">PAGEVIEWS</div></div></div>
+</div>
+<div class="sec" style="padding:16px 18px">
+<span class="tag">01 / Live Service</span>
+<div class="img" style="height:96px;margin-top:6px">Sky Planner 대표 화면</div>
+<div style="font:700 14px/1.1 system-ui;margin-top:8px">Sky Planner</div>
+<div style="font:400 8.5px/1.4 system-ui;color:#666;margin-top:4px">반복 질문을 기능으로 — MAU 1,700+</div>
+<div style="font:600 8.5px;margin-top:6px" class="acc">View Case Study →</div>
+</div>
+<div class="sec" style="padding:16px 18px">
+<span class="tag">02 / Community Product</span>
+<div class="img" style="height:96px;margin-top:6px">Identity5 Pick 대표 화면</div>
+<div style="font:700 14px/1.1 system-ui;margin-top:8px">Identity5 Pick</div>
+<div style="font:400 8.5px/1.4 system-ui;color:#666;margin-top:4px">팬덤 행동 → 인터랙티브 도구</div>
+</div>
+<div class="sec" style="padding:16px 18px">
+<span class="tag">03 / Global Community</span>
+<div class="img" style="height:96px;margin-top:6px">Heartopia Archive 대표 화면</div>
+<div style="font:700 14px/1.1 system-ui;margin-top:8px">Heartopia Archive</div>
+<div class="note" style="margin-top:6px">모바일에선 좌측 컬럼이 상단 헤더로 접힘</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Numbers First — 지표가 주인공, 성과 우선 포스터형</div>
+<div class="dv-card"><div class="wf">
+<div class="nav"><span class="logo">서인하</span><span style="flex:1"></span><span class="navi">WORK</span><span class="navi">EXPERIENCE</span><span class="navi">ABOUT</span><span class="navi acc">Resume ↗</span></div>
+
+<div class="sec" style="padding:28px 20px 24px">
+<div class="tag">Hero — 헤드라인 + 지표가 같은 화면 안에</div>
+<h1 class="h1" style="font-size:27px;margin-top:12px">I turn player needs<br>into community<br><span class="acc">experiences.</span></h1>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:5px;max-width:260px"><div class="ln"></div><div class="ln" style="width:75%"></div></div>
+<div class="row" style="margin-top:20px;gap:0;border-top:1px solid #1a1a1a;padding-top:12px">
+<div style="flex:1"><div class="num" style="font-size:34px">1.7K</div><div style="font:500 7.5px/1.3 system-ui;color:#777;margin-top:2px">PEAK MAU</div></div>
+<div style="flex:1"><div class="num" style="font-size:34px">220K</div><div style="font:500 7.5px/1.3 system-ui;color:#777;margin-top:2px">PAGEVIEWS</div></div>
+<div style="flex:1"><div class="num" style="font-size:34px">4.84</div><div style="font:500 7.5px/1.3 system-ui;color:#777;margin-top:2px">SATISFACTION</div></div>
+<div style="flex:1"><div class="num" style="font-size:34px">10x</div><div style="font:500 7.5px/1.3 system-ui;color:#777;margin-top:2px">VIRAL TRAFFIC</div></div>
+</div>
+<div class="note" style="margin-top:10px">숫자는 count-up 1회만 — 그 외 애니메이션 없음</div>
+</div>
+
+<div class="sec">
+<div class="row" style="align-items:baseline"><h2 class="h2">Selected Work</h2><span style="flex:1"></span><span style="font:400 8.5px system-ui;color:#888">3 games · 3 communities</span></div>
+<div class="note" style="margin-top:6px">각 프로젝트마다 "지표 → 이미지 → 설명" 순서 고정, 크기만 다르게</div>
+
+<div class="row" style="margin-top:14px;align-items:stretch">
+<div style="flex:1.6"><div class="img" style="height:150px">Sky Planner<br>대표 화면 (가장 크게)</div>
+<div style="font:600 8px ui-monospace,Menlo;color:#888;margin-top:6px">01 / LIVE SERVICE</div>
+<div style="font:700 16px/1.1 system-ui;margin-top:3px">Sky Planner</div>
+<div style="font:400 8.5px/1.4 system-ui;color:#666;margin-top:4px">MAU 1,700+ · 220K PV · O2O 이벤트 · GA 기반 UX 피봇</div></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<div><div class="img" style="height:68px">Identity5 Pick</div><div style="font:600 8px ui-monospace,Menlo;color:#888;margin-top:5px">02 / COMMUNITY PRODUCT</div><div style="font:700 12px/1.1 system-ui;margin-top:2px">Identity5 Pick</div><div style="font:400 8px/1.4 system-ui;color:#666;margin-top:3px">800+ 스킨 검수 · VOC 개선</div></div>
+<div><div class="img" style="height:68px">Heartopia Archive</div><div style="font:600 8px ui-monospace,Menlo;color:#888;margin-top:5px">03 / GLOBAL COMMUNITY</div><div style="font:700 12px/1.1 system-ui;margin-top:2px">Heartopia Archive</div><div style="font:400 8px/1.4 system-ui;color:#666;margin-top:3px">중국 크리에이터 허가 기반 운영</div></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+
+</div>
+
+<div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+<div style="flex:1;min-width:300px;max-width:420px">
+<div class="tag" style="color:#1a1a1a">Information Architecture</div>
+<div class="dv-card" style="margin-top:8px;padding:16px 18px;font:400 11px/1.75 system-ui;color:#333">
+<b>/ko</b> (기본) · <b>/en</b> — 처음부터 [locale] 라우트<br>
+<b>/</b> Home — Hero · Impact · Selected Work · Capabilities · Technical Literacy · Experience 요약 · Footer<br>
+<b>/work/sky-planner</b> — 13블록 (가장 김)<br>
+<b>/work/identity5-pick</b> — 팬덤 행동 매핑 중심<br>
+<b>/work/heartopia-archive</b> — 크리에이터·신뢰 중심<br>
+<b>/experience</b> — AI 스타트업 기획 · 연세 HDIL · Python TA · 글로벌친친 · 세종대<br>
+<b>/about</b> — 서사 + Career Interest + Profile(OPIc)<br>
+<b>Resume ↗</b> — PDF 새 탭 (KO/EN 2벌 대응)
+</div>
+</div>
+
+<div style="flex:1;min-width:300px;max-width:420px">
+<div class="tag" style="color:#1a1a1a">Case Study 서사 차별화</div>
+<div class="dv-card" style="margin-top:8px;padding:16px 18px;font:400 11px/1.7 system-ui;color:#333">
+<b>Sky Planner</b> — <span class="acc">데이터 서사</span>. 질문→기능→지표→피봇→실패까지 시간순 케이스 연쇄.<br><br>
+<b>Identity5 Pick</b> — <span class="acc">매핑 서사</span>. 시간순이 아니라 "팬덤 행동 → 제품" 좌우 대응표 + VOC 개선 루프.<br><br>
+<b>Heartopia</b> — <span class="acc">사람 서사</span>. 허가 워크플로우를 세로 흐름으로, 지표보다 크리에이터·출처·신뢰가 화면의 주인공.
+</div>
+</div>
+
+<div style="flex:1;min-width:300px;max-width:420px">
+<div class="tag" style="color:#1a1a1a">Type · Color · 데이터 원칙</div>
+<div class="dv-card" style="margin-top:8px;padding:16px 18px;font:400 11px/1.7 system-ui;color:#333">
+배경 warm off-white, 텍스트 charcoal, 포인트 <span class="acc">cobalt blue 1개</span>.<br>
+헤드라인 60–110px / tracking −0.035em, 본문 18px / 1.75, 지표 숫자 72px+.<br>
+스크린샷 자리는 전부 사선 플레이스홀더 — 가짜 UI 안 만듭니다.<br>
+<b>검증 필요 수치</b>(Identity5 GA, Heartopia DAU, 허가 작가 수, TA 시작일)는 data 파일에서 <code>TBD</code>로 두고 나중에 교체.
+</div>
+</div>
+
+</div>
+
+<p class="dv-next">다음으로 해볼 것: "<a class="dv-oid" href="#1a">1a</a>로 가되 Selected Work은 <a class="dv-oid" href="#1b">1b</a>의 인덱스 방식으로" · "<a class="dv-oid" href="#1c">1c</a> 좌측 컬럼 더 보고 싶어" · "고른 방향으로 Header/Hero/Impact/Work 실제 화면 만들어줘"</p>
+</section>
+
+</x-dc>
+</body>
+</html>
