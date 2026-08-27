@@ -38,6 +38,12 @@ body {
   color: var(--color-ink);
   font-family: var(--font-noto), var(--font-archivo), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Korean text has no spaces between syllables, so default CJK line-breaking
+     splits mid-word (e.g. "반복되" / "는"). keep-all restricts breaks to actual
+     word boundaries (spaces); break-word still allows unbreakable long tokens
+     (URLs, etc.) to wrap instead of overflowing. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 @media (prefers-reduced-motion: reduce) {

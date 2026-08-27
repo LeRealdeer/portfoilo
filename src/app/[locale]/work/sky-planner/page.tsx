@@ -9,34 +9,86 @@ import { getProject } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Sky Planner — 서인하",
   description:
-    "Sky 유저의 반복 질문을 실제 기능과 이벤트로 해결한 1인 라이브 서비스 케이스 스터디.",
+    "게임 플레이 과정에서 발생하는 반복적인 불편을 해결한 데이터 기반 게임 유틸리티 서비스 케이스 스터디.",
 };
 
-const questionMap = [
+const heroMetrics = [
+  { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
+  { value: 393, label: "PEAK DAU" },
+  { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "PEAK MAU" },
+];
+
+const problemFlow = ["캐릭터 스크린샷 촬영", "외부 이미지 편집 앱 실행", "가이드라인 PNG 합성", "직접 비교"];
+
+const featureList = [
+  "키재기",
+  "양초 계산기",
+  "유랑대백과",
+  "시즌대백과",
+  "오래된 유랑",
+  "성향 테스트",
+  "버스 노선표",
+  "악보 만들기",
+];
+
+const performanceMetrics = [
+  { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
+  { value: 14.6, decimals: 1, suffix: "K", accentSuffix: "+", label: "ACTIVE USERS" },
+  { value: 393, label: "PEAK DAU" },
+  { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "PEAK MAU" },
+  { value: 33, suffix: "%", label: "RETURNING USERS" },
+];
+
+const insights = [
   {
-    q: "“캐릭터 키 어떻게 재나요?”",
-    tool: "1-click Height Tool",
-    note: "6단계 수작업 → 웹에서 한 번에",
+    n: "INSIGHT 1",
+    title: "유저는 단순 정보보다 플레이 보조 도구를 반복 사용한다",
+    feature: "양초 계산기",
+    stats: "Active Users 1,977 · Views 9,904",
   },
   {
-    q: "“지금 시즌패스 사도 되나요?”",
-    tool: "Candle Calculator",
-    note: "입력 최소화 · 한국어 · 구매 판단 파트너",
+    n: "INSIGHT 2",
+    title: "정보 콘텐츠는 높은 체류 시간을 만든다",
+    feature: "시즌 대백과",
+    stats: "평균 참여 시간 4분 39초",
   },
   {
-    q: "“유랑 정보를 어떻게 빠르게 찾나요?”",
-    tool: "Traveling Spirit Encyclopedia",
-    note: "시즌 필터 · 키워드 검색 · 유저 참여 편집",
+    n: "INSIGHT 3",
+    title: "공유 가능한 콘텐츠는 신규 유입을 만든다",
+    feature: "성향 테스트",
+    stats: "Views 15,624 · Users 822 · SNS 공유 기반 성장",
   },
 ];
 
-const resultMetrics = [
-  { value: 1700, accentSuffix: "+", label: "PEAK MAU" },
-  { value: 10, suffix: "K", accentSuffix: "+", label: "CUMULATIVE USERS" },
-  { value: 220, suffix: "K", accentSuffix: "+", label: "PAGEVIEWS" },
-  { value: 4.84, decimals: 2, label: "SATISFACTION / 5.0 (n=32)" },
-  { value: 393, label: "PEAK DAU" },
-  { value: 10, suffix: "x", label: "VIRAL TRAFFIC" },
+const vocList = [
+  { feature: "키재기", feedback: "사진 위치 조절이 어렵다", improvement: "스케일 조정 UX 개선" },
+  { feature: "오래된 유랑", feedback: "현재 총 몇 명인지 알고 싶다", improvement: "유랑 개수 표시 추가" },
+  { feature: "시즌 대백과", feedback: "미복각 영혼 정보 필요", improvement: "미복각 영혼 탭 추가" },
+];
+
+const growthChannels = [
+  {
+    title: "네이버 카페",
+    points: ["최초 홍보", "베스트 팁 게시판 등록", "이후 자연 공유 발생"],
+  },
+  {
+    title: "오픈채팅",
+    points: ["게임 커뮤니티 봇 등록", "유저 접근성 확대"],
+  },
+  {
+    title: "Global Expansion",
+    points: ["외국 팬사이트와 협업", "영문 양초 계산기 링크 등록"],
+  },
+];
+
+const demonstratedSkills = [
+  "User Problem Discovery",
+  "Service Planning",
+  "UX Improvement",
+  "GA4 Data Analysis",
+  "Community Operation",
+  "VOC Management",
+  "Live Service Thinking",
 ];
 
 export default async function SkyPlannerPage({
@@ -49,7 +101,7 @@ export default async function SkyPlannerPage({
 
   return (
     <div className="min-h-screen">
-      <Header locale={locale} variant="case" breadcrumb="/ work / sky-planner" resumeHref="#result" />
+      <Header locale={locale} variant="case" breadcrumb="/ work / sky-planner" resumeHref="#final" />
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-14 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
@@ -59,19 +111,22 @@ export default async function SkyPlannerPage({
         <h1 className="mt-5 font-archivo text-[clamp(46px,8vw,112px)] leading-[.98] font-extrabold tracking-[-.042em]">
           {project.title}
         </h1>
-        <p className="mt-5 max-w-[620px] text-[19px] leading-[1.75] text-ink-70 text-pretty">
+        <p className="mt-6 max-w-[720px] font-archivo text-[clamp(20px,2.4vw,30px)] font-bold leading-[1.35] tracking-[-.02em] text-ink-70">
+          게임 플레이 과정에서 발생하는 반복적인 불편을 해결한 데이터 기반 게임 유틸리티 서비스
+        </p>
+        <p className="mt-5 max-w-[620px] text-[18px] leading-[1.78] text-ink-70 text-pretty">
           {project.heroBodyKo}
         </p>
 
-        <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start border-t border-line-2 pt-6 sm:mt-16">
-          <div className="grid flex-[2] grid-cols-2 gap-x-7 gap-y-5 sm:grid-cols-3">
+        <div className="mt-10 flex max-[860px]:flex-col gap-8 sm:gap-16 items-start border-t border-line-2 pt-7 sm:mt-16">
+          <div className="grid flex-[1.6] grid-cols-2 gap-x-7 gap-y-6">
             {project.meta.map((m) => (
               <div key={m.label}>
                 <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
                   {m.label}
                 </div>
                 <div
-                  className={`mt-1.5 whitespace-pre-line text-[15px] leading-[1.55] ${
+                  className={`mt-1.5 whitespace-pre-line text-[15px] leading-[1.6] ${
                     m.accent ? "font-bold text-accent" : "text-ink-70"
                   }`}
                 >
@@ -80,20 +135,16 @@ export default async function SkyPlannerPage({
               </div>
             ))}
           </div>
-          {project.heroStat && (
-            <div className="flex-1 text-right">
-              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
-                {project.heroStat.label}
-              </div>
-              <div className="font-archivo text-[clamp(56px,7vw,104px)] leading-[1] font-extrabold tracking-[-.05em]">
-                <Stat
-                  metric={project.heroStat}
-                  numberClassName=""
-                  labelClassName="hidden"
-                />
-              </div>
-            </div>
-          )}
+          <div className="flex flex-1 gap-8 sm:gap-10">
+            {heroMetrics.map((m) => (
+              <Stat
+                key={m.label}
+                metric={m}
+                numberClassName="font-archivo text-[clamp(28px,3vw,40px)] leading-[1] font-extrabold tracking-[-.04em]"
+                labelClassName="mt-2 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted"
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -106,512 +157,567 @@ export default async function SkyPlannerPage({
         </Reveal>
       </div>
 
-      {/* 02 — Starting Point */}
+      {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
-        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-          02 / THE STARTING POINT
-        </div>
-        <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-20 items-start">
-          <Reveal className="flex-[1.2]">
-            <h2 className="font-archivo text-[clamp(30px,4.2vw,60px)] leading-[1.03] font-extrabold tracking-[-.04em]">
-              Repeated questions
-              <br />
-              are unresolved
-              <br />
-              problems.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1} className="max-w-[520px] flex-1">
-            <p className="text-[18px] leading-[1.8] text-ink-70 text-pretty">
-              서비스는 만들고 싶은 기능에서 출발하지 않았습니다. 커뮤니티에 매번 똑같이 올라오는 질문들을 모으는
-              것에서 시작했습니다. 같은 질문이 반복된다는 건 정보가 없다는 뜻이 아니라, 기존 해결 방식의
-              진입장벽이 너무 높다는 신호였습니다.
-            </p>
-            <Placeholder
-              label={"COMMUNITY POST SCREENSHOT\n(반복 질문 게시글)"}
-              className="mt-6 h-[clamp(160px,20vw,240px)]"
-            />
-          </Reveal>
-        </div>
+        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">01 / CONTEXT</div>
+        <Reveal>
+          <h2 className="mt-5 max-w-[760px] font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.1] font-extrabold tracking-[-.038em] text-pretty">
+            &ldquo;유저들이 계속 묻는 질문에는 반복되는 문제가 있다.&rdquo;
+          </h2>
+        </Reveal>
+        <p className="mt-6 max-w-[620px] text-[17px] leading-[1.78] text-ink-70">
+          부트캠프 이후 직접 서비스를 만들 수 있는 역량을 갖추게 되었고, 실제 사용자에게 도움이 되는 서비스를
+          만들어보고자 시작했습니다. 처음 발견한 문제는 커뮤니티에서 반복적으로 등장하던 하나의 질문이었습니다.
+        </p>
+        <p className="mt-6 max-w-[620px] border-l-2 border-accent pl-5 font-archivo text-[22px] font-bold leading-[1.4] tracking-[-.02em]">
+          &ldquo;제 캐릭터 키가 몇 단인가요?&rdquo;
+        </p>
 
-        {/* 03 — Question -> Product */}
-        <div className="mt-12 border-t border-line-2 sm:mt-20">
-          <div className="py-3.5 font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-            03 / COMMUNITY QUESTION → PRODUCT
-          </div>
-          {questionMap.map((row, i) => (
-            <Reveal
-              key={row.tool}
-              delay={i * 0.05}
-              className={`flex max-[760px]:flex-col gap-4 border-t border-line-3 py-6 sm:gap-10 items-center max-[760px]:items-start ${
-                i === questionMap.length - 1 ? "border-b border-line-2" : ""
-              }`}
-            >
-              <div className="flex-[1.2] text-[19px] leading-[1.5] text-ink-70">{row.q}</div>
-              <div className="flex-none font-archivo text-[20px] text-accent">→</div>
-              <div className="flex-[1.2] font-archivo text-[22px] font-bold tracking-[-.025em]">{row.tool}</div>
-              <div className="flex-1 text-[14px] leading-[1.6] text-muted">{row.note}</div>
+        <div className="mt-14 border-t border-line-2 pt-8 sm:mt-20">
+          <div className="flex max-[860px]:flex-col gap-6 sm:gap-16 items-start">
+            <Reveal className="flex-1">
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
+                PROBLEM DISCOVERY
+              </div>
+              <p className="mt-3 max-w-[440px] text-[17px] leading-[1.78] text-ink-70">
+                Sky에는 캐릭터 키를 조정하는 키 물약 시스템이 존재하지만, 사용자가 자신의 키를 확인하려면
+                과정이 복잡하고 접근성이 낮았습니다.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-2 font-archivo text-[12.5px] font-semibold">
+                {problemFlow.map((step, i, arr) => (
+                  <span key={step} className="contents">
+                    <span
+                      className={
+                        i === arr.length - 1
+                          ? "bg-ink px-3.5 py-2 text-ink-on-dark"
+                          : "bg-paper border border-line-2 px-3.5 py-2"
+                      }
+                    >
+                      {step}
+                    </span>
+                    {i < arr.length - 1 && <span className="text-accent">→</span>}
+                  </span>
+                ))}
+              </div>
             </Reveal>
-          ))}
+            <Reveal delay={0.1} className="flex-1">
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
+                SOLUTION
+              </div>
+              <p className="mt-3 max-w-[440px] text-[17px] leading-[1.78] text-ink-70">
+                사용자가 이미지를 업로드하면, 웹에서 바로 캐릭터 키를 확인할 수 있는 <b>키재기 도구</b>를
+                제작했습니다. 이동 · 확대/축소 · 가이드라인 비교만으로 키를 확인할 수 있도록 설계했습니다.
+                초기에는 기존 커뮤니티 자료를 활용했지만, 이후 직접 키 가이드라인 제작 · 설명 문서 제작 · UX
+                개선을 진행했습니다.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-8 flex gap-5">
+            <div className="flex-1">
+              <div className="mb-2 font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
+                BEFORE
+              </div>
+              <Placeholder variant="alt" label={"기존 이비스 등 외부 앱 활용 방식"} className="h-[clamp(160px,20vw,260px)]" />
+            </div>
+            <div className="flex-1">
+              <div className="mb-2 font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">AFTER</div>
+              <Placeholder variant="alt" label={"Sky Planner 키재기 UI"} className="h-[clamp(160px,20vw,260px)]" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 04 — Case 01 Height Tool */}
+      {/* 02 — Service Evolution */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
           <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-            04 / CASE 01 — HEIGHT TOOL
+            02 / SERVICE EVOLUTION
           </div>
           <Reveal>
             <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
-              The problem was not lack of information,
+              하나의 기능에서
               <br />
-              but high friction.
+              플레이 플랫폼으로 확장
             </h2>
           </Reveal>
+          <p className="mt-5 max-w-[560px] text-[17px] leading-[1.78] text-ink-70">
+            처음에는 키재기 기능 하나로 시작했지만, 사용자 피드백과 커뮤니티 관찰을 기반으로 필요한 기능을
+            확장했습니다.
+          </p>
 
-          <div className="mt-9 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 max-[1000px]:grid-cols-2 sm:mt-14 grid-cols-4 max-[560px]:grid-cols-1">
-            {[
-              {
-                label: "PROBLEM",
-                body: "스크린샷 촬영 → 이미지 편집 프로그램 실행 → 합성 → 기준 이미지 조절. 키 한 번 재는 데 약 6단계 수작업.",
-              },
-              {
-                label: "INSIGHT",
-                body: "질문이 반복된다는 건 방법을 모르는 게 아니라, 아는 방법이 너무 번거롭다는 뜻.",
-              },
-              { label: "SOLUTION", body: "앱 설치 없이 웹에서 바로 쓰는 1-click 키 측정 도구." },
-              {
-                label: "RESULT",
-                body: (
-                  <>
-                    질문하는 문화가 <b>결과를 공유하는 인증 문화</b>로 바뀜.
-                  </>
-                ),
-              },
-            ].map((c, i) => (
-              <Reveal key={c.label} delay={i * 0.05} className="bg-bg-alt px-6 pt-6 pb-7">
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
-                  {c.label}
-                </div>
-                <p className="mt-3 text-[16px] leading-[1.7] text-ink-70">{c.body}</p>
-              </Reveal>
+          <div className="mt-7 flex items-end gap-4">
+            <div className="font-archivo text-[clamp(48px,5.2vw,72px)] leading-[1] font-extrabold tracking-[-.045em]">
+              8
+            </div>
+            <div className="pb-2 font-archivo text-[11.5px] font-semibold tracking-[.13em] text-muted">
+              게임 플레이 보조 기능 운영 중
+            </div>
+          </div>
+
+          <Reveal delay={0.1}>
+            <Placeholder
+              variant="alt"
+              label={"기능 전체 구조 이미지"}
+              className="mt-8 h-[clamp(180px,22vw,280px)]"
+            />
+          </Reveal>
+
+          <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            {featureList.map((f) => (
+              <div key={f} className="border border-line-2 bg-paper px-4 py-3.5 text-center text-[15px] text-ink-70">
+                {f}
+              </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 03 — Key Features */}
+      <section className="mx-auto max-w-[1440px] px-5 pt-16 sm:px-9 sm:pt-24">
+        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
+          03 / KEY FEATURES
+        </div>
+        <Reveal>
+          <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+            반복 질문을 기능으로, 기능을 데이터로 검증
+          </h2>
+        </Reveal>
+      </section>
+
+      {/* Feature 01 — 키재기 */}
+      <section className="mx-auto max-w-[1440px] px-5 py-12 sm:px-9 sm:py-16">
+        <div className="border-t border-line-2 pt-9">
+          <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">FEATURE 01</div>
+          <h3 className="mt-3 font-archivo text-[clamp(26px,3vw,38px)] font-extrabold tracking-[-.03em]">
+            키재기
+          </h3>
+          <p className="mt-2 text-[15px] text-muted">커뮤니티 반복 질문을 해결한 첫 번째 기능</p>
+
+          <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
+            <div>
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                USER PROBLEM
+              </div>
+              <p className="mt-2.5 text-[15.5px] leading-[1.7] text-ink-70">
+                유저들은 내 캐릭터 키가 몇인지, 키가 제대로 측정된 건지 확인하기 위해 외부 앱으로 직접
+                합성해야 했습니다.
+              </p>
+            </div>
+            <div>
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                SOLUTION
+              </div>
+              <p className="mt-2.5 text-[15.5px] leading-[1.7] text-ink-70">
+                이미지 업로드 후 이동 · 확대/축소 · 가이드라인 비교만으로 키를 확인할 수 있도록 설계했습니다.
+              </p>
+            </div>
+            <div>
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                IMPROVEMENT
+              </div>
+              <p className="mt-2.5 text-[15.5px] leading-[1.7] text-ink-70">
+                직접 키 가이드라인을 제작하고 설명 문서를 만들며 UX를 지속적으로 개선했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-7 flex max-[560px]:flex-col gap-4">
+            <Placeholder label={"키재기 Before / After"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+            <Placeholder label={"실제 결과물 공유 사례"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 02 — 양초 계산기 */}
+      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">FEATURE 02</div>
+          <h3 className="mt-3 font-archivo text-[clamp(26px,3vw,38px)] font-extrabold tracking-[-.03em]">
+            양초 계산기
+          </h3>
+          <p className="mt-2 text-[15px] text-muted">복잡한 재화 계획 문제 해결</p>
+
+          <div className="mt-8 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
+            <div className="flex-1">
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                USER PROBLEM
+              </div>
+              <p className="mt-2.5 max-w-[440px] text-[15.5px] leading-[1.7] text-ink-70">
+                Sky 시즌 시스템에서는 시즌 기간 · 아이템 가격 · 시즌 패스 여부 · 하루 획득량 등 다양한 요소를
+                고려해야 했습니다. 유저들은 &ldquo;내가 원하는 아이템을 얻을 수 있을까?&rdquo;를 계속
+                질문했습니다.
+              </p>
+              <div className="mt-3.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                SOLUTION
+              </div>
+              <p className="mt-2.5 max-w-[440px] text-[15.5px] leading-[1.7] text-ink-70">
+                보유 재화와 목표 아이템을 입력하면 필요한 양초 · 예상 획득량 · 소요 기간을 계산하는 기능을
+                제작했습니다.
+              </p>
+            </div>
+            <div className="flex-1">
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                DATA DRIVEN IMPROVEMENT
+              </div>
+              <div className="mt-3 flex flex-col gap-2.5 text-[15px]">
+                <div className="border border-line-2 bg-paper px-4 py-3">단순 결과 제공</div>
+                <div className="text-accent">↓</div>
+                <div className="border border-ink bg-ink px-4 py-3 text-ink-on-dark">
+                  계산 과정 시각화 — 앞으로 얻을 재화 · 총 필요 재화 · 예상 날짜
+                </div>
+              </div>
+              <p className="mt-4 text-[14px] leading-[1.7] text-muted">
+                시즌 시스템 변경으로 기존 계산기의 필요성이 감소했지만, 사용자 사용 데이터를 기반으로 새로운
+                UX와 디자인으로 리뉴얼을 진행했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-7 flex max-[560px]:flex-col gap-4">
+            <Placeholder variant="alt" label={"계산기 UI"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+            <Placeholder variant="alt" label={"개선 전/후 비교"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 03 — 유랑대백과 */}
+      <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-20">
+        <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">FEATURE 03</div>
+        <h3 className="mt-3 font-archivo text-[clamp(26px,3vw,38px)] font-extrabold tracking-[-.03em]">
+          유랑대백과
+        </h3>
+        <p className="mt-2 text-[15px] text-muted">흩어진 정보를 탐색 가능한 아카이브로 개선</p>
+
+        <div className="mt-8 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
+          <div className="flex-1">
+            <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+              USER PROBLEM
+            </div>
+            <p className="mt-2.5 max-w-[440px] text-[15.5px] leading-[1.7] text-ink-70">
+              Sky의 유랑 시스템은 2주마다 과거 시즌 아이템이 등장해 원하는 아이템이 언제 돌아올지 궁금하지만,
+              기존 정보는 오래된 게시글 · 업데이트 중단 · 잘못된 정보 문제가 있었습니다.
+            </p>
+            <div className="mt-3.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+              SOLUTION
+            </div>
+            <p className="mt-2.5 max-w-[440px] text-[15.5px] leading-[1.7] text-ink-70">
+              유랑 정보를 데이터베이스화해 유랑 기록 · 아이템 정보 · 시즌 분류 · 검색 기능을 제공했습니다.
+            </p>
+          </div>
+          <div className="flex-1">
+            <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+              UX IMPROVEMENT
+            </div>
+            <div className="mt-3 flex flex-col gap-4 border-l-2 border-line-4 pl-5">
+              <p className="text-[15.5px] leading-[1.7] text-ink-70">
+                <b>초기</b> — 카드 + 페이지 이동 방식
+              </p>
+              <p className="text-[15.5px] leading-[1.7] text-ink-70">
+                <b>문제</b> — 100개 이상의 데이터를 탐색하기 어려움
+              </p>
+              <p className="text-[15.5px] leading-[1.7] text-accent font-bold">
+                개선 — 스크롤 기반 리스트 구조로 변경
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-7 flex max-[560px]:flex-col gap-4">
+          <Placeholder label={"유랑대백과 화면"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+          <Placeholder label={"Before / After"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+        </div>
+      </section>
+
+      {/* Feature 04 — 시즌 대백과 */}
+      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">FEATURE 04</div>
+          <h3 className="mt-3 font-archivo text-[clamp(26px,3vw,38px)] font-extrabold tracking-[-.03em]">
+            시즌 대백과
+          </h3>
+          <p className="mt-2 text-[15px] text-muted">데이터 구조 재설계를 통한 확장</p>
+          <p className="mt-4 max-w-[560px] text-[15.5px] leading-[1.7] text-ink-70">
+            서버 이전 과정에서 기존 구조를 개선하며 제작한 신규 기능입니다.
+          </p>
 
           <div className="mt-7 flex gap-5">
             <div className="flex-1">
               <div className="mb-2 font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
                 BEFORE
               </div>
-              <Placeholder
-                variant="alt"
-                label={"기존 6단계 수작업 과정"}
-                className="h-[clamp(160px,20vw,260px)]"
-              />
+              <p className="text-[15px] leading-[1.7] text-ink-70">시즌 정보 분산 · 특정 영혼 검색 어려움</p>
             </div>
             <div className="flex-1">
-              <div className="mb-2 font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">
-                AFTER
-              </div>
-              <Placeholder
-                variant="alt"
-                label={"키재기 도구 실사용 화면"}
-                className="h-[clamp(160px,20vw,260px)]"
-              />
+              <div className="mb-2 font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">AFTER</div>
+              <p className="text-[15px] leading-[1.7] text-ink-70">시즌별 데이터 구조화 · 검색 기능 · 영혼 데이터 통합</p>
             </div>
+          </div>
+
+          <div className="mt-8 border-t border-line-4 pt-6">
+            <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+              COMMUNITY COLLABORATION
+            </div>
+            <p className="mt-2.5 max-w-[560px] text-[15.5px] leading-[1.7] text-ink-70">
+              100개 이상의 영혼 데이터를 구축하기 위해 게임 친구들과 역할을 분담하고, Google Sheet 기반으로
+              작업을 관리했으며, 인게임 촬영 가이드를 직접 제작했습니다.
+            </p>
+          </div>
+
+          <div className="mt-7 flex max-[560px]:flex-col gap-4">
+            <Placeholder variant="alt" label={"시즌 대백과 화면"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+            <Placeholder variant="alt" label={"데이터 작업 프로세스"} className="h-[clamp(160px,20vw,240px)] flex-1" />
           </div>
         </div>
       </section>
 
-      {/* 05 — Case 02 Data-driven UX pivot */}
-      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
-        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-          05 / CASE 02 — DATA-DRIVEN UX PIVOT
-        </div>
-        <Reveal>
-          <h2 className="mt-5 font-archivo text-[clamp(32px,4.6vw,66px)] leading-[1.02] font-extrabold tracking-[-.04em]">
-            High engagement doesn&apos;t
-            <br />
-            always mean good UX.
-          </h2>
-        </Reveal>
-
-        <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start sm:mt-16">
-          <Reveal className="flex-[1.2]">
-            <Placeholder
-              label={"GA4 ANALYTICS — 체류시간 / 페이지뷰 그래프"}
-              className="h-[clamp(200px,26vw,340px)]"
-            />
-            <div className="mt-4 flex gap-4">
-              <Placeholder
-                label="BEFORE — PAGINATION"
-                className="h-[clamp(110px,13vw,170px)] flex-1 text-[11px]"
-              />
-              <Placeholder
-                label="AFTER — INFINITE SCROLL"
-                className="h-[clamp(110px,13vw,170px)] flex-1 text-[11px]"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1} className="max-w-[480px] flex-1">
-            <div className="flex flex-col gap-5 border-l-2 border-line-4 pl-5">
-              {[
-                { label: "SIGNAL", body: "유랑 대백과 페이지의 체류시간이 매우 높게 측정됨.", accent: false },
-                { label: "FIRST READING", body: "“콘텐츠가 인기 있다.” — 좋은 지표처럼 보였습니다.", accent: false },
-                { label: "CROSS-CHECK", body: "페이지뷰 패턴을 함께 보고 실제 유저를 인터뷰했습니다.", accent: false },
-                {
-                  label: "REAL PROBLEM",
-                  body: (
-                    <>
-                      체류가 아니라 <b>길 잃음</b>이었습니다. 페이지네이션 때문에 원하는 정보를 찾으려 페이지를
-                      계속 오가고 있었습니다.
-                    </>
-                  ),
-                  accent: true,
-                },
-                { label: "ACTION", body: "Pagination → Infinite Scroll 로 탐색 구조 피봇.", accent: true },
-              ].map((row) => (
-                <div key={row.label}>
-                  <div
-                    className={`font-archivo text-[10.5px] font-semibold tracking-[.16em] ${
-                      row.accent ? "text-accent" : "text-muted-light"
-                    }`}
-                  >
-                    {row.label}
-                  </div>
-                  <p className="mt-1.5 text-[17px] leading-[1.7] text-ink-70">{row.body}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-7 border-l-2 border-accent pl-5 font-archivo text-[20px] font-bold leading-[1.4] tracking-[-.02em]">
-              좋아 보이는 숫자도 실제 사용자 행동과 함께 읽어야 한다.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 06 — Case 03 Viral growth (dark) */}
+      {/* 04 — Data Analysis (dark) */}
       <section className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
           <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent-on-dark">
-            06 / CASE 03 — VIRAL GROWTH
+            04 / DATA ANALYSIS
           </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start">
-            <Reveal className="flex-[1.2]">
-              <h2 className="font-archivo text-[clamp(30px,4.2vw,58px)] leading-[1.03] font-extrabold tracking-[-.04em]">
-                Self-expression
-                <br />
-                drives sharing.
-              </h2>
-              <p className="mt-5 max-w-[500px] text-[18px] leading-[1.8] text-[rgba(244,241,234,.78)] text-pretty">
-                런칭 이후 신규 유입이 정체됐고 광고비는 쓸 수 없었습니다. “나는 OO형이다”라고 스스로를
-                규정할 수 있는 콘텐츠는 자연히 공유된다는 가설을 세우고, Sky 세계관 기반 성향 테스트를 약 1주일
-                만에 만들었습니다. 결과 카드는 외부 일러스트레이터와 협업했습니다.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-9 border-t border-line-dark-2 pt-6">
-                {[
-                  { value: 393, label: "PEAK DAU" },
-                  { value: 10, suffix: "x", label: "VIRAL TRAFFIC" },
-                  { value: 927, label: "LAUNCH-WEEK USERS" },
-                  { value: 1, suffix: "w", label: "BUILD TIME" },
-                ].map((m) => (
-                  <Stat
-                    key={m.label}
-                    metric={m}
-                    numberClassName="font-archivo text-[clamp(36px,4vw,58px)] leading-[1] font-extrabold tracking-[-.045em]"
-                    labelClassName="mt-2 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-[rgba(244,241,234,.5)]"
-                  />
-                ))}
-              </div>
-              <p className="mt-6 text-[16px] leading-[1.75] text-[rgba(244,241,234,.6)]">
-                공식 SNS에 자발적으로 소개되며 확산됐습니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
-              <Placeholder
-                variant="dark"
-                label={"성향 테스트 결과 카드"}
-                className="h-[clamp(180px,22vw,300px)]"
-              />
-              <Placeholder variant="dark" label={"SNS 공유 SCREENSHOT"} className="h-[clamp(120px,15vw,190px)]" />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 07 — Community events */}
-      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
-        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-          07 / COMMUNITY EVENTS
-        </div>
-        <Reveal>
-          <h2 className="mt-5 font-archivo text-[clamp(30px,4.2vw,58px)] leading-[1.03] font-extrabold tracking-[-.04em]">
-            이벤트는 콘텐츠가 아니라
-            <br />
-            참여 구조를 설계하는 일.
-          </h2>
-        </Reveal>
-
-        <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-10 sm:mt-14">
-          <Reveal className="flex-1">
-            <Placeholder
-              label={"EVENT POSTER — 사진 속 장소를 찾아라"}
-              className="h-[clamp(200px,24vw,320px)]"
-            />
-            <h3 className="mt-4.5 font-archivo text-[24px] font-bold tracking-[-.025em]">Find the Place</h3>
-            <p className="mt-2.5 text-[16px] leading-[1.72] text-ink-70">
-              게임 속 장소 스크린샷을 제시하고 직접 찾아가 인증샷을 올리는 탐색형 이벤트. 1인당 최대 5개 정답
-              인정 등 참여 규칙을 설계했습니다.
-            </p>
-            <div className="mt-4.5 flex gap-7 border-t border-line-4 pt-4">
-              <Stat
-                metric={{ value: 143, label: "COMMENTS" }}
-                numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
-                labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-              />
-              <Stat
-                metric={{ value: 656, label: "VIEWS" }}
-                numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
-                labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1} className="flex-1">
-            <Placeholder
-              label={"EVENT POSTER — 킹받는 플러팅 대회"}
-              className="h-[clamp(200px,24vw,320px)]"
-            />
-            <h3 className="mt-4.5 font-archivo text-[24px] font-bold tracking-[-.025em]">Flirting Contest</h3>
-            <p className="mt-2.5 text-[16px] leading-[1.72] text-ink-70">
-              팬덤 유머 코드에 맞춘 참가형 콘텐츠. 참가자만이 아니라 <b>투표로 관람자도 참여</b>하게 설계해 참여
-              인원을 넓혔습니다.
-            </p>
-            <div className="mt-4.5 flex gap-7 border-t border-line-4 pt-4">
-              <div>
-                <div className="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]">S4</div>
-                <div className="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted">
-                  시즌 4까지 반복
-                </div>
-              </div>
-              <div>
-                <div className="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]">인기글</div>
-                <div className="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted">
-                  커뮤니티 반응
-                </div>
-              </div>
-            </div>
-            <p className="mt-4 text-[15px] leading-[1.7] text-muted">
-              단발성 이벤트로 끝내지 않고 반응을 보고 정기 콘텐츠로 전환.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 08 — O2O */}
-      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-            08 / O2O EVENT
-          </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start">
-            <Reveal className="max-w-[460px] flex-1">
-              <h2 className="font-archivo text-[clamp(28px,3.6vw,50px)] leading-[1.04] font-extrabold tracking-[-.038em]">
-                온라인 서비스를
-                <br />
-                오프라인 경험으로.
-              </h2>
-              <p className="mt-4.5 text-[17px] leading-[1.78] text-ink-70">
-                Sky 공식 오프라인 행사에서 진행한 참여 플로우를 직접 기획하고, 웹 기능 제작부터 QR 배치, 현장
-                유저 대응까지 맡았습니다.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-2 font-archivo text-[13px] font-semibold">
-                <span className="bg-paper border border-line-2 px-3.5 py-2">QR</span>
-                <span className="text-accent">→</span>
-                <span className="bg-paper border border-line-2 px-3.5 py-2">Web Test</span>
-                <span className="text-accent">→</span>
-                <span className="bg-paper border border-line-2 px-3.5 py-2">Flight Test</span>
-                <span className="text-accent">→</span>
-                <span className="bg-ink px-3.5 py-2 text-ink-on-dark">Physical Certificate</span>
-              </div>
-              <div className="mt-7 flex gap-9 border-t border-line-4 pt-5">
-                <Stat
-                  metric={{ value: 170, label: "DAY USERS" }}
-                  numberClassName="font-archivo text-[clamp(34px,3.6vw,48px)] leading-[1] font-extrabold tracking-[-.045em]"
-                  labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted"
-                />
-                <Stat
-                  metric={{ value: 30, label: "CONCURRENT USERS" }}
-                  numberClassName="font-archivo text-[clamp(34px,3.6vw,48px)] leading-[1] font-extrabold tracking-[-.045em]"
-                  labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted"
-                />
-              </div>
-              <p className="mt-5 text-[15px] leading-[1.72] text-muted">
-                반응이 좋아 이후 &lsquo;이달의 모의고사&rsquo; 형태의 정기 콘텐츠로 발전했습니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className="flex-[1.3]">
-              <Placeholder
-                variant="alt"
-                label={"EVENT PHOTO — 오프라인 행사 현장 (크게)"}
-                className="h-[clamp(240px,30vw,420px)]"
-              />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 09/10 — Distribution / Failure */}
-      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
-        <div className="flex max-[860px]:flex-col gap-6 sm:gap-20 items-start">
-          <Reveal className="flex-1">
-            <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-              09 / DISTRIBUTION
-            </div>
-            <h2 className="mt-5 font-archivo text-[clamp(28px,3.6vw,50px)] leading-[1.04] font-extrabold tracking-[-.038em]">
-              Go where the players
-              <br />
-              already are.
+          <Reveal>
+            <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+              실제 사용 데이터를 기반으로 개선
             </h2>
-            <p className="mt-4.5 max-w-[460px] text-[17px] leading-[1.78] text-ink-70">
-              광고만이 성장 방법은 아니었습니다. 유저가 매일 머무는 오픈채팅방에 챗봇으로 서비스를 연결했습니다.
-            </p>
-            <div className="mt-7 flex items-end gap-9 border-t border-line-4 pt-5">
-              <div>
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted-light">
-                  BEFORE
-                </div>
-                <div className="font-archivo text-[clamp(30px,3.2vw,44px)] leading-[1] font-extrabold tracking-[-.045em] text-muted-light">
-                  30–40
-                </div>
-              </div>
-              <div className="pb-1.5 font-archivo text-[22px] text-accent">→</div>
-              <div>
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.13em] text-accent">AFTER</div>
-                <div className="font-archivo text-[clamp(30px,3.2vw,44px)] leading-[1] font-extrabold tracking-[-.045em]">
-                  50–60
-                </div>
-              </div>
-              <div className="pb-1.5 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted">DAU</div>
-            </div>
           </Reveal>
-          <Reveal delay={0.1} className="flex-1">
-            <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">10 / FAILURE</div>
-            <h2 className="mt-5 font-archivo text-[clamp(28px,3.6vw,50px)] leading-[1.04] font-extrabold tracking-[-.038em]">
-              Not every feature
-              <br />
-              deserves iteration.
-            </h2>
-            <div className="mt-5 border-t border-line-4">
-              {[
-                { label: "BUILT", body: "웹 기반 악보 제작 기능", accent: false },
-                { label: "RESULT", body: "사용량 매우 저조", accent: false },
-                {
-                  label: "ANALYSIS",
-                  body: "수요 자체가 니치했고, 이미 전문 앱이 존재했으며, 웹이 그보다 나은 점을 주지 못했습니다.",
-                  accent: false,
-                },
-                {
-                  label: "LEARNING",
-                  body: (
-                    <>
-                      <b>개발 전에 경쟁 서비스와 대체재부터 조사한다</b>는 기획 원칙을 세웠습니다.
-                    </>
-                  ),
-                  accent: true,
-                },
-              ].map((row, i, arr) => (
-                <div
-                  key={row.label}
-                  className={`flex gap-5 py-3.5 ${
-                    i === arr.length - 1 ? "border-b border-line-4" : "border-b border-line-3"
-                  }`}
-                >
-                  <div
-                    className={`w-[90px] flex-none font-archivo text-[10.5px] font-semibold tracking-[.13em] ${
-                      row.accent ? "text-accent" : "text-muted-light"
-                    }`}
-                  >
-                    {row.label}
-                  </div>
-                  <div className="flex-1 text-[16px] leading-[1.7] text-ink-70">{row.body}</div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
+          <div className="mt-4 flex flex-wrap items-baseline gap-3">
+            <span className="font-archivo text-[13px] font-semibold tracking-[.06em]">
+              Google Analytics 4 분석
+            </span>
+            <span className="font-mono text-[12px] text-[rgba(244,241,234,.5)]">2025.02 ~ 2026.08</span>
+          </div>
 
-        {/* 11 — IP & External Communication */}
-        <div className="mt-14 border-t border-line-2 pt-7 sm:mt-24">
-          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
-            11 / IP &amp; EXTERNAL COMMUNICATION
-          </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start">
-            <Reveal className="flex-1">
-              <h2 className="font-archivo text-[clamp(26px,3.2vw,44px)] leading-[1.06] font-extrabold tracking-[-.035em]">
-                팬 서비스일수록
-                <br />
-                먼저 물어봅니다.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1} className="grid flex-[1.4] grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
-                  THATGAMECOMPANY
-                </div>
-                <p className="mt-2 text-[16px] leading-[1.7] text-ink-70">
-                  공식 커뮤니티를 통해 직접 문의하고 팬 서비스 운영 가이드라인을 확인·승인받았습니다.
-                </p>
-              </div>
-              <div>
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
-                  해외 운영자 컨택
-                </div>
-                <p className="mt-2 text-[16px] leading-[1.7] text-ink-70">
-                  해외 Sky Planner 운영자에게 GitHub Issue로 직접 연락해 상호 레퍼런스 구조를 만들고 해외 유입을
-                  늘렸습니다.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 12 — Result (dark) */}
-      <section id="result" className="border-t border-line bg-ink px-5 py-16 text-ink-on-dark sm:px-9 sm:py-24">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent-on-dark">
-            12 / RESULT
-          </div>
-          <div className="mt-9 grid grid-cols-2 gap-x-7 gap-y-9 sm:grid-cols-3 lg:grid-cols-6">
-            {resultMetrics.map((m, i) => (
+          <div className="mt-9 grid grid-cols-2 gap-x-7 gap-y-8 sm:grid-cols-5 sm:mt-14">
+            {performanceMetrics.map((m, i) => (
               <Reveal key={m.label} delay={i * 0.04}>
                 <Stat
                   metric={m}
-                  numberClassName="font-archivo text-[clamp(40px,4.6vw,72px)] leading-[1] font-extrabold tracking-[-.05em]"
-                  labelClassName="mt-2.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-[rgba(244,241,234,.5)]"
+                  numberClassName="font-archivo text-[clamp(32px,3.4vw,52px)] leading-[1] font-extrabold tracking-[-.045em]"
+                  labelClassName="mt-2 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-[rgba(244,241,234,.5)]"
                 />
               </Reveal>
             ))}
           </div>
 
-          {/* 13 — Learning */}
-          <div className="mt-14 flex max-[860px]:flex-col gap-6 sm:gap-20 items-start border-t border-line-dark-2 pt-9 sm:mt-24">
-            <Reveal className="flex-[1.2]">
-              <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent-on-dark">
-                13 / LEARNING
+          <Reveal delay={0.1}>
+            <Placeholder variant="dark" label={"GA4 캡처"} className="mt-10 h-[clamp(200px,26vw,340px)]" />
+          </Reveal>
+
+          <div className="mt-14 border-t border-line-dark-2 pt-8 sm:mt-20">
+            <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent-on-dark">
+              USER BEHAVIOR INSIGHT
+            </div>
+            <div className="mt-7 grid grid-cols-1 gap-px border-t border-b border-line-dark bg-line-dark sm:grid-cols-3">
+              {insights.map((ins, i) => (
+                <Reveal key={ins.n} delay={i * 0.06} className="bg-ink px-6 pt-6 pb-7">
+                  <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent-on-dark">
+                    {ins.n}
+                  </div>
+                  <p className="mt-3.5 font-archivo text-[18px] font-bold leading-[1.35] tracking-[-.015em]">
+                    {ins.title}
+                  </p>
+                  <div className="mt-4 border-t border-line-dark pt-3.5 text-[14.5px] leading-[1.6] text-[rgba(244,241,234,.7)]">
+                    <div className="font-semibold text-[rgba(244,241,234,.9)]">{ins.feature}</div>
+                    <div className="mt-1">{ins.stats}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 — User Feedback & Operation */}
+      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
+        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
+          05 / USER FEEDBACK &amp; OPERATION
+        </div>
+        <Reveal>
+          <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+            사용자 의견을 서비스 개선으로 연결
+          </h2>
+        </Reveal>
+        <p className="mt-5 max-w-[560px] text-[17px] leading-[1.78] text-ink-70">
+          Google 만족도 조사를 진행하고, 네이버 카페와 사이트 내 링크를 통해 사용자 의견을 수집했습니다.
+        </p>
+
+        <div className="mt-10 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14 sm:grid-cols-3">
+          {vocList.map((v, i) => (
+            <Reveal key={v.feature} delay={i * 0.05} className="bg-bg px-6 pt-6 pb-7">
+              <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent">
+                {v.feature}
               </div>
-              <h2 className="mt-5 font-archivo text-[clamp(30px,4vw,56px)] leading-[1.03] font-extrabold tracking-[-.04em]">
-                Building the feature
-                <br />
-                was only the beginning.
-              </h2>
+              <p className="mt-3.5 text-[16px] leading-[1.6] text-ink-70">&ldquo;{v.feedback}&rdquo;</p>
+              <div className="mt-4 border-t border-line-3 pt-3.5 text-[14.5px] leading-[1.6] text-muted">
+                ↓ {v.improvement}
+              </div>
             </Reveal>
-            <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[18px] leading-[1.8] text-[rgba(244,241,234,.78)] text-pretty">
-              1년 넘게 실제 유저가 있는 서비스를 운영하며, 서비스의 성패는 출시 시점이 아니라 그 이후의
-              관찰·데이터·피드백·반복 개선에서 갈린다는 것을 배웠습니다. 기능을 만드는 일은 시작일 뿐이고,
-              유저가 그 기능을 어떻게 쓰는지 계속 보는 일이 본론이었습니다.
-            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-7 flex max-[560px]:flex-col gap-4">
+          <Placeholder label={"VOC 설문 결과"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+          <Placeholder label={"개선 전후 이미지"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+        </div>
+      </section>
+
+      {/* 06 — Growth & Community */}
+      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
+            06 / GROWTH &amp; COMMUNITY
+          </div>
+          <Reveal>
+            <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+              유저가 자연스럽게 확산하는 서비스 만들기
+            </h2>
+          </Reveal>
+
+          <div className="mt-9 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14 sm:grid-cols-3">
+            {growthChannels.map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.06} className="bg-bg-alt px-6 pt-6 pb-7">
+                <h3 className="font-archivo text-[19px] font-bold tracking-[-.02em]">{c.title}</h3>
+                <ul className="mt-3.5 flex flex-col gap-2 text-[15px] leading-[1.6] text-ink-70">
+                  {c.points.map((p) => (
+                    <li key={p}>· {p}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-7 flex max-[560px]:flex-col gap-4">
+            <Placeholder variant="alt" label={"홍보 게시글"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+            <Placeholder variant="alt" label={"커뮤니티 공유 사례"} className="h-[clamp(160px,20vw,240px)] flex-1" />
+          </div>
+        </div>
+      </section>
+
+      {/* 07 — O2O Event */}
+      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-9 sm:py-24">
+        <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
+          07 / O2O EVENT
+        </div>
+        <Reveal>
+          <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+            게임 경험을 오프라인으로 확장하다
+          </h2>
+        </Reveal>
+        <p className="mt-4 text-[15px] font-semibold text-muted">Sky 공식 오프라인 행사 이벤트 기획</p>
+
+        <div className="mt-9 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start sm:mt-14">
+          <Reveal className="flex-1">
+            <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+              EVENT FLOW
+            </div>
+            <div className="mt-3 flex flex-wrap items-center gap-2 font-archivo text-[13px] font-semibold">
+              <span className="bg-paper border border-line-2 px-3.5 py-2">QR</span>
+              <span className="text-accent">→</span>
+              <span className="bg-paper border border-line-2 px-3.5 py-2">웹 테스트</span>
+              <span className="text-accent">→</span>
+              <span className="bg-paper border border-line-2 px-3.5 py-2">비행 자격증 발급</span>
+              <span className="text-accent">→</span>
+              <span className="bg-ink px-3.5 py-2 text-ink-on-dark">오프라인 기념품 제공</span>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1} className="flex-1">
+            <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">RESULT</div>
+            <div className="mt-2 font-archivo text-[clamp(40px,4.4vw,60px)] leading-[1] font-extrabold tracking-[-.045em]">
+              <Stat
+                metric={{ value: 117, label: "" }}
+                numberClassName=""
+                labelClassName="hidden"
+              />
+            </div>
+            <div className="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted">
+              일 접속자 (DAY USERS)
+            </div>
+            <ul className="mt-4 flex flex-col gap-1.5 text-[15px] leading-[1.65] text-ink-70">
+              <li>· 사이트 홍보 효과</li>
+              <li>· 온라인 서비스 → 오프라인 경험 연결</li>
+            </ul>
+          </Reveal>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <Placeholder label={"행사 사진"} className="h-[clamp(160px,20vw,240px)]" />
+          <Placeholder label={"QR 이미지"} className="h-[clamp(160px,20vw,240px)]" />
+          <Placeholder label={"비행 자격증"} className="h-[clamp(160px,20vw,240px)]" />
+        </div>
+      </section>
+
+      {/* 08 — Learning */}
+      <section className="border-t border-line bg-bg-alt px-5 py-16 sm:px-9 sm:py-24">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent">
+            08 / LEARNING
+          </div>
+          <Reveal>
+            <h2 className="mt-5 font-archivo text-[clamp(28px,3.8vw,52px)] leading-[1.05] font-extrabold tracking-[-.038em]">
+              실패와 개선
+            </h2>
+          </Reveal>
+
+          <div className="mt-8 border-t border-line-2">
+            <div className="flex gap-6 py-4 border-b border-line-3">
+              <div className="w-[110px] flex-none font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted-light">
+                FEATURE
+              </div>
+              <div className="flex-1 text-[16px] leading-[1.7] text-ink-70">악보 만들기 기능</div>
+            </div>
+            <div className="flex gap-6 py-4 border-b border-line-3">
+              <div className="w-[110px] flex-none font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted-light">
+                PROBLEM
+              </div>
+              <div className="flex-1 text-[16px] leading-[1.7] text-ink-70">이미 기존 강력한 앱이 존재</div>
+            </div>
+            <div className="flex gap-6 py-4 border-b border-line-2">
+              <div className="w-[110px] flex-none font-archivo text-[10.5px] font-semibold tracking-[.13em] text-accent">
+                RESULT
+              </div>
+              <div className="flex-1 text-[16px] leading-[1.7] text-ink-70">사용자 확보 실패</div>
+            </div>
+          </div>
+
+          <p className="mt-8 max-w-[640px] border-l-2 border-accent pl-5 font-archivo text-[20px] font-bold leading-[1.5] tracking-[-.02em]">
+            좋은 기능을 만드는 것보다, 사용자가 실제로 해결하기 어려워하는 문제를 찾는 것이 중요하다는 것을
+            배웠습니다.
+          </p>
+        </div>
+      </section>
+
+      {/* Final Message */}
+      <section id="final" className="border-t border-line bg-ink px-5 py-16 text-ink-on-dark sm:px-9 sm:py-24">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="font-archivo text-[11.5px] font-semibold tracking-[.18em] text-accent-on-dark">
+            SKY PLANNER
+          </div>
+          <Reveal>
+            <h2 className="mt-5 font-archivo text-[clamp(30px,4.4vw,60px)] leading-[1.06] font-extrabold tracking-[-.04em]">
+              게임 유저의 행동을 관찰하고,
+              <br />
+              반복되는 불편을 서비스로 해결한
+              <br />
+              데이터 기반 게임 커뮤니티 플랫폼
+            </h2>
+          </Reveal>
+
+          <div className="mt-10 border-t border-line-dark-2 pt-8 sm:mt-16">
+            <div className="font-archivo text-[11.5px] font-semibold tracking-[.16em] text-[rgba(244,241,234,.45)]">
+              DEMONSTRATED SKILLS
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {demonstratedSkills.map((s) => (
+                <span
+                  key={s}
+                  className="border border-line-dark px-3.5 py-2 font-archivo text-[12.5px] font-semibold tracking-[.05em] text-[rgba(244,241,234,.85)]"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="mt-11 flex flex-wrap items-center gap-4 border-t border-line-dark-2 pt-6 sm:mt-16">
