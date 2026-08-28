@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
 import { getProject } from "@/data/projects";
-import { toLocale } from "@/lib/i18n";
+import { toLocale, type Locale } from "@/lib/i18n";
 import {
   CASE_EYEBROW as EYEBROW,
   CASE_EYEBROW_DARK as EYEBROW_DARK,
@@ -14,11 +14,20 @@ import {
   CASE_LEAD_DARK as LEAD_DARK,
 } from "@/lib/caseStudy";
 
-export const metadata: Metadata = {
-  title: "Heartopia Archive — 서인하",
-  description:
-    "여러 플랫폼에 흩어진 두근두근타운 유저 제작 콘텐츠를, 해외 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브 케이스 스터디.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  return {
+    title: "Heartopia Archive — Inha Seo",
+    description:
+      locale === "en"
+        ? "A global fan archive that connects user-made Heartopia content scattered across platforms, built on original-creator permission and a source-attribution policy."
+        : "여러 플랫폼에 흩어진 두근두근타운 유저 제작 콘텐츠를, 해외 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브 케이스 스터디.",
+  };
+}
 
 const heroMetrics = [
   { value: 119, accentSuffix: "+", label: "ARCHIVED CONTENTS" },
@@ -26,108 +35,11 @@ const heroMetrics = [
   { value: 45, accentSuffix: "+", label: "MEMBERS" },
 ];
 
-const discoveryFlow = ["커뮤니티 검색", "해외 플랫폼 이동 · 회원가입", "번역", "이미지 저장", "다시 찾기"];
-
-const problems = [
-  { n: "01", title: "Discovery", body: "좋은 콘텐츠는 분명히 있지만, 원하는 의상·가구를 원하는 순간에 찾을 수 없습니다." },
-  { n: "02", title: "Accessibility", body: "공유가 해외 플랫폼과 외국어 중심으로 이뤄져, 국내 유저는 접근 자체가 어렵습니다." },
-  { n: "03", title: "Trust", body: "원작자와 출처가 보장되지 않으면, 콘텐츠 공유는 지속 가능한 방식이 될 수 없습니다." },
-];
-
-const directions = ["콘텐츠 탐색 경험 개선", "원작자 출처 관리", "한국 유저 접근성 개선"];
-
-const serviceFlow = ["Creator", "콘텐츠 발견", "허락 확인", "출처 관리", "Archive 등록", "User"];
-
-const outreach = [
-  {
-    label: "PROBLEM",
-    body: "Xiaohongshu 지역 제한으로 원작자에게 직접 DM·댓글을 보낼 수 없었습니다.",
-    solution: false,
-  },
-  {
-    label: "ACTION",
-    body: "중국인 친구를 통해 창작자와 연결하고, 서비스의 운영 목적과 출처 표기 방식을 설명한 뒤 사용 허락을 요청했습니다.",
-    solution: false,
-  },
-  {
-    label: "RESULT",
-    body: "Xiaohongshu 작가 세 명에게 실제 사용 허락을 확보해, 원작자·원본 링크를 고정한 채 콘텐츠를 게시 중입니다.",
-    solution: true,
-  },
-];
-
-const permissionSteps = [
-  { n: "01", label: "창작자 확인", note: "원작자와 원본 게시물을 특정" },
-  { n: "02", label: "연락 · 목적 설명", note: "비상업 · 광고 없음을 직접 안내" },
-  { n: "03", label: "사용 허락 확보", note: "사용 범위를 합의" },
-  { n: "04", label: "출처 표시", note: "원작자 · 원본 링크를 콘텐츠에 고정" },
-  { n: "05", label: "콘텐츠 등록", note: "허락받은 대리 게시로 공개" },
-];
-
-const features = [
-  {
-    name: "의상 아카이브",
-    problem: "유저 제작 의상 콘텐츠가 여러 플랫폼에 흩어져, 원하는 스타일을 비교하기 어려웠습니다.",
-    solution: "카테고리·태그·상세 페이지를 갖춘 아카이브로 옮겨, 한곳에서 탐색·비교하도록 했습니다.",
-    shot: "의상 아카이브 목록 · 상세",
-  },
-  {
-    name: "가구 아카이브",
-    problem: "꾸미기 콘텐츠는 참고 수요가 크지만 정리된 곳이 없었습니다.",
-    solution: "의상과 같은 구조로 가구 콘텐츠를 정리해 탐색 경험을 통일했습니다.",
-    shot: "가구 아카이브 화면",
-  },
-  {
-    name: "검색 · 분류 · 상세",
-    problem: "콘텐츠가 늘수록 원하는 것을 찾는 비용이 커집니다.",
-    solution: "검색과 분류, 원작자·출처가 고정된 상세 페이지로 탐색 비용이 늘지 않게 설계했습니다.",
-    shot: "검색 · 필터 UI",
-  },
-];
-
-const editorBefore = ["직접 촬영", "외부 편집 앱 실행", "수동 배치"];
-
-const operationCases = [
-  {
-    label: "COMMUNITY",
-    title: "게임 커뮤니티 기반 홍보",
-    body: "게임 커뮤니티에서 서비스를 공유하고, 원작자 허락 기반으로 확보한 콘텐츠로 신뢰도를 쌓았습니다.",
-  },
-  {
-    label: "TRUST DECISION",
-    title: "오픈채팅 등록은 하지 않았습니다",
-    body: "회원가입이 네이버·카카오·디스코드 OAuth 방식이라, 출처가 분명하지 않은 채널에서 유입되면 개인정보 신뢰 문제가 생길 수 있다고 봤습니다. Sky Planner와 달리 오픈채팅 홍보를 의도적으로 하지 않았고, 회원 수는 그만큼 천천히 늘고 있습니다.",
-  },
-  {
-    label: "BUG FIX",
-    title: "이미지가 로드되지 않는 오류",
-    body: "일부 환경에서 콘텐츠 이미지가 표시되지 않아, 이미지 처리·로딩 흐름을 점검하고 재현·수정·배포 후 재확인 사이클로 해결했습니다.",
-  },
-];
-
 const serviceMetrics = [
   { value: 119, accentSuffix: "+", label: "ARCHIVED CONTENTS" },
   { value: 45, accentSuffix: "+", label: "MEMBERS" },
   { value: 0, raw: "50–60", label: "DAILY VISITORS" },
   { value: 3, label: "VERIFIED CREATORS" },
-];
-
-const takeaways = [
-  {
-    n: "01",
-    title: "허락은 기능이 아니라 관계의 결과였습니다",
-    body: "가장 오래 걸린 일은 개발이 아니라 해외 원작자를 찾아 연락하고 허락을 받는 일이었고, 그 절차가 곧 서비스의 정체성이 됐습니다.",
-  },
-  {
-    n: "02",
-    title: "신뢰가 접근성보다 우선일 때가 있었습니다",
-    body: "더 빠르게 키울 수 있는 오픈채팅 홍보를 포기했습니다. 개인정보를 받는 서비스에서는 유입 경로의 신뢰가 성장 속도보다 중요하다고 판단했습니다.",
-  },
-  {
-    n: "03",
-    title: "아카이브는 탐색에서 창작으로 확장됩니다",
-    body: "“도안을 실제 사진에 얹어보고 싶다”는 요청에서, 아카이브가 보는 곳을 넘어 만드는 시작점이 될 수 있다는 것을 확인했습니다.",
-  },
 ];
 
 const demonstratedSkills = [
@@ -142,14 +54,312 @@ const demonstratedSkills = [
 
 const techStack = ["Next.js", "TypeScript", "Spring Boot", "PostgreSQL", "Cloudinary", "OAuth · 네이버 · 카카오 · 디스코드", "Vercel · Railway"];
 
+const COPY = {
+  ko: {
+    heroSubtitle:
+      "여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브",
+    discoveryFlow: ["커뮤니티 검색", "해외 플랫폼 이동 · 회원가입", "번역", "이미지 저장", "다시 찾기"],
+    ctx: {
+      h2: "좋은 콘텐츠는 많았지만 찾을 수가 없었습니다.",
+      lead:
+        "두근두근타운은 유저가 직접 만든 의상·가구 같은 커스터마이징 콘텐츠 공유가 활발한 게임입니다. 하지만 그 콘텐츠는 Xiaohongshu, Discord, 개인 SNS에 흩어져 있어, 한국 유저가 원하는 것을 찾으려면 매번 같은 과정을 반복해야 했습니다.",
+      note: "“다시 찾기”가 매번 처음부터였습니다 — 저장해둔 이미지에는 출처가 남지 않았기 때문입니다.",
+      shot: "Xiaohongshu 검색 화면 / 흩어진 콘텐츠 예시",
+    },
+    problem: {
+      h2: "문제를 세 가지로 좁혔습니다.",
+      items: [
+        { n: "01", title: "Discovery", body: "좋은 콘텐츠는 분명히 있지만, 원하는 의상·가구를 원하는 순간에 찾을 수 없습니다." },
+        { n: "02", title: "Accessibility", body: "공유가 해외 플랫폼과 외국어 중심으로 이뤄져, 국내 유저는 접근 자체가 어렵습니다." },
+        { n: "03", title: "Trust", body: "원작자와 출처가 보장되지 않으면, 콘텐츠 공유는 지속 가능한 방식이 될 수 없습니다." },
+      ],
+    },
+    solution: {
+      h2: "이미지 모음이 아니라, 신뢰 가능한 UGC 라이브러리.",
+      lead:
+        "원작자의 권리를 지키면서 유저가 쉽게 탐색하는 플랫폼을 목표로, 서비스 방향을 세 가지로 정했습니다. 콘텐츠 양이 많고 수요가 낮은 그림 도안은 초기 범위에서 제외하고 의상·가구에 집중했습니다.",
+      directions: ["콘텐츠 탐색 경험 개선", "원작자 출처 관리", "한국 유저 접근성 개선"],
+      serviceFlow: ["Creator", "콘텐츠 발견", "허락 확인", "출처 관리", "Archive 등록", "User"],
+      shot: "아카이브 홈 · 카테고리 구조",
+    },
+    rights: {
+      h2: "Not a collection. A permission-based archive.",
+      lead:
+        "해외 창작물을 단순히 모으지 않았습니다. 한 장이라도 원작자의 허락 없이 올리지 않는다는 원칙을 먼저 정하고, 그 원칙이 지켜지도록 운영 절차를 설계했습니다.",
+      outreach: [
+        { label: "PROBLEM", solution: false, body: "Xiaohongshu 지역 제한으로 원작자에게 직접 DM·댓글을 보낼 수 없었습니다." },
+        { label: "ACTION", solution: false, body: "중국인 친구를 통해 창작자와 연결하고, 서비스의 운영 목적과 출처 표기 방식을 설명한 뒤 사용 허락을 요청했습니다." },
+        { label: "RESULT", solution: true, body: "Xiaohongshu 작가 세 명에게 실제 사용 허락을 확보해, 원작자·원본 링크를 고정한 채 콘텐츠를 게시 중입니다." },
+      ],
+      quote: "허가는 기능이 아니라 관계의 결과였습니다.",
+      shotDm: "CREATOR PERMISSION DM (개인정보 제거 후 삽입)",
+      shotAttr: "콘텐츠 출처 표기 UI",
+      steps: [
+        { n: "01", label: "창작자 확인", note: "원작자와 원본 게시물을 특정" },
+        { n: "02", label: "연락 · 목적 설명", note: "비상업 · 광고 없음을 직접 안내" },
+        { n: "03", label: "사용 허락 확보", note: "사용 범위를 합의" },
+        { n: "04", label: "출처 표시", note: "원작자 · 원본 링크를 콘텐츠에 고정" },
+        { n: "05", label: "콘텐츠 등록", note: "허락받은 대리 게시로 공개" },
+      ],
+    },
+    features: {
+      h2: "기능은 탐색 비용을 줄이는 방향으로.",
+      lead: "의상과 가구를 같은 구조로 정리하고, 모든 콘텐츠에 원작자·원본 링크·플랫폼을 고정했습니다.",
+      items: [
+        {
+          name: "의상 아카이브",
+          problem: "유저 제작 의상 콘텐츠가 여러 플랫폼에 흩어져, 원하는 스타일을 비교하기 어려웠습니다.",
+          solution: "카테고리·태그·상세 페이지를 갖춘 아카이브로 옮겨, 한곳에서 탐색·비교하도록 했습니다.",
+          shot: "의상 아카이브 목록 · 상세",
+        },
+        {
+          name: "가구 아카이브",
+          problem: "꾸미기 콘텐츠는 참고 수요가 크지만 정리된 곳이 없었습니다.",
+          solution: "의상과 같은 구조로 가구 콘텐츠를 정리해 탐색 경험을 통일했습니다.",
+          shot: "가구 아카이브 화면",
+        },
+        {
+          name: "검색 · 분류 · 상세",
+          problem: "콘텐츠가 늘수록 원하는 것을 찾는 비용이 커집니다.",
+          solution: "검색과 분류, 원작자·출처가 고정된 상세 페이지로 탐색 비용이 늘지 않게 설계했습니다.",
+          shot: "검색 · 필터 UI",
+        },
+      ],
+    },
+    editor: {
+      h2: "탐색에서 창작으로.",
+      lead:
+        "유저는 도안을 보기만 하지 않았습니다. “내 방 사진에 이 도안을 얹어보고 싶다”는 요청이 반복됐는데, 그러려면 일일이 촬영하고 외부 앱에서 수동으로 배치해야 했습니다. 이 과정을 서비스 안 웹 사진 편집 기능 하나로 합쳤습니다.",
+      before: ["직접 촬영", "외부 편집 앱 실행", "수동 배치"],
+      afterLabel: "서비스 안에서 바로 편집",
+      shotBefore: "사진 편집기 — BEFORE (외부 앱 합성)",
+      shotAfter: "사진 편집기 — AFTER (서비스 내 편집)",
+    },
+    ops: {
+      h2: "성장보다 신뢰를 먼저 골랐습니다.",
+      cases: [
+        {
+          label: "COMMUNITY",
+          title: "게임 커뮤니티 기반 홍보",
+          body: "게임 커뮤니티에서 서비스를 공유하고, 원작자 허락 기반으로 확보한 콘텐츠로 신뢰도를 쌓았습니다.",
+        },
+        {
+          label: "TRUST DECISION",
+          title: "오픈채팅 등록은 하지 않았습니다",
+          body: "회원가입이 네이버·카카오·디스코드 OAuth 방식이라, 출처가 분명하지 않은 채널에서 유입되면 개인정보 신뢰 문제가 생길 수 있다고 봤습니다. Sky Planner와 달리 오픈채팅 홍보를 의도적으로 하지 않았고, 회원 수는 그만큼 천천히 늘고 있습니다.",
+        },
+        {
+          label: "BUG FIX",
+          title: "이미지가 로드되지 않는 오류",
+          body: "일부 환경에서 콘텐츠 이미지가 표시되지 않아, 이미지 처리·로딩 흐름을 점검하고 재현·수정·배포 후 재확인 사이클로 해결했습니다.",
+        },
+      ],
+      shot: "커뮤니티 홍보 글 · OAuth 로그인 화면",
+    },
+    metrics: {
+      h2: "규모가 아니라 신뢰의 신호입니다.",
+      dateline: "2026.07.15 ~ 운영 중 · 콘텐츠는 하루 1개씩 증가",
+      footnote: "Daily Visitors는 최근 확인 기준 추정치이며, 누적 방문자·다운로드 등은 GA 재확인 후 반영합니다.",
+    },
+    learn: {
+      h2: "콘텐츠의 양보다 신뢰가 중요했습니다.",
+      lead:
+        "좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다. 창작자 권리 보호, 출처 관리, 사용자 경험, 운영 정책이 함께 있어야 커뮤니티가 유지된다는 것을 배웠습니다.",
+      quote:
+        "UGC 서비스에서 가장 중요한 것은 콘텐츠의 양이 아니라, 콘텐츠가 만들어지고 공유되는 과정에 대한 신뢰였습니다.",
+      takeaways: [
+        {
+          n: "01",
+          title: "허락은 기능이 아니라 관계의 결과였습니다",
+          body: "가장 오래 걸린 일은 개발이 아니라 해외 원작자를 찾아 연락하고 허락을 받는 일이었고, 그 절차가 곧 서비스의 정체성이 됐습니다.",
+        },
+        {
+          n: "02",
+          title: "신뢰가 접근성보다 우선일 때가 있었습니다",
+          body: "더 빠르게 키울 수 있는 오픈채팅 홍보를 포기했습니다. 개인정보를 받는 서비스에서는 유입 경로의 신뢰가 성장 속도보다 중요하다고 판단했습니다.",
+        },
+        {
+          n: "03",
+          title: "아카이브는 탐색에서 창작으로 확장됩니다",
+          body: "“도안을 실제 사진에 얹어보고 싶다”는 요청에서, 아카이브가 보는 곳을 넘어 만드는 시작점이 될 수 있다는 것을 확인했습니다.",
+        },
+      ],
+    },
+  },
+  en: {
+    heroSubtitle:
+      "A global fan archive that connects user-made content scattered across platforms — built on creator permission and a source policy.",
+    discoveryFlow: ["Search the community", "Go to an overseas platform · sign up", "Translate", "Save the image", "Search again"],
+    ctx: {
+      h2: "There was plenty of good content — you just couldn't find it.",
+      lead:
+        "Heartopia has an active culture of sharing user-made customization content like outfits and furniture. But that content lives scattered across Xiaohongshu, Discord, and personal social media, so a Korean player had to repeat the same process every time they wanted to find something.",
+      note: "“Search again” started from scratch every time — the saved image kept no record of where it came from.",
+      shot: "Xiaohongshu search screen / examples of scattered content",
+    },
+    problem: {
+      h2: "I narrowed it to three problems.",
+      items: [
+        { n: "01", title: "Discovery", body: "The good content is there, but you can't find the outfit or furniture you want when you want it." },
+        { n: "02", title: "Accessibility", body: "Sharing happens on overseas platforms in other languages, so Korean players struggle to reach it at all." },
+        { n: "03", title: "Trust", body: "Without guaranteed creators and sources, sharing content can't be a sustainable practice." },
+      ],
+    },
+    solution: {
+      h2: "Not an image dump — a UGC library you can trust.",
+      lead:
+        "Aiming for a platform where users browse easily while creators' rights are protected, I set three directions for the service. Drawing patterns — high in volume, low in demand — were left out of the initial scope, and I focused on outfits and furniture.",
+      directions: ["Improve the content discovery experience", "Manage creator attribution", "Improve access for Korean users"],
+      serviceFlow: ["Creator", "Content found", "Permission confirmed", "Attribution managed", "Added to Archive", "User"],
+      shot: "Archive home · category structure",
+    },
+    rights: {
+      h2: "Not a collection. A permission-based archive.",
+      lead:
+        "I didn't just gather overseas creations. I set the principle first — not a single image goes up without the creator's permission — and designed the operating process so that principle holds.",
+      outreach: [
+        { label: "PROBLEM", solution: false, body: "Xiaohongshu's regional restrictions meant I couldn't DM or comment on creators directly." },
+        { label: "ACTION", solution: false, body: "I connected with creators through a Chinese friend, explained the service's non-commercial purpose and how attribution works, and asked for permission to use their work." },
+        { label: "RESULT", solution: true, body: "I secured actual permission from three Xiaohongshu creators, and I post their content with the creator and original link pinned." },
+      ],
+      quote: "Permission wasn't a feature — it was the result of a relationship.",
+      shotDm: "Creator permission DM (inserted after removing personal info)",
+      shotAttr: "Content attribution UI",
+      steps: [
+        { n: "01", label: "Identify the creator", note: "Pin down the original creator and post" },
+        { n: "02", label: "Contact · explain purpose", note: "State non-commercial · no ads directly" },
+        { n: "03", label: "Secure permission", note: "Agree on the scope of use" },
+        { n: "04", label: "Show attribution", note: "Pin creator · original link to the content" },
+        { n: "05", label: "Register content", note: "Publish as permitted proxy posting" },
+      ],
+    },
+    features: {
+      h2: "Features aimed at cutting the cost of finding things.",
+      lead: "Outfits and furniture are organized in the same structure, and every piece of content has the creator, original link, and platform pinned to it.",
+      items: [
+        {
+          name: "Outfit Archive",
+          problem: "User-made outfit content was scattered across platforms, making styles hard to compare.",
+          solution: "Moved into an archive with categories, tags, and detail pages so you can browse and compare in one place.",
+          shot: "Outfit archive list · detail",
+        },
+        {
+          name: "Furniture Archive",
+          problem: "Decorating content has strong reference demand but no organized home.",
+          solution: "Organized furniture content in the same structure as outfits to unify the browsing experience.",
+          shot: "Furniture archive screen",
+        },
+        {
+          name: "Search · Sort · Detail",
+          problem: "The more content there is, the more it costs to find what you want.",
+          solution: "Designed search, sorting, and detail pages with creator and source pinned so the cost of finding doesn't grow.",
+          shot: "Search · filter UI",
+        },
+      ],
+    },
+    editor: {
+      h2: "From browsing to making.",
+      lead:
+        "Users didn't just look at the patterns. “I want to lay this pattern over a photo of my room” came up again and again — and doing that meant shooting each photo and placing things by hand in an external app. I folded that whole process into one in-service web photo editor.",
+      before: ["Shoot it yourself", "Open an external editing app", "Place it by hand"],
+      afterLabel: "Edit right inside the service",
+      shotBefore: "Photo editor — BEFORE (composited in an external app)",
+      shotAfter: "Photo editor — AFTER (edited in-service)",
+    },
+    ops: {
+      h2: "I chose trust before growth.",
+      cases: [
+        {
+          label: "COMMUNITY",
+          title: "Promotion through game communities",
+          body: "I shared the service in game communities and built credibility with content secured on creator permission.",
+        },
+        {
+          label: "TRUST DECISION",
+          title: "I didn't register an open chat",
+          body: "Signup runs on Naver, Kakao, and Discord OAuth, so I judged that traffic from channels of unclear origin could raise personal-data trust concerns. Unlike Sky Planner, I deliberately skipped open-chat promotion, and membership grows more slowly for it.",
+        },
+        {
+          label: "BUG FIX",
+          title: "Images failing to load",
+          body: "Content images weren't showing in some environments, so I traced the image processing and loading flow and fixed it with a reproduce–fix–deploy–reverify cycle.",
+        },
+      ],
+      shot: "Community promo post · OAuth login screen",
+    },
+    metrics: {
+      h2: "Not scale — a signal of trust.",
+      dateline: "Since 2026.07.15 · content grows by one a day",
+      footnote:
+        "Daily visitors is an estimate as of the latest check; cumulative visitors, downloads, and the like will be updated after re-checking GA.",
+    },
+    learn: {
+      h2: "Trust mattered more than the amount of content.",
+      lead:
+        "Collecting good content alone didn't keep the archive going. I learned that a community holds together only when creator-rights protection, attribution, user experience, and operating policy are all in place together.",
+      quote:
+        "The most important thing in a UGC service isn't the amount of content — it's trust in the process by which content gets made and shared.",
+      takeaways: [
+        {
+          n: "01",
+          title: "Permission was the result of a relationship, not a feature",
+          body: "The longest part wasn't development — it was finding overseas creators, reaching out, and getting permission, and that process became the service's identity.",
+        },
+        {
+          n: "02",
+          title: "Sometimes trust comes before accessibility",
+          body: "I gave up open-chat promotion, which would have grown it faster. In a service that collects personal data, I judged that trust in the traffic source matters more than growth speed.",
+        },
+        {
+          n: "03",
+          title: "An archive extends from browsing into making",
+          body: "From the request “I want to lay a pattern over a real photo,” I saw that an archive can be more than a place to look — it can be a starting point for making.",
+        },
+      ],
+    },
+  },
+} satisfies Record<Locale, unknown>;
+
+function ArrowFlow({
+  steps,
+  emphasizeEnds = false,
+  arrowClass = "text-accent",
+}: {
+  steps: string[];
+  emphasizeEnds?: boolean;
+  arrowClass?: string;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
+      {steps.map((step, i, arr) => {
+        const filled = emphasizeEnds ? i === 0 || i === arr.length - 1 : i === arr.length - 1;
+        return (
+          <span key={step} className="contents">
+            <span
+              className={
+                filled
+                  ? "rounded-md bg-ink px-3 py-1.5 text-ink-on-dark"
+                  : "rounded-md border border-line-2 bg-paper px-3 py-1.5"
+              }
+            >
+              {step}
+            </span>
+            {i < arr.length - 1 && <span className={arrowClass}>→</span>}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 export default async function HeartopiaArchivePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: rawLocale } = await params;
-  const locale = toLocale(rawLocale);
+  const locale = toLocale((await params).locale);
   const project = getProject("heartopia-archive", locale);
+  const c = COPY[locale];
 
   return (
     <div className="min-h-screen">
@@ -162,7 +372,7 @@ export default async function HeartopiaArchivePage({
           {project.title}
         </h1>
         <p className="mt-5 max-w-[680px] font-archivo text-[clamp(16.5px,2.2vw,26px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
-          여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브
+          {c.heroSubtitle}
         </p>
         <p className="mt-5 max-w-[620px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
           {project.heroBody}
@@ -221,41 +431,17 @@ export default async function HeartopiaArchivePage({
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
         <div className={EYEBROW}>01 / CONTEXT</div>
         <Reveal>
-          <h2 className={`mt-4 ${H2}`}>좋은 콘텐츠는 많았지만 찾을 수가 없었습니다.</h2>
+          <h2 className={`mt-4 ${H2}`}>{c.ctx.h2}</h2>
         </Reveal>
-        <p className={LEAD}>
-          두근두근타운은 유저가 직접 만든 의상·가구 같은 커스터마이징 콘텐츠 공유가 활발한 게임입니다. 하지만
-          그 콘텐츠는 Xiaohongshu, Discord, 개인 SNS에 흩어져 있어, 한국 유저가 원하는 것을 찾으려면 매번 같은
-          과정을 반복해야 했습니다.
-        </p>
+        <p className={LEAD}>{c.ctx.lead}</p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold sm:mt-12">
-          {discoveryFlow.map((step, i, arr) => (
-            <span key={step} className="contents">
-              <span
-                className={
-                  i === arr.length - 1
-                    ? "rounded-md bg-ink px-3 py-1.5 text-ink-on-dark"
-                    : "rounded-md border border-line-2 bg-paper px-3 py-1.5"
-                }
-              >
-                {step}
-              </span>
-              {i < arr.length - 1 && <span className="text-accent">→</span>}
-            </span>
-          ))}
+        <div className="mt-8 sm:mt-12">
+          <ArrowFlow steps={c.discoveryFlow} />
         </div>
-        <p className="mt-4 max-w-[520px] text-[15px] leading-[1.55] text-muted">
-          &ldquo;다시 찾기&rdquo;가 매번 처음부터였습니다 &mdash; 저장해둔 이미지에는 출처가 남지 않았기
-          때문입니다.
-        </p>
+        <p className="mt-4 max-w-[520px] text-[15px] leading-[1.55] text-muted">{c.ctx.note}</p>
 
         <Reveal delay={0.1}>
-          <Placeholder
-            variant="alt"
-            label={"Xiaohongshu 검색 화면 / 흩어진 콘텐츠 예시"}
-            className="mt-8 h-[clamp(160px,20vw,280px)]"
-          />
+          <Placeholder variant="alt" label={c.ctx.shot} className="mt-8 h-[clamp(160px,20vw,280px)]" />
         </Reveal>
       </section>
 
@@ -264,11 +450,11 @@ export default async function HeartopiaArchivePage({
         <div className="mx-auto max-w-[1440px]">
           <div className={EYEBROW}>02 / PROBLEM</div>
           <Reveal>
-            <h2 className={`mt-4 ${H2}`}>문제를 세 가지로 좁혔습니다.</h2>
+            <h2 className={`mt-4 ${H2}`}>{c.problem.h2}</h2>
           </Reveal>
 
           <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
-            {problems.map((p, i) => (
+            {c.problem.items.map((p, i) => (
               <Reveal key={p.n} delay={i * 0.05} className="rounded-xl border border-line-2 bg-paper px-5 py-5">
                 <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{p.n}</div>
                 <h3 className="mt-3 font-archivo text-[18px] font-bold tracking-[-.02em]">{p.title}</h3>
@@ -283,15 +469,12 @@ export default async function HeartopiaArchivePage({
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
         <div className={EYEBROW}>03 / SOLUTION</div>
         <Reveal>
-          <h2 className={`mt-4 ${H2}`}>이미지 모음이 아니라, 신뢰 가능한 UGC 라이브러리.</h2>
+          <h2 className={`mt-4 ${H2}`}>{c.solution.h2}</h2>
         </Reveal>
-        <p className={LEAD}>
-          원작자의 권리를 지키면서 유저가 쉽게 탐색하는 플랫폼을 목표로, 서비스 방향을 세 가지로 정했습니다.
-          콘텐츠 양이 많고 수요가 낮은 그림 도안은 초기 범위에서 제외하고 의상·가구에 집중했습니다.
-        </p>
+        <p className={LEAD}>{c.solution.lead}</p>
 
         <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
-          {directions.map((d) => (
+          {c.solution.directions.map((d) => (
             <div key={d} className="rounded-lg border border-line-2 px-4.5 py-3.5 text-[14.5px] text-ink-70">
               {d}
             </div>
@@ -302,26 +485,13 @@ export default async function HeartopiaArchivePage({
           <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
             SERVICE STRUCTURE
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
-            {serviceFlow.map((step, i, arr) => (
-              <span key={step} className="contents">
-                <span
-                  className={
-                    i === 0 || i === arr.length - 1
-                      ? "rounded-md bg-ink px-3 py-1.5 text-ink-on-dark"
-                      : "rounded-md border border-line-2 bg-paper px-3 py-1.5"
-                  }
-                >
-                  {step}
-                </span>
-                {i < arr.length - 1 && <span className="text-accent">→</span>}
-              </span>
-            ))}
+          <div className="mt-3">
+            <ArrowFlow steps={c.solution.serviceFlow} emphasizeEnds />
           </div>
         </div>
 
         <Reveal delay={0.1}>
-          <Placeholder label={"아카이브 홈 · 카테고리 구조"} className="mt-8 h-[clamp(160px,20vw,280px)]" />
+          <Placeholder label={c.solution.shot} className="mt-8 h-[clamp(160px,20vw,280px)]" />
         </Reveal>
       </section>
 
@@ -330,16 +500,13 @@ export default async function HeartopiaArchivePage({
         <div className="mx-auto max-w-[1440px]">
           <div className={EYEBROW_DARK}>04 / CREATOR RIGHTS</div>
           <Reveal>
-            <h2 className={`mt-4 ${H2}`}>Not a collection. A permission-based archive.</h2>
+            <h2 className={`mt-4 ${H2}`}>{c.rights.h2}</h2>
           </Reveal>
-          <p className={LEAD_DARK}>
-            해외 창작물을 단순히 모으지 않았습니다. 한 장이라도 원작자의 허락 없이 올리지 않는다는 원칙을 먼저
-            정하고, 그 원칙이 지켜지도록 운영 절차를 설계했습니다.
-          </p>
+          <p className={LEAD_DARK}>{c.rights.lead}</p>
 
           <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start sm:mt-14">
             <Reveal className="flex-[1.1] flex flex-col gap-3">
-              {outreach.map((row) => (
+              {c.rights.outreach.map((row) => (
                 <div
                   key={row.label}
                   className={`rounded-xl border px-5 py-4 ${
@@ -357,16 +524,16 @@ export default async function HeartopiaArchivePage({
                 </div>
               ))}
               <p className="mt-3 border-l-2 border-accent-on-dark pl-5 font-archivo text-[18px] font-bold leading-[1.4] tracking-[-.02em]">
-                허가는 기능이 아니라 관계의 결과였습니다.
+                {c.rights.quote}
               </p>
             </Reveal>
             <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
               <Placeholder
                 variant="dark"
-                label={"CREATOR PERMISSION DM (개인정보 제거 후 삽입)"}
+                label={c.rights.shotDm}
                 className="h-[clamp(190px,24vw,320px)]"
               />
-              <Placeholder variant="dark" label={"콘텐츠 출처 표기 UI"} className="h-[clamp(120px,15vw,190px)]" />
+              <Placeholder variant="dark" label={c.rights.shotAttr} className="h-[clamp(120px,15vw,190px)]" />
             </Reveal>
           </div>
 
@@ -375,7 +542,7 @@ export default async function HeartopiaArchivePage({
               PERMISSION PROCESS
             </div>
             <div className="mt-6 grid grid-cols-1 gap-px border-t border-b border-line-dark bg-line-dark sm:grid-cols-5">
-              {permissionSteps.map((step, i) => (
+              {c.rights.steps.map((step, i) => (
                 <Reveal key={step.n} delay={i * 0.04} className="bg-ink px-5 pt-6 pb-7">
                   <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent-on-dark">
                     STEP {step.n}
@@ -394,14 +561,12 @@ export default async function HeartopiaArchivePage({
         <div className="mx-auto max-w-[1440px]">
           <div className={EYEBROW}>05 / SERVICE FEATURES</div>
           <Reveal>
-            <h2 className={`mt-4 ${H2}`}>기능은 탐색 비용을 줄이는 방향으로.</h2>
+            <h2 className={`mt-4 ${H2}`}>{c.features.h2}</h2>
           </Reveal>
-          <p className={LEAD}>
-            의상과 가구를 같은 구조로 정리하고, 모든 콘텐츠에 원작자·원본 링크·플랫폼을 고정했습니다.
-          </p>
+          <p className={LEAD}>{c.features.lead}</p>
 
           <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {features.map((f, i) => (
+            {c.features.items.map((f, i) => (
               <Reveal
                 key={f.name}
                 delay={i * 0.04}
@@ -433,19 +598,15 @@ export default async function HeartopiaArchivePage({
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
         <div className={EYEBROW}>06 / ARCHIVE → CREATION</div>
         <Reveal>
-          <h2 className={`mt-4 ${H2}`}>탐색에서 창작으로.</h2>
+          <h2 className={`mt-4 ${H2}`}>{c.editor.h2}</h2>
         </Reveal>
-        <p className={LEAD}>
-          유저는 도안을 보기만 하지 않았습니다. &ldquo;내 방 사진에 이 도안을 얹어보고 싶다&rdquo;는 요청이
-          반복됐는데, 그러려면 일일이 촬영하고 외부 앱에서 수동으로 배치해야 했습니다. 이 과정을 서비스 안 웹
-          사진 편집 기능 하나로 합쳤습니다.
-        </p>
+        <p className={LEAD}>{c.editor.lead}</p>
 
         <div className="mt-8 flex gap-4 max-[560px]:flex-col sm:mt-12">
           <div className="flex-1">
             <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">BEFORE</div>
             <div className="flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
-              {editorBefore.map((step, i, arr) => (
+              {c.editor.before.map((step, i, arr) => (
                 <span key={step} className="contents">
                   <span className="rounded-md border border-line-2 bg-paper px-3 py-1.5">{step}</span>
                   {i < arr.length - 1 && <span className="text-muted-light">→</span>}
@@ -456,14 +617,14 @@ export default async function HeartopiaArchivePage({
           <div className="flex-1">
             <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-accent">AFTER</div>
             <span className="inline-block rounded-md border border-accent/25 bg-accent/10 px-3 py-1.5 font-archivo text-[12px] font-semibold text-accent">
-              서비스 안에서 바로 편집
+              {c.editor.afterLabel}
             </span>
           </div>
         </div>
 
         <div className="mt-6 flex max-[560px]:flex-col gap-4">
-          <Placeholder label={"사진 편집기 — BEFORE (외부 앱 합성)"} className="h-[clamp(150px,18vw,230px)] flex-1" />
-          <Placeholder label={"사진 편집기 — AFTER (서비스 내 편집)"} className="h-[clamp(150px,18vw,230px)] flex-1" />
+          <Placeholder label={c.editor.shotBefore} className="h-[clamp(150px,18vw,230px)] flex-1" />
+          <Placeholder label={c.editor.shotAfter} className="h-[clamp(150px,18vw,230px)] flex-1" />
         </div>
       </section>
 
@@ -472,29 +633,29 @@ export default async function HeartopiaArchivePage({
         <div className="mx-auto max-w-[1440px]">
           <div className={EYEBROW}>07 / OPERATION &amp; GROWTH</div>
           <Reveal>
-            <h2 className={`mt-4 ${H2}`}>성장보다 신뢰를 먼저 골랐습니다.</h2>
+            <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
           <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {operationCases.map((c, i) => (
+            {c.ops.cases.map((oc, i) => (
               <Reveal
-                key={c.title}
+                key={oc.title}
                 delay={i * 0.04}
                 className="rounded-xl border border-line-2 bg-paper px-5 py-5 sm:flex sm:gap-10"
               >
                 <div className="flex-none sm:w-[150px]">
-                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{c.label}</div>
+                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{oc.label}</div>
                   <div className="mt-2 font-archivo text-[15.5px] font-bold leading-[1.3] tracking-[-.02em]">
-                    {c.title}
+                    {oc.title}
                   </div>
                 </div>
-                <p className="mt-3 flex-1 text-[14px] leading-[1.55] text-ink-70 sm:mt-0">{c.body}</p>
+                <p className="mt-3 flex-1 text-[14px] leading-[1.55] text-ink-70 sm:mt-0">{oc.body}</p>
               </Reveal>
             ))}
           </div>
 
           <Reveal delay={0.1}>
-            <Placeholder variant="alt" label={"커뮤니티 홍보 글 · OAuth 로그인 화면"} className="mt-8 h-[clamp(150px,18vw,240px)]" />
+            <Placeholder variant="alt" label={c.ops.shot} className="mt-8 h-[clamp(150px,18vw,240px)]" />
           </Reveal>
         </div>
       </section>
@@ -503,9 +664,9 @@ export default async function HeartopiaArchivePage({
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
         <div className={EYEBROW}>08 / SERVICE METRICS</div>
         <Reveal>
-          <h2 className={`mt-4 ${H2}`}>규모가 아니라 신뢰의 신호입니다.</h2>
+          <h2 className={`mt-4 ${H2}`}>{c.metrics.h2}</h2>
         </Reveal>
-        <div className="mt-4 font-mono text-[12px] text-muted">2026.07.15 ~ 운영 중 · 콘텐츠는 하루 1개씩 증가</div>
+        <div className="mt-4 font-mono text-[12px] text-muted">{c.metrics.dateline}</div>
 
         <div className="mt-9 grid grid-cols-2 gap-x-7 gap-y-9 sm:mt-12 sm:grid-cols-4">
           {serviceMetrics.map((m, i) => (
@@ -518,9 +679,7 @@ export default async function HeartopiaArchivePage({
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-[13.5px] leading-[1.55] text-muted-light">
-          Daily Visitors는 최근 확인 기준 추정치이며, 누적 방문자·다운로드 등은 GA 재확인 후 반영합니다.
-        </p>
+        <p className="mt-6 text-[13.5px] leading-[1.55] text-muted-light">{c.metrics.footnote}</p>
       </section>
 
       {/* 09 — Learning (dark) */}
@@ -529,21 +688,19 @@ export default async function HeartopiaArchivePage({
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="flex-[1.2]">
               <div className={EYEBROW_DARK}>09 / LEARNING</div>
-              <h2 className={`mt-4 ${H2}`}>콘텐츠의 양보다 신뢰가 중요했습니다.</h2>
+              <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
             </Reveal>
             <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">
-              좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다. 창작자 권리 보호, 출처 관리, 사용자
-              경험, 운영 정책이 함께 있어야 커뮤니티가 유지된다는 것을 배웠습니다.
+              {c.learn.lead}
             </Reveal>
           </div>
 
           <p className="mt-9 max-w-[720px] border-l-2 border-accent-on-dark pl-5 font-archivo text-[clamp(17px,1.9vw,20px)] font-bold leading-[1.45] tracking-[-.02em] sm:mt-14">
-            UGC 서비스에서 가장 중요한 것은 콘텐츠의 양이 아니라, 콘텐츠가 만들어지고 공유되는 과정에 대한
-            신뢰였습니다.
+            {c.learn.quote}
           </p>
 
           <div className="mt-11 grid grid-cols-1 gap-px border-t border-b border-line-dark bg-line-dark sm:mt-16 sm:grid-cols-3">
-            {takeaways.map((t, i) => (
+            {c.learn.takeaways.map((t, i) => (
               <Reveal key={t.n} delay={i * 0.04} className="bg-ink px-6 pt-6 pb-7">
                 <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent-on-dark">
                   {t.n}
