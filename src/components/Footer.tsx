@@ -6,7 +6,7 @@ export function Footer() {
     <footer id="resume" className="px-5 pt-14 pb-11 sm:px-9 sm:pt-24">
       <div className="mx-auto max-w-[1440px]">
         <Reveal>
-          <h2 className="font-archivo text-[clamp(32px,5.6vw,80px)] leading-[1] font-extrabold tracking-[-.042em]">
+          <h2 className="font-archivo text-[clamp(26px,5.2vw,72px)] leading-[1.05] font-extrabold tracking-[-.04em]">
             Let&apos;s build experiences
             <br />
             players want to stay for.
@@ -57,7 +57,7 @@ export function Footer() {
           <div className="flex-none">
             <a
               href="#resume"
-              className="inline-block bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
+              className="inline-block rounded-lg bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
             >
               RESUME ↗
             </a>

@@ -34,25 +34,25 @@ export default async function HomePage({
             {profile.eyebrow}
           </div>
         </Reveal>
-        <h1 className="font-archivo text-[clamp(38px,11vw,116px)] leading-[.98] font-extrabold tracking-[-.042em] text-balance">
+        <h1 className="font-archivo text-[clamp(29px,8.5vw,100px)] leading-[1.02] font-extrabold tracking-[-.04em] text-balance">
           <RevealLines lines={profile.heroLines} />
         </h1>
         <div className="mt-8 flex flex-col items-start gap-6 sm:mt-14 sm:flex-row sm:gap-20">
           <Reveal delay={0.15} className="flex-1 max-w-[560px]">
-            <p className="text-[18px] leading-[1.78] text-ink-70 text-pretty">
+            <p className="text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
               {profile.heroBody}
             </p>
           </Reveal>
           <Reveal delay={0.25} className="flex gap-3 pt-1.5">
             <a
               href="#work"
-              className="bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
+              className="rounded-lg bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
             >
               VIEW WORK
             </a>
             <a
               href="#resume"
-              className="border border-line-2 px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-ink-70 transition-colors duration-300 hover:border-ink hover:text-ink"
+              className="rounded-lg border border-line-2 px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-ink-70 transition-colors duration-300 hover:border-ink hover:text-ink"
             >
               RESUME ↗
             </a>
@@ -67,8 +67,8 @@ export default async function HomePage({
             <Reveal key={m.label} delay={i * 0.05} className={i > 0 ? "border-l border-line pl-4 sm:pl-8" : ""}>
               <Stat
                 metric={m}
-                numberClassName="font-archivo text-[clamp(44px,5.2vw,76px)] leading-[1] font-extrabold tracking-[-.045em]"
-                labelClassName="mt-2.5 font-archivo text-[11.5px] font-semibold tracking-[.13em] text-muted"
+                numberClassName="font-archivo text-[clamp(34px,5vw,72px)] leading-[1] font-extrabold tracking-[-.045em]"
+                labelClassName="mt-2 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
               />
             </Reveal>
           ))}
@@ -79,7 +79,7 @@ export default async function HomePage({
       <section id="work" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
         <div className="mx-auto flex max-w-[1440px] max-[860px]:flex-col items-end gap-10">
           <Reveal className="flex-1">
-            <h2 className="font-archivo text-[clamp(34px,4.6vw,64px)] leading-[1] font-extrabold tracking-[-.04em]">
+            <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
               Selected Work
             </h2>
           </Reveal>
@@ -107,11 +107,11 @@ export default async function HomePage({
           <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="max-w-[640px] flex-[1.5]">
               <Link href={`/${locale}/work/${sky.slug}`}>
-                <h3 className="font-archivo text-[clamp(30px,3.6vw,50px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                <h3 className="font-archivo text-[clamp(24px,3.4vw,46px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
                   {sky.title}
                 </h3>
               </Link>
-              <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
+              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
                 {sky.cardSubtitleKo}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -157,11 +157,11 @@ export default async function HomePage({
             </Reveal>
             <Reveal delay={0.1} className="max-w-[460px] flex-1 pt-1">
               <Link href={`/${locale}/work/${identity5.slug}`}>
-                <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                <h3 className="font-archivo text-[clamp(22px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
                   {identity5.title}
                 </h3>
               </Link>
-              <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
+              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
                 {identity5.cardSubtitleKo}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -195,11 +195,11 @@ export default async function HomePage({
           <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14 items-start">
             <Reveal className="max-w-[460px] flex-1 pt-1">
               <Link href={`/${locale}/work/${heartopia.slug}`}>
-                <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                <h3 className="font-archivo text-[clamp(22px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
                   {heartopia.title}
                 </h3>
               </Link>
-              <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
+              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
                 {heartopia.cardSubtitleKo}
               </p>
               <blockquote className="mt-6 border-l-2 border-accent pl-4.5 font-archivo text-[20px] font-bold leading-[1.3] tracking-[-.02em]">
@@ -247,10 +247,8 @@ export default async function HomePage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col items-end gap-10">
             <Reveal className="flex-1">
-              <h2 className="font-archivo text-[clamp(34px,4.6vw,64px)] leading-[1] font-extrabold tracking-[-.04em]">
-                From player voice
-                <br />
-                to live service
+              <h2 className="max-w-[26rem] font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.16] font-extrabold tracking-[-.04em] text-balance">
+                From player voice to live service
               </h2>
             </Reveal>
             <Reveal delay={0.1} className="mb-1.5 max-w-[260px] text-[15px] leading-[1.7] text-muted">
@@ -264,28 +262,28 @@ export default async function HomePage({
                 <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">
                   {c.number}
                 </div>
-                <h3 className="mt-3.5 font-archivo text-[22px] font-bold leading-[1.15] tracking-[-.025em]">
+                <h3 className="mt-3.5 font-archivo text-[19px] font-bold leading-[1.15] tracking-[-.025em]">
                   {c.titleEn}
                 </h3>
-                <p className="mt-2.5 text-[14px] leading-[1.6] text-muted">{c.lineEn}</p>
-                <p className="mt-3.5 text-[16px] leading-[1.72] text-ink-70">{c.bodyKo}</p>
+                <p className="mt-2 text-[13px] leading-[1.55] text-muted">{c.lineEn}</p>
+                <p className="mt-3 text-[14px] leading-[1.5] text-ink-70">{c.bodyKo}</p>
               </Reveal>
             ))}
           </div>
 
           <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:mt-16 sm:gap-20 items-start">
             <Reveal className="max-w-[420px] flex-1">
-              <h3 className="font-archivo text-[clamp(22px,2.4vw,30px)] leading-[1.1] font-bold tracking-[-.03em]">
+              <h3 className="font-archivo text-[clamp(19px,2.2vw,28px)] leading-[1.15] font-bold tracking-[-.03em]">
                 I can also build what I plan.
               </h3>
-              <p className="mt-3 text-[16px] leading-[1.72] text-ink-70">
+              <p className="mt-3 text-[14.5px] leading-[1.65] text-ink-70 sm:text-[15.5px]">
                 아이디어를 문서에서 끝내지 않고 직접 프로토타입과 서비스로 만들 수 있습니다. 기술은 직무 정체성이
                 아니라 실행 수단입니다.
               </p>
             </Reveal>
             <Reveal delay={0.1} className="flex flex-[1.4] flex-wrap gap-1.5 pt-1.5">
               {stack.map((s) => (
-                <span key={s} className="bg-ink/5 px-2.5 py-1.5 font-mono text-[11.5px] text-ink-50">
+                <span key={s} className="rounded bg-ink/5 px-2.5 py-1.5 font-mono text-[11.5px] text-ink-50">
                   {s}
                 </span>
               ))}
@@ -299,7 +297,7 @@ export default async function HomePage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col items-end gap-10">
             <Reveal className="flex-1">
-              <h2 className="font-archivo text-[clamp(34px,4.6vw,64px)] leading-[1] font-extrabold tracking-[-.04em]">
+              <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
                 Experience
               </h2>
             </Reveal>
@@ -325,7 +323,7 @@ export default async function HomePage({
                   <div className="mt-1 text-[13.5px] text-muted">{row.role}</div>
                 </div>
                 <div className="flex-[1.7]">
-                  <p className="text-[15.5px] leading-[1.7] text-ink-70">{row.body}</p>
+                  <p className="text-[15px] leading-[1.5] text-ink-70">{row.body}</p>
                   <div className="mt-2.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent">
                     {row.focus}
                   </div>
@@ -341,7 +339,7 @@ export default async function HomePage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-20 items-start">
             <Reveal className="flex-[1.3]">
-              <h2 className="font-archivo text-[clamp(32px,4.2vw,58px)] leading-[1.04] font-extrabold tracking-[-.04em]">
+              <h2 className="font-archivo text-[clamp(26px,4vw,54px)] leading-[1.16] font-extrabold tracking-[-.04em]">
                 <RevealLines lines={profile.aboutHeadline} />
               </h2>
             </Reveal>
@@ -349,8 +347,8 @@ export default async function HomePage({
               {profile.aboutParagraphs.map((p, i) => (
                 <p
                   key={i}
-                  className={`text-[18px] leading-[1.8] text-[rgba(244,241,234,.78)] text-pretty ${
-                    i > 0 ? "mt-4.5" : ""
+                  className={`text-[15px] leading-[1.6] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16px] sm:leading-[1.62] ${
+                    i > 0 ? "mt-4" : ""
                   }`}
                 >
                   {p}
@@ -369,7 +367,7 @@ export default async function HomePage({
             <div className="font-archivo text-[11.5px] font-semibold tracking-[.16em] text-[rgba(244,241,234,.45)]">
               CURRENTLY INTERESTED IN
             </div>
-            <div className="mt-4.5 flex flex-wrap gap-x-7 gap-y-2.5 font-archivo text-[clamp(18px,2vw,26px)] font-bold tracking-[-.02em]">
+            <div className="mt-4.5 flex flex-wrap gap-x-7 gap-y-2.5 font-archivo text-[clamp(15px,2vw,25px)] font-bold tracking-[-.02em]">
               {profile.careerInterests.map((c, i) => (
                 <span key={c} className="flex items-center gap-7">
                   <span>{c}</span>

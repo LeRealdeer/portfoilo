@@ -22,7 +22,7 @@ export function Eyebrow({
 
 export function Chip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="border border-line-2 px-3 py-1.5 font-archivo text-[11px] font-semibold tracking-[.08em] text-ink-50">
+    <span className="rounded-md border border-line-2 px-3 py-1.5 font-archivo text-[11px] font-semibold tracking-[.08em] text-ink-50">
       {children}
     </span>
   );
@@ -33,7 +33,7 @@ export function ProjectCTA({ href, liveUrl }: { href: string; liveUrl?: string }
     <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
       <Link
         href={href}
-        className="inline-flex items-center gap-2 bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
+        className="inline-flex items-center gap-2 rounded-lg bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
       >
         VIEW CASE STUDY →
       </Link>

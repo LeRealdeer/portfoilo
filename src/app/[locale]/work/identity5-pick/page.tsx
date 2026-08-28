@@ -202,13 +202,13 @@ export default async function Identity5PickPage({
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-14 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
         <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
-        <h1 className="mt-5 font-archivo text-[clamp(46px,8vw,112px)] leading-[.98] font-extrabold tracking-[-.042em]">
+        <h1 className="mt-4 font-archivo text-[clamp(32px,7vw,92px)] leading-[1.02] font-extrabold tracking-[-.042em]">
           {project.title}
         </h1>
-        <p className="mt-6 max-w-[760px] font-archivo text-[clamp(20px,2.4vw,30px)] font-bold leading-[1.38] tracking-[-.02em] text-ink-70">
+        <p className="mt-5 max-w-[680px] font-archivo text-[clamp(16.5px,2.2vw,26px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
           제5인격 팬들이 이미 하고 있던 취향 공유 행동을 더 쉽고 재미있는 경험으로 확장했습니다
         </p>
-        <p className="mt-5 max-w-[620px] text-[18px] leading-[1.78] text-ink-70 text-pretty">
+        <p className="mt-5 max-w-[620px] text-[15.5px] leading-[1.55] text-ink-70 text-pretty sm:text-[16.5px] sm:leading-[1.6]">
           {project.heroBodyKo}
         </p>
         {project.liveUrl && (
@@ -244,8 +244,8 @@ export default async function Identity5PickPage({
               <Stat
                 key={m.label}
                 metric={m}
-                numberClassName="font-archivo text-[clamp(28px,3vw,40px)] leading-[1] font-extrabold tracking-[-.04em]"
-                labelClassName="mt-2 font-archivo text-[10.5px] font-semibold tracking-[.13em] text-muted"
+                numberClassName="font-archivo text-[clamp(22px,2.8vw,38px)] leading-[1] font-extrabold tracking-[-.04em]"
+                labelClassName="mt-2 font-archivo text-[10px] font-semibold tracking-[.13em] text-muted"
               />
             ))}
           </div>
@@ -266,9 +266,7 @@ export default async function Identity5PickPage({
         <div className={EYEBROW}>01 / USER PROBLEM</div>
         <Reveal>
           <h2 className={`mt-5 ${H2}`}>
-            팬덤은 이미
-            <br />
-            취향을 표현하고 있었습니다.
+            팬덤은 이미 취향을 표현하고 있었습니다.
           </h2>
         </Reveal>
         <p className={LEAD}>
@@ -286,7 +284,7 @@ export default async function Identity5PickPage({
               }`}
             >
               <div className="flex-[1.1] text-[17px] leading-[1.5] font-medium text-ink-70">{p.behavior}</div>
-              <div className="flex-[1.4] text-[15px] leading-[1.65] text-muted">{p.friction}</div>
+              <div className="flex-[1.4] text-[15px] leading-[1.5] text-muted">{p.friction}</div>
             </Reveal>
           ))}
         </div>
@@ -303,10 +301,8 @@ export default async function Identity5PickPage({
           <div className={EYEBROW}>02 / SOLUTION</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              탐색하고, 만들고,
-              <br />
-              공유한다.
-            </h2>
+            탐색하고, 만들고, 공유한다.
+          </h2>
           </Reveal>
           <p className={LEAD}>
             팬덤 활동을 세 가지 경험으로 나누고, 각 경험의 제작 비용을 줄이는 것을 목표로 삼았습니다. 회원가입도
@@ -319,8 +315,8 @@ export default async function Identity5PickPage({
                 <span
                   className={
                     i === arr.length - 1
-                      ? "bg-ink px-3.5 py-2 text-ink-on-dark"
-                      : "bg-paper border border-line-2 px-3.5 py-2"
+                      ? "rounded-md bg-ink px-3.5 py-2 text-ink-on-dark"
+                      : "rounded-md bg-paper border border-line-2 px-3.5 py-2"
                   }
                 >
                   {step}
@@ -332,38 +328,27 @@ export default async function Identity5PickPage({
 
           <div className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
             {principles.map((p) => (
-              <div key={p} className="border border-line-2 bg-paper px-4.5 py-3.5 text-[14.5px] text-ink-70">
+              <div key={p} className="rounded-lg border border-line-2 px-4.5 py-3.5 text-[14.5px] text-ink-70">
                 {p}
               </div>
             ))}
           </div>
 
-          <div className="mt-11 border-t border-line-2 sm:mt-14">
+          <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-14">
             {experienceGroups.map((g, gi) => (
-              <Reveal
-                key={g.en}
-                delay={gi * 0.05}
-                className={`flex max-[860px]:flex-col gap-5 py-8 sm:gap-14 sm:py-10 ${
-                  gi === experienceGroups.length - 1 ? "border-b border-line-2" : "border-b border-line-3"
-                }`}
-              >
-                <div className="flex-none sm:w-[230px]">
-                  <div className="flex items-baseline gap-2.5">
-                    <span className="font-archivo text-[13px] font-bold tracking-[.12em] text-accent">
-                      {g.letter}
-                    </span>
-                    <span className="font-archivo text-[24px] font-extrabold tracking-[-.03em]">{g.en}</span>
-                  </div>
-                  <div className="mt-1.5 font-archivo text-[11px] font-semibold tracking-[.1em] text-muted-light">
-                    {g.ko}
-                  </div>
-                  <p className="mt-3 text-[15px] leading-[1.6] text-muted">{g.line}</p>
+              <Reveal key={g.en} delay={gi * 0.05}>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-archivo text-[13px] font-bold tracking-[.12em] text-accent">
+                    {g.letter}
+                  </span>
+                  <span className="font-archivo text-[22px] font-extrabold tracking-[-.03em]">{g.en}</span>
                 </div>
-                <div className="flex-1 border-t border-line-3">
+                <p className="mt-2 max-w-[520px] text-[14px] leading-[1.5] text-muted">{g.line}</p>
+                <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
                   {g.items.map((it) => (
-                    <div key={it.name} className="border-b border-line-3 py-3.5 last:border-b-0">
-                      <div className="font-mono text-[13px] font-semibold tracking-[.02em]">{it.name}</div>
-                      <p className="mt-1 text-[14.5px] leading-[1.65] text-ink-70">{it.desc}</p>
+                    <div key={it.name} className="rounded-xl border border-line-2 px-4 py-4">
+                      <div className="font-mono text-[12.5px] font-semibold tracking-[.02em]">{it.name}</div>
+                      <p className="mt-2 text-[13.5px] leading-[1.5] text-ink-70">{it.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -371,7 +356,7 @@ export default async function Identity5PickPage({
             ))}
           </div>
 
-          <p className="mt-8 max-w-[640px] text-[15px] leading-[1.72] text-muted">
+          <p className="mt-9 max-w-[640px] text-[14.5px] leading-[1.55] text-muted">
             기능 추가만큼 <b className="text-ink-70">기능을 넣지 않는 결정</b>도 기획입니다. 제작 도구에 검색창을
             만들었다가 의도적으로 뺐습니다 &mdash; 고르는 과정 자체가 이 서비스의 경험이기 때문입니다.
           </p>
@@ -384,12 +369,8 @@ export default async function Identity5PickPage({
           <div className={EYEBROW_DARK}>03 / DATA OPERATION</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              842개의 게임 데이터를
-              <br />
-              서비스 가능한 형태로
-              <br />
-              정제했습니다.
-            </h2>
+            842개의 게임 데이터를 서비스 가능한 형태로 정제했습니다.
+          </h2>
           </Reveal>
           <p className={LEAD_DARK}>
             &ldquo;공개 데이터를 가져왔다&rdquo;가 아닙니다. 사용자가 신뢰할 수 있는 게임 데이터 경험을 만들기
@@ -409,7 +390,7 @@ export default async function Identity5PickPage({
             ))}
           </div>
 
-          <p className="mt-6 text-[14.5px] leading-[1.7] text-[rgba(244,241,234,.6)]">
+          <p className="mt-6 text-[14.5px] leading-[1.55] text-[rgba(244,241,234,.6)]">
             수집 스크립트의 산출물은 전부 JSON과 리포트 파일입니다. 정제본을 손으로 고치지 않고, 문제가 있으면
             규칙을 고쳐 스크립트를 다시 돌립니다 &mdash; 다음 시즌 동기화 때도 결과가 일관되도록.
           </p>
@@ -418,7 +399,7 @@ export default async function Identity5PickPage({
             <div className="font-archivo text-[13px] font-bold tracking-[.06em] text-accent-on-dark">
               QA — 데이터를 가져오는 것보다, 신뢰 가능한 데이터를 제공하는 과정
             </div>
-            <p className="mt-4 max-w-[600px] text-[16px] leading-[1.78] text-[rgba(244,241,234,.78)]">
+            <p className="mt-4 max-w-[600px] text-[15px] leading-[1.55] text-[rgba(244,241,234,.78)] sm:text-[16px]">
               Fandom은 사용자 편집 위키라 한국어 필드를 그대로 신뢰할 수 없습니다. 수집 · 정제 · 의심 탐지까지는
               기계가 하되, 공개 여부는 반드시 사람 손을 거치게 했습니다.
             </p>
@@ -426,7 +407,7 @@ export default async function Identity5PickPage({
             <div className="mt-8 flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
               {qaPipeline.map((step, i, arr) => (
                 <span key={step} className="contents">
-                  <span className="border border-line-dark-2 px-3 py-1.5">{step}</span>
+                  <span className="rounded-md border border-line-dark-2 px-3 py-1.5">{step}</span>
                   {i < arr.length - 1 && <span className="text-accent-on-dark">→</span>}
                 </span>
               ))}
@@ -451,37 +432,33 @@ export default async function Identity5PickPage({
         <div className={EYEBROW}>04 / USER FEEDBACK &amp; IMPROVEMENT</div>
         <Reveal>
           <h2 className={`mt-5 ${H2}`}>
-            출시 이후 사용자 의견을
-            <br />
-            반영하며 개선했습니다.
+            출시 이후 사용자 의견을 반영하며 개선했습니다.
           </h2>
         </Reveal>
 
-        <div className="mt-10 border-t border-line-2 sm:mt-14">
+        <div className="mt-8 flex flex-col gap-3 sm:mt-12">
           {feedbackCases.map((c, i) => (
             <Reveal
               key={c.title}
               delay={i * 0.04}
-              className={`flex max-[860px]:flex-col gap-4 py-6 sm:gap-12 ${
-                i === feedbackCases.length - 1 ? "border-b border-line-2" : "border-b border-line-3"
-              }`}
+              className="rounded-xl border border-line-2 px-5 py-5 sm:flex sm:gap-12"
             >
-              <div className="flex-none sm:w-[190px]">
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent">{c.tag}</div>
-                <div className="mt-2 font-archivo text-[17px] font-bold tracking-[-.02em]">{c.title}</div>
+              <div className="flex-none sm:w-[200px]">
+                <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{c.tag}</div>
+                <div className="mt-2 font-archivo text-[16px] font-bold tracking-[-.02em]">{c.title}</div>
               </div>
-              <div className="flex-1 grid gap-x-10 gap-y-3 sm:grid-cols-2">
+              <div className="mt-4 grid flex-1 gap-x-10 gap-y-3 sm:mt-0 sm:grid-cols-2">
                 <div>
                   <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-muted-light">
                     {c.tag === "ISSUE" ? "PROBLEM" : "REQUEST"}
                   </div>
-                  <p className="mt-1 text-[15px] leading-[1.65] text-ink-70">{c.ask}</p>
+                  <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{c.ask}</p>
                 </div>
                 <div>
                   <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-accent">
                     IMPROVEMENT
                   </div>
-                  <p className="mt-1 text-[15px] leading-[1.65] text-ink-70">{c.change}</p>
+                  <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{c.change}</p>
                 </div>
               </div>
             </Reveal>
@@ -495,10 +472,8 @@ export default async function Identity5PickPage({
           <div className={EYEBROW}>05 / RESULT</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              만드는 경험에서
-              <br />
-              참여가 나왔습니다.
-            </h2>
+            만드는 경험에서 참여가 나왔습니다.
+          </h2>
           </Reveal>
           <p className={LEAD}>
             스킨 도감은 정보 탐색 목적으로, 티어리스트와 CP표는 사용자가 직접 제작하는 참여형 콘텐츠로 더 긴
@@ -526,12 +501,10 @@ export default async function Identity5PickPage({
             <Reveal className="flex-[1.2]">
               <div className={EYEBROW_DARK}>06 / LEARNING</div>
               <h2 className={`mt-5 ${H2}`}>
-                이미 하고 있는 행동을
-                <br />
-                발견하는 것.
-              </h2>
+            이미 하고 있는 행동을 발견하는 것.
+          </h2>
             </Reveal>
-            <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[18px] leading-[1.8] text-[rgba(244,241,234,.78)] text-pretty">
+            <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">
               좋은 팬덤 서비스는 사용자가 이미 하고 있는 행동을 발견하고, 더 나은 경험으로 확장하는 것이라고
               생각했습니다. 팬덤 서비스는 정보를 제공하는 데서 끝나지 않고, 사용자가 직접 경험을 만들어가는
               과정까지 설계해야 한다고 봤습니다.
@@ -547,7 +520,7 @@ export default async function Identity5PickPage({
                 <h3 className="mt-3 font-archivo text-[18px] font-bold leading-[1.35] tracking-[-.02em]">
                   {t.title}
                 </h3>
-                <p className="mt-2.5 text-[14.5px] leading-[1.65] text-[rgba(244,241,234,.7)]">{t.body}</p>
+                <p className="mt-2.5 text-[14.5px] leading-[1.5] text-[rgba(244,241,234,.7)]">{t.body}</p>
               </Reveal>
             ))}
           </div>

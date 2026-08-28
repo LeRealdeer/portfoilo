@@ -128,7 +128,7 @@ export default async function HeartopiaArchivePage({
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-14 pb-9 sm:px-9 sm:pt-24 sm:pb-14">
         <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
-        <h1 className="mt-5 font-archivo text-[clamp(40px,7vw,100px)] leading-[.99] font-extrabold tracking-[-.042em]">
+        <h1 className="mt-4 font-archivo text-[clamp(28px,6.2vw,84px)] leading-[1.05] font-extrabold tracking-[-.04em]">
           {project.h1Lines.map((line, i) => (
             <span key={i}>
               {line}
@@ -138,7 +138,7 @@ export default async function HeartopiaArchivePage({
         </h1>
         <div className="mt-8 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start sm:mt-13">
           <div className="max-w-[560px] flex-[1.2]">
-            <p className="text-[19px] leading-[1.78] text-ink-70 text-pretty">
+            <p className="text-[15.5px] leading-[1.55] text-ink-70 text-pretty sm:text-[17px] sm:leading-[1.6]">
               Heartopia 유저가 만든 의상·가구 도안은 여러 플랫폼에 흩어져 있었습니다. <b>Heartopia Archive</b>는
               콘텐츠를 모으는 서비스가 아니라, 창작자 기반 커뮤니티를 위해 원작자 허락을 받은 콘텐츠만 출처를
               고정해 게시하는 허락 기반 운영 구조입니다.
@@ -187,9 +187,7 @@ export default async function HeartopiaArchivePage({
         <div className={EYEBROW}>01 / CONTEXT</div>
         <Reveal>
           <h2 className={`mt-5 ${H2}`}>
-            좋은 콘텐츠는 많았지만,
-            <br />
-            찾을 수가 없었습니다.
+            좋은 콘텐츠는 많았지만, 찾을 수가 없었습니다.
           </h2>
         </Reveal>
         <p className={LEAD}>
@@ -203,8 +201,8 @@ export default async function HeartopiaArchivePage({
               <span
                 className={
                   i === arr.length - 1
-                    ? "bg-ink px-3.5 py-2 text-ink-on-dark"
-                    : "bg-paper border border-line-2 px-3.5 py-2"
+                    ? "rounded-md bg-ink px-3.5 py-2 text-ink-on-dark"
+                    : "rounded-md bg-paper border border-line-2 px-3.5 py-2"
                 }
               >
                 {step}
@@ -213,7 +211,7 @@ export default async function HeartopiaArchivePage({
             </span>
           ))}
         </div>
-        <p className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-muted">
+        <p className="mt-4 max-w-[520px] text-[15px] leading-[1.55] text-muted">
           &ldquo;다시 찾기&rdquo;가 매번 처음부터였습니다 — 저장해둔 이미지에는 출처가 남지 않았기 때문입니다.
         </p>
 
@@ -232,15 +230,13 @@ export default async function HeartopiaArchivePage({
           <div className={EYEBROW}>02 / PROBLEM</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              문제를 세 가지로
-              <br />
-              좁혔습니다.
-            </h2>
+            문제를 세 가지로 좁혔습니다.
+          </h2>
           </Reveal>
 
-          <div className="mt-9 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
             {problems.map((p, i) => (
-              <Reveal key={p.n} delay={i * 0.05} className="bg-bg-alt px-6 pt-6 pb-7">
+              <Reveal key={p.n} delay={i * 0.05} className="rounded-xl border border-line-2 px-5 py-5">
                 <div className={CARD_EYEBROW}>{p.n}</div>
                 <h3 className={CARD_H3}>{p.title}</h3>
                 <p className={CARD_BODY}>{p.body}</p>
@@ -260,7 +256,7 @@ export default async function HeartopiaArchivePage({
               <br />
               신뢰 가능한 라이브러리.
             </h2>
-            <p className="mt-5 max-w-[440px] text-[17px] leading-[1.78] text-ink-70">
+            <p className="mt-5 max-w-[440px] text-[15px] leading-[1.55] text-ink-70 sm:text-[16px]">
               서비스 방향을 세 가지로 정했습니다.
             </p>
             <div className="mt-5 border-t border-line-4">
@@ -287,7 +283,7 @@ export default async function HeartopiaArchivePage({
                     className={
                       i === 0 || i === serviceFlow.length - 1
                         ? "border border-ink bg-ink px-4.5 py-3.5 text-[15px] font-bold text-ink-on-dark"
-                        : "border border-line-2 bg-paper px-4.5 py-3.5 text-[15px]"
+                        : "rounded-lg border border-line-2 px-4.5 py-3.5 text-[15px]"
                     }
                   >
                     {step}
@@ -306,10 +302,8 @@ export default async function HeartopiaArchivePage({
           <div className={EYEBROW_DARK}>04 / CREATOR RIGHTS</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              Not a collection.
-              <br />
-              A permission-based archive.
-            </h2>
+            Not a collection. A permission-based archive.
+          </h2>
           </Reveal>
           <p className={LEAD_DARK}>
             해외 창작물을 단순히 모으지 않았습니다. 한 장이라도 원작자의 허락 없이 올리지 않는다는 원칙을 먼저
@@ -334,7 +328,7 @@ export default async function HeartopiaArchivePage({
                     >
                       {row.label}
                     </div>
-                    <div className="flex-1 text-[16px] leading-[1.7] text-[rgba(244,241,234,.85)]">{row.body}</div>
+                    <div className="flex-1 text-[16px] leading-[1.55] text-[rgba(244,241,234,.85)]">{row.body}</div>
                   </div>
                 ))}
               </div>
@@ -376,19 +370,16 @@ export default async function HeartopiaArchivePage({
         <div className={EYEBROW}>05 / SERVICE VALUE</div>
         <Reveal>
           <h2 className={`mt-5 ${H2}`}>
-            기능이 아니라
-            <br />
-            태도로 설계했습니다.
+            기능이 아니라 태도로 설계했습니다.
           </h2>
         </Reveal>
 
-        <div className="mt-9 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14 sm:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
           {serviceValues.map((v, i) => (
-            <Reveal key={v.en} delay={i * 0.05} className="bg-bg px-6 pt-6 pb-7">
-              <div className={CARD_EYEBROW}>{v.ko}</div>
-              <h3 className={CARD_H3}>{v.en}</h3>
-              <p className={CARD_BODY}>{v.body}</p>
-              <Placeholder label={v.shot} className="mt-5 h-[clamp(110px,13vw,170px)] text-[11px]" />
+            <Reveal key={v.en} delay={i * 0.05} className="rounded-xl border border-line-2 px-5 py-5">
+              <h3 className="font-archivo text-[18px] font-bold tracking-[-.02em]">{v.en}</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.55] text-ink-70">{v.body}</p>
+              <Placeholder label={v.shot} className="mt-4 h-[clamp(100px,12vw,150px)] text-[11px]" />
             </Reveal>
           ))}
         </div>
@@ -400,10 +391,8 @@ export default async function HeartopiaArchivePage({
           <div className={EYEBROW_DARK}>06 / ARCHIVE → CREATION</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              탐색에서
-              <br />
-              창작으로.
-            </h2>
+            탐색에서 창작으로.
+          </h2>
           </Reveal>
           <p className={LEAD_DARK}>
             유저는 도안을 보기만 하지 않았습니다. &ldquo;내 방 사진에 이 도안을 얹어보고 싶다&rdquo;는 요청이
@@ -447,18 +436,16 @@ export default async function HeartopiaArchivePage({
         <div className={EYEBROW}>07 / OPERATION &amp; IMPROVEMENT</div>
         <Reveal>
           <h2 className={`mt-5 ${H2}`}>
-            출시가 끝이 아니라
-            <br />
-            시작이었습니다.
+            출시가 끝이 아니라 시작이었습니다.
           </h2>
         </Reveal>
 
-        <div className="mt-9 grid grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14 sm:grid-cols-2">
+        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
           {opsCases.map((c, i) => (
-            <Reveal key={c.tag} delay={i * 0.05} className="bg-bg px-6 pt-6 pb-7">
+            <Reveal key={c.tag} delay={i * 0.05} className="rounded-xl border border-line-2 px-5 py-5">
               <div className={CARD_EYEBROW}>{c.tag}</div>
               <h3 className={CARD_H3}>{c.title}</h3>
-              <div className="mt-3.5 flex flex-col gap-2.5 text-[15.5px] leading-[1.65] text-ink-70">
+              <div className="mt-3 flex flex-col gap-2 text-[14px] leading-[1.5] text-ink-70">
                 {c.rows.map(([label, body]) => (
                   <div key={label}>
                     <b>{label}</b> — {body}
@@ -476,10 +463,8 @@ export default async function HeartopiaArchivePage({
           <div className={EYEBROW}>08 / SERVICE METRICS</div>
           <Reveal>
             <h2 className={`mt-5 ${H2}`}>
-              규모가 아니라
-              <br />
-              신뢰의 신호입니다.
-            </h2>
+            규모가 아니라 신뢰의 신호입니다.
+          </h2>
           </Reveal>
 
           <div className="mt-10 grid grid-cols-2 gap-x-7 gap-y-9 sm:mt-14 sm:grid-cols-4">
@@ -493,7 +478,7 @@ export default async function HeartopiaArchivePage({
               </Reveal>
             ))}
           </div>
-          <p className="mt-6 text-[14px] leading-[1.7] text-muted-light">
+          <p className="mt-6 text-[14px] leading-[1.55] text-muted-light">
             Daily Visitors는 업로드가 활발한 시기 기준 추정치이며, GA 재확인 후 교체 예정입니다.
           </p>
         </div>
@@ -506,12 +491,10 @@ export default async function HeartopiaArchivePage({
             <Reveal className="flex-[1.2]">
               <div className={EYEBROW_DARK}>09 / LEARNING</div>
               <h2 className={`mt-5 ${H2}`}>
-                콘텐츠의 양보다
-                <br />
-                신뢰가 중요했습니다.
-              </h2>
+            콘텐츠의 양보다 신뢰가 중요했습니다.
+          </h2>
             </Reveal>
-            <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[18px] leading-[1.8] text-[rgba(244,241,234,.78)] text-pretty">
+            <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">
               좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다. 창작자 권리 보호, 출처 관리, 사용자
               경험, 운영 정책이 함께 있어야 커뮤니티가 유지된다는 것을 배웠습니다. 허락을 받는 데 드는 시간은
               개발보다 훨씬 길었지만, 그 절차가 곧 서비스의 정체성이 됐습니다.
