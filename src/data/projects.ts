@@ -102,7 +102,7 @@ export const projects: Project[] = [
     heroBodyKo:
       "Heartopia 도안 아카이브는 기술 문제로 시작하지 않았습니다. 이 콘텐츠를 올려도 되는가라는 질문에서 시작했습니다. 그래서 이 프로젝트에서 가장 오래 걸린 일은 개발이 아니라, 해외 원작자를 찾아 연락하고 허락을 받는 일이었습니다.",
     meta: [
-      { label: "ROLE", value: "1인 기획 / 개발\n크리에이터 컨택 / 콘텐츠 운영" },
+      { label: "ROLE", value: "1인 기획 / 개발\n콘텐츠 운영 / 커뮤니티 운영" },
       { label: "PERIOD", value: "2026.07.15 — Present" },
       { label: "GAME", value: "Heartopia / 두근두근타운" },
       { label: "STATUS", value: "Live", accent: true },
