@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
-import { Chip } from "@/components/Bits";
+import { Chip, ProjectCTA } from "@/components/Bits";
 import { Placeholder } from "@/components/Placeholder";
 import { profile, stack, capabilities } from "@/data/profile";
 import { impactStrip } from "@/data/metrics";
@@ -12,7 +12,7 @@ import { projects } from "@/data/projects";
 import { experience } from "@/data/experience";
 
 export const metadata: Metadata = {
-  title: "서인하 — I turn player needs into community experiences.",
+  title: "서인하 — I design around how players play, create, and connect.",
 };
 
 export default async function HomePage({
@@ -92,17 +92,10 @@ export default async function HomePage({
 
         {/* 01 — Sky Planner: full-bleed */}
         <article className="mx-auto mt-11 max-w-[1440px] sm:mt-20">
-          <div className="flex items-baseline gap-4 border-b border-line-2 pb-3.5">
+          <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {sky.eyebrow}
             </span>
-            <span className="flex-1" />
-            <Link
-              href={`/${locale}/work/${sky.slug}`}
-              className="font-archivo text-[12.5px] font-bold tracking-[.08em] text-accent"
-            >
-              VIEW CASE STUDY →
-            </Link>
           </div>
           <Reveal>
             <Placeholder
@@ -113,9 +106,11 @@ export default async function HomePage({
           </Reveal>
           <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="max-w-[640px] flex-[1.5]">
-              <h3 className="font-archivo text-[clamp(30px,3.6vw,50px)] leading-[1.02] font-extrabold tracking-[-.035em]">
-                {sky.title}
-              </h3>
+              <Link href={`/${locale}/work/${sky.slug}`}>
+                <h3 className="font-archivo text-[clamp(30px,3.6vw,50px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                  {sky.title}
+                </h3>
+              </Link>
               <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
                 {sky.cardSubtitleKo}
               </p>
@@ -124,6 +119,7 @@ export default async function HomePage({
                   <Chip key={t}>{t}</Chip>
                 ))}
               </div>
+              <ProjectCTA href={`/${locale}/work/${sky.slug}`} liveUrl={sky.liveUrl} />
             </Reveal>
             <Reveal delay={0.1} className="flex-1 grid grid-cols-2 gap-x-6 gap-y-5 pt-2">
               {sky.cardMetrics.map((m) => (
@@ -141,17 +137,10 @@ export default async function HomePage({
 
         {/* 02 — Identity5 Pick: left images, right text */}
         <article className="mx-auto mt-16 max-w-[1440px] sm:mt-28">
-          <div className="flex items-baseline gap-4 border-b border-line-2 pb-3.5">
+          <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {identity5.eyebrow}
             </span>
-            <span className="flex-1" />
-            <Link
-              href={`/${locale}/work/${identity5.slug}`}
-              className="font-archivo text-[12.5px] font-bold tracking-[.08em] text-accent"
-            >
-              VIEW CASE STUDY →
-            </Link>
           </div>
           <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="flex-[1.35]">
@@ -167,9 +156,11 @@ export default async function HomePage({
               </div>
             </Reveal>
             <Reveal delay={0.1} className="max-w-[460px] flex-1 pt-1">
-              <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em]">
-                {identity5.title}
-              </h3>
+              <Link href={`/${locale}/work/${identity5.slug}`}>
+                <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                  {identity5.title}
+                </h3>
+              </Link>
               <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
                 {identity5.cardSubtitleKo}
               </p>
@@ -189,29 +180,25 @@ export default async function HomePage({
                   />
                 ))}
               </div>
+              <ProjectCTA href={`/${locale}/work/${identity5.slug}`} liveUrl={identity5.liveUrl} />
             </Reveal>
           </div>
         </article>
 
         {/* 03 — Heartopia Archive: left text, right images */}
         <article className="mx-auto mt-16 max-w-[1440px] sm:mt-28">
-          <div className="flex items-baseline gap-4 border-b border-line-2 pb-3.5">
+          <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {heartopia.eyebrow}
             </span>
-            <span className="flex-1" />
-            <Link
-              href={`/${locale}/work/${heartopia.slug}`}
-              className="font-archivo text-[12.5px] font-bold tracking-[.08em] text-accent"
-            >
-              VIEW CASE STUDY →
-            </Link>
           </div>
           <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14 items-start">
             <Reveal className="max-w-[460px] flex-1 pt-1">
-              <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em]">
-                {heartopia.title}
-              </h3>
+              <Link href={`/${locale}/work/${heartopia.slug}`}>
+                <h3 className="font-archivo text-[clamp(28px,3.2vw,44px)] leading-[1.02] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                  {heartopia.title}
+                </h3>
+              </Link>
               <p className="mt-3.5 text-[18px] leading-[1.72] text-ink-70 text-pretty">
                 {heartopia.cardSubtitleKo}
               </p>
@@ -223,17 +210,21 @@ export default async function HomePage({
                   <Chip key={t}>{t}</Chip>
                 ))}
               </div>
-              <div className="mt-6 flex gap-8 border-t border-line pt-5">
+              <div className="mt-6 flex flex-col gap-3.5 border-t border-line pt-5">
                 {heartopia.cardMetrics.map((m) => (
-                  <Stat
-                    key={m.label}
-                    metric={m}
-                    numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
-                    labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-                    tbdClassName="text-muted-light"
-                  />
+                  <div key={m.label} className="flex items-baseline gap-3.5">
+                    <Stat
+                      metric={m}
+                      numberClassName="font-archivo text-[19px] leading-[1.1] font-extrabold tracking-[-.02em]"
+                      labelClassName="hidden"
+                    />
+                    <span className="font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted">
+                      {m.label}
+                    </span>
+                  </div>
                 ))}
               </div>
+              <ProjectCTA href={`/${locale}/work/${heartopia.slug}`} liveUrl={heartopia.liveUrl} />
             </Reveal>
             <Reveal delay={0.1} className="flex-[1.35]">
               <Placeholder

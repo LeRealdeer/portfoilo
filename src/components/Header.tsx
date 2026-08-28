@@ -4,15 +4,17 @@ import { profile } from "@/data/profile";
 export function Header({
   locale,
   variant = "home",
-  breadcrumb,
+  serviceUrl,
   resumeHref = "#resume",
 }: {
   locale: string;
   variant?: "home" | "case";
-  breadcrumb?: string;
+  /** Live service URL shown (and linked) in the case-study header. */
+  serviceUrl?: string;
   resumeHref?: string;
 }) {
   const home = `/${locale}`;
+  const serviceLabel = serviceUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
     <header className="sticky top-0 z-20 flex items-center gap-8 border-b border-line-3 bg-bg/88 px-5 py-5 backdrop-blur-md sm:px-9">
@@ -28,9 +30,16 @@ export function Header({
           {profile.tagline}
         </span>
       ) : (
-        <span className="hidden font-mono text-[11.5px] text-muted sm:inline">
-          {breadcrumb}
-        </span>
+        serviceLabel && (
+          <a
+            href={serviceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden font-mono text-[11.5px] text-muted transition-colors duration-300 hover:text-accent sm:inline"
+          >
+            {serviceLabel} ↗
+          </a>
+        )
       )}
 
       <span className="flex-1" />

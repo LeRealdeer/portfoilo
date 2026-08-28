@@ -101,7 +101,7 @@ export default async function SkyPlannerPage({
 
   return (
     <div className="min-h-screen">
-      <Header locale={locale} variant="case" breadcrumb="/ work / sky-planner" resumeHref="#final" />
+      <Header locale={locale} variant="case" serviceUrl={project.liveUrl} resumeHref="#final" />
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-14 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
@@ -117,6 +117,16 @@ export default async function SkyPlannerPage({
         <p className="mt-5 max-w-[620px] text-[18px] leading-[1.78] text-ink-70 text-pretty">
           {project.heroBodyKo}
         </p>
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13.5px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
+          >
+            {project.liveUrl.replace(/^https?:\/\//, "")} ↗
+          </a>
+        )}
 
         <div className="mt-10 flex max-[860px]:flex-col gap-8 sm:gap-16 items-start border-t border-line-2 pt-7 sm:mt-16">
           <div className="grid flex-[1.6] grid-cols-2 gap-x-7 gap-y-6">

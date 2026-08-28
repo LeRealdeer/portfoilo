@@ -43,7 +43,13 @@ export function Footer() {
               LIVE PROJECTS
             </div>
             {profile.liveProjects.map((p) => (
-              <a key={p.label} href={p.href} className="mt-1.5 block text-[16px] first:mt-2">
+              <a
+                key={p.label}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1.5 block text-[16px] transition-colors duration-300 hover:text-accent first:mt-2"
+              >
                 {p.label} ↗
               </a>
             ))}
