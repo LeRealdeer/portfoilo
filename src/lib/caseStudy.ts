@@ -10,7 +10,7 @@ export const CASE_EYEBROW =
 export const CASE_EYEBROW_DARK =
   "font-archivo text-[11px] font-semibold tracking-[.18em] text-accent-on-dark";
 export const CASE_H2 =
-  "font-archivo text-[clamp(22px,3.4vw,46px)] leading-[1.24] font-extrabold tracking-[-.035em] text-balance max-w-[40rem]";
+  "font-archivo text-[clamp(21px,3vw,40px)] leading-[1.26] font-extrabold tracking-[-.035em] text-balance max-w-[54rem]";
 export const CASE_LEAD =
   "mt-4 max-w-[560px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]";
 export const CASE_LEAD_DARK =
