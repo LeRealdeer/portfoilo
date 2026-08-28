@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
 import { getProject } from "@/data/projects";
+import { toLocale } from "@/lib/i18n";
 import {
   CASE_EYEBROW as EYEBROW,
   CASE_EYEBROW_DARK as EYEBROW_DARK,
@@ -253,8 +254,9 @@ export default async function Identity5PickPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const project = getProject("identity5-pick");
+  const { locale: rawLocale } = await params;
+  const locale = toLocale(rawLocale);
+  const project = getProject("identity5-pick", locale);
 
   return (
     <div className="min-h-screen">
@@ -270,7 +272,7 @@ export default async function Identity5PickPage({
           제5인격 팬들이 이미 하고 있던 취향 공유 행동을 더 쉽고 재미있는 경험으로 확장했습니다
         </p>
         <p className="mt-5 max-w-[620px] text-[15.5px] leading-[1.55] text-ink-70 text-pretty sm:text-[16.5px] sm:leading-[1.6]">
-          {project.heroBodyKo}
+          {project.heroBody}
         </p>
         {project.liveUrl && (
           <a

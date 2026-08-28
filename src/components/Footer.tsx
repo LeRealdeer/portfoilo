@@ -1,7 +1,9 @@
-import { profile } from "@/data/profile";
+import { getProfile } from "@/data/profile";
 import { Reveal } from "./Reveal";
+import type { Locale } from "@/lib/i18n";
 
-export function Footer() {
+export function Footer({ locale }: { locale: Locale }) {
+  const profile = getProfile(locale);
   return (
     <footer id="resume" className="px-5 pt-14 pb-11 sm:px-9 sm:pt-24">
       <div className="mx-auto max-w-[1440px]">

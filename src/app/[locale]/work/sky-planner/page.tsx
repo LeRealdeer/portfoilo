@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
 import { getProject } from "@/data/projects";
+import { toLocale } from "@/lib/i18n";
 import {
   CASE_EYEBROW as EYEBROW,
   CASE_EYEBROW_DARK as EYEBROW_DARK,
@@ -240,8 +241,9 @@ export default async function SkyPlannerPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const project = getProject("sky-planner");
+  const { locale: rawLocale } = await params;
+  const locale = toLocale(rawLocale);
+  const project = getProject("sky-planner", locale);
 
   return (
     <div className="min-h-screen">
@@ -257,7 +259,7 @@ export default async function SkyPlannerPage({
           게임 플레이 과정에서 반복되던 관리·계산·정보 탐색을 하나로 정리한 게임 유틸리티 서비스
         </p>
         <p className="mt-4 max-w-[600px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
-          {project.heroBodyKo}
+          {project.heroBody}
         </p>
         {project.liveUrl && (
           <a

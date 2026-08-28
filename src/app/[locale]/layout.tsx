@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
+import { SUPPORTED_LOCALES, isLocale } from "@/lib/i18n";
 
-export const SUPPORTED_LOCALES = ["ko"] as const;
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
+export { SUPPORTED_LOCALES };
 
 export function generateStaticParams() {
   return SUPPORTED_LOCALES.map((locale) => ({ locale }));
@@ -15,7 +15,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
+  if (!isLocale(locale)) {
     notFound();
   }
   return children;

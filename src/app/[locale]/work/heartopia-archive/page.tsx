@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
 import { getProject } from "@/data/projects";
+import { toLocale } from "@/lib/i18n";
 import {
   CASE_EYEBROW as EYEBROW,
   CASE_EYEBROW_DARK as EYEBROW_DARK,
@@ -146,8 +147,9 @@ export default async function HeartopiaArchivePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const project = getProject("heartopia-archive");
+  const { locale: rawLocale } = await params;
+  const locale = toLocale(rawLocale);
+  const project = getProject("heartopia-archive", locale);
 
   return (
     <div className="min-h-screen">
@@ -163,7 +165,7 @@ export default async function HeartopiaArchivePage({
           여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브
         </p>
         <p className="mt-5 max-w-[620px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
-          {project.heroBodyKo}
+          {project.heroBody}
         </p>
         {project.liveUrl && (
           <a

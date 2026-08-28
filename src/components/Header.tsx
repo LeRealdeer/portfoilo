@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { profile } from "@/data/profile";
+import { getProfile } from "@/data/profile";
+import { LocaleToggle } from "@/components/LocaleToggle";
+import type { Locale } from "@/lib/i18n";
 
 export function Header({
   locale,
@@ -7,13 +9,14 @@ export function Header({
   serviceUrl,
   resumeHref = "#resume",
 }: {
-  locale: string;
+  locale: Locale;
   variant?: "home" | "case";
   /** Live service URL shown (and linked) in the case-study header. */
   serviceUrl?: string;
   resumeHref?: string;
 }) {
   const home = `/${locale}`;
+  const profile = getProfile(locale);
   const serviceLabel = serviceUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
@@ -55,11 +58,7 @@ export function Header({
         <a href={resumeHref} className="text-accent">
           RESUME ↗
         </a>
-        {variant === "home" && (
-          <span className="flex gap-1.5 border-l border-line-2 pl-5 font-medium text-muted-light">
-            <span className="font-bold text-ink">KR</span>/<span>EN</span>
-          </span>
-        )}
+        <LocaleToggle locale={locale} />
       </nav>
     </header>
   );

@@ -6,13 +6,43 @@ import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Chip, ProjectCTA } from "@/components/Bits";
 import { Placeholder } from "@/components/Placeholder";
-import { profile, stack, capabilities } from "@/data/profile";
+import { getProfile, getCapabilities, stack } from "@/data/profile";
 import { impactStrip } from "@/data/metrics";
-import { projects } from "@/data/projects";
-import { experience } from "@/data/experience";
+import { getProjects } from "@/data/projects";
+import { getExperience } from "@/data/experience";
+import { toLocale, type Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "서인하 — I design around how players play, create, and connect.",
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const name = getProfile(toLocale(locale)).name;
+  return { title: `${name} — I design around how players play, create, and connect.` };
+}
+
+const COPY: Record<Locale, Record<string, string>> = {
+  ko: {
+    workSub: "게임 셋, 서로 다른 커뮤니티 셋,\n서로 다른 운영 과제 셋.",
+    capH2: "유저의 목소리에서 라이브 서비스까지",
+    capSub: "유저의 목소리가 실제 서비스가 되기까지, 제가 직접 해온 일들.",
+    buildH3: "기획한 것을 직접 만들 수도 있습니다.",
+    buildBody:
+      "아이디어를 문서에서 끝내지 않고 직접 프로토타입과 서비스로 만들 수 있습니다. 기술은 직무 정체성이 아니라 실행 수단입니다.",
+    expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
+    permission: "Permission before publication.",
+  },
+  en: {
+    workSub: "Three games. Three different communities.\nThree different operational challenges.",
+    capH2: "From player voice to live service",
+    capSub: "What I've personally done to turn player voice into a running service.",
+    buildH3: "I can also build what I plan.",
+    buildBody:
+      "I don't leave ideas in a doc — I can take them to a prototype and a running service. Tech isn't my job identity; it's how I execute.",
+    expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
+    permission: "Permission before publication.",
+  },
 };
 
 export default async function HomePage({
@@ -20,8 +50,13 @@ export default async function HomePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const [sky, identity5, heartopia] = projects;
+  const { locale: rawLocale } = await params;
+  const locale = toLocale(rawLocale);
+  const t = COPY[locale];
+  const profile = getProfile(locale);
+  const capabilities = getCapabilities(locale);
+  const experience = getExperience(locale);
+  const [sky, identity5, heartopia] = getProjects(locale);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -83,10 +118,8 @@ export default async function HomePage({
               Selected Work
             </h2>
           </Reveal>
-          <Reveal delay={0.1} className="mb-1.5 max-w-[280px] text-[15px] leading-[1.7] text-muted">
-            Three games. Three different communities.
-            <br />
-            Three different operational challenges.
+          <Reveal delay={0.1} className="mb-1.5 max-w-[280px] whitespace-pre-line text-[15px] leading-[1.7] text-muted">
+            {t.workSub}
           </Reveal>
         </div>
 
@@ -112,11 +145,11 @@ export default async function HomePage({
                 </h3>
               </Link>
               <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {sky.cardSubtitleKo}
+                {sky.cardSubtitle}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {sky.tags.map((t) => (
-                  <Chip key={t}>{t}</Chip>
+                {sky.tags.map((tag) => (
+                  <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
               <ProjectCTA href={`/${locale}/work/${sky.slug}`} liveUrl={sky.liveUrl} />
@@ -162,11 +195,11 @@ export default async function HomePage({
                 </h3>
               </Link>
               <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {identity5.cardSubtitleKo}
+                {identity5.cardSubtitle}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {identity5.tags.map((t) => (
-                  <Chip key={t}>{t}</Chip>
+                {identity5.tags.map((tag) => (
+                  <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
               <div className="mt-6 flex gap-8 border-t border-line pt-5">
@@ -200,14 +233,14 @@ export default async function HomePage({
                 </h3>
               </Link>
               <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {heartopia.cardSubtitleKo}
+                {heartopia.cardSubtitle}
               </p>
               <blockquote className="mt-6 border-l-2 border-accent pl-4.5 font-archivo text-[20px] font-bold leading-[1.3] tracking-[-.02em]">
-                Permission before publication.
+                {t.permission}
               </blockquote>
               <div className="mt-5 flex flex-wrap gap-2">
-                {heartopia.tags.map((t) => (
-                  <Chip key={t}>{t}</Chip>
+                {heartopia.tags.map((tag) => (
+                  <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
               <div className="mt-6 flex flex-col gap-3.5 border-t border-line pt-5">
@@ -247,12 +280,12 @@ export default async function HomePage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col items-end gap-10">
             <Reveal className="flex-1">
-              <h2 className="max-w-[26rem] font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.16] font-extrabold tracking-[-.04em] text-balance">
-                From player voice to live service
+              <h2 className="max-w-[30rem] font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.16] font-extrabold tracking-[-.04em] text-balance">
+                {t.capH2}
               </h2>
             </Reveal>
-            <Reveal delay={0.1} className="mb-1.5 max-w-[260px] text-[15px] leading-[1.7] text-muted">
-              유저의 목소리가 실제 서비스가 되기까지, 제가 직접 해온 일들.
+            <Reveal delay={0.1} className="mb-1.5 max-w-[280px] text-[15px] leading-[1.7] text-muted">
+              {t.capSub}
             </Reveal>
           </div>
 
@@ -266,7 +299,7 @@ export default async function HomePage({
                   {c.titleEn}
                 </h3>
                 <p className="mt-2 text-[13px] leading-[1.55] text-muted">{c.lineEn}</p>
-                <p className="mt-3 text-[14px] leading-[1.5] text-ink-70">{c.bodyKo}</p>
+                <p className="mt-3 text-[14px] leading-[1.5] text-ink-70">{c.body}</p>
               </Reveal>
             ))}
           </div>
@@ -274,12 +307,9 @@ export default async function HomePage({
           <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:mt-16 sm:gap-20 items-start">
             <Reveal className="max-w-[420px] flex-1">
               <h3 className="font-archivo text-[clamp(19px,2.2vw,28px)] leading-[1.15] font-bold tracking-[-.03em]">
-                I can also build what I plan.
+                {t.buildH3}
               </h3>
-              <p className="mt-3 text-[14.5px] leading-[1.65] text-ink-70 sm:text-[15.5px]">
-                아이디어를 문서에서 끝내지 않고 직접 프로토타입과 서비스로 만들 수 있습니다. 기술은 직무 정체성이
-                아니라 실행 수단입니다.
-              </p>
+              <p className="mt-3 text-[14.5px] leading-[1.65] text-ink-70 sm:text-[15.5px]">{t.buildBody}</p>
             </Reveal>
             <Reveal delay={0.1} className="flex flex-[1.4] flex-wrap gap-1.5 pt-1.5">
               {stack.map((s) => (
@@ -301,8 +331,8 @@ export default async function HomePage({
                 Experience
               </h2>
             </Reveal>
-            <Reveal delay={0.1} className="mb-1.5 max-w-[300px] text-[15px] leading-[1.7] text-muted">
-              역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.
+            <Reveal delay={0.1} className="mb-1.5 max-w-[320px] text-[15px] leading-[1.7] text-muted">
+              {t.expSub}
             </Reveal>
           </div>
 
@@ -358,14 +388,14 @@ export default async function HomePage({
                 href="#about"
                 className="mt-6 inline-block font-archivo text-[12.5px] font-bold tracking-[.1em] text-accent-on-dark transition-colors duration-300 hover:text-white"
               >
-                READ MORE ABOUT ME →
+                {profile.aboutMore}
               </a>
             </Reveal>
           </div>
 
           <Reveal delay={0.15} className="mt-11 border-t border-line-dark pt-8 sm:mt-18">
             <div className="font-archivo text-[11.5px] font-semibold tracking-[.16em] text-[rgba(244,241,234,.45)]">
-              CURRENTLY INTERESTED IN
+              {profile.interestedIn}
             </div>
             <div className="mt-4.5 flex flex-wrap gap-x-7 gap-y-2.5 font-archivo text-[clamp(15px,2vw,25px)] font-bold tracking-[-.02em]">
               {profile.careerInterests.map((c, i) => (
@@ -382,7 +412,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <Footer />
+      <Footer locale={locale} />
     </div>
   );
 }
