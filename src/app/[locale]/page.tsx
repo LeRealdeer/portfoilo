@@ -303,44 +303,33 @@ export default async function HomePage({
                 Experience
               </h2>
             </Reveal>
-            <Reveal delay={0.1} className="mb-1.5 max-w-[280px] text-[15px] leading-[1.7] text-muted">
-              연구 · 교육 · 실무에서 쌓은 커리어 기반.
+            <Reveal delay={0.1} className="mb-1.5 max-w-[300px] text-[15px] leading-[1.7] text-muted">
+              역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.
             </Reveal>
           </div>
 
           <div className="mt-9 border-t border-line-2 sm:mt-14">
             {experience.map((row, i) => (
               <Reveal
-                key={row.title}
+                key={row.org}
                 delay={Math.min(i * 0.04, 0.2)}
-                className={`flex max-[860px]:flex-col gap-4 py-6 sm:gap-14 ${
+                className={`flex max-[860px]:flex-col gap-3 py-6 sm:gap-12 ${
                   i === experience.length - 1 ? "border-b border-line-2" : "border-b border-line-3"
                 }`}
               >
-                <div className="w-[150px] flex-none pt-1 font-mono text-[11.5px] text-muted">{row.period}</div>
-                <div className="flex-[1.2]">
-                  <h3 className="font-archivo text-[clamp(20px,2.2vw,28px)] font-bold tracking-[-.025em]">
-                    {row.title}
+                <div className="w-[140px] flex-none pt-1 font-mono text-[11.5px] text-muted">{row.period}</div>
+                <div className="flex-[1.1]">
+                  <h3 className="font-archivo text-[clamp(18px,1.9vw,24px)] font-bold tracking-[-.02em]">
+                    {row.org}
                   </h3>
-                  <div className="mt-1.5 whitespace-pre-line text-[14px] text-muted">{row.org}</div>
+                  <div className="mt-1 text-[13.5px] text-muted">{row.role}</div>
                 </div>
-                {row.quote ? (
-                  <div className="flex-[1.6]">
-                    <p className="text-[16px] leading-[1.72] text-ink-70">{row.body}</p>
-                    <div className="mt-3 border-l-2 border-accent pl-4 font-archivo text-[17px] font-bold leading-[1.35] tracking-[-.02em]">
-                      {row.quote}
-                    </div>
+                <div className="flex-[1.7]">
+                  <p className="text-[15.5px] leading-[1.7] text-ink-70">{row.body}</p>
+                  <div className="mt-2.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent">
+                    {row.focus}
                   </div>
-                ) : row.highlight ? (
-                  <div className="flex-[1.6]">
-                    <div className="font-archivo text-[clamp(22px,2.4vw,30px)] font-extrabold leading-[1.1] tracking-[-.03em]">
-                      {row.highlight.label}
-                    </div>
-                    <p className="mt-2.5 text-[16px] leading-[1.72] text-ink-70">{row.highlight.body}</p>
-                  </div>
-                ) : (
-                  <p className="flex-[1.6] text-[16px] leading-[1.72] text-ink-70">{row.body}</p>
-                )}
+                </div>
               </Reveal>
             ))}
           </div>

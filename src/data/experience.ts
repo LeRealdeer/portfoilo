@@ -1,46 +1,63 @@
 export type ExperienceRow = {
   period: string;
-  title: string;
+  /** 기관 / 활동명 */
   org: string;
+  /** 역할 */
+  role: string;
+  /** 한 줄 설명 — 포트폴리오 핵심 메시지와 연결 */
   body: string;
-  quote?: string;
-  highlight?: { label: string; body: string };
+  /** 이 경험으로 쌓은 역량 키워드 */
+  focus: string;
 };
 
 export const experience: ExperienceRow[] = [
   {
-    period: "2026 — PRESENT",
-    title: "Service Planner",
+    period: "2026.04 — Present",
     org: "AI 서비스 스타트업",
-    body: "제품·운영 매뉴얼 관리, 문서 빌드 프로세스 협업, QA, Notion·GitHub 기반 협업 구조 운영. 개발자와 기술적 커뮤니케이션을 하며 AI 제품의 기획 흐름을 경험하고 있습니다.",
+    role: "Service Planner / 서비스 기획자",
+    body: "AI 기반 서비스에서 사용자 요구사항 분석, 서비스 구조 설계, 기능 정의, 협업 프로세스를 담당하며 실제 서비스 개발·운영 흐름을 이해했습니다.",
+    focus: "Service Planning",
   },
   {
     period: "2025.05 — 2025.12",
-    title: "Research Intern",
-    org: "연세대학교 HDIL (Human-Data Interaction Lab)",
-    body: "이미지 차트에서 수치를 복원하는 비정형 데이터 파이프라인 구축, D3·Vega-Lite 시각화 프로토타입, 사용자 파일럿 테스트 설계.",
-    quote: "The maker's view and the user's view are different.",
+    org: "연세대학교 컴퓨터과학과 HDIL",
+    role: "Research Intern",
+    body: "데이터 시각화 프로젝트에서 차트 시각화를 개발하고 연구 미팅에 참여하며 데이터 기반 문제 해결을 경험했습니다.",
+    focus: "Data Analysis",
   },
   {
-    period: "4 SEMESTERS",
-    title: "Python TA",
-    org: "세종대학교 · 우수조교 선정",
-    body: "학기당 최대 7개 분반, 누적 500명+ 수강생, 75분 단독 강의와 1:1 디버깅. 질문을 어려워하는 학생을 위해 주석 신호 시스템을 고안해 도움 요청의 심리적 장벽을 낮췄습니다.",
+    period: "2024.09 — 2025.03",
+    org: "KDT Full-stack Web Development Course",
+    role: "Full-stack Web Development",
+    body: "React · JavaScript · Spring Boot · MySQL 기반 웹 서비스 개발 과정을 이수하며 프론트엔드부터 백엔드·DB·배포까지 서비스 구현 전반을 경험했습니다.",
+    focus: "Full-stack Understanding",
+  },
+  {
+    period: "2023 — 2025",
+    org: "세종대학교 Python Programming TA",
+    role: "Teaching Assistant · 4 semesters",
+    body: "프로그래밍 입문·기초 코딩 과목 조교로 학습 지원과 질의응답을 수행하며 기술을 쉽게 전달하는 커뮤니케이션 역량을 키웠습니다. 2025년 1학기 우수조교 선정.",
+    focus: "Communication",
   },
   {
     period: "2025.03 — 2025.05",
-    title: "Global Chin-Chin Mentor",
-    org: "세종대학교 어학당",
-    body: "외국인 유학생 대상 한국어 학습 지원과 문화 적응 멘토링. Cross-cultural Communication.",
+    org: "세종대학교 글로벌친친 (Global Chin-Chin)",
+    role: "Mentor",
+    body: "외국인 학생들과 교류하며 언어·문화 차이를 이해하고, 글로벌 사용자와 커뮤니케이션하는 역량을 강화했습니다.",
+    focus: "Global Communication",
   },
   {
-    period: "2021.03 — 2026.02",
-    title: "세종대학교",
-    org: "역사학과 · 소프트웨어학과 복수전공 · GPA 3.81 / 4.5",
-    body: "사람과 맥락을 읽는 역사학적 관점과, 직접 서비스를 구현할 수 있는 소프트웨어 역량을 함께 씁니다.",
-    highlight: {
-      label: "From History to Software",
-      body: "사람과 맥락을 읽는 역사학적 관점과, 직접 서비스를 구현할 수 있는 소프트웨어 역량을 함께 씁니다.",
-    },
+    period: "2022.04 — 2023.05",
+    org: "게임 개발 동아리",
+    role: "Member",
+    body: "Unity·C# 기반 게임 프로젝트에 참여해 게임 제작 과정과 UI/UX 설계를 경험하며 게임 서비스에 대한 이해를 넓혔습니다.",
+    focus: "Game Community",
+  },
+  {
+    period: "2021.09 — 2024.02",
+    org: "역사학과 시사어름 학회",
+    role: "Member",
+    body: "역사·사회 이슈를 주제로 토론하며 다양한 관점에서 문제를 분석하는 인문학적 사고력을 길렀습니다.",
+    focus: "User Insight",
   },
 ];
