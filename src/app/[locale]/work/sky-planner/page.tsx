@@ -258,7 +258,7 @@ const COPY: Record<Locale, Copy> = {
     },
     events: {
       h2: "서비스 밖에서도 커뮤니티를 움직였습니다.",
-      lead: "약 20명 규모의 디스코드 서버를 운영하고, 네이버 카페에서 참여형 이벤트를 직접 기획·진행했습니다.",
+      lead: "네이버 카페를 중심으로 참여형 이벤트를 직접 기획하고 진행했습니다. 반응이 좋은 이벤트는 여러 차례 이어서 열었습니다.",
       list: [
         { title: "킹받는 플러팅 대회", body: "웃긴 옷과 느끼한 대사로 플러팅하는 참가자를 모집해 투표. 반응이 좋아 4탄까지 진행." },
         { title: "종이배를 찾아라!", body: "맵 곳곳에 띄운 종이배를 찾아 문제를 푸는 팀전. 기획 단독, 문제는 친구와 공동 제작." },
@@ -267,7 +267,7 @@ const COPY: Record<Locale, Copy> = {
       ],
       shot1: "이벤트 기획안 · 진행 컷 1",
       shot2: "이벤트 진행 컷 2",
-      shot3: "디스코드 서버 · 공지",
+      shot3: "이벤트 결과 · 유저 반응",
     },
     o2o: {
       h2: "온라인 서비스를 오프라인 현장으로.",
@@ -473,7 +473,7 @@ const COPY: Record<Locale, Copy> = {
     },
     events: {
       h2: "I moved the community outside the service too.",
-      lead: "I ran a Discord server of about 20 people and planned and hosted participatory events in the Naver community myself.",
+      lead: "I planned and hosted participatory events myself, centered on the Naver community. The ones that landed, I ran again and again.",
       list: [
         { title: "Cheesiest Flirt Contest", body: "Recruited players to flirt in ridiculous outfits with cheesy lines, then put it to a vote. It went well enough to run four times." },
         { title: "Find the Paper Boats!", body: "A team event — find paper boats scattered across the map and solve puzzles. Planned solo, questions co-written with a friend." },
@@ -482,7 +482,7 @@ const COPY: Record<Locale, Copy> = {
       ],
       shot1: "Event plan · action shot 1",
       shot2: "Event action shot 2",
-      shot3: "Discord server · announcements",
+      shot3: "Event results · player reactions",
     },
     o2o: {
       h2: "The online service, taken to an offline venue.",
