@@ -192,7 +192,7 @@ export default async function HomePage({
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(84px,11vw,132px)] text-[11px]"
+                    className="h-[clamp(120px,15vw,190px)] text-[11px]"
                   />
                 ))}
               </div>
@@ -281,7 +281,7 @@ export default async function HomePage({
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(96px,13vw,150px)] text-[11px]"
+                    className="h-[clamp(130px,16vw,200px)] text-[11px]"
                   />
                 ))}
               </div>
