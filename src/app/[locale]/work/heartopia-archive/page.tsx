@@ -81,7 +81,8 @@ const COPY = {
         "원작자의 권리를 지키면서 유저가 쉽게 탐색하는 플랫폼을 목표로, 서비스 방향을 세 가지로 정했습니다. 콘텐츠 양이 많고 수요가 낮은 그림 도안은 초기 범위에서 제외하고 의상·가구에 집중했습니다.",
       directions: ["콘텐츠 탐색 경험 개선", "원작자 출처 관리", "한국 유저 접근성 개선"],
       serviceFlow: ["Creator", "콘텐츠 발견", "허락 확인", "출처 관리", "Archive 등록", "User"],
-      shot: "아카이브 홈 · 카테고리 구조",
+      shot: "도안 훑어보기 — 카테고리 · 태그 필터",
+      shot2: "찜한 도안 — 개인 컬렉션",
     },
     rights: {
       h2: "Not a collection. A permission-based archive.",
@@ -108,16 +109,10 @@ const COPY = {
       lead: "의상과 가구를 같은 구조로 정리하고, 모든 콘텐츠에 원작자·원본 링크·플랫폼을 고정했습니다.",
       items: [
         {
-          name: "의상 아카이브",
-          problem: "유저 제작 의상 콘텐츠가 여러 플랫폼에 흩어져, 원하는 스타일을 비교하기 어려웠습니다.",
-          solution: "카테고리·태그·상세 페이지를 갖춘 아카이브로 옮겨, 한곳에서 탐색·비교하도록 했습니다.",
+          name: "의상 / 가구 아카이브",
+          problem: "유저 제작 의상·가구 콘텐츠가 여러 플랫폼에 흩어져, 원하는 스타일을 비교하기 어려웠습니다.",
+          solution: "의상과 가구를 같은 구조의 아카이브(카테고리·태그·상세)로 옮겨, 한곳에서 탐색·비교하도록 했습니다.",
           shot: "의상 아카이브 — 인기순 정렬",
-        },
-        {
-          name: "가구 아카이브",
-          problem: "꾸미기 콘텐츠는 참고 수요가 크지만 정리된 곳이 없었습니다.",
-          solution: "의상과 같은 구조로 가구 콘텐츠를 정리해 탐색 경험을 통일했습니다.",
-          shot: "가구 아카이브 화면",
         },
         {
           name: "검색 · 분류 · 상세",
@@ -137,17 +132,12 @@ const COPY = {
       shotAfter: "사진 편집기 — AFTER (서비스 내 편집)",
     },
     ops: {
-      h2: "성장보다 신뢰를 먼저 골랐습니다.",
+      h2: "알리는 일과 고치는 일.",
       cases: [
         {
           label: "COMMUNITY",
           title: "게임 커뮤니티 기반 홍보",
           body: "게임 커뮤니티에서 서비스를 공유하고, 원작자 허락 기반으로 확보한 콘텐츠로 신뢰도를 쌓았습니다.",
-        },
-        {
-          label: "TRUST DECISION",
-          title: "오픈채팅 등록은 하지 않았습니다",
-          body: "회원가입이 네이버·카카오·디스코드 OAuth 방식이라, 출처가 분명하지 않은 채널에서 유입되면 개인정보 신뢰 문제가 생길 수 있다고 봤습니다. Sky Planner와 달리 오픈채팅 홍보를 의도적으로 하지 않았고, 회원 수는 그만큼 천천히 늘고 있습니다.",
         },
         {
           label: "BUG FIX",
@@ -176,8 +166,8 @@ const COPY = {
         },
         {
           n: "02",
-          title: "신뢰가 접근성보다 우선일 때가 있었습니다",
-          body: "더 빠르게 키울 수 있는 오픈채팅 홍보를 포기했습니다. 개인정보를 받는 서비스에서는 유입 경로의 신뢰가 성장 속도보다 중요하다고 판단했습니다.",
+          title: "출처 표기를 정책이 아니라 구조로 만들었습니다",
+          body: "모든 콘텐츠에 원작자·원본 링크·플랫폼을 필수 항목으로 고정해, 출처 없는 콘텐츠는 등록 자체가 되지 않게 했습니다. 신뢰는 약속이 아니라 시스템이 지켜야 한다고 봤습니다.",
         },
         {
           n: "03",
@@ -212,7 +202,8 @@ const COPY = {
         "Aiming for a platform where users browse easily while creators' rights are protected, I set three directions for the service. Drawing patterns — high in volume, low in demand — were left out of the initial scope, and I focused on outfits and furniture.",
       directions: ["Improve the content discovery experience", "Manage creator attribution", "Improve access for Korean users"],
       serviceFlow: ["Creator", "Content found", "Permission confirmed", "Attribution managed", "Added to Archive", "User"],
-      shot: "Archive home · category structure",
+      shot: "Browsing patterns — category and tag filters",
+      shot2: "Favorited patterns — a personal collection",
     },
     rights: {
       h2: "Not a collection. A permission-based archive.",
@@ -239,16 +230,10 @@ const COPY = {
       lead: "Outfits and furniture are organized in the same structure, and every piece of content has the creator, original link, and platform pinned to it.",
       items: [
         {
-          name: "Outfit Archive",
-          problem: "User-made outfit content was scattered across platforms, making styles hard to compare.",
-          solution: "Moved into an archive with categories, tags, and detail pages so you can browse and compare in one place.",
+          name: "Outfit / Furniture Archive",
+          problem: "User-made outfit and furniture content was scattered across platforms, making styles hard to compare.",
+          solution: "Moved outfits and furniture into one archive of the same shape (categories, tags, detail pages) so you can browse and compare in one place.",
           shot: "Outfit archive — sorted by popularity",
-        },
-        {
-          name: "Furniture Archive",
-          problem: "Decorating content has strong reference demand but no organized home.",
-          solution: "Organized furniture content in the same structure as outfits to unify the browsing experience.",
-          shot: "Furniture archive screen",
         },
         {
           name: "Search · Sort · Detail",
@@ -268,17 +253,12 @@ const COPY = {
       shotAfter: "Photo editor — AFTER (edited in-service)",
     },
     ops: {
-      h2: "I chose trust before growth.",
+      h2: "Getting the word out, and fixing what breaks.",
       cases: [
         {
           label: "COMMUNITY",
           title: "Promotion through game communities",
           body: "I shared the service in game communities and built credibility with content secured on creator permission.",
-        },
-        {
-          label: "TRUST DECISION",
-          title: "I didn't register an open chat",
-          body: "Signup runs on Naver, Kakao, and Discord OAuth, so I judged that traffic from channels of unclear origin could raise personal-data trust concerns. Unlike Sky Planner, I deliberately skipped open-chat promotion, and membership grows more slowly for it.",
         },
         {
           label: "BUG FIX",
@@ -308,8 +288,8 @@ const COPY = {
         },
         {
           n: "02",
-          title: "Sometimes trust comes before accessibility",
-          body: "I gave up open-chat promotion, which would have grown it faster. In a service that collects personal data, I judged that trust in the traffic source matters more than growth speed.",
+          title: "I made attribution structural, not a policy",
+          body: "Every piece of content carries the creator, original link, and platform as required fields, so nothing without a source can even be registered. Trust has to be enforced by the system, not promised.",
         },
         {
           n: "03",
@@ -484,9 +464,10 @@ export default async function HeartopiaArchivePage({
           </div>
         </div>
 
-        <Reveal delay={0.1}>
-          <Placeholder label={c.solution.shot} img={SHOTS.solution} className="mt-8" />
-        </Reveal>
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Placeholder label={c.solution.shot} img={SHOTS.solution} className="self-start" />
+          <Placeholder label={c.solution.shot2} img={SHOTS.solutionFavorites} className="self-start" />
+        </div>
       </section>
 
       {/* 04 — Creator Rights (dark) */}
@@ -557,7 +538,7 @@ export default async function HeartopiaArchivePage({
 
           <div className="mt-8 flex flex-col gap-3 sm:mt-12">
             {c.features.items.map((f, i) => {
-              const featShot = [SHOTS.featOutfit, undefined, SHOTS.featSearch][i];
+              const featShot = [SHOTS.featOutfit, SHOTS.featSearch][i];
               return (
               <Reveal
                 key={f.name}

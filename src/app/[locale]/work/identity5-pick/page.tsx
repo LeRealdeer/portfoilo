@@ -744,14 +744,15 @@ export default async function Identity5PickPage({
                     <div key={it.name} className="flex flex-col rounded-xl border border-line-2 px-4 py-4">
                       <div className="font-mono text-[12.5px] font-semibold tracking-[.02em]">{it.name}</div>
                       <p className="mt-2 text-[13.5px] leading-[1.5] text-ink-70">{it.desc}</p>
-                      {ITEM_SHOTS[it.name] && (
+                      {(ITEM_SHOTS[it.name] ?? []).map((s, si) => (
                         <Placeholder
+                          key={s.src}
                           variant="alt"
                           label={it.name}
-                          img={ITEM_SHOTS[it.name]}
-                          className="mt-3.5"
+                          img={s}
+                          className={si === 0 ? "mt-3.5" : "mt-2.5"}
                         />
-                      )}
+                      ))}
                     </div>
                   ))}
                 </div>
@@ -759,10 +760,12 @@ export default async function Identity5PickPage({
             ))}
           </div>
 
-          <p className="mt-9 max-w-[640px] text-[14px] leading-[1.55] text-muted">{c.solution.vn}</p>
-
-          <Reveal delay={0.1}>
-            <Placeholder variant="alt" label={c.solution.vnShot} img={VN_SHOT} className="mt-5" />
+          <Reveal delay={0.1} className="mt-9 rounded-xl border border-line-2 bg-paper px-5 py-5 sm:mt-12">
+            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">
+              NOT A TOOL — CONTENT
+            </div>
+            <p className="mt-2 max-w-[640px] text-[13.5px] leading-[1.55] text-ink-70">{c.solution.vn}</p>
+            <Placeholder variant="alt" label={c.solution.vnShot} img={VN_SHOT} className="mt-4" />
           </Reveal>
         </div>
       </section>

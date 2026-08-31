@@ -6,6 +6,7 @@ import creator from "../../../../../public/main_heartopia_creator.png";
 import detail from "../../../../../public/main_heartopia_detail.png";
 import cafePosts from "../../../../../public/heartopia/cafe-posts.png";
 import archiveGrid from "../../../../../public/heartopia/archive-grid.png";
+import favorites from "../../../../../public/heartopia/favorites.png";
 import cafeAttribution from "../../../../../public/heartopia/cafe-attribution.png";
 import outfitsPopular from "../../../../../public/heartopia/outfits-popular.png";
 import photoEditor from "../../../../../public/heartopia/photo-editor.png";
@@ -17,7 +18,8 @@ function shot(img: StaticImageData, mw?: number): Shot {
 export const HERO_SHOT = shot(home, 1180);
 
 export const SHOTS = {
-  solution: shot(archiveGrid, 900),
+  solution: shot(archiveGrid, 620),
+  solutionFavorites: shot(favorites, 620),
   rightsCreator: shot(creator, 720),
   rightsAttribution: shot(cafeAttribution, 480),
   featOutfit: shot(outfitsPopular, 820),
