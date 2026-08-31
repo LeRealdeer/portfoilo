@@ -370,7 +370,7 @@ export default async function HeartopiaArchivePage({
         )}
 
         <div className="mt-9 flex max-[860px]:flex-col gap-7 sm:gap-16 items-start border-t border-line-2 pt-6 sm:mt-14">
-          <div className="grid flex-[1.6] grid-cols-2 gap-x-7 gap-y-5">
+          <div className="grid flex-[1.6] grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-7">
             {project.meta.map((m) => (
               <div key={m.label}>
                 <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
@@ -386,7 +386,7 @@ export default async function HeartopiaArchivePage({
               </div>
             ))}
           </div>
-          <div className="flex flex-1 gap-8 sm:gap-10">
+          <div className="flex flex-1 gap-5 sm:gap-10">
             {heroMetrics.map((m) => (
               <Stat
                 key={m.label}

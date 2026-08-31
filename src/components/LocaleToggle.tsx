@@ -15,7 +15,7 @@ export function LocaleToggle({ locale }: { locale: Locale }) {
   };
 
   return (
-    <span className="flex items-center gap-1.5 border-l border-line-2 pl-5 font-medium text-muted-light">
+    <span className="flex items-center gap-1.5 border-l border-line-2 pl-3 font-medium text-muted-light sm:pl-5">
       {SUPPORTED_LOCALES.map((l, i) => (
         <span key={l} className="contents">
           {i > 0 && <span aria-hidden>/</span>}

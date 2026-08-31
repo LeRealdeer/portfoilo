@@ -37,10 +37,10 @@ export const SHOTS = {
   use1: shot(heightExample1, 360),
   use2: shot(heightExample2, 360),
   use3: shot(heightExample3, 360),
-  evo: shot(skyHero, 960),
-  ops: shot(tsArchiveDetail, 760),
+  evo: shot(skyHero),
+  ops: shot(tsArchiveDetail),
   data: shot(gaUsersNov, 980),
-  fb: shot(survey2, 980),
+  fb: shot(survey2),
   growth1: shot(cafeBestTip, 380),
   growth2: shot(openchat, 380),
   growth3: shot(overseasAdminPermission, 380),
@@ -48,15 +48,15 @@ export const SHOTS = {
   events2: shot(cafeEventTreasure, 520),
   o2o1: shot(offlineBooth, 520),
   o2o2: shot(offlineFlightResult, 360),
-  learn: shot(sheetMusicWorkspace, 560),
+  learn: shot(sheetMusicWorkspace),
 } satisfies Record<string, Shot>;
 
 export const FEATURE_SHOTS: Shot[] = [
-  shot(heightChecker, 720),
-  shot(candleHowto, 480),
-  shot(tsArchive, 640),
-  shot(personalityTest, 620),
-  shot(seasonEncyclopedia, 700),
+  shot(heightChecker),
+  shot(candleHowto),
+  shot(tsArchive),
+  shot(personalityTest),
+  shot(seasonEncyclopedia),
 ];
 
 /** personality-test viral spread — shown as an extra gallery under FEATURE 04 */

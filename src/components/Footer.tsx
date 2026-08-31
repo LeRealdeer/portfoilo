@@ -16,7 +16,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </Reveal>
 
         <div className="mt-9 flex flex-wrap gap-6 border-t border-line-2 pt-7 sm:mt-14 sm:gap-16">
-          <div className="min-w-[180px] flex-1">
+          <div className="min-w-[150px] flex-1">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               EMAIL
             </div>
@@ -24,7 +24,7 @@ export function Footer({ locale }: { locale: Locale }) {
               {profile.contact.email}
             </a>
           </div>
-          <div className="min-w-[180px] flex-1">
+          <div className="min-w-[150px] flex-1">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               GITHUB
             </div>
@@ -32,7 +32,7 @@ export function Footer({ locale }: { locale: Locale }) {
               {profile.contact.github} ↗
             </a>
           </div>
-          <div className="min-w-[220px] flex-[1.4]">
+          <div className="min-w-[190px] flex-[1.4]">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               LIVE PROJECTS
             </div>

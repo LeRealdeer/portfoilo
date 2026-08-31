@@ -570,7 +570,7 @@ export default async function Identity5PickPage({
         )}
 
         <div className="mt-10 flex max-[860px]:flex-col gap-8 sm:gap-16 items-start border-t border-line-2 pt-7 sm:mt-16">
-          <div className="grid flex-[1.6] grid-cols-2 gap-x-7 gap-y-6">
+          <div className="grid flex-[1.6] grid-cols-2 gap-x-5 gap-y-6 sm:gap-x-7">
             {project.meta.map((m) => (
               <div key={m.label}>
                 <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
@@ -586,7 +586,7 @@ export default async function Identity5PickPage({
               </div>
             ))}
           </div>
-          <div className="flex flex-1 gap-8 sm:gap-10">
+          <div className="flex flex-1 gap-5 sm:gap-10">
             {heroMetrics.map((m) => (
               <Stat
                 key={m.label}

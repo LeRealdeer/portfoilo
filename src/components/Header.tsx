@@ -18,10 +18,10 @@ export function Header({
   const serviceLabel = serviceUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
-    <header className="sticky top-0 z-20 flex items-center gap-8 border-b border-line-3 bg-bg/88 px-5 py-5 backdrop-blur-md sm:px-9">
+    <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-line-3 bg-bg/88 px-5 py-4 backdrop-blur-md sm:gap-8 sm:px-9 sm:py-5">
       <Link
         href={home}
-        className="flex-none whitespace-nowrap font-archivo text-[17px] font-extrabold tracking-[-.03em] text-ink hover:text-ink"
+        className="flex-none whitespace-nowrap font-archivo text-[16px] font-extrabold tracking-[-.03em] text-ink hover:text-ink sm:text-[17px]"
       >
         {profile.name}
       </Link>
@@ -45,7 +45,7 @@ export function Header({
 
       <span className="flex-1" />
 
-      <nav className="flex flex-none items-center gap-6 whitespace-nowrap font-archivo text-[12.5px] font-semibold tracking-[.09em]">
+      <nav className="flex flex-none items-center gap-3.5 whitespace-nowrap font-archivo text-[11.5px] font-semibold tracking-[.06em] sm:gap-6 sm:text-[12.5px] sm:tracking-[.09em]">
         <Link href={`${home}#work`}>WORK</Link>
         <Link href={`${home}#experience`} className="hidden sm:inline">
           EXPERIENCE

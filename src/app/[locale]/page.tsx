@@ -186,13 +186,13 @@ export default async function HomePage({
                 img={CARD_SHOTS.identity5.main}
                 className=""
               />
-              <div className="mt-4 grid grid-cols-3 gap-4">
+              <div className="mt-3 grid grid-cols-3 gap-2.5 sm:mt-4 sm:gap-4">
                 {CARD_SHOTS.identity5.thumbs.map((thumb) => (
                   <Placeholder
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(120px,15vw,190px)] text-[11px]"
+                    className="h-[clamp(82px,20vw,190px)] text-[11px]"
                   />
                 ))}
               </div>
@@ -275,13 +275,13 @@ export default async function HomePage({
                 img={CARD_SHOTS.heartopia.main}
                 className=""
               />
-              <div className="mt-4 grid grid-cols-2 gap-4">
+              <div className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-4 sm:gap-4">
                 {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
                   <Placeholder
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(130px,16vw,200px)] text-[11px]"
+                    className="h-[clamp(110px,26vw,200px)] text-[11px]"
                   />
                 ))}
               </div>
