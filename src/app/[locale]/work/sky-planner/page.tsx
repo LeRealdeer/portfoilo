@@ -142,7 +142,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "성향 테스트", line: "홍보용 공유 콘텐츠 — Sky 크리쳐 성향 진단" },
         { tag: "05", name: "오래된 유랑", line: "영혼별 마지막 유랑 시점으로 '다음 유랑' 예측" },
         { tag: "06", name: "버스 노선표", line: "양초 파밍 모집용 노선표 — 터치·입력만으로 완성" },
-        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집 (유입은 적지만 운영 중)" },
+        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집 (옮겨올 이유를 못 만든 기능)" },
         { tag: "08", name: "시즌 대백과", line: "전 시즌 영혼·미복각까지 통합한 최대 조회수 기능" },
       ],
       shot: "홈 화면 — 8개 기능 카드",
@@ -324,9 +324,10 @@ const COPY: Record<Locale, Copy> = {
       h2: "채택은 완성도가 아니라 전환 이유가 결정합니다.",
       musicLabel: "악보 만들기",
       music:
-        "이미 커뮤니티가 표준으로 쓰는 앱이 있었고, 그 앱 개발자에게 직접 컨택해 악보 변환 키까지 받아 연동했습니다. 다만 유저가 익숙한 도구를 두고 옮겨올 만큼의 이유는 만들지 못해, 새로 유입되는 사용자는 많지 않습니다. 기능은 지금도 운영 중입니다.",
+        "커뮤니티가 이미 표준으로 쓰는 앱이 있어, 그 개발자에게 악보 변환 키를 받아 연동까지 했습니다. 하지만 익숙한 도구를 두고 옮겨올 이유를 만들지 못해 잘 쓰이지 않았습니다.",
       examLabel: "모의고사 시스템",
-      exam: "매달 문제를 만들어야 했고, 몇 달간 친구들에게 부탁하다 운영 부담으로 폐기했습니다.",
+      exam:
+        "매달 1일 새 문제를 올리며 정기적인 재방문을 만든 좋은 유입원이었습니다. 다만 매달 출제 부담이 커서 결국 그만뒀습니다.",
       shot: "악보 만들기 화면 — 사이트 최하단",
       quote:
         "기능을 만들기 전에 ‘유저가 지금 쓰는 것을 두고 옮겨올 이유가 있는가’를 먼저 확인합니다. 완성도보다 전환할 이유가 채택을 결정한다는 것을 배웠습니다.",
@@ -361,7 +362,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "Personality Test", line: "Shareable content for reach — a Sky-creature personality quiz" },
         { tag: "05", name: "Overdue Spirits", line: "Predicts the 'next return' from each spirit's last visit" },
         { tag: "06", name: "Bus Route Chart", line: "Route charts for candle-run groups — done with taps and typing" },
-        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players (low traffic, still live)" },
+        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players (never caught on)" },
         { tag: "08", name: "Season Encyclopedia", line: "Every season's spirits, un-returned ones included — the most-viewed feature" },
       ],
       shot: "Home screen — eight feature cards",
@@ -539,9 +540,10 @@ const COPY: Record<Locale, Copy> = {
       h2: "Adoption is decided by a reason to switch, not by polish.",
       musicLabel: "Sheet Music Maker",
       music:
-        "The community already had a standard app for this. I even contacted its developer and got a conversion key to integrate. I just never gave players enough reason to leave a tool they knew, so it draws few new users. The feature is still live.",
+        "The community already had a standard app for this, so I got a conversion key from its developer and integrated it. But I couldn't give players a reason to leave a tool they knew, so it never caught on.",
       examLabel: "Mock Exam System",
-      exam: "It needed new questions every month; after a few months of leaning on friends, I retired it under the operating load.",
+      exam:
+        "A new set on the 1st of every month made it a real draw, bringing people back on a regular cadence. But writing questions every month wore me down and I dropped it.",
       shot: "Sheet Music Maker screen — bottom of the site",
       quote:
         "Before building a feature I now check first: is there a reason for users to leave what they already use? I learned that a reason to switch, not polish, decides adoption.",
