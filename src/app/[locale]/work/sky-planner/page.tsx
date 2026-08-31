@@ -107,7 +107,7 @@ type Copy = {
   ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; uses: string[] };
   evo: { h2: string; lead: string; count: string; list: { tag: string; name: string; line: string }[]; shot: string };
   feat: { h2: string; lead: string; items: Feature[]; ptViralLabel: string; ptViral: string[] };
-  ops: { h2: string; migration: string; qa: string; sunset: string; shot: string };
+  ops: { h2: string; migration: string; qa: string; shot: string };
   data: { h2: string; gaLine: string; insightLabel: string; insights: { n: string; title: string; detail: string }[]; shot: string };
   fb: { h2: string; lead: string; reflected: string[]; notReflected: { req: string; why: string }[]; shot: string };
   growth: { h2: string; lead: string; channels: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
@@ -206,9 +206,9 @@ const COPY: Record<Locale, Copy> = {
         {
           n: "05",
           name: "시즌 대백과",
-          tag: "서버 장애를 계기로 재설계한 최대 조회수 기능",
+          tag: "유저 요청에서 출발한 최대 조회수 기능",
           problem:
-            "서버로 쓰던 AWS에 장애가 생겨 서버를 내렸고, 그 과정에서 유랑대백과 데이터가 사라졌습니다. 한편 Google 만족도 조사에서는 '시즌별로 영혼을 모아 보고 싶다'는 요청이 많았습니다.",
+            "Google 만족도 조사에서 가장 많았던 요청이 '시즌별로 영혼을 정리해 보고 싶다'였습니다. 마침 AWS 서버 장애로 유랑대백과 데이터가 유실되면서, 재구축과 함께 이 기능을 제대로 만들 기회가 생겼습니다.",
           solution:
             "Railway·Vercel로 이전하며 엔티티 구조를 새로 설계하고, 모든 시즌 영혼과 미복각 영혼까지 등록한 시즌 대백과를 만들었습니다.",
           iteration:
@@ -227,11 +227,9 @@ const COPY: Record<Locale, Copy> = {
     ops: {
       h2: "장애를 구조 개선의 기회로.",
       migration:
-        "서버로 쓰던 AWS EC2에 장애가 발생해 서버를 내리는 과정에서 데이터가 유실됐습니다. 이를 계기로 Railway·Vercel로 이전하고 엔티티 구조를 재설계했습니다.",
+        "'시즌별로 영혼을 정리해 보고 싶다'는 유저 요청이 꾸준했습니다. 마침 AWS EC2 서버 장애로 데이터가 유실되면서, 이를 기회로 Railway·Vercel로 이전하고 엔티티 구조를 새로 설계해 시즌 대백과를 만들었습니다.",
       qa:
         "자동 테스트 없이 직접 돌려보며 QA하고, 친구에게 어색한 부분을 짚어달라고 부탁했습니다. 영혼 등록 오류 등 운영 중 버그는 재현·수정·배포를 반복하며 처리했습니다.",
-      sunset:
-        "모의고사 시스템은 매달 문제를 만들어야 해 운영 부담이 커 폐기했습니다 — 만드는 비용보다 유지하는 비용을 기준으로 판단했습니다.",
       shot: "서버 이전 · 영혼 등록 관리자 화면",
     },
     data: {
@@ -241,7 +239,7 @@ const COPY: Record<Locale, Copy> = {
       insights: [
         {
           n: "INSIGHT 1",
-          title: "유저는 정보보다 플레이 보조 도구를 반복 사용합니다",
+          title: "유저는 플레이 보조 도구를 반복 사용합니다",
           detail: "양초 계산기 활성 1,977 · 키재기 활성 1,009 — 목적이 명확한 계산·비교 기능의 사용성이 높음",
         },
         {
@@ -426,9 +424,9 @@ const COPY: Record<Locale, Copy> = {
         {
           n: "05",
           name: "Season Encyclopedia",
-          tag: "Redesigned off a server incident — the most-viewed feature",
+          tag: "Started from a user request — the most-viewed feature",
           problem:
-            "The AWS server hit an outage, and taking it down lost the Traveling Spirits Archive data. Meanwhile the Google satisfaction survey had lots of requests to 'see all spirits grouped by season.'",
+            "The top request in the Google satisfaction survey was to 'see the spirits organized by season.' When an AWS outage then wiped the Traveling Spirits Archive data, the rebuild gave me the opening to build it properly.",
           solution:
             "Moving to Railway and Vercel, I redesigned the entity structure and built the Season Encyclopedia, registering every season's spirits including the ones never re-released.",
           iteration:
@@ -443,11 +441,9 @@ const COPY: Record<Locale, Copy> = {
     ops: {
       h2: "An incident, used as a chance to improve the structure.",
       migration:
-        "The AWS EC2 server hit an outage; bringing it down lost data. I used that as the moment to move to Railway and Vercel and redesign the entity structure.",
+        "Players kept asking to 'see the spirits organized by season.' When an AWS EC2 outage then lost data, I took it as the opening to move to Railway and Vercel, redesign the entity structure, and build the Season Encyclopedia.",
       qa:
         "No automated tests — I QA'd by running through it myself and asking friends to point out anything awkward. I handled live bugs like spirit-registration errors with a repeat cycle of reproduce, fix, deploy, recheck.",
-      sunset:
-        "I retired the mock-exam system — it needed new questions every month, and I judged the upkeep cost above the value of making them.",
       shot: "Server migration · spirit-registration admin screen",
     },
     data: {
@@ -457,7 +453,7 @@ const COPY: Record<Locale, Copy> = {
       insights: [
         {
           n: "INSIGHT 1",
-          title: "Players reach for play-assist tools repeatedly, not for information",
+          title: "Players use play-assist tools over and over",
           detail: "Candle Calculator 1,977 active · Height Checker 1,009 — features with a clear purpose get high usage",
         },
         {
@@ -811,12 +807,11 @@ export default async function SkyPlannerPage({
             <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
-          <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
             {(
               [
                 ["MIGRATION", c.ops.migration],
                 ["QA", c.ops.qa],
-                ["SUNSET", c.ops.sunset],
               ] as const
             ).map(([label, body]) => (
               <div key={label} className="rounded-xl border border-line-2 px-5 py-5">
