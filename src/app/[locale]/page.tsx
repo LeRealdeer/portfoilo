@@ -45,6 +45,25 @@ const COPY: Record<Locale, Record<string, string>> = {
   },
 };
 
+const CARD_SHOTS = {
+  sky: { src: "/main_skyplanner_home.png" },
+  identity5: {
+    src: "/main_identity5_home.png",
+    thumbs: [
+      { label: "CP MAP", src: "/main_identity5_cp.png" },
+      { label: "SKIN ARCHIVE", src: "/main_identity5_skin.png" },
+      { label: "TIER LIST", src: "/main_identity5_tierlist.png" },
+    ],
+  },
+  heartopia: {
+    src: "/main_heartopia_home.png",
+    thumbs: [
+      { label: "CREATOR PAGE", src: "/main_heartopia_creator.png" },
+      { label: "CONTENT DETAIL", src: "/main_heartopia_detail.png" },
+    ],
+  },
+};
+
 export default async function HomePage({
   params,
 }: {
@@ -134,6 +153,8 @@ export default async function HomePage({
             <Placeholder
               href={`/${locale}/work/${sky.slug}`}
               label={sky.screenshotLabel}
+              src={CARD_SHOTS.sky.src}
+              fit="cover"
               className="mt-5 h-[clamp(240px,42vw,560px)] block"
             />
           </Reveal>
@@ -180,11 +201,19 @@ export default async function HomePage({
               <Placeholder
                 href={`/${locale}/work/${identity5.slug}`}
                 label={identity5.screenshotLabel}
+                src={CARD_SHOTS.identity5.src}
+                fit="cover"
                 className="h-[clamp(200px,26vw,360px)] flex"
               />
               <div className="mt-4 flex gap-4">
-                {identity5.thumbLabels.map((label) => (
-                  <Placeholder key={label} label={label} className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]" />
+                {CARD_SHOTS.identity5.thumbs.map((thumb) => (
+                  <Placeholder
+                    key={thumb.label}
+                    label={thumb.label}
+                    src={thumb.src}
+                    fit="cover"
+                    className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]"
+                  />
                 ))}
               </div>
             </Reveal>
@@ -263,11 +292,19 @@ export default async function HomePage({
               <Placeholder
                 href={`/${locale}/work/${heartopia.slug}`}
                 label={heartopia.screenshotLabel}
+                src={CARD_SHOTS.heartopia.src}
+                fit="cover"
                 className="h-[clamp(200px,26vw,360px)] flex"
               />
               <div className="mt-4 flex gap-4">
-                {heartopia.thumbLabels.map((label) => (
-                  <Placeholder key={label} label={label} className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]" />
+                {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
+                  <Placeholder
+                    key={thumb.label}
+                    label={thumb.label}
+                    src={thumb.src}
+                    fit="cover"
+                    className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]"
+                  />
                 ))}
               </div>
             </Reveal>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 const VARIANT_BG: Record<"light" | "alt" | "dark", string> = {
@@ -20,17 +21,52 @@ const VARIANT_TEXT: Record<"light" | "alt" | "dark", string> = {
   dark: "text-[rgba(244,241,234,.45)]",
 };
 
+const IMAGE_BG: Record<"light" | "alt" | "dark", string> = {
+  light: "bg-[#efece6]",
+  alt: "bg-[#e9e5dd]",
+  dark: "bg-[#1f2023]",
+};
+
 export function Placeholder({
   label,
   variant = "light",
   className = "h-[240px]",
   href,
+  src,
+  fit = "cover",
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
   className?: string;
   href?: string;
+  /** When set, renders the real image instead of the hatched placeholder. */
+  src?: string;
+  fit?: "cover" | "contain";
 }) {
+  if (src) {
+    const alt = typeof label === "string" ? label : "";
+    const image = (
+      <span
+        className={`relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 1200px"
+          className={fit === "contain" ? "object-contain" : "object-cover object-top"}
+        />
+      </span>
+    );
+    return href ? (
+      <Link href={href} className="group block">
+        {image}
+      </Link>
+    ) : (
+      image
+    );
+  }
+
   const classes = `flex items-center justify-center rounded-xl border ${VARIANT_BG[variant]} ${VARIANT_BORDER[variant]} ${VARIANT_TEXT[variant]} px-3 text-center font-mono text-[11.5px] tracking-[.08em] transition-colors duration-300 whitespace-pre-line ${className}`;
 
   if (href) {
