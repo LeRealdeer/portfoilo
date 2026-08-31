@@ -45,6 +45,7 @@ export function Placeholder({
   className = "h-[240px]",
   href,
   img,
+  crop = false,
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
@@ -52,13 +53,16 @@ export function Placeholder({
   href?: string;
   /** when set, renders the real screenshot at its natural aspect ratio */
   img?: Shot;
+  /** in a fixed-height row, crop to fill instead of letterboxing the whole shot */
+  crop?: boolean;
 }) {
   if (img) {
     const alt = typeof label === "string" ? label : "";
     let content: ReactNode;
 
     if (HAS_HEIGHT.test(className)) {
-      // gallery cell: fill a fixed-height box so a row of shots lines up
+      // gallery cell: a fixed-height box so a row of shots lines up.
+      // default keeps the whole screenshot (contain); crop only on request.
       content = (
         <span
           className={`relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
@@ -68,7 +72,7 @@ export function Placeholder({
             alt={alt}
             fill
             sizes="(max-width: 768px) 100vw, 460px"
-            className="object-cover object-top"
+            className={crop ? "object-cover object-top" : "object-contain"}
           />
         </span>
       );

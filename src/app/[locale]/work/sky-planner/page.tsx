@@ -72,7 +72,7 @@ const SHOTS = {
   events1: { src: `${S}/cafe-event-flirting.png`, w: 843, h: 703, mw: 520 },
   events2: { src: `${S}/cafe-event-treasure.png`, w: 949, h: 787, mw: 520 },
   o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 520 },
-  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 360 },
+  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1597, mw: 360 },
   learn: { src: `${S}/sheet-music-workspace.png`, w: 1313, h: 1043, mw: 560 },
 } satisfies Record<string, Shot>;
 

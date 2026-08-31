@@ -56,7 +56,7 @@ const CARD_SHOTS = {
     ],
   },
   heartopia: {
-    main: { src: "/main_heartopia_home.png", w: 2535, h: 1261, mw: 760 },
+    main: { src: "/main_heartopia_home.png", w: 1720, h: 1222, mw: 760 },
     thumbs: [
       { label: "CREATOR PAGE", src: "/main_heartopia_creator.png", w: 2538, h: 1261, mw: 380 },
       { label: "CONTENT DETAIL", src: "/main_heartopia_detail.png", w: 4416, h: 2122, mw: 380 },
