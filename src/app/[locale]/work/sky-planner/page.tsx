@@ -174,7 +174,7 @@ const COPY: Record<Locale, Copy> = {
           name: "시즌 대백과",
           tag: "서버 장애를 계기로 재설계한 최대 조회수 기능",
           problem:
-            "서버로 쓰던 AWS가 암호화폐 채굴 목적으로 해킹당했고, 서버를 내리는 과정에서 유랑대백과 데이터가 사라졌습니다. 한편 Google 만족도 조사에서는 '시즌별로 영혼을 모아 보고 싶다'는 요청이 많았습니다.",
+            "서버로 쓰던 AWS가 외부 침해로 다운됐고, 서버를 내리는 과정에서 유랑대백과 데이터가 사라졌습니다. 한편 Google 만족도 조사에서는 '시즌별로 영혼을 모아 보고 싶다'는 요청이 많았습니다.",
           solution:
             "Railway·Vercel로 이전하며 엔티티 구조를 새로 설계하고, 모든 시즌 영혼과 미복각 영혼까지 등록한 시즌 대백과를 만들었습니다.",
           iteration:
@@ -187,7 +187,7 @@ const COPY: Record<Locale, Copy> = {
     ops: {
       h2: "장애를 구조 개선의 기회로.",
       migration:
-        "서버로 쓰던 AWS EC2가 암호화폐 채굴 목적으로 해킹당해 서버를 내리며 데이터가 유실됐습니다. 이를 계기로 Railway·Vercel로 이전하고 엔티티 구조를 재설계했습니다.",
+        "서버로 쓰던 AWS EC2가 외부 침해로 다운돼 서버를 내리며 데이터가 유실됐습니다. 이를 계기로 Railway·Vercel로 이전하고 엔티티 구조를 재설계했습니다.",
       qa:
         "자동 테스트 없이 직접 돌려보며 QA하고, 친구에게 어색한 부분을 짚어달라고 부탁했습니다. 영혼 등록 오류 등 운영 중 버그는 재현·수정·배포를 반복하며 처리했습니다.",
       sunset:
@@ -389,7 +389,7 @@ const COPY: Record<Locale, Copy> = {
           name: "Season Encyclopedia",
           tag: "Redesigned off a server incident — the most-viewed feature",
           problem:
-            "The AWS server was hacked for crypto mining, and taking it down lost the Traveling Spirits Archive data. Meanwhile the Google satisfaction survey had lots of requests to 'see all spirits grouped by season.'",
+            "The AWS server went down after an external breach, and taking it down lost the Traveling Spirits Archive data. Meanwhile the Google satisfaction survey had lots of requests to 'see all spirits grouped by season.'",
           solution:
             "Moving to Railway and Vercel, I redesigned the entity structure and built the Season Encyclopedia, registering every season's spirits including the ones never re-released.",
           iteration:
@@ -402,7 +402,7 @@ const COPY: Record<Locale, Copy> = {
     ops: {
       h2: "An incident, used as a chance to improve the structure.",
       migration:
-        "The AWS EC2 server was hacked for crypto mining; taking it down lost data. I used that as the moment to move to Railway and Vercel and redesign the entity structure.",
+        "The AWS EC2 server went down after an external breach; taking it down lost data. I used that as the moment to move to Railway and Vercel and redesign the entity structure.",
       qa:
         "No automated tests — I QA'd by running through it myself and asking friends to point out anything awkward. I handled live bugs like spirit-registration errors with a repeat cycle of reproduce, fix, deploy, recheck.",
       sunset:
