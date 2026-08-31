@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
+import { HERO_SHOT, SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -64,7 +65,7 @@ const COPY = {
       lead:
         "두근두근타운은 유저가 직접 만든 의상·가구 같은 커스터마이징 콘텐츠 공유가 활발한 게임입니다. 하지만 그 콘텐츠는 Xiaohongshu, Discord, 개인 SNS에 흩어져 있어, 한국 유저가 원하는 것을 찾으려면 매번 같은 과정을 반복해야 했습니다.",
       note: "“다시 찾기”가 매번 처음부터였습니다 — 저장해둔 이미지에는 출처가 남지 않았기 때문입니다.",
-      shot: "Xiaohongshu 검색 화면 / 흩어진 콘텐츠 예시",
+      shot: "커뮤니티에 흩어져 있던 유저 제작 콘텐츠",
     },
     problem: {
       h2: "문제를 세 가지로 좁혔습니다.",
@@ -92,8 +93,8 @@ const COPY = {
         { label: "RESULT", solution: true, body: "Xiaohongshu 작가 세 명에게 실제 사용 허락을 확보해, 원작자·원본 링크를 고정한 채 콘텐츠를 게시 중입니다." },
       ],
       quote: "허가는 기능이 아니라 관계의 결과였습니다.",
-      shotDm: "CREATOR PERMISSION DM (개인정보 제거 후 삽입)",
-      shotAttr: "콘텐츠 출처 표기 UI",
+      shotDm: "크리에이터 페이지 — 원작자별 콘텐츠 · 원본 링크",
+      shotAttr: "커뮤니티 게시글의 원작자 출처 표기",
       steps: [
         { n: "01", label: "창작자 확인", note: "원작자와 원본 게시물을 특정" },
         { n: "02", label: "연락 · 목적 설명", note: "비상업 · 광고 없음을 직접 안내" },
@@ -110,7 +111,7 @@ const COPY = {
           name: "의상 아카이브",
           problem: "유저 제작 의상 콘텐츠가 여러 플랫폼에 흩어져, 원하는 스타일을 비교하기 어려웠습니다.",
           solution: "카테고리·태그·상세 페이지를 갖춘 아카이브로 옮겨, 한곳에서 탐색·비교하도록 했습니다.",
-          shot: "의상 아카이브 목록 · 상세",
+          shot: "의상 아카이브 — 인기순 정렬",
         },
         {
           name: "가구 아카이브",
@@ -122,7 +123,7 @@ const COPY = {
           name: "검색 · 분류 · 상세",
           problem: "콘텐츠가 늘수록 원하는 것을 찾는 비용이 커집니다.",
           solution: "검색과 분류, 원작자·출처가 고정된 상세 페이지로 탐색 비용이 늘지 않게 설계했습니다.",
-          shot: "검색 · 필터 UI",
+          shot: "콘텐츠 상세 — 원작자 · 원본 링크 고정",
         },
       ],
     },
@@ -154,7 +155,7 @@ const COPY = {
           body: "일부 환경에서 콘텐츠 이미지가 표시되지 않아, 이미지 처리·로딩 흐름을 점검하고 재현·수정·배포 후 재확인 사이클로 해결했습니다.",
         },
       ],
-      shot: "커뮤니티 홍보 글 · OAuth 로그인 화면",
+      shot: "게임 커뮤니티에 올린 아카이브 홍보 글",
     },
     metrics: {
       h2: "규모가 아니라 신뢰의 신호입니다.",
@@ -195,7 +196,7 @@ const COPY = {
       lead:
         "Heartopia has an active culture of sharing user-made customization content like outfits and furniture. But that content lives scattered across Xiaohongshu, Discord, and personal social media, so a Korean player had to repeat the same process every time they wanted to find something.",
       note: "“Search again” started from scratch every time — the saved image kept no record of where it came from.",
-      shot: "Xiaohongshu search screen / examples of scattered content",
+      shot: "User-made content scattered across the community",
     },
     problem: {
       h2: "I narrowed it to three problems.",
@@ -223,8 +224,8 @@ const COPY = {
         { label: "RESULT", solution: true, body: "I secured actual permission from three Xiaohongshu creators, and I post their content with the creator and original link pinned." },
       ],
       quote: "Permission wasn't a feature — it was the result of a relationship.",
-      shotDm: "Creator permission DM (inserted after removing personal info)",
-      shotAttr: "Content attribution UI",
+      shotDm: "Creator page — content and original links by creator",
+      shotAttr: "Source credit shown in the community post",
       steps: [
         { n: "01", label: "Identify the creator", note: "Pin down the original creator and post" },
         { n: "02", label: "Contact · explain purpose", note: "State non-commercial · no ads directly" },
@@ -241,7 +242,7 @@ const COPY = {
           name: "Outfit Archive",
           problem: "User-made outfit content was scattered across platforms, making styles hard to compare.",
           solution: "Moved into an archive with categories, tags, and detail pages so you can browse and compare in one place.",
-          shot: "Outfit archive list · detail",
+          shot: "Outfit archive — sorted by popularity",
         },
         {
           name: "Furniture Archive",
@@ -253,7 +254,7 @@ const COPY = {
           name: "Search · Sort · Detail",
           problem: "The more content there is, the more it costs to find what you want.",
           solution: "Designed search, sorting, and detail pages with creator and source pinned so the cost of finding doesn't grow.",
-          shot: "Search · filter UI",
+          shot: "Content detail — creator and original link pinned",
         },
       ],
     },
@@ -285,7 +286,7 @@ const COPY = {
           body: "Content images weren't showing in some environments, so I traced the image processing and loading flow and fixed it with a reproduce–fix–deploy–reverify cycle.",
         },
       ],
-      shot: "Community promo post · OAuth login screen",
+      shot: "Archive promo posts in the game community",
     },
     metrics: {
       h2: "Not scale — a signal of trust.",
@@ -420,10 +421,7 @@ export default async function HeartopiaArchivePage({
 
       <div className="px-5 sm:px-9">
         <Reveal>
-          <Placeholder
-            label={project.screenshotLabel}
-            className="mx-auto h-[clamp(220px,42vw,560px)] max-w-[1440px]"
-          />
+          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
         </Reveal>
       </div>
 
@@ -491,7 +489,7 @@ export default async function HeartopiaArchivePage({
         </div>
 
         <Reveal delay={0.1}>
-          <Placeholder label={c.solution.shot} className="mt-8 h-[clamp(160px,20vw,280px)]" />
+          <Placeholder label={c.solution.shot} img={SHOTS.solution} className="mt-8" />
         </Reveal>
       </section>
 
@@ -528,12 +526,8 @@ export default async function HeartopiaArchivePage({
               </p>
             </Reveal>
             <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
-              <Placeholder
-                variant="dark"
-                label={c.rights.shotDm}
-                className="h-[clamp(190px,24vw,320px)]"
-              />
-              <Placeholder variant="dark" label={c.rights.shotAttr} className="h-[clamp(120px,15vw,190px)]" />
+              <Placeholder variant="dark" label={c.rights.shotDm} img={SHOTS.rightsCreator} />
+              <Placeholder variant="dark" label={c.rights.shotAttr} img={SHOTS.rightsAttribution} />
             </Reveal>
           </div>
 
@@ -566,7 +560,9 @@ export default async function HeartopiaArchivePage({
           <p className={LEAD}>{c.features.lead}</p>
 
           <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {c.features.items.map((f, i) => (
+            {c.features.items.map((f, i) => {
+              const featShot = [SHOTS.featOutfit, undefined, SHOTS.featSearch][i];
+              return (
               <Reveal
                 key={f.name}
                 delay={i * 0.04}
@@ -587,9 +583,10 @@ export default async function HeartopiaArchivePage({
                     <p className="mt-1.5 text-[13.5px] leading-[1.5] text-ink-70">{f.solution}</p>
                   </div>
                 </div>
-                <Placeholder label={f.shot} className="mt-3 h-[clamp(110px,13vw,170px)] text-[11px]" />
+                <Placeholder label={f.shot} img={featShot} className="mt-3" />
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -623,8 +620,12 @@ export default async function HeartopiaArchivePage({
         </div>
 
         <div className="mt-6 flex max-[560px]:flex-col gap-4">
-          <Placeholder label={c.editor.shotBefore} className="h-[clamp(150px,18vw,230px)] flex-1" />
-          <Placeholder label={c.editor.shotAfter} className="h-[clamp(150px,18vw,230px)] flex-1" />
+          <Placeholder label={c.editor.shotBefore} className="h-[clamp(180px,22vw,280px)] flex-1" />
+          <Placeholder
+            label={c.editor.shotAfter}
+            img={SHOTS.editorAfter}
+            className="h-[clamp(180px,22vw,280px)] flex-1"
+          />
         </div>
       </section>
 
@@ -655,7 +656,7 @@ export default async function HeartopiaArchivePage({
           </div>
 
           <Reveal delay={0.1}>
-            <Placeholder variant="alt" label={c.ops.shot} className="mt-8 h-[clamp(150px,18vw,240px)]" />
+            <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="mt-8" />
           </Reveal>
         </div>
       </section>
