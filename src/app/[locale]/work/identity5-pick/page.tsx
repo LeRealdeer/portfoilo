@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
-import { HERO_SHOT, VN_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
+import { HERO_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -62,10 +62,6 @@ const COPY = {
         { behavior: "보유 스킨 정리·인증", friction: "무엇을 갖고 무엇이 없는지, 한국어로 한곳에 정리된 곳이 없습니다." },
         { behavior: "듀오·파티 모집", friction: "모집글이 자유 서술이라 조건이 누락되고 댓글로 되묻게 됩니다." },
       ],
-      quote:
-        "경쟁 상대는 다른 팬 사이트가 아니라 “포토샵으로 직접 만들기”와 “그냥 안 만들고 말기”였습니다. 모든 판단 기준을 제작 비용을 0에 가깝게 만드는 데 맞췄습니다.",
-      shot1: "커뮤니티 게시글 — 손으로 만든 순위표·티어표",
-      shot2: "흩어진 스킨 정리글 · 듀오 모집글",
     },
     solution: {
       h2: "탐색하고, 만들고, 모으고, 공유합니다.",
@@ -92,10 +88,10 @@ const COPY = {
           en: "Create",
           line: "캐릭터 자료를 준비하지 않아도 제작이 시작되게.",
           items: [
-            { name: "Character Sort", desc: "두 명씩 비교해 최애 순위를 만드는 랭킹 도구입니다. “잘 모르겠어요”는 공동 순위로 묶고, 진행률은 매 선택마다 재계산합니다." },
             { name: "Tier List", desc: "캐릭터 이미지가 이미 들어 있는 드래그 티어표입니다. 프리셋 주제 24종을 제공하고, 티어 이름·색·개수를 직접 바꿀 수 있습니다." },
             { name: "CP Chart", desc: "캔버스에 캐릭터를 놓고 관계선을 잇습니다. 캐릭터를 옮기면 선이 따라오고, 겹치면 자동으로 우회합니다." },
-            { name: "Skin Board", desc: "도감에서 스킨을 골라 위시리스트·복각 요청 표를 만듭니다. 유저의 위시리스트가 곧 커뮤니티 여론 데이터가 됩니다." },
+            { name: "Skin Board", desc: "도감에서 스킨을 골라 위시리스트·복각 요청 표를 만듭니다." },
+            { name: "Visual Novel", desc: "선택지로 진행하는 5~8분짜리 웹 비주얼 노벨입니다. 엔진과 스토리 데이터를 분리하고 세 언어의 분기 판정을 한 곳에 모아, 비개발자도 새 편을 추가할 수 있게 만들었습니다." },
           ],
         },
         {
@@ -103,7 +99,7 @@ const COPY = {
           en: "Collect",
           line: "구경에서 수집 관리로.",
           items: [
-            { name: "Skin Checklist", desc: "전체 스킨 격자에서 보유를 체크합니다. “진행 중인 상태”가 남아 스킨을 뽑을 때마다 다시 오는, 재방문 주기가 가장 짧은 기능입니다." },
+            { name: "Skin Checklist", desc: "전체 스킨 격자에서 보유를 체크합니다. 체크 상태가 브라우저에 남아, 새 스킨을 얻으면 이어서 갱신할 수 있습니다." },
           ],
         },
         {
@@ -111,14 +107,11 @@ const COPY = {
           en: "Share",
           line: "결과물이 곧 콘텐츠, 유통은 커뮤니티에서.",
           items: [
-            { name: "Duo Card", desc: "모집 조건을 필수 항목이 고정된 카드로 만듭니다. 개인정보가 섞이는 폼이라 진행 상황을 저장하지 않는 유일한 기능입니다." },
+            { name: "Character Sort", desc: "두 명씩 비교해 최애 순위를 만드는 랭킹 도구입니다. “잘 모르겠어요”는 공동 순위로 묶고, 진행률은 매 선택마다 재계산합니다. 결과는 이미지로 저장해 커뮤니티에 공유합니다." },
+            { name: "Duo Card", desc: "자기 취향에 맞는 듀오를 구하려고 만드는 듀오 구인표입니다. 모집 조건을 필수 항목이 고정된 카드 형태로 정리합니다." },
           ],
         },
       ],
-      vn:
-        "연애 시뮬레이터(5~8분 웹 비주얼 노벨)는 순전히 재미를 위한 공유용 콘텐츠입니다. 유저가 결과를 커뮤니티에 공유하고, 재미있으니 또 퍼지면서 사이트가 자연스럽게 멀리 확산되도록 만들었습니다. 엔진과 콘텐츠를 분리하고 세 언어의 판정 로직을 한 곳에 고정해, 비개발자도 새 편을 계속 추가할 수 있습니다.",
-      shot: "홈 화면 — 기능 카드 8종",
-      vnShot: "연애 시뮬레이터 — 웹 비주얼 노벨",
     },
     data: {
       h2: "확보가 아니라 운영을 설계했습니다.",
@@ -128,14 +121,14 @@ const COPY = {
         { n: "01", label: "데이터 확보", note: "Fandom Wiki의 SS·S·A 등급 의상 카테고리 전량" },
         { n: "02", label: "API 수집", note: "MediaWiki API로 continuation 끝까지 순회 · 857건 확보" },
         { n: "03", label: "정제", note: "캐릭터 매칭·이미지·등급 확정 → canonical JSON 842건" },
-        { n: "04", label: "한국어 검수", note: "사람이 확정한 명칭·근거·신뢰도 상태" },
+        { n: "04", label: "한국어명 변환·검수", note: "영문명을 한국어로 변환하고 사람이 확인·확정" },
         { n: "05", label: "공개 기준", note: "검수를 통과한 스킨만 서비스에 노출" },
       ],
       layerLabel: "수집 → 정제 → 공개의 3단 분리",
       layers: [
         ["원본 수집", "matched.json", "위키 스크랩 그대로 · 파이프라인 내부"],
         ["정제 (canonical)", "canonical.json · 842건", "캐릭터 매칭 · 이미지 · 등급 확정"],
-        ["수동 검토 · 제외", "manual-review 10 · excluded 5", "이미지 불일치 · 메타/오프라인 한정판"],
+        ["수동 검토 · 제외", "manual-review · excluded", "메타 항목 · 오프라인 한정판 등"],
         ["운영 DB", "skins 테이블", "is_active AND is_published만 공개 API 노출"],
       ],
       layerNote:
@@ -145,29 +138,28 @@ const COPY = {
     qa: {
       h2: "자동화를 어디서 멈출지 정했습니다.",
       quote: "데이터를 가져오는 것보다, 신뢰 가능한 데이터를 제공하는 과정이 중요했습니다.",
-      whyLabel: "왜 한국어명이 문제인가",
+      whyLabel: "왜 사람 검수가 필요했나",
       why: [
-        "Fandom은 사용자 편집 위키라 한국어 필드가 있어도 그대로 신뢰할 수 없습니다",
-        "공식 한국어명은 출시 후 한참 뒤에 나오거나 안 나옵니다",
-        "캐릭터명·등급명(“희대의”)이 스킨명으로 잘못 들어가는 오염 패턴이 있습니다",
+        "팬덤 위키는 영문명만 제공해, 한국어명은 직접 변환해야 합니다",
+        "음차나 기계 번역만으로는 커뮤니티에서 실제로 쓰는 표기와 어긋납니다",
+        "그래서 변환한 이름을 사람이 확인하고 확정하는 단계를 뒀습니다",
       ],
-      pipeline: ["자동 후보 수집", "의심 후보 자동 플래그", "사람 검수", "공개 판정", "운영 DB 반영"],
+      pipeline: ["영문 데이터 수집", "한국어명 변환(초안)", "사람 확인·확정", "공개 판정", "운영 DB 반영"],
       criteria: (
         <>
-          수집 · 정제 · 의심 탐지까지는 기계가 하되, 공개 여부는 딱 하나의 함수가 결정합니다 —
-          <b className="text-ink-70"> reviewedByUser = true, 한국어명이 비어있지 않음, 상태 ≠ UNRESOLVED</b>.
-          자동 후보는 이 판정에 영향을 주지 못하고, 자동 수집기는 사람이 입력한 필드를 절대 덮어쓰지 않습니다.
+          수집과 초안 변환까지는 자동이지만, <b className="text-ink-70">공개는 사람이 한국어명을 확인하고 확정한 스킨만</b>{" "}
+          통과시킵니다. 자동 변환 결과가 그대로 공개되는 일은 없습니다.
         </>
       ),
       gate: [
-        ["수집됨 · 미검수", false],
-        ["자동 후보만 있음", false],
-        ["검수 완료 · UNRESOLVED", false],
-        ["검수 완료 + 한국어명 있음", true],
-        ["수동 직접 등록 (오프라인 한정판)", true],
+        ["수집됨 · 변환 전", false],
+        ["초안 변환만 됨", false],
+        ["검수 중 · 미확정", false],
+        ["검수 완료 · 한국어명 확정", true],
+        ["직접 등록 (오프라인 한정판)", true],
       ] as [string, boolean][],
       pub: { yes: "공개", no: "비공개" },
-      shot: "로컬 검수 웹 도구 — 스킨별 한국어명·근거·상태",
+      shot: "로컬 검수 웹 도구 — 스킨별 한국어명 확정",
     },
     fb: {
       h2: "출시 이후 사용자 의견을 반영하며 개선했습니다.",
@@ -180,9 +172,9 @@ const COPY = {
         },
         {
           tag: "REQUEST",
-          title: "티어 라벨 커스터마이징",
-          ask: "기본 티어명이 아니라 개인 기준으로 쓰고 싶다는 요청",
-          change: "티어 이름을 직접 수정하는 기능 추가",
+          title: "CP표 라벨 커스터마이징",
+          ask: "관계선 라벨을 기본값이 아니라 직접 쓰고 싶다는 요청",
+          change: "CP표 라벨을 직접 수정하는 기능 추가",
         },
         {
           tag: "ISSUE",
@@ -218,7 +210,7 @@ const COPY = {
         },
         {
           label: "바이럴 접점",
-          body: "CP표·캐릭터 소트 결과 PNG는 “내 결과 vs 너” 비교로, 연애 시뮬레이터는 순수 재미로 — 둘 다 커뮤니티 게시글의 소재가 되어 사이트를 퍼뜨립니다.",
+          body: "CP표·캐릭터 소트 결과 PNG는 “내 결과 vs 너” 비교로, 연애 시뮬레이터는 결과 공유로 — 커뮤니티 게시글의 소재가 됩니다.",
         },
       ],
     },
@@ -267,7 +259,7 @@ const COPY = {
         {
           n: "04",
           title: "맥락마다 다른 결정을 내렸습니다",
-          body: "대부분 기능은 진행 상황을 저장하지만 듀오표는 프라이버시 때문에 저장하지 않고, 대부분 다국어지만 내부 밈 콘텐츠는 한국어 고정, 탐색엔 검색을 제작 도구엔 검색을 넣지 않았습니다.",
+          body: "탐색(도감)엔 검색을 넣고 제작 도구엔 넣지 않았습니다. 가입 없이 바로 쓰게 하되 데이터 공개는 사람이 검수한 것만 — 편의와 신뢰가 부딪히는 지점마다 다르게 판단했습니다.",
         },
         {
           n: "05",
@@ -302,10 +294,6 @@ const COPY = {
         { behavior: "Tracking and showing owned skins", friction: "There's no single place, in Korean, for what you have and don't." },
         { behavior: "Recruiting for duos and parties", friction: "Recruitment posts are free-form, so conditions get dropped and people ask again in the comments." },
       ],
-      quote:
-        "The competition wasn't other fan sites — it was “make it yourself in Photoshop” and “just don't bother.” Every call was tuned to push the cost of making it close to zero.",
-      shot1: "Community posts — hand-made rankings and tier lists",
-      shot2: "Scattered skin-summary posts · duo recruitment posts",
     },
     solution: {
       h2: "Discover, create, collect, share.",
@@ -332,10 +320,10 @@ const COPY = {
           en: "Create",
           line: "So making starts without prepping character assets.",
           items: [
-            { name: "Character Sort", desc: "A ranking tool that builds your favorites list from pairwise comparisons. “Not sure” groups two characters as a tie, and progress recalculates on every choice." },
             { name: "Tier List", desc: "A drag tier chart with character images already loaded. 24 preset themes, and you can change tier names, colors, and count yourself." },
             { name: "CP Chart", desc: "Place characters on a canvas and connect relationship lines. Move a character and the line follows; overlapping lines route around automatically." },
-            { name: "Skin Board", desc: "Pick skins from the catalog to build wishlist / re-release-request tables. A user's wishlist becomes community sentiment data." },
+            { name: "Skin Board", desc: "Pick skins from the catalog to build wishlist / re-release-request tables." },
+            { name: "Visual Novel", desc: "A 5–8 minute web visual novel played through choices. I split the engine from the story data and kept the branching logic for all three languages in one place, so even a non-developer can add episodes." },
           ],
         },
         {
@@ -343,7 +331,7 @@ const COPY = {
           en: "Collect",
           line: "From browsing to collection tracking.",
           items: [
-            { name: "Skin Checklist", desc: "Check off what you own on the full skin grid. The “in-progress state” persists, so people come back every time they pull a skin — the shortest return cycle of any feature." },
+            { name: "Skin Checklist", desc: "Check off what you own on the full skin grid. The checked state persists in the browser, so you can pick up where you left off when you pull a new skin." },
           ],
         },
         {
@@ -351,14 +339,11 @@ const COPY = {
           en: "Share",
           line: "The output is the content; distribution happens in the community.",
           items: [
-            { name: "Duo Card", desc: "Turns recruitment conditions into a card with required fields fixed. It's the only feature that doesn't save progress — because the form mixes in personal info." },
+            { name: "Character Sort", desc: "A ranking tool that builds your favorites list from pairwise comparisons. “Not sure” groups two characters as a tie, and progress recalculates on every choice. You save the result as an image and post it to the community." },
+            { name: "Duo Card", desc: "A duo-recruitment card you make to find a duo that fits your taste. It lays out your conditions as a card with the required fields fixed." },
           ],
         },
       ],
-      vn:
-        "The Visual Novel (a 5–8 minute web visual novel) is pure-fun content built to be shared. Players post their result to the community, it spreads again because it's fun, and the site travels with it. I split the engine from the content and pinned the branching logic across all three languages in one place, so even a non-developer can keep adding episodes.",
-      shot: "Home screen — eight feature cards",
-      vnShot: "Visual Novel — the web visual novel",
     },
     data: {
       h2: "I designed the operation, not just the acquisition.",
@@ -368,14 +353,14 @@ const COPY = {
         { n: "01", label: "Acquisition", note: "Every SS·S·A rarity outfit category on the Fandom wiki" },
         { n: "02", label: "API collection", note: "Walked MediaWiki API continuation to the end — 857 records" },
         { n: "03", label: "Refinement", note: "Character matching, images, rarity confirmed → canonical JSON, 842 records" },
-        { n: "04", label: "Korean review", note: "Human-confirmed name, evidence, and confidence status" },
+        { n: "04", label: "Korean name — convert & review", note: "Convert English names to Korean; a human checks and confirms each" },
         { n: "05", label: "Publish criteria", note: "Only reviewed skins are shown in the service" },
       ],
       layerLabel: "A three-layer split: collect → refine → publish",
       layers: [
         ["Raw collection", "matched.json", "Wiki scrape as-is · pipeline internal"],
         ["Refined (canonical)", "canonical.json · 842", "Character matching · images · rarity confirmed"],
-        ["Manual review · excluded", "manual-review 10 · excluded 5", "Image mismatch · meta / offline limited"],
+        ["Manual review · excluded", "manual-review · excluded", "Meta entries · offline-limited, etc."],
         ["Operational DB", "skins table", "Only is_active AND is_published exposed via the public API"],
       ],
       layerNote:
@@ -385,30 +370,29 @@ const COPY = {
     qa: {
       h2: "I decided where to stop automating.",
       quote: "Providing data users can trust mattered more than pulling data.",
-      whyLabel: "Why the Korean name is the hard part",
+      whyLabel: "Why human review was needed",
       why: [
-        "Fandom is a user-edited wiki, so even when a Korean field exists you can't trust it as-is",
-        "The official Korean name shows up long after release, or not at all",
-        "There's a contamination pattern where a character name or rarity name (“Distinguished”) ends up as the skin name",
+        "The fandom wiki only gives English names, so the Korean name has to be converted by hand",
+        "Transliteration or machine translation alone drifts from what the community actually uses",
+        "So a human confirms and finalizes each converted name before it's published",
       ],
-      pipeline: ["Auto candidate collection", "Auto-flag suspicious candidates", "Human review", "Publish decision", "Push to operational DB"],
+      pipeline: ["Collect English data", "Convert Korean name (draft)", "Human check & confirm", "Publish decision", "Push to operational DB"],
       criteria: (
         <>
-          Machines do collection, refinement, and suspicion detection — but one function alone decides whether
-          something goes public:
-          <b className="text-ink-70"> reviewedByUser = true, Korean name not empty, status ≠ UNRESOLVED</b>. Auto
-          candidates can&apos;t affect that decision, and the auto-collector never overwrites a field a human entered.
+          Collection and the draft conversion are automatic, but{" "}
+          <b className="text-ink-70">only skins whose Korean name a human has checked and confirmed get published</b>. An
+          auto-converted name never goes public on its own.
         </>
       ),
       gate: [
-        ["Collected · not reviewed", false],
-        ["Auto candidate only", false],
-        ["Reviewed · UNRESOLVED", false],
-        ["Reviewed + Korean name present", true],
-        ["Manually added (offline limited)", true],
+        ["Collected · not converted", false],
+        ["Draft conversion only", false],
+        ["In review · not confirmed", false],
+        ["Reviewed · Korean name confirmed", true],
+        ["Added by hand (offline limited)", true],
       ] as [string, boolean][],
       pub: { yes: "Public", no: "Private" },
-      shot: "Local review web tool — Korean name, evidence, and status per skin",
+      shot: "Local review web tool — confirming the Korean name per skin",
     },
     fb: {
       h2: "I improved from user feedback after launch.",
@@ -421,9 +405,9 @@ const COPY = {
         },
         {
           tag: "REQUEST",
-          title: "Custom tier labels",
-          ask: "A request to use personal criteria instead of the default tier names",
-          change: "Added the ability to edit tier names directly",
+          title: "Custom CP chart labels",
+          ask: "A request to write the relationship-line labels instead of using the defaults",
+          change: "Added the ability to edit CP chart labels directly",
         },
         {
           tag: "ISSUE",
@@ -459,7 +443,7 @@ const COPY = {
         },
         {
           label: "Viral surface",
-          body: "CP Chart / Character Sort result PNGs (“my result vs yours”) and the Visual Novel (pure fun) both become material for community posts that carry the site outward.",
+          body: "CP Chart / Character Sort result PNGs (“my result vs yours”) and the Visual Novel (shared results) become material for community posts.",
         },
       ],
     },
@@ -508,7 +492,7 @@ const COPY = {
         {
           n: "04",
           title: "I made different calls per context",
-          body: "Most features save progress, but the duo card doesn't, for privacy; most are multilingual, but the internal meme content is Korean-only; discovery has search, the creation tools don't.",
+          body: "Discovery (the catalog) has search; the creation tools don't. No signup for instant use, but only human-reviewed data goes public — I made a different call at each point where convenience and trust collide.",
         },
         {
           n: "05",
@@ -647,11 +631,6 @@ export default async function Identity5PickPage({
             </Reveal>
           ))}
         </div>
-
-        <p className="mt-8 max-w-[640px] border-l-2 border-accent pl-5 font-archivo text-[clamp(16px,1.9vw,19px)] font-bold leading-[1.45] tracking-[-.02em]">
-          {c.problem.quote}
-        </p>
-
       </section>
 
       {/* 02 — Solution */}
@@ -697,14 +676,6 @@ export default async function Identity5PickPage({
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={0.1} className="mt-9 rounded-xl border border-line-2 bg-paper px-5 py-5 sm:mt-12">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">
-              SHAREABLE CONTENT — REACH
-            </div>
-            <p className="mt-2 max-w-[640px] text-[13.5px] leading-[1.55] text-ink-70">{c.solution.vn}</p>
-            <Placeholder variant="alt" label={c.solution.vnShot} img={VN_SHOT} className="mt-4" />
-          </Reveal>
         </div>
       </section>
 

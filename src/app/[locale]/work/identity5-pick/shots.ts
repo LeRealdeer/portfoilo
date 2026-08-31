@@ -18,7 +18,6 @@ function shot(img: StaticImageData, mw?: number): Shot {
 }
 
 export const HERO_SHOT = shot(home, 1180);
-export const VN_SHOT = shot(visualNovel, 520);
 export const QA_SHOT = shot(skinReviewTool, 900);
 export const UX_SHOT = shot(ga4Pages, 900);
 
@@ -31,4 +30,5 @@ export const ITEM_SHOTS: Record<string, Shot> = {
   "Skin Board": shot(skinBoard, 520),
   "Skin Checklist": shot(skinChecklist, 520),
   "Duo Card": shot(duoMaker, 520),
+  "Visual Novel": shot(visualNovel, 520),
 };
