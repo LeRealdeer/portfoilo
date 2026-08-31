@@ -108,7 +108,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "성향 테스트", line: "홍보용 공유 콘텐츠 — Sky 크리쳐 성향 진단" },
         { tag: "05", name: "오래된 유랑", line: "영혼별 마지막 유랑 시점으로 '다음 유랑' 예측" },
         { tag: "06", name: "버스 노선표", line: "양초 파밍 모집용 노선표 — 터치·입력만으로 완성" },
-        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집 (옮겨올 이유를 못 만든 기능)" },
+        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집" },
         { tag: "08", name: "시즌 대백과", line: "전 시즌 영혼·미복각까지 통합한 최대 조회수 기능" },
       ],
       shot: "홈 화면 — 8개 기능 카드",
@@ -326,7 +326,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "Personality Test", line: "Shareable content for reach — a Sky-creature personality quiz" },
         { tag: "05", name: "Overdue Spirits", line: "Predicts the 'next return' from each spirit's last visit" },
         { tag: "06", name: "Bus Route Chart", line: "Route charts for candle-run groups — done with taps and typing" },
-        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players (never caught on)" },
+        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players" },
         { tag: "08", name: "Season Encyclopedia", line: "Every season's spirits, un-returned ones included — the most-viewed feature" },
       ],
       shot: "Home screen — eight feature cards",
@@ -544,7 +544,7 @@ function FeatureBlock({
           {f.name}
         </h3>
 
-        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14">
           {/* left — write-up */}
           <div className="min-w-0 flex-1">
             <div className="flex flex-col gap-3">
@@ -567,9 +567,14 @@ function FeatureBlock({
             </p>
           </div>
 
-          {/* right — image */}
-          <div className="w-full flex-1 sm:sticky sm:top-24">
-            <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="" />
+          {/* right — image, matched to the write-up height */}
+          <div className="w-full flex-1">
+            <Placeholder
+              variant={alt ? "alt" : "light"}
+              label={f.shot}
+              img={shot}
+              className="h-full max-[900px]:h-[clamp(220px,58vw,360px)]"
+            />
           </div>
         </div>
 
@@ -728,9 +733,9 @@ export default async function SkyPlannerPage({
             <div className="pb-2 font-archivo text-[11px] font-semibold tracking-[.13em] text-muted">{c.evo.count}</div>
           </div>
 
-          <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14">
             {/* left — 8 features */}
-            <div className="min-w-0 flex-1 grid gap-2.5 sm:grid-cols-2">
+            <div className="min-w-0 flex-1 grid content-start gap-2.5 sm:grid-cols-2">
               {c.evo.list.map((e) => (
                 <div key={e.name} className="rounded-lg border border-line-2 px-4 py-3.5">
                   <div className="flex items-baseline gap-2">
@@ -742,9 +747,14 @@ export default async function SkyPlannerPage({
               ))}
             </div>
 
-            {/* right — image, aligned with the feature list */}
-            <Reveal delay={0.1} className="w-full flex-1 sm:sticky sm:top-24">
-              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="" />
+            {/* right — image, matched to the feature list height */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder
+                variant="alt"
+                label={c.evo.shot}
+                img={SHOTS.evo}
+                className="h-full max-[900px]:h-[clamp(200px,58vw,340px)]"
+              />
             </Reveal>
           </div>
         </div>
@@ -779,7 +789,7 @@ export default async function SkyPlannerPage({
             <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
-          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
+          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
             {/* left — write-up */}
             <div className="min-w-0 flex-1 flex flex-col gap-3">
               {(
@@ -795,9 +805,14 @@ export default async function SkyPlannerPage({
               ))}
             </div>
 
-            {/* right — image */}
-            <Reveal delay={0.1} className="w-full flex-1 sm:sticky sm:top-24">
-              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
+            {/* right — image, matched to the card column height */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder
+                variant="alt"
+                label={c.ops.shot}
+                img={SHOTS.ops}
+                className="h-full max-[900px]:h-[clamp(200px,58vw,340px)]"
+              />
             </Reveal>
           </div>
         </div>
