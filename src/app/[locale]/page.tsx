@@ -71,7 +71,7 @@ export default async function HomePage({
             {profile.eyebrow}
           </div>
         </Reveal>
-        <h1 className="font-archivo text-[clamp(29px,8.5vw,100px)] leading-[1.02] font-extrabold tracking-[-.04em] text-balance">
+        <h1 className="font-archivo text-[clamp(25px,7.6vw,100px)] leading-[1.04] font-extrabold tracking-[-.04em] text-balance">
           <RevealLines lines={profile.heroLines} />
         </h1>
         <div className="mt-8 flex flex-col items-start gap-6 sm:mt-14 sm:flex-row sm:gap-20">
@@ -99,9 +99,9 @@ export default async function HomePage({
 
       {/* Impact Strip */}
       <section className="mx-auto max-w-[1440px] border-t border-line px-5 py-9 sm:px-9 sm:py-11">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-10">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-10">
           {impactStrip.map((m, i) => (
-            <Reveal key={m.label} delay={i * 0.05} className={i > 0 ? "border-l border-line pl-4 sm:pl-8" : ""}>
+            <Reveal key={m.label} delay={i * 0.05} className={i > 0 ? "sm:border-l sm:border-line sm:pl-8" : ""}>
               <Stat
                 metric={m}
                 numberClassName="font-archivo text-[clamp(34px,5vw,72px)] leading-[1] font-extrabold tracking-[-.045em]"
@@ -114,7 +114,7 @@ export default async function HomePage({
 
       {/* Selected Work */}
       <section id="work" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
-        <div className="mx-auto flex max-w-[1440px] max-[860px]:flex-col items-end gap-10">
+        <div className="mx-auto flex max-w-[1440px] max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
           <Reveal className="flex-1">
             <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
               Selected Work
@@ -293,7 +293,7 @@ export default async function HomePage({
       {/* Capabilities */}
       <section id="capabilities" className="border-t border-line bg-bg-alt px-5 py-16 sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
-          <div className="flex max-[860px]:flex-col items-end gap-10">
+          <div className="flex max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
             <Reveal className="flex-1">
               <h2 className="max-w-[30rem] font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.16] font-extrabold tracking-[-.04em] text-balance">
                 {t.capH2}
@@ -340,7 +340,7 @@ export default async function HomePage({
       {/* Experience */}
       <section id="experience" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
-          <div className="flex max-[860px]:flex-col items-end gap-10">
+          <div className="flex max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
             <Reveal className="flex-1">
               <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
                 Experience
@@ -384,7 +384,7 @@ export default async function HomePage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-20 items-start">
             <Reveal className="flex-[1.3]">
-              <h2 className="font-archivo text-[clamp(26px,4vw,54px)] leading-[1.16] font-extrabold tracking-[-.04em]">
+              <h2 className="font-archivo text-[clamp(23px,5.6vw,54px)] leading-[1.16] font-extrabold tracking-[-.04em]">
                 <RevealLines lines={profile.aboutHeadline} />
               </h2>
             </Reveal>
@@ -412,9 +412,9 @@ export default async function HomePage({
             <div className="font-archivo text-[11.5px] font-semibold tracking-[.16em] text-[rgba(244,241,234,.45)]">
               {profile.interestedIn}
             </div>
-            <div className="mt-4.5 flex flex-wrap gap-x-7 gap-y-2.5 font-archivo text-[clamp(15px,2vw,25px)] font-bold tracking-[-.02em]">
+            <div className="mt-4.5 flex flex-wrap gap-x-4 gap-y-2 font-archivo text-[clamp(15px,2vw,25px)] font-bold tracking-[-.02em] sm:gap-x-7 sm:gap-y-2.5">
               {profile.careerInterests.map((c, i) => (
-                <span key={c} className="flex items-center gap-7">
+                <span key={c} className="flex items-center gap-4 sm:gap-7">
                   <span>{c}</span>
                   {i < profile.careerInterests.length - 1 && (
                     <span className="text-[rgba(244,241,234,.3)]">·</span>
