@@ -955,9 +955,9 @@ export default async function SkyPlannerPage({
           ))}
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Placeholder label={c.events.shot1} img={SHOTS.events1} className="h-[clamp(220px,28vw,340px)]" />
-          <Placeholder label={c.events.shot2} img={SHOTS.events2} className="h-[clamp(220px,28vw,340px)]" />
+        <div className="mt-6 grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
+          <Placeholder label={c.events.shot1} img={SHOTS.events1} className="" />
+          <Placeholder label={c.events.shot2} img={SHOTS.events2} className="" />
         </div>
       </section>
 
@@ -989,19 +989,9 @@ export default async function SkyPlannerPage({
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Placeholder
-              variant="alt"
-              label={c.o2o.shot1}
-              img={SHOTS.o2o1}
-              className="h-[clamp(240px,30vw,360px)]"
-            />
-            <Placeholder
-              variant="alt"
-              label={c.o2o.shot2}
-              img={SHOTS.o2o2}
-              className="h-[clamp(240px,30vw,360px)]"
-            />
+          <div className="mt-6 grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
+            <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className="" />
+            <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className="" />
           </div>
         </div>
       </section>
@@ -1028,21 +1018,16 @@ export default async function SkyPlannerPage({
               </div>
               <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.exam}</p>
             </div>
+            <p className="mt-3 border-l-2 border-accent pl-5 font-archivo text-[clamp(16px,1.8vw,19px)] font-bold leading-[1.5] tracking-[-.02em]">
+              {c.learn.quote}
+            </p>
           </div>
 
-          {/* right — image, matched to the card column height */}
+          {/* right — image */}
           <Reveal delay={0.1} className="w-full flex-1">
-            <Placeholder
-              label={c.learn.shot}
-              img={SHOTS.learn}
-              className=""
-            />
+            <Placeholder label={c.learn.shot} img={SHOTS.learn} className="" />
           </Reveal>
         </div>
-
-        <p className="mt-8 max-w-[640px] border-l-2 border-accent pl-5 font-archivo text-[clamp(17px,1.9vw,20px)] font-bold leading-[1.5] tracking-[-.02em]">
-          {c.learn.quote}
-        </p>
       </section>
 
       {/* Final Message */}
