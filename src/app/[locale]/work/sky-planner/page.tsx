@@ -536,18 +536,18 @@ function FeatureBlock({
   return (
     <section className={`px-5 py-10 sm:px-9 sm:py-16 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
-        <div className="flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
-          {/* left — text */}
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className={EYEBROW}>FEATURE {f.n}</span>
-              <span className="text-[12px] text-muted">{f.tag}</span>
-            </div>
-            <h3 className="mt-3 font-archivo text-[clamp(20px,2.6vw,32px)] leading-[1.15] font-extrabold tracking-[-.03em]">
-              {f.name}
-            </h3>
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className={EYEBROW}>FEATURE {f.n}</span>
+          <span className="text-[12px] text-muted">{f.tag}</span>
+        </div>
+        <h3 className="mt-3 font-archivo text-[clamp(20px,2.6vw,32px)] leading-[1.15] font-extrabold tracking-[-.03em]">
+          {f.name}
+        </h3>
 
-            <div className="mt-6 flex flex-col gap-3">
+        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-col gap-3">
               <div className="rounded-xl border border-line-2 px-5 py-4">
                 <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">PROBLEM</div>
                 <p className="mt-2 text-[14.5px] leading-[1.55] text-ink-70">{f.problem}</p>
