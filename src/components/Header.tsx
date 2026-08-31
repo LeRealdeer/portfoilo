@@ -7,13 +7,11 @@ export function Header({
   locale,
   variant = "home",
   serviceUrl,
-  resumeHref = "#resume",
 }: {
   locale: Locale;
   variant?: "home" | "case";
   /** Live service URL shown (and linked) in the case-study header. */
   serviceUrl?: string;
-  resumeHref?: string;
 }) {
   const home = `/${locale}`;
   const profile = getProfile(locale);
@@ -55,8 +53,8 @@ export function Header({
         <Link href={`${home}#about`} className="hidden sm:inline">
           ABOUT
         </Link>
-        <a href={resumeHref} className="text-accent">
-          RESUME ↗
+        <a href={`${home}#contact`} className="text-accent">
+          CONTACT
         </a>
         <LocaleToggle locale={locale} />
       </nav>

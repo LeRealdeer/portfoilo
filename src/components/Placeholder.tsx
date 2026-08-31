@@ -33,7 +33,7 @@ export type Shot = {
   w: number;
   /** intrinsic pixel height */
   h: number;
-  /** max rendered width in px (keeps large screenshots from dominating); default 720 */
+  /** cap the rendered width in px; omit to fill the container */
   mw?: number;
 };
 
@@ -45,57 +45,66 @@ export function Placeholder({
   className = "h-[240px]",
   href,
   img,
-  crop = false,
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
   className?: string;
   href?: string;
-  /** when set, renders the real screenshot at its natural aspect ratio */
+  /** when set, renders the real screenshot */
   img?: Shot;
-  /** in a fixed-height row, crop to fill instead of letterboxing the whole shot */
-  crop?: boolean;
 }) {
   if (img) {
     const alt = typeof label === "string" ? label : "";
+    const link = Boolean(href);
+    // scale + accent ring when the image links somewhere (feels clickable)
+    const hover = link ? " transition duration-300 group-hover/ph:scale-[1.03]" : "";
+    const ring = link ? (
+      <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-transparent transition duration-300 group-hover/ph:ring-2 group-hover/ph:ring-accent/60" />
+    ) : null;
+
     let content: ReactNode;
 
     if (HAS_HEIGHT.test(className)) {
-      // gallery cell: a fixed-height box so a row of shots lines up.
-      // default keeps the whole screenshot (contain); crop only on request.
+      // gallery cell: fixed-height box so a row of shots lines up; fill it (no letterbox)
       content = (
         <span
-          className={`relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
+          className={`${link ? "group/ph " : ""}relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
         >
           <Image
             src={img.src}
             alt={alt}
             fill
-            sizes="(max-width: 768px) 100vw, 460px"
-            className={crop ? "object-cover object-top" : "object-contain"}
+            sizes="(max-width: 768px) 100vw, 640px"
+            className={`object-cover object-top${hover}`}
           />
+          {ring}
         </span>
       );
     } else {
-      // standalone figure: render at the screenshot's real aspect ratio
-      const maxW = img.mw ?? 720;
+      // standalone figure: real aspect ratio, width capped by mw (or fill)
+      const maxW = img.mw;
       content = (
-        <span className={`${className} block`}>
-          <Image
-            src={img.src}
-            alt={alt}
-            width={img.w}
-            height={img.h}
-            sizes={`(max-width: ${maxW}px) 100vw, ${maxW}px`}
-            style={{ maxWidth: maxW }}
-            className={`mx-auto block h-auto w-full rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]}`}
-          />
+        <span className={`block ${className}`}>
+          <span
+            className={`${link ? "group/ph " : ""}relative mx-auto block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]}`}
+            style={maxW ? { maxWidth: maxW } : undefined}
+          >
+            <Image
+              src={img.src}
+              alt={alt}
+              width={img.w}
+              height={img.h}
+              sizes={maxW ? `(max-width: ${maxW}px) 100vw, ${maxW}px` : "(max-width: 1440px) 100vw, 1200px"}
+              className={`block h-auto w-full${hover}`}
+            />
+            {ring}
+          </span>
         </span>
       );
     }
 
-    return href ? (
-      <Link href={href} className="block">
+    return link ? (
+      <Link href={href!} className="block">
         {content}
       </Link>
     ) : (

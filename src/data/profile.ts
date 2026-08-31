@@ -15,9 +15,8 @@ const shared = {
     "Korea Market Operations",
   ],
   contact: {
-    email: "TBD@email.com",
-    github: "github.com/",
-    linkedin: "linkedin.com/in/",
+    email: "i3295h@gmail.com",
+    github: "github.com/LeRealdeer",
   },
   liveProjects: [
     { label: "korea-sky-planner.com", href: "https://korea-sky-planner.com" },

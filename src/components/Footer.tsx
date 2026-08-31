@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/i18n";
 export function Footer({ locale }: { locale: Locale }) {
   const profile = getProfile(locale);
   return (
-    <footer id="resume" className="px-5 pt-14 pb-11 sm:px-9 sm:pt-24">
+    <footer id="contact" className="px-5 pt-14 pb-11 sm:px-9 sm:pt-24">
       <div className="mx-auto max-w-[1440px]">
         <Reveal>
           <h2 className="font-archivo text-[clamp(26px,5.2vw,72px)] leading-[1.05] font-extrabold tracking-[-.04em]">
@@ -32,14 +32,6 @@ export function Footer({ locale }: { locale: Locale }) {
               {profile.contact.github} ↗
             </a>
           </div>
-          <div className="min-w-[180px] flex-1">
-            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
-              LINKEDIN
-            </div>
-            <a href={`https://${profile.contact.linkedin}`} className="mt-2 block text-[16px]">
-              {profile.contact.linkedin} ↗
-            </a>
-          </div>
           <div className="min-w-[220px] flex-[1.4]">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               LIVE PROJECTS
@@ -55,14 +47,6 @@ export function Footer({ locale }: { locale: Locale }) {
                 {p.label} ↗
               </a>
             ))}
-          </div>
-          <div className="flex-none">
-            <a
-              href="#resume"
-              className="inline-block rounded-lg bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
-            >
-              RESUME ↗
-            </a>
           </div>
         </div>
 

@@ -88,10 +88,10 @@ export default async function HomePage({
               VIEW WORK
             </a>
             <a
-              href="#resume"
+              href="#contact"
               className="rounded-lg border border-line-2 px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-ink-70 transition-colors duration-300 hover:border-ink hover:text-ink"
             >
-              RESUME ↗
+              CONTACT
             </a>
           </Reveal>
         </div>
@@ -137,7 +137,7 @@ export default async function HomePage({
               href={`/${locale}/work/${sky.slug}`}
               label={sky.screenshotLabel}
               img={CARD_SHOTS.sky}
-              className="mt-5 block"
+              className="mt-5"
             />
           </Reveal>
           <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
@@ -184,7 +184,7 @@ export default async function HomePage({
                 href={`/${locale}/work/${identity5.slug}`}
                 label={identity5.screenshotLabel}
                 img={CARD_SHOTS.identity5.main}
-                className="flex"
+                className=""
               />
               <div className="mt-4 grid grid-cols-3 gap-4">
                 {CARD_SHOTS.identity5.thumbs.map((thumb) => (
@@ -192,7 +192,7 @@ export default async function HomePage({
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(80px,10vw,130px)] text-[11px]"
+                    className="h-[clamp(84px,11vw,132px)] text-[11px]"
                   />
                 ))}
               </div>
@@ -273,7 +273,7 @@ export default async function HomePage({
                 href={`/${locale}/work/${heartopia.slug}`}
                 label={heartopia.screenshotLabel}
                 img={CARD_SHOTS.heartopia.main}
-                className="flex"
+                className=""
               />
               <div className="mt-4 grid grid-cols-2 gap-4">
                 {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
@@ -281,7 +281,7 @@ export default async function HomePage({
                     key={thumb.label}
                     label={thumb.label}
                     img={thumb}
-                    className="h-[clamp(90px,12vw,150px)] text-[11px]"
+                    className="h-[clamp(96px,13vw,150px)] text-[11px]"
                   />
                 ))}
               </div>

@@ -623,7 +623,7 @@ export default async function SkyPlannerPage({
 
   return (
     <div className="min-h-screen">
-      <Header locale={locale} variant="case" serviceUrl={project.liveUrl} resumeHref="#final" />
+      <Header locale={locale} variant="case" serviceUrl={project.liveUrl} />
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-12 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
