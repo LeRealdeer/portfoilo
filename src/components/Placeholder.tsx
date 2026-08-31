@@ -27,43 +27,60 @@ const IMAGE_BG: Record<"light" | "alt" | "dark", string> = {
   dark: "bg-[#1f2023]",
 };
 
+export type Shot = {
+  src: string;
+  /** intrinsic pixel width */
+  w: number;
+  /** intrinsic pixel height */
+  h: number;
+  /** max rendered width in px (keeps large screenshots from dominating); default 720 */
+  mw?: number;
+};
+
+/** strips height utilities so the image can size itself by its real aspect ratio */
+function stripHeight(cn: string) {
+  return cn
+    .split(/\s+/)
+    .filter((t) => !/^(sm:|md:|lg:)?(min-)?h-/.test(t))
+    .join(" ");
+}
+
 export function Placeholder({
   label,
   variant = "light",
   className = "h-[240px]",
   href,
-  src,
-  fit = "cover",
+  img,
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
   className?: string;
   href?: string;
-  /** When set, renders the real image instead of the hatched placeholder. */
-  src?: string;
-  fit?: "cover" | "contain";
+  /** when set, renders the real screenshot at its natural aspect ratio */
+  img?: Shot;
 }) {
-  if (src) {
+  if (img) {
     const alt = typeof label === "string" ? label : "";
-    const image = (
-      <span
-        className={`relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
-      >
+    const maxW = img.mw ?? 720;
+    const content = (
+      <span className={`${stripHeight(className)} block`}>
         <Image
-          src={src}
+          src={img.src}
           alt={alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 1200px"
-          className={fit === "contain" ? "object-contain" : "object-cover object-top"}
+          width={img.w}
+          height={img.h}
+          sizes={`(max-width: ${maxW}px) 100vw, ${maxW}px`}
+          style={{ maxWidth: maxW }}
+          className={`mx-auto block h-auto w-full rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]}`}
         />
       </span>
     );
     return href ? (
-      <Link href={href} className="group block">
-        {image}
+      <Link href={href} className="block">
+        {content}
       </Link>
     ) : (
-      image
+      content
     );
   }
 

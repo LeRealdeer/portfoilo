@@ -46,20 +46,20 @@ const COPY: Record<Locale, Record<string, string>> = {
 };
 
 const CARD_SHOTS = {
-  sky: { src: "/main_skyplanner_home.png" },
+  sky: { src: "/main_skyplanner_home.png", w: 2218, h: 1925, mw: 900 },
   identity5: {
-    src: "/main_identity5_home.png",
+    main: { src: "/main_identity5_home.png", w: 2481, h: 1412, mw: 760 },
     thumbs: [
-      { label: "CP MAP", src: "/main_identity5_cp.png" },
-      { label: "SKIN ARCHIVE", src: "/main_identity5_skin.png" },
-      { label: "TIER LIST", src: "/main_identity5_tierlist.png" },
+      { label: "CP MAP", src: "/main_identity5_cp.png", w: 1692, h: 1237, mw: 260 },
+      { label: "SKIN ARCHIVE", src: "/main_identity5_skin.png", w: 1680, h: 1259, mw: 260 },
+      { label: "TIER LIST", src: "/main_identity5_tierlist.png", w: 1431, h: 1212, mw: 260 },
     ],
   },
   heartopia: {
-    src: "/main_heartopia_home.png",
+    main: { src: "/main_heartopia_home.png", w: 2535, h: 1261, mw: 760 },
     thumbs: [
-      { label: "CREATOR PAGE", src: "/main_heartopia_creator.png" },
-      { label: "CONTENT DETAIL", src: "/main_heartopia_detail.png" },
+      { label: "CREATOR PAGE", src: "/main_heartopia_creator.png", w: 2538, h: 1261, mw: 380 },
+      { label: "CONTENT DETAIL", src: "/main_heartopia_detail.png", w: 4416, h: 2122, mw: 380 },
     ],
   },
 };
@@ -153,9 +153,8 @@ export default async function HomePage({
             <Placeholder
               href={`/${locale}/work/${sky.slug}`}
               label={sky.screenshotLabel}
-              src={CARD_SHOTS.sky.src}
-              fit="cover"
-              className="mt-5 h-[clamp(240px,42vw,560px)] block"
+              img={CARD_SHOTS.sky}
+              className="mt-5 block"
             />
           </Reveal>
           <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
@@ -201,19 +200,12 @@ export default async function HomePage({
               <Placeholder
                 href={`/${locale}/work/${identity5.slug}`}
                 label={identity5.screenshotLabel}
-                src={CARD_SHOTS.identity5.src}
-                fit="cover"
-                className="h-[clamp(200px,26vw,360px)] flex"
+                img={CARD_SHOTS.identity5.main}
+                className="flex"
               />
               <div className="mt-4 flex gap-4">
                 {CARD_SHOTS.identity5.thumbs.map((thumb) => (
-                  <Placeholder
-                    key={thumb.label}
-                    label={thumb.label}
-                    src={thumb.src}
-                    fit="cover"
-                    className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]"
-                  />
+                  <Placeholder key={thumb.label} label={thumb.label} img={thumb} className="flex-1 text-[11px]" />
                 ))}
               </div>
             </Reveal>
@@ -292,19 +284,12 @@ export default async function HomePage({
               <Placeholder
                 href={`/${locale}/work/${heartopia.slug}`}
                 label={heartopia.screenshotLabel}
-                src={CARD_SHOTS.heartopia.src}
-                fit="cover"
-                className="h-[clamp(200px,26vw,360px)] flex"
+                img={CARD_SHOTS.heartopia.main}
+                className="flex"
               />
               <div className="mt-4 flex gap-4">
                 {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
-                  <Placeholder
-                    key={thumb.label}
-                    label={thumb.label}
-                    src={thumb.src}
-                    fit="cover"
-                    className="h-[clamp(90px,11vw,150px)] flex-1 text-[11px]"
-                  />
+                  <Placeholder key={thumb.label} label={thumb.label} img={thumb} className="flex-1 text-[11px]" />
                 ))}
               </div>
             </Reveal>

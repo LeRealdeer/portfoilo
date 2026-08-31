@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
-import { Placeholder } from "@/components/Placeholder";
+import { Placeholder, type Shot } from "@/components/Placeholder";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -57,31 +57,32 @@ const demonstratedSkills = [
 const techStack = ["Next.js", "Spring Boot", "MySQL", "AWS EC2 → Railway · Vercel", "GA4", "Figma"];
 
 const S = "/sky-planner";
+const HERO_SHOT: Shot = { src: `${S}/sky_hero.png`, w: 1754, h: 997, mw: 1180 };
 const SHOTS = {
-  ctxBefore: { src: `${S}/height-guideline.png`, fit: "contain" },
-  ctxAfter: { src: `${S}/sky_height_ui.png`, fit: "cover" },
-  evo: { src: `${S}/sky_hero.png`, fit: "cover" },
-  ops: { src: `${S}/ts-archive-detail.png`, fit: "cover" },
-  data: { src: `${S}/ga-users-nov.png`, fit: "contain" },
-  fb: { src: `${S}/survey-2.png`, fit: "contain" },
-  growth1: { src: `${S}/cafe-best-tip.png`, fit: "contain" },
-  growth2: { src: `${S}/overseas-site-link.png`, fit: "cover" },
-  events1: { src: `${S}/user-example-1.png`, fit: "cover" },
-  events2: { src: `${S}/user-example-2.png`, fit: "cover" },
-  events3: { src: `${S}/personality-test-reactions.jpg`, fit: "contain" },
-  o2o1: { src: `${S}/offline-booth.png`, fit: "cover" },
-  o2o2: { src: `${S}/offline-flight-test.png`, fit: "contain" },
-  o2o3: { src: `${S}/offline-license-irl.png`, fit: "cover" },
-  learn: { src: `${S}/sheet-music-workspace.png`, fit: "contain" },
-} as const;
+  ctxBefore: { src: `${S}/height-guideline.png`, w: 1800, h: 1800, mw: 460 },
+  ctxAfter: { src: `${S}/height-usage.png`, w: 1800, h: 1800, mw: 460 },
+  evo: { src: `${S}/sky_hero.png`, w: 1754, h: 997, mw: 960 },
+  ops: { src: `${S}/ts-archive-detail.png`, w: 1184, h: 702, mw: 760 },
+  data: { src: `${S}/ga-users-nov.png`, w: 1915, h: 905, mw: 980 },
+  fb: { src: `${S}/survey-2.png`, w: 1914, h: 904, mw: 980 },
+  growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 460 },
+  growth2: { src: `${S}/overseas-site-link.png`, w: 1919, h: 1079, mw: 560 },
+  events1: { src: `${S}/user-example-1.png`, w: 1919, h: 1079, mw: 460 },
+  events2: { src: `${S}/user-example-2.png`, w: 1919, h: 1079, mw: 460 },
+  events3: { src: `${S}/user-example-3.png`, w: 1919, h: 1077, mw: 460 },
+  o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 420 },
+  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 300 },
+  o2o3: { src: `${S}/offline-license-irl.png`, w: 948, h: 878, mw: 420 },
+  learn: { src: `${S}/sheet-music-workspace.png`, w: 1313, h: 1043, mw: 560 },
+} satisfies Record<string, Shot>;
 
-const FEATURE_SHOTS = [
-  { src: `${S}/height-usage.png`, fit: "cover" },
-  { src: `${S}/candle-howto.png`, fit: "contain" },
-  { src: `${S}/ts-archive.png`, fit: "cover" },
-  { src: `${S}/personality-test.png`, fit: "cover" },
-  { src: `${S}/season-encyclopedia.png`, fit: "cover" },
-] as const;
+const FEATURE_SHOTS: Shot[] = [
+  { src: `${S}/height-checker.png`, w: 1975, h: 1125, mw: 720 },
+  { src: `${S}/candle-howto.png`, w: 1191, h: 1261, mw: 480 },
+  { src: `${S}/ts-archive.png`, w: 1662, h: 1140, mw: 640 },
+  { src: `${S}/personality-test.png`, w: 1002, h: 701, mw: 620 },
+  { src: `${S}/season-encyclopedia.png`, w: 1767, h: 1170, mw: 700 },
+];
 
 type Feature = {
   n: string;
@@ -542,15 +543,7 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
-function FeatureBlock({
-  f,
-  alt,
-  shot,
-}: {
-  f: Feature;
-  alt: boolean;
-  shot?: { src: string; fit: "cover" | "contain" };
-}) {
+function FeatureBlock({ f, alt, shot }: { f: Feature; alt: boolean; shot?: Shot }) {
   return (
     <section className={`px-5 py-9 sm:px-9 sm:py-12 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
@@ -582,13 +575,7 @@ function FeatureBlock({
           <b className="font-archivo tracking-[.02em]">IMPACT</b> — {f.impact}
         </p>
 
-        <Placeholder
-          variant={alt ? "alt" : "light"}
-          label={f.shot}
-          src={shot?.src}
-          fit={shot?.fit}
-          className="mt-5 h-[clamp(130px,16vw,190px)]"
-        />
+        <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="mt-5" />
       </div>
     </section>
   );
@@ -683,12 +670,7 @@ export default async function SkyPlannerPage({
 
       <div className="px-5 sm:px-9">
         <Reveal>
-          <Placeholder
-            label={project.screenshotLabel}
-            src={`${S}/sky_hero.png`}
-            fit="cover"
-            className="mx-auto h-[clamp(220px,42vw,560px)] max-w-[1440px]"
-          />
+          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
         </Reveal>
       </div>
 
@@ -714,8 +696,7 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.ctx.before}
-              src={SHOTS.ctxBefore.src}
-              fit={SHOTS.ctxBefore.fit}
+              img={SHOTS.ctxBefore}
               className="h-[clamp(140px,18vw,220px)]"
             />
           </div>
@@ -724,8 +705,7 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.ctx.after}
-              src={SHOTS.ctxAfter.src}
-              fit={SHOTS.ctxAfter.fit}
+              img={SHOTS.ctxAfter}
               className="h-[clamp(140px,18vw,220px)]"
             />
           </div>
@@ -762,8 +742,7 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.evo.shot}
-              src={SHOTS.evo.src}
-              fit={SHOTS.evo.fit}
+              img={SHOTS.evo}
               className="mt-8 h-[clamp(160px,20vw,260px)]"
             />
           </Reveal>
@@ -810,8 +789,7 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.ops.shot}
-              src={SHOTS.ops.src}
-              fit={SHOTS.ops.fit}
+              img={SHOTS.ops}
               className="mt-8 h-[clamp(150px,18vw,240px)]"
             />
           </Reveal>
@@ -859,8 +837,7 @@ export default async function SkyPlannerPage({
               <Placeholder
                 variant="dark"
                 label={c.data.shot}
-                src={SHOTS.data.src}
-                fit={SHOTS.data.fit}
+                img={SHOTS.data}
                 className="mt-8 h-[clamp(160px,22vw,300px)]"
               />
             </Reveal>
@@ -901,8 +878,7 @@ export default async function SkyPlannerPage({
         <Reveal delay={0.1}>
           <Placeholder
             label={c.fb.shot}
-            src={SHOTS.fb.src}
-            fit={SHOTS.fb.fit}
+            img={SHOTS.fb}
             className="mt-6 h-[clamp(150px,18vw,240px)]"
           />
         </Reveal>
@@ -930,15 +906,13 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.growth.shot1}
-              src={SHOTS.growth1.src}
-              fit={SHOTS.growth1.fit}
+              img={SHOTS.growth1}
               className="h-[clamp(130px,16vw,200px)] flex-1"
             />
             <Placeholder
               variant="alt"
               label={c.growth.shot2}
-              src={SHOTS.growth2.src}
-              fit={SHOTS.growth2.fit}
+              img={SHOTS.growth2}
               className="h-[clamp(130px,16vw,200px)] flex-1"
             />
           </div>
@@ -965,20 +939,17 @@ export default async function SkyPlannerPage({
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Placeholder
             label={c.events.shot1}
-            src={SHOTS.events1.src}
-            fit={SHOTS.events1.fit}
+            img={SHOTS.events1}
             className="h-[clamp(130px,15vw,190px)]"
           />
           <Placeholder
             label={c.events.shot2}
-            src={SHOTS.events2.src}
-            fit={SHOTS.events2.fit}
+            img={SHOTS.events2}
             className="h-[clamp(130px,15vw,190px)]"
           />
           <Placeholder
             label={c.events.shot3}
-            src={SHOTS.events3.src}
-            fit={SHOTS.events3.fit}
+            img={SHOTS.events3}
             className="h-[clamp(130px,15vw,190px)]"
           />
         </div>
@@ -1016,22 +987,19 @@ export default async function SkyPlannerPage({
             <Placeholder
               variant="alt"
               label={c.o2o.shot1}
-              src={SHOTS.o2o1.src}
-              fit={SHOTS.o2o1.fit}
+              img={SHOTS.o2o1}
               className="h-[clamp(130px,15vw,190px)]"
             />
             <Placeholder
               variant="alt"
               label={c.o2o.shot2}
-              src={SHOTS.o2o2.src}
-              fit={SHOTS.o2o2.fit}
+              img={SHOTS.o2o2}
               className="h-[clamp(130px,15vw,190px)]"
             />
             <Placeholder
               variant="alt"
               label={c.o2o.shot3}
-              src={SHOTS.o2o3.src}
-              fit={SHOTS.o2o3.fit}
+              img={SHOTS.o2o3}
               className="h-[clamp(130px,15vw,190px)]"
             />
           </div>
@@ -1063,8 +1031,7 @@ export default async function SkyPlannerPage({
         <Reveal delay={0.1}>
           <Placeholder
             label={c.learn.shot}
-            src={SHOTS.learn.src}
-            fit={SHOTS.learn.fit}
+            img={SHOTS.learn}
             className="mt-6 h-[clamp(130px,15vw,200px)]"
           />
         </Reveal>
