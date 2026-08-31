@@ -989,9 +989,19 @@ export default async function SkyPlannerPage({
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
-            <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className="" />
-            <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className="" />
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <Placeholder
+              variant="alt"
+              label={c.o2o.shot1}
+              img={SHOTS.o2o1}
+              className="h-[clamp(220px,30vw,320px)]"
+            />
+            <Placeholder
+              variant="alt"
+              label={c.o2o.shot2}
+              img={SHOTS.o2o2}
+              className="h-[clamp(220px,30vw,320px)]"
+            />
           </div>
         </div>
       </section>
