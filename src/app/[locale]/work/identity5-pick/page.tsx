@@ -85,7 +85,6 @@ const COPY = {
           line: "흩어진 정보를 한국어로, 한곳에서.",
           items: [
             { name: "Skin Catalog", desc: "842종을 등급·캐릭터·진영·성별·한정·콜라보로 좁혀 탐색합니다. 상세에 한/영/일 명칭·출시일·시즌·획득 방법·원문 출처를 정리했습니다." },
-            { name: "Search & Filter", desc: "필터는 삭제가 아니라 보이는 범위만 조절합니다. 제작 도구에는 검색을 의도적으로 넣지 않았습니다." },
           ],
         },
         {
@@ -112,7 +111,6 @@ const COPY = {
           en: "Share",
           line: "결과물이 곧 콘텐츠, 유통은 커뮤니티에서.",
           items: [
-            { name: "PNG Export", desc: "8개 화면이 같은 워터마크·비율로 이미지를 산출합니다. 모바일에서 만들어도 비율이 일정하게 나옵니다." },
             { name: "Duo Card", desc: "모집 조건을 필수 항목이 고정된 카드로 만듭니다. 개인정보가 섞이는 폼이라 진행 상황을 저장하지 않는 유일한 기능입니다." },
           ],
         },
@@ -327,7 +325,6 @@ const COPY = {
           line: "Scattered info, in Korean, in one place.",
           items: [
             { name: "Skin Catalog", desc: "Filter 842 skins by rarity, character, faction, gender, limited, and collab. The detail page has KO/EN/JP names, release date, season, how to obtain it, and the original source." },
-            { name: "Search & Filter", desc: "Filters narrow what's shown, not the data. I deliberately left search out of the creation tools." },
           ],
         },
         {
@@ -354,7 +351,6 @@ const COPY = {
           en: "Share",
           line: "The output is the content; distribution happens in the community.",
           items: [
-            { name: "PNG Export", desc: "Eight screens output an image with the same watermark and ratio. The ratio stays consistent even when made on mobile." },
             { name: "Duo Card", desc: "Turns recruitment conditions into a card with required fields fixed. It's the only feature that doesn't save progress — because the form mixes in personal info." },
           ],
         },
