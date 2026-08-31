@@ -41,7 +41,7 @@ const skills = [
   "Community Content Tool Design",
   "Large-scale Data Operations",
   "Data QA Pipeline",
-  "Cross-cutting System Design",
+  "Constraint-driven Design",
   "Localization Quality",
   "Retention & Viral Loop Design",
 ];
@@ -121,32 +121,6 @@ const COPY = {
         "연애 시뮬레이터(5~8분 웹 비주얼 노벨)는 순전히 재미를 위한 공유용 콘텐츠입니다. 유저가 결과를 커뮤니티에 공유하고, 재미있으니 또 퍼지면서 사이트가 자연스럽게 멀리 확산되도록 만들었습니다. 엔진과 콘텐츠를 분리하고 세 언어의 판정 로직을 한 곳에 고정해, 비개발자도 새 편을 계속 추가할 수 있습니다.",
       shot: "홈 화면 — 기능 카드 8종",
       vnShot: "연애 시뮬레이터 — 웹 비주얼 노벨",
-    },
-    systems: {
-      h2: "보이지 않지만 전 기능을 결정한 설계.",
-      lead:
-        "8개 기능은 세 개의 공통 시스템 위에서 돌아갑니다. 사용자에게 메뉴로 보이지 않지만, 이 설계가 개발 속도와 일관성, 그리고 서비스의 유통 방식을 결정했습니다.",
-      list: [
-        {
-          en: "Character Domain",
-          tag: "CORE DATASET",
-          body: "8개 기능이 참조하는 캐릭터 원본 87종. 세력+성별 9분류를 컬럼으로 저장하지 않고 조건 조합으로 계산하고, 정렬 순서에 10단위 간격을 둬 신규 캐릭터를 중간에 넣어도 재정렬이 필요 없습니다. 미출시·자택 전용 캐릭터는 characterType 한 줄로 모든 소비처에서 차단됩니다.",
-          point: "확장을 전제로 한 데이터 모델링 — “저장할까 계산할까”가 이후 모든 기능의 개발 속도를 좌우했습니다.",
-        },
-        {
-          en: "PNG Output Engine",
-          tag: "SHARE PRIMITIVE",
-          body: "보이는 화면이 아니라 화면 밖(-9999px)에 고정 PC폭으로 렌더한 클론을 캡처해, 모바일에서 만들어도 결과 비율이 일정합니다. GA 이벤트는 버튼 클릭이 아니라 캡처 성공 후에만 발화합니다.",
-          point: "서버 저장이 없는 서비스에서 이미지가 유일한 유통 채널이고, 워터마크가 곧 유입 경로입니다 — 제약을 유통 컨셉으로 전환.",
-        },
-        {
-          en: "Localization",
-          tag: "ko / en / ja",
-          body: "IP·국가가 아니라 사용자 선택 → 브라우저 언어 → 영어 순으로 판단하고, 캐릭터명·UI·PNG 텍스트까지 전부 언어에 대응합니다. 단 내부 밈 기반 콘텐츠는 번역 대상이 아니라고 보고 예외로 뒀습니다.",
-          point: "번역 대상과 비대상을 콘텐츠 성격으로 구분한 판단.",
-        },
-      ],
-      shot: "PNG 출력 — 화면 밖 클론 캡처 구조 / 다국어 결과물",
     },
     data: {
       h2: "확보가 아니라 운영을 설계했습니다.",
@@ -258,17 +232,17 @@ const COPY = {
         {
           tier: "TIER A",
           note: "기획·운영 판단이 드러나는 기능",
-          items: ["스킨 데이터 & QA 파이프라인", "캐릭터 소트", "CP표 메이커", "PNG 출력 엔진", "듀오표", "연애 시뮬레이터"],
+          items: ["스킨 데이터 & QA 파이프라인", "캐릭터 소트", "CP표 메이커", "듀오표", "연애 시뮬레이터"],
         },
         {
           tier: "TIER B",
           note: "확장·재활용 설계를 보여줌",
-          items: ["스킨 체크표", "티어리스트", "스킨 도감", "캐릭터 데이터 모델"],
+          items: ["스킨 체크표", "티어리스트", "스킨 도감"],
         },
         {
           tier: "TIER C",
           note: "표준 구현 · 언급만",
-          items: ["스킨리스트 만들기", "캐릭터 목록 페이지", "다국어 라우팅", "GA4 이벤트"],
+          items: ["스킨리스트 만들기", "캐릭터 목록 페이지", "GA4 이벤트"],
         },
       ],
     },
@@ -311,7 +285,7 @@ const COPY = {
       myRole: [
         "서비스 기획 · 정보 구조 설계",
         "팬덤 사용자 행동 관찰 및 기능 정의",
-        "공통 시스템(캐릭터 도메인 · PNG 엔진 · 다국어) 설계",
+        "무가입 · 무저장 제약을 유통 컨셉으로 전환한 설계",
         "스킨 842종 데이터 파이프라인 · 한국어 검수 게이트 구축",
         "GA4 분석 · 사용자 의견 수집 및 개선",
       ],
@@ -389,32 +363,6 @@ const COPY = {
         "The Visual Novel (a 5–8 minute web visual novel) is pure-fun content built to be shared. Players post their result to the community, it spreads again because it's fun, and the site travels with it. I split the engine from the content and pinned the branching logic across all three languages in one place, so even a non-developer can keep adding episodes.",
       shot: "Home screen — eight feature cards",
       vnShot: "Visual Novel — the web visual novel",
-    },
-    systems: {
-      h2: "The design that decided every feature — unseen.",
-      lead:
-        "The eight features run on three common systems. Users never see them as a menu, but this design decided development speed, consistency, and how the service distributes.",
-      list: [
-        {
-          en: "Character Domain",
-          tag: "CORE DATASET",
-          body: "The character source all eight features reference — 87 characters. The 9 faction+gender groups aren't stored as columns but computed from conditions, and sort order uses gaps of 10 so a new character slots into the middle with no reordering. Unreleased and lobby-only characters are blocked across every feature by one line: characterType.",
-          point: "Data modeling built for growth — “store it or compute it” set the development speed of every feature after it.",
-        },
-        {
-          en: "PNG Output Engine",
-          tag: "SHARE PRIMITIVE",
-          body: "It captures a clone rendered off-screen (-9999px) at a fixed desktop width, not the visible screen, so the result ratio stays consistent even when made on mobile. The GA event fires only after a successful capture, not on the button click.",
-          point: "In a service with no server storage, the image is the only distribution channel and the watermark is the acquisition path — a constraint turned into a distribution concept.",
-        },
-        {
-          en: "Localization",
-          tag: "ko / en / ja",
-          body: "It decides by user choice → browser language → English, not IP or country, and covers character names, UI, and PNG text. But meme-based internal content is treated as not for translation and kept as an exception.",
-          point: "A call about what is and isn't a translation target, by the nature of the content.",
-        },
-      ],
-      shot: "PNG output — off-screen clone-capture structure / localized output",
     },
     data: {
       h2: "I designed the operation, not just the acquisition.",
@@ -527,17 +475,17 @@ const COPY = {
         {
           tier: "TIER A",
           note: "Where planning and operating calls show",
-          items: ["Skin data & QA pipeline", "Character Sort", "CP Chart Maker", "PNG Output Engine", "Duo Card", "Visual Novel"],
+          items: ["Skin data & QA pipeline", "Character Sort", "CP Chart Maker", "Duo Card", "Visual Novel"],
         },
         {
           tier: "TIER B",
           note: "Shows extension and reuse design",
-          items: ["Skin Checklist", "Tier List", "Skin Catalog", "Character data model"],
+          items: ["Skin Checklist", "Tier List", "Skin Catalog"],
         },
         {
           tier: "TIER C",
           note: "Standard implementation · mention only",
-          items: ["Skin Board", "Character list page", "Locale routing", "GA4 events"],
+          items: ["Skin Board", "Character list page", "GA4 events"],
         },
       ],
     },
@@ -580,7 +528,7 @@ const COPY = {
       myRole: [
         "Service planning · information architecture",
         "Fandom behavior observation and feature definition",
-        "Common systems (character domain · PNG engine · localization) design",
+        "Turning the no-login, no-storage constraint into a distribution concept",
         "842-skin data pipeline · Korean review gate",
         "GA4 analysis · collecting user feedback and improving",
       ],
@@ -744,15 +692,9 @@ export default async function Identity5PickPage({
                     <div key={it.name} className="flex flex-col rounded-xl border border-line-2 px-4 py-4">
                       <div className="font-mono text-[12.5px] font-semibold tracking-[.02em]">{it.name}</div>
                       <p className="mt-2 text-[13.5px] leading-[1.5] text-ink-70">{it.desc}</p>
-                      {(ITEM_SHOTS[it.name] ?? []).map((s, si) => (
-                        <Placeholder
-                          key={s.src}
-                          variant="alt"
-                          label={it.name}
-                          img={s}
-                          className={si === 0 ? "mt-3.5" : "mt-2.5"}
-                        />
-                      ))}
+                      {ITEM_SHOTS[it.name] && (
+                        <Placeholder variant="alt" label={it.name} img={ITEM_SHOTS[it.name]} className="mt-3.5" />
+                      )}
                     </div>
                   ))}
                 </div>
@@ -770,31 +712,10 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      {/* 03 — Common Systems */}
-      <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>03 / COMMON SYSTEMS</div>
-        <Reveal>
-          <h2 className={`mt-4 ${H2}`}>{c.systems.h2}</h2>
-        </Reveal>
-        <p className={LEAD}>{c.systems.lead}</p>
-
-        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
-          {c.systems.list.map((s, i) => (
-            <Reveal key={s.en} delay={i * 0.05} className="rounded-xl border border-line-2 px-5 py-5">
-              <span className="font-archivo text-[10px] font-semibold tracking-[.13em] text-accent">{s.tag}</span>
-              <h3 className="mt-2 font-archivo text-[19px] font-bold tracking-[-.02em]">{s.en}</h3>
-              <p className="mt-2.5 text-[13.5px] leading-[1.55] text-ink-70">{s.body}</p>
-              <p className="mt-3 border-l-2 border-accent pl-3 text-[13px] leading-[1.5] text-muted">{s.point}</p>
-            </Reveal>
-          ))}
-        </div>
-
-      </section>
-
-      {/* 04 — Data Operation (dark) */}
+      {/* 03 — Data Operation (dark) */}
       <section className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW_DARK}>04 / DATA OPERATION</div>
+          <div className={EYEBROW_DARK}>03 / DATA OPERATION</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.data.h2}</h2>
           </Reveal>
@@ -840,7 +761,7 @@ export default async function Identity5PickPage({
 
       {/* 05 — QA Process */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>05 / QA PROCESS</div>
+        <div className={EYEBROW}>04 / QA PROCESS</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.qa.h2}</h2>
         </Reveal>
@@ -892,7 +813,7 @@ export default async function Identity5PickPage({
       {/* 06 — User Feedback */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>06 / USER FEEDBACK &amp; IMPROVEMENT</div>
+          <div className={EYEBROW}>05 / USER FEEDBACK &amp; IMPROVEMENT</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.fb.h2}</h2>
           </Reveal>
@@ -930,7 +851,7 @@ export default async function Identity5PickPage({
 
       {/* 07 — UX Insight */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>07 / UX INSIGHT</div>
+        <div className={EYEBROW}>06 / UX INSIGHT</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.ux.h2}</h2>
         </Reveal>
@@ -965,7 +886,7 @@ export default async function Identity5PickPage({
       {/* 08 — Feature Priority */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>08 / FEATURE PRIORITY</div>
+          <div className={EYEBROW}>07 / FEATURE PRIORITY</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.priority.h2}</h2>
           </Reveal>
@@ -996,7 +917,7 @@ export default async function Identity5PickPage({
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="flex-[1.2]">
-              <div className={EYEBROW_DARK}>09 / LEARNING</div>
+              <div className={EYEBROW_DARK}>08 / LEARNING</div>
               <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
             </Reveal>
             <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">
