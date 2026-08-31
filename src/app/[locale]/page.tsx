@@ -422,7 +422,6 @@ export default async function HomePage({
                 </span>
               ))}
             </div>
-            <div className="mt-6 font-mono text-[11.5px] text-[rgba(244,241,234,.45)]">{profile.language}</div>
           </Reveal>
         </div>
       </section>
