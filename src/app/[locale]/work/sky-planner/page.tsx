@@ -69,9 +69,8 @@ const SHOTS = {
   growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 380 },
   growth2: { src: `${S}/openchat.png`, w: 457, h: 449, mw: 380 },
   growth3: { src: `${S}/overseas-admin-permission.png`, w: 947, h: 832, mw: 380 },
-  events1: { src: `${S}/tw-user-reactions.jpg`, w: 756, h: 1485, mw: 460 },
-  events2: { src: `${S}/tw-viral-1.png`, w: 756, h: 1485, mw: 460 },
-  events3: { src: `${S}/tw-viral-2.png`, w: 756, h: 1485, mw: 460 },
+  events1: { src: `${S}/cafe-event-flirting.png`, w: 843, h: 703, mw: 520 },
+  events2: { src: `${S}/cafe-event-treasure.png`, w: 949, h: 787, mw: 520 },
   o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 520 },
   o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 360 },
   learn: { src: `${S}/sheet-music-workspace.png`, w: 1313, h: 1043, mw: 560 },
@@ -83,6 +82,13 @@ const FEATURE_SHOTS: Shot[] = [
   { src: `${S}/ts-archive.png`, w: 1662, h: 1140, mw: 640 },
   { src: `${S}/personality-test.png`, w: 1002, h: 701, mw: 620 },
   { src: `${S}/season-encyclopedia.png`, w: 1767, h: 1170, mw: 700 },
+];
+
+/** personality-test viral spread — shown as an extra gallery under FEATURE 04 */
+const PT_VIRAL: Shot[] = [
+  { src: `${S}/tw-user-reactions.jpg`, w: 756, h: 1485, mw: 360 },
+  { src: `${S}/tw-viral-1.png`, w: 756, h: 1485, mw: 360 },
+  { src: `${S}/tw-viral-2.png`, w: 756, h: 1485, mw: 360 },
 ];
 
 type Feature = {
@@ -100,12 +106,12 @@ type Copy = {
   heroSubtitle: string;
   ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; uses: string[] };
   evo: { h2: string; lead: string; count: string; list: { tag: string; name: string; line: string }[]; shot: string };
-  feat: { h2: string; lead: string; items: Feature[] };
+  feat: { h2: string; lead: string; items: Feature[]; ptViralLabel: string; ptViral: string[] };
   ops: { h2: string; migration: string; qa: string; sunset: string; shot: string };
   data: { h2: string; gaLine: string; insightLabel: string; insights: { n: string; title: string; detail: string }[]; shot: string };
   fb: { h2: string; lead: string; reflected: string[]; notReflected: { req: string; why: string }[]; shot: string };
   growth: { h2: string; lead: string; channels: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
-  events: { h2: string; lead: string; list: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
+  events: { h2: string; lead: string; list: { title: string; body: string }[]; shot1: string; shot2: string };
   o2o: { h2: string; lead: string; flow: string[]; onSite: string; dayUsers: string; shot1: string; shot2: string };
   learn: { h2: string; musicLabel: string; music: string; examLabel: string; exam: string; shot: string; quote: string };
   final: { h2: string; body: string };
@@ -211,6 +217,12 @@ const COPY: Record<Locale, Copy> = {
           shot: "시즌 대백과 — 시즌별 영혼 그리드 · 유저 편집 키워드",
         },
       ],
+      ptViralLabel: "성향 테스트 — 커뮤니티 확산",
+      ptViral: [
+        "유저 반응 (모자이크 처리)",
+        "커뮤니티 확산 1",
+        "커뮤니티 확산 2",
+      ],
     },
     ops: {
       h2: "장애를 구조 개선의 기회로.",
@@ -294,9 +306,8 @@ const COPY: Record<Locale, Copy> = {
         { title: "보물찾기", body: "사진 속 특징을 보고 장소를 찾아 인증샷. 참여가 많아 2탄까지 진행." },
         { title: "스개팅 (Sky 소개팅)", body: "참가자에게 미션을 주고 스파이 1명을 선정해 이상한 미션을 부여하는 참여형 이벤트." },
       ],
-      shot1: "성향 테스트 — 유저 반응 (모자이크 처리)",
-      shot2: "성향 테스트 — 커뮤니티 확산 1",
-      shot3: "성향 테스트 — 커뮤니티 확산 2",
+      shot1: "네이버 카페 이벤트 — 킹받는 플러팅 대회",
+      shot2: "네이버 카페 이벤트 — 보물찾기",
     },
     o2o: {
       h2: "온라인 서비스를 오프라인 현장으로.",
@@ -425,6 +436,8 @@ const COPY: Record<Locale, Copy> = {
           shot: "Season Encyclopedia — per-season spirit grid, user-edited keywords",
         },
       ],
+      ptViralLabel: "Personality test — community spread",
+      ptViral: ["Player reactions (redacted)", "Community spread 1", "Community spread 2"],
     },
     ops: {
       h2: "An incident, used as a chance to improve the structure.",
@@ -508,9 +521,8 @@ const COPY: Record<Locale, Copy> = {
         { title: "Treasure Hunt", body: "Match a spot from a photo's details, go there, and post a proof shot. Popular enough for a second round." },
         { title: "Sky Blind Date", body: "A participatory event: give players missions and pick one 'spy' to hand a strange one." },
       ],
-      shot1: "Personality test — player reactions (redacted)",
-      shot2: "Personality test — community spread 1",
-      shot3: "Personality test — community spread 2",
+      shot1: "Naver café event — the flirting contest",
+      shot2: "Naver café event — the treasure hunt",
     },
     o2o: {
       h2: "The online service, taken to an offline venue.",
@@ -542,7 +554,21 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
-function FeatureBlock({ f, alt, shot }: { f: Feature; alt: boolean; shot?: Shot }) {
+function FeatureBlock({
+  f,
+  alt,
+  shot,
+  gallery,
+  galleryLabel,
+  galleryCaptions,
+}: {
+  f: Feature;
+  alt: boolean;
+  shot?: Shot;
+  gallery?: Shot[];
+  galleryLabel?: string;
+  galleryCaptions?: string[];
+}) {
   return (
     <section className={`px-5 py-9 sm:px-9 sm:py-12 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
@@ -575,6 +601,27 @@ function FeatureBlock({ f, alt, shot }: { f: Feature; alt: boolean; shot?: Shot 
         </p>
 
         <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="mt-5" />
+
+        {gallery && gallery.length > 0 && (
+          <div className="mt-4">
+            {galleryLabel && (
+              <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">
+                {galleryLabel}
+              </div>
+            )}
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {gallery.map((g, i) => (
+                <Placeholder
+                  key={g.src}
+                  variant={alt ? "alt" : "light"}
+                  label={galleryCaptions?.[i] ?? ""}
+                  img={g}
+                  className="h-[clamp(280px,32vw,380px)]"
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -743,7 +790,15 @@ export default async function SkyPlannerPage({
       </section>
 
       {c.feat.items.map((f, i) => (
-        <FeatureBlock key={f.n} f={f} alt={i % 2 === 1} shot={FEATURE_SHOTS[i]} />
+        <FeatureBlock
+          key={f.n}
+          f={f}
+          alt={i % 2 === 1}
+          shot={FEATURE_SHOTS[i]}
+          gallery={i === 3 ? PT_VIRAL : undefined}
+          galleryLabel={i === 3 ? c.feat.ptViralLabel : undefined}
+          galleryCaptions={i === 3 ? c.feat.ptViral : undefined}
+        />
       ))}
 
       {/* 04 — Operation & Infrastructure */}
@@ -911,22 +966,9 @@ export default async function SkyPlannerPage({
           ))}
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <Placeholder
-            label={c.events.shot1}
-            img={SHOTS.events1}
-            className="h-[clamp(300px,36vw,420px)]"
-          />
-          <Placeholder
-            label={c.events.shot2}
-            img={SHOTS.events2}
-            className="h-[clamp(300px,36vw,420px)]"
-          />
-          <Placeholder
-            label={c.events.shot3}
-            img={SHOTS.events3}
-            className="h-[clamp(300px,36vw,420px)]"
-          />
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Placeholder label={c.events.shot1} img={SHOTS.events1} className="h-[clamp(220px,28vw,340px)]" />
+          <Placeholder label={c.events.shot2} img={SHOTS.events2} className="h-[clamp(220px,28vw,340px)]" />
         </div>
       </section>
 
