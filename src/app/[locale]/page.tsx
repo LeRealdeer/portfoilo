@@ -203,9 +203,14 @@ export default async function HomePage({
                 img={CARD_SHOTS.identity5.main}
                 className="flex"
               />
-              <div className="mt-4 flex gap-4">
+              <div className="mt-4 grid grid-cols-3 gap-4">
                 {CARD_SHOTS.identity5.thumbs.map((thumb) => (
-                  <Placeholder key={thumb.label} label={thumb.label} img={thumb} className="flex-1 text-[11px]" />
+                  <Placeholder
+                    key={thumb.label}
+                    label={thumb.label}
+                    img={thumb}
+                    className="h-[clamp(80px,10vw,130px)] text-[11px]"
+                  />
                 ))}
               </div>
             </Reveal>
@@ -287,9 +292,14 @@ export default async function HomePage({
                 img={CARD_SHOTS.heartopia.main}
                 className="flex"
               />
-              <div className="mt-4 flex gap-4">
+              <div className="mt-4 grid grid-cols-2 gap-4">
                 {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
-                  <Placeholder key={thumb.label} label={thumb.label} img={thumb} className="flex-1 text-[11px]" />
+                  <Placeholder
+                    key={thumb.label}
+                    label={thumb.label}
+                    img={thumb}
+                    className="h-[clamp(90px,12vw,150px)] text-[11px]"
+                  />
                 ))}
               </div>
             </Reveal>
