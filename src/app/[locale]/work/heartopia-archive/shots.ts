@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
 import type { Shot } from "@/components/Placeholder";
 
-import home from "../../../../../public/heartopia/main_heartopia_home.png";
-import creator from "../../../../../public/heartopia/main_heartopia_creator.png";
-import detail from "../../../../../public/heartopia/main_heartopia_detail.png";
+import home from "../../../../../public/main_heartopia_home.png";
+import creator from "../../../../../public/main_heartopia_creator.png";
+import detail from "../../../../../public/main_heartopia_detail.png";
 import cafePosts from "../../../../../public/heartopia/cafe-posts.png";
 import archiveGrid from "../../../../../public/heartopia/archive-grid.png";
 import cafeAttribution from "../../../../../public/heartopia/cafe-attribution.png";
