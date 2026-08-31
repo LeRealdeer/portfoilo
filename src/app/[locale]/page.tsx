@@ -11,6 +11,7 @@ import { impactStrip } from "@/data/metrics";
 import { getProjects } from "@/data/projects";
 import { getExperience } from "@/data/experience";
 import { toLocale, type Locale } from "@/lib/i18n";
+import { CARD_SHOTS } from "./shots";
 
 export async function generateMetadata({
   params,
@@ -45,24 +46,6 @@ const COPY: Record<Locale, Record<string, string>> = {
   },
 };
 
-const CARD_SHOTS = {
-  sky: { src: "/main_skyplanner_home.png", w: 1754, h: 997, mw: 900 },
-  identity5: {
-    main: { src: "/main_identity5_home.png", w: 2481, h: 1412, mw: 760 },
-    thumbs: [
-      { label: "CP MAP", src: "/main_identity5_cp.png", w: 1692, h: 1237, mw: 260 },
-      { label: "SKIN ARCHIVE", src: "/main_identity5_skin.png", w: 1680, h: 1259, mw: 260 },
-      { label: "TIER LIST", src: "/main_identity5_tierlist.png", w: 1431, h: 1212, mw: 260 },
-    ],
-  },
-  heartopia: {
-    main: { src: "/main_heartopia_home.png", w: 1720, h: 1222, mw: 760 },
-    thumbs: [
-      { label: "CREATOR PAGE", src: "/main_heartopia_creator.png", w: 2538, h: 1261, mw: 380 },
-      { label: "CONTENT DETAIL", src: "/main_heartopia_detail.png", w: 4416, h: 2122, mw: 380 },
-    ],
-  },
-};
 
 export default async function HomePage({
   params,

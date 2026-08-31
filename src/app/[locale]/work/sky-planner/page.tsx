@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder, type Shot } from "@/components/Placeholder";
+import { HERO_SHOT, SHOTS, FEATURE_SHOTS, PT_VIRAL } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -55,41 +56,6 @@ const demonstratedSkills = [
 ];
 
 const techStack = ["Next.js", "Spring Boot", "MySQL", "AWS EC2 → Railway · Vercel", "GA4", "Figma"];
-
-const S = "/sky-planner";
-const HERO_SHOT: Shot = { src: `${S}/sky_home.png`, w: 1770, h: 873, mw: 1180 };
-const SHOTS = {
-  use1: { src: `${S}/height-example-1.jpg`, w: 840, h: 691, mw: 360 },
-  use2: { src: `${S}/height-example-2.jpg`, w: 845, h: 719, mw: 360 },
-  use3: { src: `${S}/height-example-3.jpg`, w: 832, h: 709, mw: 360 },
-  evo: { src: `${S}/sky_hero.png`, w: 1754, h: 997, mw: 960 },
-  ops: { src: `${S}/ts-archive-detail.png`, w: 1184, h: 702, mw: 760 },
-  data: { src: `${S}/ga-users-nov.png`, w: 1915, h: 905, mw: 980 },
-  fb: { src: `${S}/survey-2.png`, w: 1914, h: 904, mw: 980 },
-  growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 380 },
-  growth2: { src: `${S}/openchat.png`, w: 457, h: 449, mw: 380 },
-  growth3: { src: `${S}/overseas-admin-permission.png`, w: 947, h: 832, mw: 380 },
-  events1: { src: `${S}/cafe-event-flirting.png`, w: 843, h: 703, mw: 520 },
-  events2: { src: `${S}/cafe-event-treasure.png`, w: 949, h: 787, mw: 520 },
-  o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 520 },
-  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1597, mw: 360 },
-  learn: { src: `${S}/sheet-music-workspace.png`, w: 1313, h: 1043, mw: 560 },
-} satisfies Record<string, Shot>;
-
-const FEATURE_SHOTS: Shot[] = [
-  { src: `${S}/height-checker.png`, w: 1975, h: 1125, mw: 720 },
-  { src: `${S}/candle-howto.png`, w: 1191, h: 1261, mw: 480 },
-  { src: `${S}/ts-archive.png`, w: 1662, h: 1140, mw: 640 },
-  { src: `${S}/personality-test.png`, w: 1002, h: 701, mw: 620 },
-  { src: `${S}/season-encyclopedia.png`, w: 1767, h: 1170, mw: 700 },
-];
-
-/** personality-test viral spread — shown as an extra gallery under FEATURE 04 */
-const PT_VIRAL: Shot[] = [
-  { src: `${S}/tw-user-reactions.jpg`, w: 756, h: 1485, mw: 360 },
-  { src: `${S}/tw-viral-1.png`, w: 756, h: 1485, mw: 360 },
-  { src: `${S}/tw-viral-2.png`, w: 756, h: 1485, mw: 360 },
-];
 
 type Feature = {
   n: string;
