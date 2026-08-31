@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
+import { HERO_SHOT, VN_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -119,6 +120,7 @@ const COPY = {
       vn:
         "도구가 아닌 콘텐츠도 있습니다 — 연애 시뮬레이터(5~8분 웹 비주얼 노벨)는 도구를 쓰러 오지 않은 유저의 체류·재방문을 만듭니다. 엔진과 콘텐츠를 분리하고 세 언어의 판정 로직을 한 곳에 고정해, 비개발자가 새 편을 계속 추가할 수 있는 구조로 만들었습니다.",
       shot: "홈 화면 — 기능 카드 8종",
+      vnShot: "연애 시뮬레이터 — 웹 비주얼 노벨",
     },
     systems: {
       h2: "보이지 않지만 전 기능을 결정한 설계.",
@@ -232,7 +234,7 @@ const COPY = {
         { value: 39661, label: "이벤트" },
       ],
       gaLine: "GA4 · 2026.07.17 ~ 운영 중",
-      shot: "GA4 대시보드 — 기능별 사용자·조회수·참여 시간",
+      shot: "GA4 — 기능별 페이지 조회수 · 참여 시간",
       signals: [
         {
           label: "서비스 정체성",
@@ -386,6 +388,7 @@ const COPY = {
       vn:
         "There's content that isn't a tool, too — the Visual Novel (a 5–8 minute web visual novel) keeps players who didn't come for a tool. I separated the engine from the content and pinned the branching logic across all three languages in one place, so a non-developer can keep adding episodes.",
       shot: "Home screen — eight feature cards",
+      vnShot: "Visual Novel — the web visual novel",
     },
     systems: {
       h2: "The design that decided every feature — unseen.",
@@ -500,7 +503,7 @@ const COPY = {
         { value: 39661, label: "Events" },
       ],
       gaLine: "GA4 · since 2026.07.17",
-      shot: "GA4 dashboard — users, views, and engagement time by feature",
+      shot: "GA4 — page views and engagement by feature",
       signals: [
         {
           label: "Service identity",
@@ -674,7 +677,7 @@ export default async function Identity5PickPage({
 
       <div className="px-5 sm:px-9">
         <Reveal>
-          <Placeholder label={project.screenshotLabel} className="mx-auto h-[clamp(220px,44vw,600px)] max-w-[1440px]" />
+          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
         </Reveal>
       </div>
 
@@ -705,10 +708,6 @@ export default async function Identity5PickPage({
           {c.problem.quote}
         </p>
 
-        <div className="mt-8 flex gap-3 max-[560px]:flex-col">
-          <Placeholder label={c.problem.shot1} className="h-[clamp(140px,17vw,220px)] flex-1" />
-          <Placeholder label={c.problem.shot2} className="h-[clamp(140px,17vw,220px)] flex-1" />
-        </div>
       </section>
 
       {/* 02 — Solution */}
@@ -742,9 +741,17 @@ export default async function Identity5PickPage({
                 </div>
                 <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
                   {g.items.map((it) => (
-                    <div key={it.name} className="rounded-xl border border-line-2 px-4 py-4">
+                    <div key={it.name} className="flex flex-col rounded-xl border border-line-2 px-4 py-4">
                       <div className="font-mono text-[12.5px] font-semibold tracking-[.02em]">{it.name}</div>
                       <p className="mt-2 text-[13.5px] leading-[1.5] text-ink-70">{it.desc}</p>
+                      {ITEM_SHOTS[it.name] && (
+                        <Placeholder
+                          variant="alt"
+                          label={it.name}
+                          img={ITEM_SHOTS[it.name]}
+                          className="mt-3.5"
+                        />
+                      )}
                     </div>
                   ))}
                 </div>
@@ -755,7 +762,7 @@ export default async function Identity5PickPage({
           <p className="mt-9 max-w-[640px] text-[14px] leading-[1.55] text-muted">{c.solution.vn}</p>
 
           <Reveal delay={0.1}>
-            <Placeholder variant="alt" label={c.solution.shot} className="mt-8 h-[clamp(160px,20vw,260px)]" />
+            <Placeholder variant="alt" label={c.solution.vnShot} img={VN_SHOT} className="mt-5" />
           </Reveal>
         </div>
       </section>
@@ -779,9 +786,6 @@ export default async function Identity5PickPage({
           ))}
         </div>
 
-        <Reveal delay={0.1}>
-          <Placeholder label={c.systems.shot} className="mt-8 h-[clamp(150px,18vw,240px)]" />
-        </Reveal>
       </section>
 
       {/* 04 — Data Operation (dark) */}
@@ -828,9 +832,6 @@ export default async function Identity5PickPage({
             <p className="mt-5 text-[13px] leading-[1.55] text-[rgba(244,241,234,.55)]">{c.data.layerNote}</p>
           </div>
 
-          <Reveal delay={0.1}>
-            <Placeholder variant="dark" label={c.data.shot} className="mt-8 h-[clamp(150px,18vw,240px)]" />
-          </Reveal>
         </div>
       </section>
 
@@ -881,7 +882,7 @@ export default async function Identity5PickPage({
         </div>
 
         <Reveal delay={0.1}>
-          <Placeholder label={c.qa.shot} className="mt-8 h-[clamp(150px,18vw,240px)]" />
+          <Placeholder label={c.qa.shot} img={QA_SHOT} className="mt-8" />
         </Reveal>
       </section>
 
@@ -945,7 +946,7 @@ export default async function Identity5PickPage({
         <div className="mt-4 font-mono text-[12px] text-muted-light">{c.ux.gaLine}</div>
 
         <Reveal delay={0.1}>
-          <Placeholder label={c.ux.shot} className="mt-8 h-[clamp(160px,22vw,300px)]" />
+          <Placeholder label={c.ux.shot} img={UX_SHOT} className="mt-8" />
         </Reveal>
 
         <div className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3">

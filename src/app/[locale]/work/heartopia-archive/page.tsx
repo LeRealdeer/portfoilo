@@ -437,10 +437,6 @@ export default async function HeartopiaArchivePage({
           <ArrowFlow steps={c.discoveryFlow} />
         </div>
         <p className="mt-4 max-w-[520px] text-[15px] leading-[1.55] text-muted">{c.ctx.note}</p>
-
-        <Reveal delay={0.1}>
-          <Placeholder variant="alt" label={c.ctx.shot} className="mt-8 h-[clamp(160px,20vw,280px)]" />
-        </Reveal>
       </section>
 
       {/* 02 — Problem */}
@@ -583,7 +579,7 @@ export default async function HeartopiaArchivePage({
                     <p className="mt-1.5 text-[13.5px] leading-[1.5] text-ink-70">{f.solution}</p>
                   </div>
                 </div>
-                <Placeholder label={f.shot} img={featShot} className="mt-3" />
+                {featShot && <Placeholder label={f.shot} img={featShot} className="mt-3" />}
               </Reveal>
               );
             })}
@@ -619,14 +615,9 @@ export default async function HeartopiaArchivePage({
           </div>
         </div>
 
-        <div className="mt-6 flex max-[560px]:flex-col gap-4">
-          <Placeholder label={c.editor.shotBefore} className="h-[clamp(180px,22vw,280px)] flex-1" />
-          <Placeholder
-            label={c.editor.shotAfter}
-            img={SHOTS.editorAfter}
-            className="h-[clamp(180px,22vw,280px)] flex-1"
-          />
-        </div>
+        <Reveal delay={0.1}>
+          <Placeholder label={c.editor.shotAfter} img={SHOTS.editorAfter} className="mt-6" />
+        </Reveal>
       </section>
 
       {/* 07 — Operation & Growth */}
