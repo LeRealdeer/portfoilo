@@ -716,25 +716,21 @@ export default async function SkyPlannerPage({
 
       {/* 02 — Service Evolution */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
-        <div className="mx-auto max-w-[1440px] flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
-          {/* left — write-up */}
-          <div className="min-w-0 flex-1">
-            <div className={EYEBROW}>02 / SERVICE EVOLUTION</div>
-            <Reveal>
-              <h2 className={`mt-4 ${H2}`}>{c.evo.h2}</h2>
-            </Reveal>
-            <p className={LEAD}>{c.evo.lead}</p>
+        <div className="mx-auto max-w-[1440px]">
+          <div className={EYEBROW}>02 / SERVICE EVOLUTION</div>
+          <Reveal>
+            <h2 className={`mt-4 ${H2}`}>{c.evo.h2}</h2>
+          </Reveal>
+          <p className={LEAD}>{c.evo.lead}</p>
 
-            <div className="mt-8 flex items-end gap-3">
-              <div className="font-archivo text-[clamp(38px,5vw,64px)] leading-[1] font-extrabold tracking-[-.045em]">
-                8
-              </div>
-              <div className="pb-2 font-archivo text-[11px] font-semibold tracking-[.13em] text-muted">
-                {c.evo.count}
-              </div>
-            </div>
+          <div className="mt-8 flex items-end gap-3">
+            <div className="font-archivo text-[clamp(38px,5vw,64px)] leading-[1] font-extrabold tracking-[-.045em]">8</div>
+            <div className="pb-2 font-archivo text-[11px] font-semibold tracking-[.13em] text-muted">{c.evo.count}</div>
+          </div>
 
-            <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
+          <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+            {/* left — 8 features */}
+            <div className="min-w-0 flex-1 grid gap-2.5 sm:grid-cols-2">
               {c.evo.list.map((e) => (
                 <div key={e.name} className="rounded-lg border border-line-2 px-4 py-3.5">
                   <div className="flex items-baseline gap-2">
@@ -745,12 +741,12 @@ export default async function SkyPlannerPage({
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* right — image, top-aligned with the title */}
-          <Reveal delay={0.1} className="w-full flex-1 sm:sticky sm:top-24">
-            <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="" />
-          </Reveal>
+            {/* right — image, aligned with the feature list */}
+            <Reveal delay={0.1} className="w-full flex-1 sm:sticky sm:top-24">
+              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="" />
+            </Reveal>
+          </div>
         </div>
       </section>
 
