@@ -780,28 +780,27 @@ export default async function SkyPlannerPage({
             <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
-          <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
-            {(
-              [
-                ["MIGRATION", c.ops.migration],
-                ["QA", c.ops.qa],
-              ] as const
-            ).map(([label, body]) => (
-              <div key={label} className="rounded-xl border border-line-2 px-5 py-5">
-                <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{label}</div>
-                <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{body}</p>
-              </div>
-            ))}
-          </div>
+          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
+            {/* left — write-up */}
+            <div className="min-w-0 flex-1 flex flex-col gap-3">
+              {(
+                [
+                  ["MIGRATION", c.ops.migration],
+                  ["QA", c.ops.qa],
+                ] as const
+              ).map(([label, body]) => (
+                <div key={label} className="rounded-xl border border-line-2 px-5 py-5">
+                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{label}</div>
+                  <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{body}</p>
+                </div>
+              ))}
+            </div>
 
-          <Reveal delay={0.1}>
-            <Placeholder
-              variant="alt"
-              label={c.ops.shot}
-              img={SHOTS.ops}
-              className="mt-8"
-            />
-          </Reveal>
+            {/* right — image */}
+            <Reveal delay={0.1} className="w-full flex-1 sm:sticky sm:top-24">
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
+            </Reveal>
+          </div>
         </div>
       </section>
 
