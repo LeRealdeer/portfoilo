@@ -875,35 +875,41 @@ export default async function SkyPlannerPage({
         </Reveal>
         <p className={LEAD}>{c.fb.lead}</p>
 
-        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
-          <div className="rounded-xl border border-line-2 px-5 py-5">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">REFLECTED</div>
-            <ul className="mt-3 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-ink-70">
-              {c.fb.reflected.map((r) => (
-                <li key={r}>· {r}</li>
-              ))}
-            </ul>
+        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1 flex flex-col gap-3">
+            <div className="rounded-xl border border-line-2 px-5 py-5">
+              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">REFLECTED</div>
+              <ul className="mt-3 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-ink-70">
+                {c.fb.reflected.map((r) => (
+                  <li key={r}>· {r}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-line-2 px-5 py-5">
+              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
+                NOT REFLECTED
+              </div>
+              <ul className="mt-3 flex flex-col gap-2.5 text-[14px] leading-[1.5] text-ink-70">
+                {c.fb.notReflected.map((r) => (
+                  <li key={r.req}>
+                    · {r.req}
+                    <span className="mt-0.5 block text-[12.5px] text-muted">— {r.why}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="rounded-xl border border-line-2 px-5 py-5">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">NOT REFLECTED</div>
-            <ul className="mt-3 flex flex-col gap-2.5 text-[14px] leading-[1.5] text-ink-70">
-              {c.fb.notReflected.map((r) => (
-                <li key={r.req}>
-                  · {r.req}
-                  <span className="mt-0.5 block text-[12.5px] text-muted">— {r.why}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
-        <Reveal delay={0.1}>
-          <Placeholder
-            label={c.fb.shot}
-            img={SHOTS.fb}
-            className="mt-6"
-          />
-        </Reveal>
+          {/* right — image, matched to the card column height */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder
+              label={c.fb.shot}
+              img={SHOTS.fb}
+              className="h-full max-[900px]:h-[clamp(200px,58vw,340px)]"
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* 07 — Growth */}
@@ -1007,28 +1013,32 @@ export default async function SkyPlannerPage({
           <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
         </Reveal>
 
-        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
-          <div className="rounded-xl border border-line-2 px-5 py-5">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
-              {c.learn.musicLabel}
+        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1 flex flex-col gap-3">
+            <div className="rounded-xl border border-line-2 px-5 py-5">
+              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
+                {c.learn.musicLabel}
+              </div>
+              <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.music}</p>
             </div>
-            <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.music}</p>
-          </div>
-          <div className="rounded-xl border border-line-2 px-5 py-5">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
-              {c.learn.examLabel}
+            <div className="rounded-xl border border-line-2 px-5 py-5">
+              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
+                {c.learn.examLabel}
+              </div>
+              <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.exam}</p>
             </div>
-            <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.exam}</p>
           </div>
-        </div>
 
-        <Reveal delay={0.1}>
-          <Placeholder
-            label={c.learn.shot}
-            img={SHOTS.learn}
-            className="mt-6"
-          />
-        </Reveal>
+          {/* right — image, matched to the card column height */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder
+              label={c.learn.shot}
+              img={SHOTS.learn}
+              className="h-full max-[900px]:h-[clamp(200px,58vw,340px)]"
+            />
+          </Reveal>
+        </div>
 
         <p className="mt-8 max-w-[640px] border-l-2 border-accent pl-5 font-archivo text-[clamp(17px,1.9vw,20px)] font-bold leading-[1.5] tracking-[-.02em]">
           {c.learn.quote}
