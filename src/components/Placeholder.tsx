@@ -37,13 +37,7 @@ export type Shot = {
   mw?: number;
 };
 
-/** strips height utilities so the image can size itself by its real aspect ratio */
-function stripHeight(cn: string) {
-  return cn
-    .split(/\s+/)
-    .filter((t) => !/^(sm:|md:|lg:)?(min-)?h-/.test(t))
-    .join(" ");
-}
+const HAS_HEIGHT = /(?:^|\s)(?:sm:|md:|lg:)?(?:min-)?h-/;
 
 export function Placeholder({
   label,
@@ -61,20 +55,41 @@ export function Placeholder({
 }) {
   if (img) {
     const alt = typeof label === "string" ? label : "";
-    const maxW = img.mw ?? 720;
-    const content = (
-      <span className={`${stripHeight(className)} block`}>
-        <Image
-          src={img.src}
-          alt={alt}
-          width={img.w}
-          height={img.h}
-          sizes={`(max-width: ${maxW}px) 100vw, ${maxW}px`}
-          style={{ maxWidth: maxW }}
-          className={`mx-auto block h-auto w-full rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]}`}
-        />
-      </span>
-    );
+    let content: ReactNode;
+
+    if (HAS_HEIGHT.test(className)) {
+      // gallery cell: fill a fixed-height box so a row of shots lines up
+      content = (
+        <span
+          className={`relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
+        >
+          <Image
+            src={img.src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 460px"
+            className="object-cover object-top"
+          />
+        </span>
+      );
+    } else {
+      // standalone figure: render at the screenshot's real aspect ratio
+      const maxW = img.mw ?? 720;
+      content = (
+        <span className={`${className} block`}>
+          <Image
+            src={img.src}
+            alt={alt}
+            width={img.w}
+            height={img.h}
+            sizes={`(max-width: ${maxW}px) 100vw, ${maxW}px`}
+            style={{ maxWidth: maxW }}
+            className={`mx-auto block h-auto w-full rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]}`}
+          />
+        </span>
+      );
+    }
+
     return href ? (
       <Link href={href} className="block">
         {content}

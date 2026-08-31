@@ -46,7 +46,7 @@ const COPY: Record<Locale, Record<string, string>> = {
 };
 
 const CARD_SHOTS = {
-  sky: { src: "/main_skyplanner_home.png", w: 2218, h: 1925, mw: 900 },
+  sky: { src: "/main_skyplanner_home.png", w: 1754, h: 997, mw: 900 },
   identity5: {
     main: { src: "/main_identity5_home.png", w: 2481, h: 1412, mw: 760 },
     thumbs: [

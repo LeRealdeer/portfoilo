@@ -67,9 +67,9 @@ const SHOTS = {
   fb: { src: `${S}/survey-2.png`, w: 1914, h: 904, mw: 980 },
   growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 460 },
   growth2: { src: `${S}/overseas-site-link.png`, w: 1919, h: 1079, mw: 560 },
-  events1: { src: `${S}/user-example-1.png`, w: 1919, h: 1079, mw: 460 },
-  events2: { src: `${S}/user-example-2.png`, w: 1919, h: 1079, mw: 460 },
-  events3: { src: `${S}/user-example-3.png`, w: 1919, h: 1077, mw: 460 },
+  events1: { src: `${S}/tw-user-reactions.jpg`, w: 756, h: 1485, mw: 460 },
+  events2: { src: `${S}/tw-viral-1.png`, w: 756, h: 1485, mw: 460 },
+  events3: { src: `${S}/tw-viral-2.png`, w: 756, h: 1485, mw: 460 },
   o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 420 },
   o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 300 },
   o2o3: { src: `${S}/offline-license-irl.png`, w: 948, h: 878, mw: 420 },
@@ -293,9 +293,9 @@ const COPY: Record<Locale, Copy> = {
         { title: "보물찾기", body: "사진 속 특징을 보고 장소를 찾아 인증샷. 참여가 많아 2탄까지 진행." },
         { title: "스개팅 (Sky 소개팅)", body: "참가자에게 미션을 주고 스파이 1명을 선정해 이상한 미션을 부여하는 참여형 이벤트." },
       ],
-      shot1: "이벤트 기획안 · 진행 컷 1",
-      shot2: "이벤트 진행 컷 2",
-      shot3: "이벤트 결과 · 유저 반응",
+      shot1: "유저 반응 (모자이크 처리)",
+      shot2: "커뮤니티 확산 — 유저 공유 1",
+      shot3: "커뮤니티 확산 — 유저 공유 2",
     },
     o2o: {
       h2: "온라인 서비스를 오프라인 현장으로.",
@@ -508,9 +508,9 @@ const COPY: Record<Locale, Copy> = {
         { title: "Treasure Hunt", body: "Match a spot from a photo's details, go there, and post a proof shot. Popular enough for a second round." },
         { title: "Sky Blind Date", body: "A participatory event: give players missions and pick one 'spy' to hand a strange one." },
       ],
-      shot1: "Event plan · action shot 1",
-      shot2: "Event action shot 2",
-      shot3: "Event results · player reactions",
+      shot1: "Player reactions (redacted)",
+      shot2: "Community spread — user shares 1",
+      shot3: "Community spread — user shares 2",
     },
     o2o: {
       h2: "The online service, taken to an offline venue.",
@@ -697,7 +697,7 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.ctx.before}
               img={SHOTS.ctxBefore}
-              className="h-[clamp(140px,18vw,220px)]"
+              className="h-[clamp(200px,24vw,300px)]"
             />
           </div>
           <div className="flex-1">
@@ -706,7 +706,7 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.ctx.after}
               img={SHOTS.ctxAfter}
-              className="h-[clamp(140px,18vw,220px)]"
+              className="h-[clamp(200px,24vw,300px)]"
             />
           </div>
         </div>
@@ -743,7 +743,7 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.evo.shot}
               img={SHOTS.evo}
-              className="mt-8 h-[clamp(160px,20vw,260px)]"
+              className="mt-8"
             />
           </Reveal>
         </div>
@@ -790,7 +790,7 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.ops.shot}
               img={SHOTS.ops}
-              className="mt-8 h-[clamp(150px,18vw,240px)]"
+              className="mt-8"
             />
           </Reveal>
         </div>
@@ -838,7 +838,7 @@ export default async function SkyPlannerPage({
                 variant="dark"
                 label={c.data.shot}
                 img={SHOTS.data}
-                className="mt-8 h-[clamp(160px,22vw,300px)]"
+                className="mt-8"
               />
             </Reveal>
           </div>
@@ -879,7 +879,7 @@ export default async function SkyPlannerPage({
           <Placeholder
             label={c.fb.shot}
             img={SHOTS.fb}
-            className="mt-6 h-[clamp(150px,18vw,240px)]"
+            className="mt-6"
           />
         </Reveal>
       </section>
@@ -907,13 +907,13 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.growth.shot1}
               img={SHOTS.growth1}
-              className="h-[clamp(130px,16vw,200px)] flex-1"
+              className="h-[clamp(190px,22vw,260px)] flex-1"
             />
             <Placeholder
               variant="alt"
               label={c.growth.shot2}
               img={SHOTS.growth2}
-              className="h-[clamp(130px,16vw,200px)] flex-1"
+              className="h-[clamp(190px,22vw,260px)] flex-1"
             />
           </div>
         </div>
@@ -940,17 +940,17 @@ export default async function SkyPlannerPage({
           <Placeholder
             label={c.events.shot1}
             img={SHOTS.events1}
-            className="h-[clamp(130px,15vw,190px)]"
+            className="h-[clamp(300px,36vw,420px)]"
           />
           <Placeholder
             label={c.events.shot2}
             img={SHOTS.events2}
-            className="h-[clamp(130px,15vw,190px)]"
+            className="h-[clamp(300px,36vw,420px)]"
           />
           <Placeholder
             label={c.events.shot3}
             img={SHOTS.events3}
-            className="h-[clamp(130px,15vw,190px)]"
+            className="h-[clamp(300px,36vw,420px)]"
           />
         </div>
       </section>
@@ -988,19 +988,19 @@ export default async function SkyPlannerPage({
               variant="alt"
               label={c.o2o.shot1}
               img={SHOTS.o2o1}
-              className="h-[clamp(130px,15vw,190px)]"
+              className="h-[clamp(220px,26vw,320px)]"
             />
             <Placeholder
               variant="alt"
               label={c.o2o.shot2}
               img={SHOTS.o2o2}
-              className="h-[clamp(130px,15vw,190px)]"
+              className="h-[clamp(220px,26vw,320px)]"
             />
             <Placeholder
               variant="alt"
               label={c.o2o.shot3}
               img={SHOTS.o2o3}
-              className="h-[clamp(130px,15vw,190px)]"
+              className="h-[clamp(220px,26vw,320px)]"
             />
           </div>
         </div>
@@ -1032,7 +1032,7 @@ export default async function SkyPlannerPage({
           <Placeholder
             label={c.learn.shot}
             img={SHOTS.learn}
-            className="mt-6 h-[clamp(130px,15vw,200px)]"
+            className="mt-6"
           />
         </Reveal>
 
