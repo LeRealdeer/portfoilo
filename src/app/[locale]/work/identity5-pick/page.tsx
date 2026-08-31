@@ -118,7 +118,7 @@ const COPY = {
         },
       ],
       vn:
-        "도구가 아닌 콘텐츠도 있습니다 — 연애 시뮬레이터(5~8분 웹 비주얼 노벨)는 도구를 쓰러 오지 않은 유저의 체류·재방문을 만듭니다. 엔진과 콘텐츠를 분리하고 세 언어의 판정 로직을 한 곳에 고정해, 비개발자가 새 편을 계속 추가할 수 있는 구조로 만들었습니다.",
+        "연애 시뮬레이터(5~8분 웹 비주얼 노벨)는 순전히 재미를 위한 공유용 콘텐츠입니다. 유저가 결과를 커뮤니티에 공유하고, 재미있으니 또 퍼지면서 사이트가 자연스럽게 멀리 확산되도록 만들었습니다. 엔진과 콘텐츠를 분리하고 세 언어의 판정 로직을 한 곳에 고정해, 비개발자도 새 편을 계속 추가할 수 있습니다.",
       shot: "홈 화면 — 기능 카드 8종",
       vnShot: "연애 시뮬레이터 — 웹 비주얼 노벨",
     },
@@ -242,11 +242,11 @@ const COPY = {
         },
         {
           label: "재방문 장치",
-          body: "스킨 체크표(진행 중 상태) · 연애 시뮬레이터(편 추가·엔딩 컴플리트) · 티어리스트 프리셋 주제(주제 교체)가 각각 다른 방식으로 다시 오게 만듭니다.",
+          body: "스킨 체크표(진행 중 상태)와 티어리스트 프리셋 주제(주제 교체)가 각각 다른 방식으로 다시 오게 만듭니다.",
         },
         {
           label: "바이럴 접점",
-          body: "CP표와 캐릭터 소트 결과 PNG가 “내 결과 vs 너” 비교로 커뮤니티 게시글의 소재가 됩니다.",
+          body: "CP표·캐릭터 소트 결과 PNG는 “내 결과 vs 너” 비교로, 연애 시뮬레이터는 순수 재미로 — 둘 다 커뮤니티 게시글의 소재가 되어 사이트를 퍼뜨립니다.",
         },
       ],
     },
@@ -305,7 +305,7 @@ const COPY = {
         {
           n: "06",
           title: "재방문·공유 루프를 의도적으로 배치했습니다",
-          body: "스킨 체크표(습관적 재방문) · 티어리스트 프리셋(반복 놀이) · 연애 시뮬레이터(엔딩 컴플리트) · CP표·소트 결과(바이럴) · 워터마크(유입) — 각 기능이 루프의 어느 지점을 담당하는지 명확합니다.",
+          body: "스킨 체크표(습관적 재방문) · 티어리스트 프리셋(반복 놀이) · CP표·소트 결과·연애 시뮬레이터(공유·바이럴) · 워터마크(유입) — 각 기능이 루프의 어느 지점을 담당하는지 명확합니다.",
         },
       ],
       myRole: [
@@ -386,7 +386,7 @@ const COPY = {
         },
       ],
       vn:
-        "There's content that isn't a tool, too — the Visual Novel (a 5–8 minute web visual novel) keeps players who didn't come for a tool. I separated the engine from the content and pinned the branching logic across all three languages in one place, so a non-developer can keep adding episodes.",
+        "The Visual Novel (a 5–8 minute web visual novel) is pure-fun content built to be shared. Players post their result to the community, it spreads again because it's fun, and the site travels with it. I split the engine from the content and pinned the branching logic across all three languages in one place, so even a non-developer can keep adding episodes.",
       shot: "Home screen — eight feature cards",
       vnShot: "Visual Novel — the web visual novel",
     },
@@ -511,11 +511,11 @@ const COPY = {
         },
         {
           label: "Return hooks",
-          body: "Skin Checklist (in-progress state), Visual Novel (new episodes, ending completion), and Tier List preset themes (theme swap) each pull people back a different way.",
+          body: "Skin Checklist (in-progress state) and Tier List preset themes (theme swap) each pull people back a different way.",
         },
         {
           label: "Viral surface",
-          body: "CP Chart and Character Sort result PNGs become the material for community posts — “my result vs yours.”",
+          body: "CP Chart / Character Sort result PNGs (“my result vs yours”) and the Visual Novel (pure fun) both become material for community posts that carry the site outward.",
         },
       ],
     },
@@ -574,7 +574,7 @@ const COPY = {
         {
           n: "06",
           title: "I placed the return and viral loops on purpose",
-          body: "Skin Checklist (habitual return), Tier List presets (repeat play), Visual Novel (ending completion), CP Chart / Sort results (viral), watermark (acquisition) — it's clear which point of the loop each feature owns.",
+          body: "Skin Checklist (habitual return), Tier List presets (repeat play), CP Chart / Sort results and the Visual Novel (sharing / viral), watermark (acquisition) — it's clear which point of the loop each feature owns.",
         },
       ],
       myRole: [
@@ -762,7 +762,7 @@ export default async function Identity5PickPage({
 
           <Reveal delay={0.1} className="mt-9 rounded-xl border border-line-2 bg-paper px-5 py-5 sm:mt-12">
             <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">
-              NOT A TOOL — CONTENT
+              SHAREABLE CONTENT — REACH
             </div>
             <p className="mt-2 max-w-[640px] text-[13.5px] leading-[1.55] text-ink-70">{c.solution.vn}</p>
             <Placeholder variant="alt" label={c.solution.vnShot} img={VN_SHOT} className="mt-4" />
