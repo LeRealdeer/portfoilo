@@ -325,7 +325,7 @@ const COPY: Record<Locale, Copy> = {
         "커뮤니티가 이미 표준으로 쓰는 앱이 있어, 그 개발자에게 악보 변환 키를 받아 연동까지 했습니다. 하지만 익숙한 도구를 두고 옮겨올 이유를 만들지 못해 잘 쓰이지 않았습니다.",
       examLabel: "모의고사 시스템",
       exam:
-        "매달 1일 새 문제를 올리며 정기적인 재방문을 만든 좋은 유입원이었습니다. 다만 매달 출제 부담이 커서 결국 그만뒀습니다.",
+        "매달 1일 새 문제를 올리며 정기적인 재방문을 만든 좋은 유입원이었습니다. 다만 매달 문제를 출제하고 검수하는 운영 비용 부담으로 마무리하게 되었습니다.",
       shot: "악보 만들기 화면 — 사이트 최하단",
       quote:
         "기능을 만들기 전에 ‘유저가 지금 쓰는 것을 두고 옮겨올 이유가 있는가’를 먼저 확인합니다. 완성도보다 전환할 이유가 채택을 결정한다는 것을 배웠습니다.",
@@ -539,7 +539,7 @@ const COPY: Record<Locale, Copy> = {
         "The community already had a standard app for this, so I got a conversion key from its developer and integrated it. But I couldn't give players a reason to leave a tool they knew, so it never caught on.",
       examLabel: "Mock Exam System",
       exam:
-        "A new set on the 1st of every month made it a real draw, bringing people back on a regular cadence. But writing questions every month wore me down and I dropped it.",
+        "A new set on the 1st of every month made it a real draw, bringing people back on a regular cadence. It wound down under the operating cost of authoring and vetting a fresh set each month.",
       shot: "Sheet Music Maker screen — bottom of the site",
       quote:
         "Before building a feature I now check first: is there a reason for users to leave what they already use? I learned that a reason to switch, not polish, decides adoption.",
