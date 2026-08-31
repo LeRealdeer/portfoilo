@@ -91,7 +91,7 @@ const COPY = {
             { name: "Tier List", desc: "캐릭터 이미지가 이미 들어 있는 드래그 티어표입니다. 프리셋 주제 24종을 제공하고, 티어 이름·색·개수를 직접 바꿀 수 있습니다." },
             { name: "CP Chart", desc: "캔버스에 캐릭터를 놓고 관계선을 잇습니다. 캐릭터를 옮기면 선이 따라오고, 겹치면 자동으로 우회합니다." },
             { name: "Skin Board", desc: "도감에서 스킨을 골라 위시리스트·복각 요청 표를 만듭니다." },
-            { name: "Visual Novel", desc: "선택지로 진행하는 5~8분짜리 웹 비주얼 노벨입니다. 엔진과 스토리 데이터를 분리하고 세 언어의 분기 판정을 한 곳에 모아, 비개발자도 새 편을 추가할 수 있게 만들었습니다." },
+            { name: "Duo Card", desc: "자기 취향에 맞는 듀오를 구하려고 만드는 듀오 구인표입니다. 모집 조건을 필수 항목이 고정된 카드 형태로 정리합니다." },
           ],
         },
         {
@@ -108,7 +108,7 @@ const COPY = {
           line: "결과물이 곧 콘텐츠, 유통은 커뮤니티에서.",
           items: [
             { name: "Character Sort", desc: "두 명씩 비교해 최애 순위를 만드는 랭킹 도구입니다. “잘 모르겠어요”는 공동 순위로 묶고, 진행률은 매 선택마다 재계산합니다. 결과는 이미지로 저장해 커뮤니티에 공유합니다." },
-            { name: "Duo Card", desc: "자기 취향에 맞는 듀오를 구하려고 만드는 듀오 구인표입니다. 모집 조건을 필수 항목이 고정된 카드 형태로 정리합니다." },
+            { name: "Visual Novel", desc: "선택지로 진행하는 5~8분짜리 웹 비주얼 노벨입니다. 유저가 결과를 커뮤니티에 공유하며 자연스럽게 퍼집니다. 엔진과 스토리 데이터를 분리하고 세 언어의 분기 판정을 한 곳에 모아, 비개발자도 새 편을 추가할 수 있습니다." },
           ],
         },
       ],
@@ -131,8 +131,6 @@ const COPY = {
         ["수동 검토 · 제외", "manual-review · excluded", "메타 항목 · 오프라인 한정판 등"],
         ["운영 DB", "skins 테이블", "is_active AND is_published만 공개 API 노출"],
       ],
-      layerNote:
-        "등급별 정제 결과 SS 5 / S 257 / A 580. canonical JSON은 손으로 고치지 않습니다 — 문제가 있으면 override 파일을 고치고 스크립트를 다시 돌려, 다음 시즌 동기화 때도 결과가 일관되도록 합니다.",
       shot: "canonical 리포트 · 이미지 교차검증 화면",
     },
     qa: {
@@ -141,7 +139,7 @@ const COPY = {
       whyLabel: "왜 사람 검수가 필요했나",
       why: [
         "팬덤 위키는 영문명만 제공해, 한국어명은 직접 변환해야 합니다",
-        "음차나 기계 번역만으로는 커뮤니티에서 실제로 쓰는 표기와 어긋납니다",
+        "AI 번역만으로는 커뮤니티에서 실제로 쓰는 표기와 어긋납니다",
         "그래서 변환한 이름을 사람이 확인하고 확정하는 단계를 뒀습니다",
       ],
       pipeline: ["영문 데이터 수집", "한국어명 변환(초안)", "사람 확인·확정", "공개 판정", "운영 DB 반영"],
@@ -323,7 +321,7 @@ const COPY = {
             { name: "Tier List", desc: "A drag tier chart with character images already loaded. 24 preset themes, and you can change tier names, colors, and count yourself." },
             { name: "CP Chart", desc: "Place characters on a canvas and connect relationship lines. Move a character and the line follows; overlapping lines route around automatically." },
             { name: "Skin Board", desc: "Pick skins from the catalog to build wishlist / re-release-request tables." },
-            { name: "Visual Novel", desc: "A 5–8 minute web visual novel played through choices. I split the engine from the story data and kept the branching logic for all three languages in one place, so even a non-developer can add episodes." },
+            { name: "Duo Card", desc: "A duo-recruitment card you make to find a duo that fits your taste. It lays out your conditions as a card with the required fields fixed." },
           ],
         },
         {
@@ -340,7 +338,7 @@ const COPY = {
           line: "The output is the content; distribution happens in the community.",
           items: [
             { name: "Character Sort", desc: "A ranking tool that builds your favorites list from pairwise comparisons. “Not sure” groups two characters as a tie, and progress recalculates on every choice. You save the result as an image and post it to the community." },
-            { name: "Duo Card", desc: "A duo-recruitment card you make to find a duo that fits your taste. It lays out your conditions as a card with the required fields fixed." },
+            { name: "Visual Novel", desc: "A 5–8 minute web visual novel played through choices. Players share their result to the community, and it spreads from there. I split the engine from the story data and kept the branching logic for all three languages in one place, so even a non-developer can add episodes." },
           ],
         },
       ],
@@ -363,8 +361,6 @@ const COPY = {
         ["Manual review · excluded", "manual-review · excluded", "Meta entries · offline-limited, etc."],
         ["Operational DB", "skins table", "Only is_active AND is_published exposed via the public API"],
       ],
-      layerNote:
-        "Refined by rarity: SS 5 / S 257 / A 580. The canonical JSON is never hand-edited — if there's a problem I fix the override file and re-run the script, so the next season's sync stays consistent.",
       shot: "Canonical report · image cross-check screen",
     },
     qa: {
@@ -373,7 +369,7 @@ const COPY = {
       whyLabel: "Why human review was needed",
       why: [
         "The fandom wiki only gives English names, so the Korean name has to be converted by hand",
-        "Transliteration or machine translation alone drifts from what the community actually uses",
+        "AI translation alone drifts from what the community actually uses",
         "So a human confirms and finalizes each converted name before it's published",
       ],
       pipeline: ["Collect English data", "Convert Korean name (draft)", "Human check & confirm", "Publish decision", "Push to operational DB"],
@@ -720,9 +716,7 @@ export default async function Identity5PickPage({
                 </div>
               ))}
             </div>
-            <p className="mt-5 text-[13px] leading-[1.55] text-[rgba(244,241,234,.55)]">{c.data.layerNote}</p>
           </div>
-
         </div>
       </section>
 
