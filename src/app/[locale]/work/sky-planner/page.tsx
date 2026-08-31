@@ -57,22 +57,23 @@ const demonstratedSkills = [
 const techStack = ["Next.js", "Spring Boot", "MySQL", "AWS EC2 → Railway · Vercel", "GA4", "Figma"];
 
 const S = "/sky-planner";
-const HERO_SHOT: Shot = { src: `${S}/sky_hero.png`, w: 1754, h: 997, mw: 1180 };
+const HERO_SHOT: Shot = { src: `${S}/sky_home.png`, w: 1770, h: 873, mw: 1180 };
 const SHOTS = {
-  ctxBefore: { src: `${S}/height-guideline.png`, w: 1800, h: 1800, mw: 460 },
-  ctxAfter: { src: `${S}/height-usage.png`, w: 1800, h: 1800, mw: 460 },
+  use1: { src: `${S}/height-example-1.jpg`, w: 840, h: 691, mw: 360 },
+  use2: { src: `${S}/height-example-2.jpg`, w: 845, h: 719, mw: 360 },
+  use3: { src: `${S}/height-example-3.jpg`, w: 832, h: 709, mw: 360 },
   evo: { src: `${S}/sky_hero.png`, w: 1754, h: 997, mw: 960 },
   ops: { src: `${S}/ts-archive-detail.png`, w: 1184, h: 702, mw: 760 },
   data: { src: `${S}/ga-users-nov.png`, w: 1915, h: 905, mw: 980 },
   fb: { src: `${S}/survey-2.png`, w: 1914, h: 904, mw: 980 },
-  growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 460 },
-  growth2: { src: `${S}/overseas-site-link.png`, w: 1919, h: 1079, mw: 560 },
+  growth1: { src: `${S}/cafe-best-tip.png`, w: 967, h: 875, mw: 380 },
+  growth2: { src: `${S}/openchat.png`, w: 457, h: 449, mw: 380 },
+  growth3: { src: `${S}/overseas-admin-permission.png`, w: 947, h: 832, mw: 380 },
   events1: { src: `${S}/tw-user-reactions.jpg`, w: 756, h: 1485, mw: 460 },
   events2: { src: `${S}/tw-viral-1.png`, w: 756, h: 1485, mw: 460 },
   events3: { src: `${S}/tw-viral-2.png`, w: 756, h: 1485, mw: 460 },
-  o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 420 },
-  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 300 },
-  o2o3: { src: `${S}/offline-license-irl.png`, w: 948, h: 878, mw: 420 },
+  o2o1: { src: `${S}/offline-booth.png`, w: 1451, h: 1141, mw: 520 },
+  o2o2: { src: `${S}/offline-flight-result.png`, w: 1588, h: 1920, mw: 360 },
   learn: { src: `${S}/sheet-music-workspace.png`, w: 1313, h: 1043, mw: 560 },
 } satisfies Record<string, Shot>;
 
@@ -97,15 +98,15 @@ type Feature = {
 
 type Copy = {
   heroSubtitle: string;
-  ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; before: string; after: string };
+  ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; uses: string[] };
   evo: { h2: string; lead: string; count: string; list: { tag: string; name: string; line: string }[]; shot: string };
   feat: { h2: string; lead: string; items: Feature[] };
   ops: { h2: string; migration: string; qa: string; sunset: string; shot: string };
   data: { h2: string; gaLine: string; insightLabel: string; insights: { n: string; title: string; detail: string }[]; shot: string };
   fb: { h2: string; lead: string; reflected: string[]; notReflected: { req: string; why: string }[]; shot: string };
-  growth: { h2: string; lead: string; channels: { title: string; body: string }[]; shot1: string; shot2: string };
+  growth: { h2: string; lead: string; channels: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
   events: { h2: string; lead: string; list: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
-  o2o: { h2: string; lead: string; flow: string[]; onSite: string; dayUsers: string; shot1: string; shot2: string; shot3: string };
+  o2o: { h2: string; lead: string; flow: string[]; onSite: string; dayUsers: string; shot1: string; shot2: string };
   learn: { h2: string; musicLabel: string; music: string; examLabel: string; exam: string; shot: string; quote: string };
   final: { h2: string; body: string };
 };
@@ -121,8 +122,7 @@ const COPY: Record<Locale, Copy> = {
       note:
         "Sky에는 캐릭터 키를 바꾸는 키 물약이 있지만 인게임에는 키를 재는 방법이 없습니다. 커뮤니티가 스스로 만든 규칙을, 유저들은 외부 앱으로 일일이 해결하고 있었습니다.",
       flow: ["캐릭터 스크린샷 촬영", "외부 편집 앱(이비스) 실행", "가이드라인 PNG 합성", "직접 비교"],
-      before: "외부 앱으로 직접 합성",
-      after: "Sky Planner 키재기 UI",
+      uses: ["키재기 사용 예시 1", "키재기 사용 예시 2", "키재기 사용 예시 3"],
     },
     evo: {
       h2: "기능 하나에서 플레이 플랫폼으로.",
@@ -136,7 +136,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "성향 테스트", line: "홍보용 공유 콘텐츠 — Sky 크리쳐 성향 진단" },
         { tag: "05", name: "오래된 유랑", line: "영혼별 마지막 유랑 시점으로 '다음 유랑' 예측" },
         { tag: "06", name: "버스 노선표", line: "양초 파밍 모집용 노선표 — 터치·입력만으로 완성" },
-        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집 (아쉬운 기능)" },
+        { tag: "07", name: "악보 만들기", line: "Sky 악기 연주자용 악보 편집 (유입은 적지만 운영 중)" },
         { tag: "08", name: "시즌 대백과", line: "전 시즌 영혼·미복각까지 통합한 최대 조회수 기능" },
       ],
       shot: "홈 화면 — 8개 기능 카드",
@@ -281,8 +281,9 @@ const COPY: Record<Locale, Copy> = {
           body: "영문 양초 계산기를 만들어 두고, 대형 해외 Sky 팬사이트에 GitHub로 문의해 사이트 링크를 등재했습니다. 외국인 유입이 생겼습니다.",
         },
       ],
-      shot1: "카페 베스트 팁 게시글",
-      shot2: "해외 팬사이트 링크 등재",
+      shot1: "네이버 카페 베스트 팁 게시판 등극",
+      shot2: "오픈채팅 봇 등록",
+      shot3: "해외 팬사이트 관리자에게 받은 사용 허락",
     },
     events: {
       h2: "서비스 밖에서도 커뮤니티를 움직였습니다.",
@@ -293,9 +294,9 @@ const COPY: Record<Locale, Copy> = {
         { title: "보물찾기", body: "사진 속 특징을 보고 장소를 찾아 인증샷. 참여가 많아 2탄까지 진행." },
         { title: "스개팅 (Sky 소개팅)", body: "참가자에게 미션을 주고 스파이 1명을 선정해 이상한 미션을 부여하는 참여형 이벤트." },
       ],
-      shot1: "유저 반응 (모자이크 처리)",
-      shot2: "커뮤니티 확산 — 유저 공유 1",
-      shot3: "커뮤니티 확산 — 유저 공유 2",
+      shot1: "성향 테스트 — 유저 반응 (모자이크 처리)",
+      shot2: "성향 테스트 — 커뮤니티 확산 1",
+      shot3: "성향 테스트 — 커뮤니티 확산 2",
     },
     o2o: {
       h2: "온라인 서비스를 오프라인 현장으로.",
@@ -306,14 +307,13 @@ const COPY: Record<Locale, Copy> = {
         "점수를 통과하면 명함형 비행 자격증을 뽑아 갈 수 있게 했습니다. 성향 테스트 스티커(사이트 QR 포함)와 크리쳐 띠부실을 함께 배포했습니다.",
       dayUsers: "행사 당일 사이트 접속자",
       shot1: "행사 현장 사진",
-      shot2: "QR · 비행 자격 테스트 화면",
-      shot3: "명함형 비행 자격증 · 스티커",
+      shot2: "비행 자격 테스트 결과 화면",
     },
     learn: {
       h2: "채택은 완성도가 아니라 전환 이유가 결정합니다.",
       musicLabel: "악보 만들기",
       music:
-        "이미 커뮤니티가 표준으로 쓰는 앱이 있었고, 그 앱 개발자에게 직접 컨택해 악보 변환 키까지 받아 연동했습니다. 하지만 유저가 익숙한 도구를 두고 옮겨올 만큼의 이유는 만들지 못했고, 채택으로 이어지지 않았습니다.",
+        "이미 커뮤니티가 표준으로 쓰는 앱이 있었고, 그 앱 개발자에게 직접 컨택해 악보 변환 키까지 받아 연동했습니다. 다만 유저가 익숙한 도구를 두고 옮겨올 만큼의 이유는 만들지 못해, 새로 유입되는 사용자는 많지 않습니다. 기능은 지금도 운영 중입니다.",
       examLabel: "모의고사 시스템",
       exam: "매달 문제를 만들어야 했고, 몇 달간 친구들에게 부탁하다 운영 부담으로 폐기했습니다.",
       shot: "악보 만들기 화면 — 사이트 최하단",
@@ -336,8 +336,7 @@ const COPY: Record<Locale, Copy> = {
       note:
         "Sky has a potion that changes your character's height, but no in-game way to measure it. Players were solving a community-invented rule one screenshot at a time, in an external app.",
       flow: ["Screenshot the character", "Open an external editor (ibis)", "Overlay the guideline PNG", "Eyeball the result"],
-      before: "Overlaying by hand in an external app",
-      after: "Sky Planner height-checker UI",
+      uses: ["Height-checker in use 1", "Height-checker in use 2", "Height-checker in use 3"],
     },
     evo: {
       h2: "From one feature to a play platform.",
@@ -351,7 +350,7 @@ const COPY: Record<Locale, Copy> = {
         { tag: "04", name: "Personality Test", line: "Shareable content for reach — a Sky-creature personality quiz" },
         { tag: "05", name: "Overdue Spirits", line: "Predicts the 'next return' from each spirit's last visit" },
         { tag: "06", name: "Bus Route Chart", line: "Route charts for candle-run groups — done with taps and typing" },
-        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players (the one that didn't land)" },
+        { tag: "07", name: "Sheet Music Maker", line: "Score editing for Sky instrument players (low traffic, still live)" },
         { tag: "08", name: "Season Encyclopedia", line: "Every season's spirits, un-returned ones included — the most-viewed feature" },
       ],
       shot: "Home screen — eight feature cards",
@@ -496,8 +495,9 @@ const COPY: Record<Locale, Copy> = {
           body: "I'd made an English candle calculator, then asked a large overseas Sky fan site via GitHub to list the link. Overseas traffic followed.",
         },
       ],
-      shot1: "Café best-tips post",
-      shot2: "Link listed on an overseas fan site",
+      shot1: "Made the Naver café best-tips board",
+      shot2: "Open-chat bot registration",
+      shot3: "Use permission from an overseas fan-site admin",
     },
     events: {
       h2: "I moved the community outside the service too.",
@@ -508,9 +508,9 @@ const COPY: Record<Locale, Copy> = {
         { title: "Treasure Hunt", body: "Match a spot from a photo's details, go there, and post a proof shot. Popular enough for a second round." },
         { title: "Sky Blind Date", body: "A participatory event: give players missions and pick one 'spy' to hand a strange one." },
       ],
-      shot1: "Player reactions (redacted)",
-      shot2: "Community spread — user shares 1",
-      shot3: "Community spread — user shares 2",
+      shot1: "Personality test — player reactions (redacted)",
+      shot2: "Personality test — community spread 1",
+      shot3: "Personality test — community spread 2",
     },
     o2o: {
       h2: "The online service, taken to an offline venue.",
@@ -521,14 +521,13 @@ const COPY: Record<Locale, Copy> = {
         "Passing the score let you print a business-card flight license to take home. I also handed out personality-test stickers (with the site QR) and creature keyring charms.",
       dayUsers: "site visitors on the event day",
       shot1: "Event venue photo",
-      shot2: "QR · flight aptitude test screen",
-      shot3: "Business-card flight license · stickers",
+      shot2: "Flight aptitude test — result screen",
     },
     learn: {
       h2: "Adoption is decided by a reason to switch, not by polish.",
       musicLabel: "Sheet Music Maker",
       music:
-        "The community already had a standard app for this. I even contacted its developer and got a conversion key to integrate. But I never gave players enough reason to leave a tool they knew, and it didn't turn into adoption.",
+        "The community already had a standard app for this. I even contacted its developer and got a conversion key to integrate. I just never gave players enough reason to leave a tool they knew, so it draws few new users. The feature is still live.",
       examLabel: "Mock Exam System",
       exam: "It needed new questions every month; after a few months of leaning on friends, I retired it under the operating load.",
       shot: "Sheet Music Maker screen — bottom of the site",
@@ -690,25 +689,10 @@ export default async function SkyPlannerPage({
           <FlowChips steps={c.ctx.flow} />
         </div>
 
-        <div className="mt-8 flex gap-4 max-[560px]:flex-col">
-          <div className="flex-1">
-            <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">BEFORE</div>
-            <Placeholder
-              variant="alt"
-              label={c.ctx.before}
-              img={SHOTS.ctxBefore}
-              className="h-[clamp(200px,24vw,300px)]"
-            />
-          </div>
-          <div className="flex-1">
-            <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-accent">AFTER</div>
-            <Placeholder
-              variant="alt"
-              label={c.ctx.after}
-              img={SHOTS.ctxAfter}
-              className="h-[clamp(200px,24vw,300px)]"
-            />
-          </div>
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {[SHOTS.use1, SHOTS.use2, SHOTS.use3].map((s, i) => (
+            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className="h-[clamp(200px,26vw,300px)]" />
+          ))}
         </div>
       </section>
 
@@ -902,19 +886,10 @@ export default async function SkyPlannerPage({
             ))}
           </div>
 
-          <div className="mt-6 flex gap-3 max-[560px]:flex-col">
-            <Placeholder
-              variant="alt"
-              label={c.growth.shot1}
-              img={SHOTS.growth1}
-              className="h-[clamp(190px,22vw,260px)] flex-1"
-            />
-            <Placeholder
-              variant="alt"
-              label={c.growth.shot2}
-              img={SHOTS.growth2}
-              className="h-[clamp(190px,22vw,260px)] flex-1"
-            />
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <Placeholder variant="alt" label={c.growth.shot1} img={SHOTS.growth1} className="self-start" />
+            <Placeholder variant="alt" label={c.growth.shot2} img={SHOTS.growth2} className="self-start" />
+            <Placeholder variant="alt" label={c.growth.shot3} img={SHOTS.growth3} className="self-start" />
           </div>
         </div>
       </section>
@@ -983,24 +958,18 @@ export default async function SkyPlannerPage({
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Placeholder
               variant="alt"
               label={c.o2o.shot1}
               img={SHOTS.o2o1}
-              className="h-[clamp(220px,26vw,320px)]"
+              className="h-[clamp(240px,30vw,360px)]"
             />
             <Placeholder
               variant="alt"
               label={c.o2o.shot2}
               img={SHOTS.o2o2}
-              className="h-[clamp(220px,26vw,320px)]"
-            />
-            <Placeholder
-              variant="alt"
-              label={c.o2o.shot3}
-              img={SHOTS.o2o3}
-              className="h-[clamp(220px,26vw,320px)]"
+              className="h-[clamp(240px,30vw,360px)]"
             />
           </div>
         </div>
