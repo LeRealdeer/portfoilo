@@ -534,40 +534,47 @@ function FeatureBlock({
   galleryCaptions?: string[];
 }) {
   return (
-    <section className={`px-5 py-9 sm:px-9 sm:py-12 ${alt ? "bg-bg-alt" : ""}`}>
+    <section className={`px-5 py-10 sm:px-9 sm:py-16 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className={EYEBROW}>FEATURE {f.n}</span>
-          <span className="text-[12px] text-muted">{f.tag}</span>
-        </div>
-        <h3 className="mt-3 font-archivo text-[clamp(20px,2.6vw,32px)] leading-[1.15] font-extrabold tracking-[-.03em]">
-          {f.name}
-        </h3>
+        <div className="flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — text */}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className={EYEBROW}>FEATURE {f.n}</span>
+              <span className="text-[12px] text-muted">{f.tag}</span>
+            </div>
+            <h3 className="mt-3 font-archivo text-[clamp(20px,2.6vw,32px)] leading-[1.15] font-extrabold tracking-[-.03em]">
+              {f.name}
+            </h3>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-xl border border-line-2 px-5 py-4">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">PROBLEM</div>
-            <p className="mt-2 text-[14.5px] leading-[1.55] text-ink-70">{f.problem}</p>
+            <div className="mt-6 flex flex-col gap-3">
+              <div className="rounded-xl border border-line-2 px-5 py-4">
+                <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">PROBLEM</div>
+                <p className="mt-2 text-[14.5px] leading-[1.55] text-ink-70">{f.problem}</p>
+              </div>
+              <div className="rounded-xl border border-accent/25 bg-accent/10 px-5 py-4">
+                <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">SOLUTION</div>
+                <p className="mt-2 text-[14.5px] leading-[1.55] text-ink-70">{f.solution}</p>
+              </div>
+              <div className="rounded-xl border border-line-2 px-5 py-4">
+                <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">ITERATION</div>
+                <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{f.iteration}</p>
+              </div>
+            </div>
+
+            <p className="mt-4 border-l-2 border-accent pl-4 text-[13.5px] leading-[1.55] text-ink-70">
+              <b className="font-archivo tracking-[.02em]">IMPACT</b> — {f.impact}
+            </p>
           </div>
-          <div className="rounded-xl border border-accent/25 bg-accent/10 px-5 py-4">
-            <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">SOLUTION</div>
-            <p className="mt-2 text-[14.5px] leading-[1.55] text-ink-70">{f.solution}</p>
+
+          {/* right — image */}
+          <div className="w-full flex-1 sm:sticky sm:top-24">
+            <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="" />
           </div>
         </div>
-
-        <div className="mt-3 rounded-xl border border-line-2 px-5 py-4">
-          <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">ITERATION</div>
-          <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{f.iteration}</p>
-        </div>
-
-        <p className="mt-4 border-l-2 border-accent pl-4 text-[13.5px] leading-[1.55] text-ink-70">
-          <b className="font-archivo tracking-[.02em]">IMPACT</b> — {f.impact}
-        </p>
-
-        <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="mt-5" />
 
         {gallery && gallery.length > 0 && (
-          <div className="mt-4">
+          <div className="mt-8">
             {galleryLabel && (
               <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">
                 {galleryLabel}
