@@ -55,7 +55,7 @@ const demonstratedSkills = [
   "MVP → Iteration",
 ];
 
-const techStack = ["Next.js", "Spring Boot", "MySQL", "AWS EC2 → Railway · Vercel", "GA4", "Figma"];
+const techStack = ["Next.js", "Spring Boot", "MySQL", "Railway · Vercel", "GA4", "Figma"];
 
 type Feature = {
   n: string;
@@ -97,7 +97,7 @@ const COPY: Record<Locale, Copy> = {
       uses: ["키재기 사용 예시 1", "키재기 사용 예시 2", "키재기 사용 예시 3"],
     },
     evo: {
-      h2: "기능 하나에서 플레이 플랫폼으로.",
+      h2: "하나의 기능에서 반복 사용되는 게임 유틸리티로.",
       lead:
         "키재기 하나로 시작해, 플레이 과정에서 반복되는 계산·탐색·정리 문제를 하나씩 기능으로 확장했습니다.",
       count: "게임 플레이 보조 기능 운영 중",
@@ -312,7 +312,7 @@ const COPY: Record<Locale, Copy> = {
       uses: ["Height-checker in use 1", "Height-checker in use 2", "Height-checker in use 3"],
     },
     evo: {
-      h2: "From one feature to a play platform.",
+      h2: "From one feature to a game utility people use again and again.",
       lead:
         "It started as just the height checker, then grew as I turned each recurring calculation, lookup, and tracking problem in play into its own feature.",
       count: "play-assist features live",

@@ -61,7 +61,7 @@ const COPY = {
       "여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브",
     discoveryFlow: ["커뮤니티 검색", "해외 플랫폼 이동 · 회원가입", "번역", "이미지 저장", "다시 찾기"],
     ctx: {
-      h2: "좋은 콘텐츠는 많았지만 찾을 수가 없었습니다.",
+      h2: "좋은 콘텐츠는 많았지만, 다시 찾고 비교하기 어려웠습니다.",
       lead:
         "두근두근타운은 유저가 직접 만든 의상·가구 같은 커스터마이징 콘텐츠 공유가 활발한 게임입니다. 하지만 그 콘텐츠는 Xiaohongshu, Discord, 개인 SNS에 흩어져 있어, 한국 유저가 원하는 것을 찾으려면 매번 같은 과정을 반복해야 했습니다.",
       note: "“다시 찾기”가 매번 처음부터였습니다 — 이미지만 따로 저장하면 원작자와 원본 게시물을 다시 확인하기 어려운 경우가 많았기 때문입니다.",
@@ -71,8 +71,8 @@ const COPY = {
       h2: "문제를 세 가지로 좁혔습니다.",
       items: [
         { n: "01", title: "Discovery", body: "좋은 콘텐츠는 분명히 있지만, 원하는 의상·가구를 원하는 순간에 찾을 수 없습니다." },
-        { n: "02", title: "Accessibility", body: "공유가 해외 플랫폼과 외국어 중심으로 이뤄져, 국내 유저는 접근 자체가 어렵습니다." },
-        { n: "03", title: "Trust", body: "원작자와 출처가 보장되지 않으면, 콘텐츠 공유는 지속 가능한 방식이 될 수 없습니다." },
+        { n: "02", title: "Accessibility", body: "공유가 해외 플랫폼과 외국어 중심으로 이뤄져, 가입과 번역 과정을 거쳐야 탐색할 수 있었습니다." },
+        { n: "03", title: "Trust", body: "원작자와 출처가 유지되지 않으면 아카이브의 신뢰를 만들기 어렵다고 판단했습니다." },
       ],
     },
     solution: {
@@ -136,8 +136,8 @@ const COPY = {
       cases: [
         {
           label: "COMMUNITY",
-          title: "게임 커뮤니티 기반 홍보",
-          body: "게임 커뮤니티에서 서비스를 공유하고, 원작자 허락 기반으로 확보한 콘텐츠로 신뢰도를 쌓았습니다.",
+          title: "게임 커뮤니티 기반 소개",
+          body: "게임 커뮤니티에 서비스를 소개하면서, 원작자 허락과 출처 표기 방식을 함께 안내했습니다.",
         },
         {
           label: "BUG FIX",
@@ -154,14 +154,14 @@ const COPY = {
     learn: {
       h2: "콘텐츠의 양보다 신뢰가 중요했습니다.",
       lead:
-        "좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다. 창작자 권리 보호, 출처 관리, 사용자 경험, 운영 정책이 함께 있어야 커뮤니티가 유지된다는 것을 배웠습니다.",
+        "좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다.",
       quote:
         "UGC 아카이브의 품질은 콘텐츠 수뿐 아니라, 누가 만들었는지와 어떤 방식으로 공유되는지를 함께 보존할 때 만들어진다는 것을 배웠습니다.",
       takeaways: [
         {
           n: "01",
-          title: "가장 오래 걸린 일은 개발이 아니라 사람을 찾는 일이었습니다",
-          body: "가장 오래 걸린 일은 개발이 아니라 해외 원작자를 찾아 연락하고 허락을 받는 일이었고, 그 절차가 곧 서비스의 정체성이 됐습니다.",
+          title: "콘텐츠 운영 정책이 곧 제품 구조가 됐습니다",
+          body: "허락 확인 → 출처 합의 → 대리 게시라는 운영 절차를 먼저 세우고, 서비스 기능과 콘텐츠 등록 흐름을 그 절차에 맞춰 설계했습니다.",
         },
         {
           n: "02",
@@ -181,7 +181,7 @@ const COPY = {
       "A global fan archive that connects user-made content scattered across platforms — built on creator permission and a source policy.",
     discoveryFlow: ["Search the community", "Go to an overseas platform · sign up", "Translate", "Save the image", "Search again"],
     ctx: {
-      h2: "There was plenty of good content — you just couldn't find it.",
+      h2: "There was plenty of good content — it was just hard to find again and compare.",
       lead:
         "Heartopia has an active culture of sharing user-made customization content like outfits and furniture. But that content lives scattered across Xiaohongshu, Discord, and personal social media, so a Korean player had to repeat the same process every time they wanted to find something.",
       note: "“Search again” started from scratch every time — saving just the image often left no easy way back to the creator or the original post.",
@@ -191,8 +191,8 @@ const COPY = {
       h2: "I narrowed it to three problems.",
       items: [
         { n: "01", title: "Discovery", body: "The good content is there, but you can't find the outfit or furniture you want when you want it." },
-        { n: "02", title: "Accessibility", body: "Sharing happens on overseas platforms in other languages, so Korean players struggle to reach it at all." },
-        { n: "03", title: "Trust", body: "Without guaranteed creators and sources, sharing content can't be a sustainable practice." },
+        { n: "02", title: "Accessibility", body: "Sharing happens on overseas platforms in other languages, so browsing meant signing up and translating first." },
+        { n: "03", title: "Trust", body: "I judged that without the creator and source kept intact, the archive couldn't build trust." },
       ],
     },
     solution: {
@@ -256,8 +256,8 @@ const COPY = {
       cases: [
         {
           label: "COMMUNITY",
-          title: "Promotion through game communities",
-          body: "I shared the service in game communities and built credibility with content secured on creator permission.",
+          title: "Introducing it through game communities",
+          body: "I introduced the service in game communities, together with how creator permission and source attribution work.",
         },
         {
           label: "BUG FIX",
@@ -274,14 +274,14 @@ const COPY = {
     learn: {
       h2: "Trust mattered more than the amount of content.",
       lead:
-        "Collecting good content alone didn't keep the archive going. I learned that a community holds together only when creator-rights protection, attribution, user experience, and operating policy are all in place together.",
+        "Collecting good content alone didn't keep the archive going.",
       quote:
         "I learned that the quality of a UGC archive comes not just from the number of items, but from preserving who made each one and how it's shared.",
       takeaways: [
         {
           n: "01",
-          title: "The longest part wasn't development — it was finding the people",
-          body: "The longest part wasn't development — it was finding overseas creators, reaching out, and getting permission, and that process became the service's identity.",
+          title: "The content operating policy became the product structure",
+          body: "I set the operating process first — confirm permission → agree on attribution → post as a proxy — and designed the features and the content-registration flow to fit it.",
         },
         {
           n: "02",

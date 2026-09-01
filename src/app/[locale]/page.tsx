@@ -25,7 +25,7 @@ export async function generateMetadata({
 
 const COPY: Record<Locale, Record<string, string>> = {
   ko: {
-    workSub: "세 게임에서 서로 다른 유저 행동과\n운영 문제를 다뤘습니다.",
+    workSub: "세 게임에서 서로 다른 유저 행동과\n운영 과제를 다뤘습니다.",
     capH2: "유저의 목소리에서 라이브 서비스까지",
     capSub: "유저의 목소리가 실제 서비스가 되기까지, 제가 직접 해온 일들.",
     buildH3: "기획한 것을 직접 만들 수도 있습니다.",

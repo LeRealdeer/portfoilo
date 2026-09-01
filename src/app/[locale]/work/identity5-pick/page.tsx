@@ -39,11 +39,10 @@ const heroMetrics = [
 const skills = [
   "Player Behavior Observation",
   "Community Content Tool Design",
-  "Large-scale Data Operations",
   "Data QA Pipeline",
+  "Content Operations",
   "Constraint-driven Design",
-  "Localization Quality",
-  "Retention & Viral Loop Design",
+  "Localization QA",
 ];
 
 const techStack = ["Next.js", "TypeScript", "next-intl", "MediaWiki API", "Cloudinary", "html-to-image", "GA4"];
@@ -66,12 +65,11 @@ const COPY = {
     solution: {
       h2: "탐색하고, 만들고, 모으고, 공유합니다.",
       lead:
-        "팬덤 활동을 네 가지 경험으로 나누고, 각 경험의 제작 비용을 줄이는 것을 목표로 삼았습니다. 회원가입도 서버 저장도 없이, 산출물 이미지 자체가 콘텐츠가 되도록 설계했습니다.",
+        "팬덤 활동을 네 가지 경험으로 나누고, 각 행동을 더 적은 단계로 끝낼 수 있도록 설계했습니다. 회원가입도 서버 저장도 없이, 산출물 이미지 자체가 콘텐츠가 되도록 했습니다.",
       flow: ["고르기", "배치", "이미지로 저장", "커뮤니티에 공유"],
       principles: [
-        "무가입 · 모바일 브라우저 · 즉시 사용",
-        "서버에 결과물을 저장하지 않음",
-        "모든 기능이 동일한 워터마크 · 비율의 이미지를 산출",
+        "가입 없이 바로 사용",
+        "결과 이미지 생성 후 커뮤니티에 공유",
         "검수를 통과한 데이터만 공개",
       ],
       groups: [
@@ -80,7 +78,7 @@ const COPY = {
           en: "Discover",
           line: "흩어진 정보를 한국어로, 한곳에서.",
           items: [
-            { name: "Skin Catalog", desc: "842종을 등급·캐릭터·진영·성별·한정·콜라보로 좁혀 탐색합니다. 상세에 한/영/일 명칭·출시일·시즌·획득 방법·원문 출처를 정리했습니다." },
+            { name: "Skin Catalog", desc: "842종을 등급·캐릭터·진영 등으로 좁혀 탐색하고, 상세에서 한/영/일 명칭과 획득 방법, 원문 출처를 확인합니다." },
           ],
         },
         {
@@ -209,7 +207,7 @@ const COPY = {
         },
         {
           label: "바이럴 접점",
-          body: "CP표·캐릭터 소트 결과 PNG는 “내 결과 vs 너” 비교로, 연애 시뮬레이터는 결과 공유로 — 커뮤니티 게시글의 소재가 됩니다.",
+          body: "CP표·캐릭터 소트 결과·연애 시뮬레이터 결과를 모두 커뮤니티에서 바로 공유할 수 있는 이미지 형태로 설계했습니다.",
         },
       ],
     },
@@ -238,16 +236,6 @@ const COPY = {
           title: "맥락마다 다른 결정을 내렸습니다",
           body: "탐색(도감)엔 검색을 넣고 제작 도구엔 넣지 않았습니다. 가입 없이 바로 쓰게 하되 데이터 공개는 사람이 검수한 것만 — 편의와 신뢰가 부딪히는 지점마다 다르게 판단했습니다.",
         },
-        {
-          n: "05",
-          title: "운영 실수를 구조로 막았습니다",
-          body: "반복적으로 발생할 수 있는 운영 오류는 수동 확인에 의존하지 않고 데이터 검증 규칙으로 방지했습니다. 캐릭터 수·언어별 명칭·공개 대상 판정을 코드가 강제합니다.",
-        },
-        {
-          n: "06",
-          title: "기능마다 다른 사용 패턴에 맞춰 설계했습니다",
-          body: "운영하면서 기능마다 서로 다른 사용 패턴이 나타났습니다. 체크형 기능은 이어서 관리할 수 있도록 상태를 남기고, 제작형 기능은 결과물을 이미지로 저장해 기존 커뮤니티에서 활용할 수 있도록 설계했습니다.",
-        },
       ],
       myRole: [
         "서비스 기획 · 정보 구조 설계",
@@ -275,12 +263,11 @@ const COPY = {
     solution: {
       h2: "Discover, create, collect, share.",
       lead:
-        "I split fandom activity into four experiences and set out to cut the making cost of each. No signup, no server storage — the output image itself is the content.",
+        "I split fandom activity into four experiences and designed each so the behavior takes fewer steps to finish. No signup, no server storage — the output image itself is the content.",
       flow: ["Pick", "Arrange", "Save as image", "Share to the community"],
       principles: [
-        "No signup · mobile browser · use it right away",
-        "The server doesn't store the output",
-        "Every feature outputs an image with the same watermark and ratio",
+        "Use it right away, no signup",
+        "Generate a result image, then share it to the community",
         "Only reviewed data goes public",
       ],
       groups: [
@@ -289,7 +276,7 @@ const COPY = {
           en: "Discover",
           line: "Scattered info, in Korean, in one place.",
           items: [
-            { name: "Skin Catalog", desc: "Filter 842 skins by rarity, character, faction, gender, limited, and collab. The detail page has KO/EN/JP names, release date, season, how to obtain it, and the original source." },
+            { name: "Skin Catalog", desc: "Filter 842 skins by rarity, character, faction, and more; the detail page shows KO/EN/JP names, how to obtain it, and the original source." },
           ],
         },
         {
@@ -419,7 +406,7 @@ const COPY = {
         },
         {
           label: "Viral surface",
-          body: "CP Chart / Character Sort result PNGs (“my result vs yours”) and the Visual Novel (shared results) become material for community posts.",
+          body: "CP Chart, Character Sort, and Visual Novel results are all shaped as images you can post straight to the community.",
         },
       ],
     },
@@ -447,16 +434,6 @@ const COPY = {
           n: "04",
           title: "I made different calls per context",
           body: "Discovery (the catalog) has search; the creation tools don't. No signup for instant use, but only human-reviewed data goes public — I made a different call at each point where convenience and trust collide.",
-        },
-        {
-          n: "05",
-          title: "I blocked operational mistakes with structure",
-          body: "Operational errors that could recur are prevented by data-validation rules rather than manual checks. Character count, per-language names, and publish eligibility are enforced by code.",
-        },
-        {
-          n: "06",
-          title: "I designed for the different usage pattern of each feature",
-          body: "Different usage patterns showed per feature in operation. Check-style features keep state so you can keep managing them; make-style features save the result as an image for use in existing communities.",
         },
       ],
       myRole: [
