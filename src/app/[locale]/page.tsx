@@ -399,12 +399,6 @@ export default async function HomePage({
                   {p}
                 </p>
               ))}
-              <a
-                href="#about"
-                className="mt-6 inline-block font-archivo text-[12.5px] font-bold tracking-[.1em] text-accent-on-dark transition-colors duration-300 hover:text-white"
-              >
-                {profile.aboutMore}
-              </a>
             </Reveal>
           </div>
 

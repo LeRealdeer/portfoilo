@@ -85,7 +85,7 @@ const COPY = {
       shot2: "찜한 도안 — 개인 컬렉션",
     },
     rights: {
-      h2: "Not a collection. A permission-based archive.",
+      h2: "단순 수집이 아니라, 허락 기반 아카이브입니다.",
       lead:
         "해외 창작물을 단순히 모으지 않았습니다. 한 장이라도 원작자의 허락 없이 올리지 않는다는 원칙을 먼저 정하고, 그 원칙이 지켜지도록 운영 절차를 설계했습니다.",
       outreach: [
