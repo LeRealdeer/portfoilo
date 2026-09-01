@@ -125,25 +125,25 @@ export default async function HomePage({
           </Reveal>
         </div>
 
-        {/* 01 — Sky Planner: full-bleed */}
+        {/* 01 — Sky Planner: image left, text right */}
         <article className="mx-auto mt-11 max-w-[1440px] sm:mt-20">
           <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {sky.eyebrow}
             </span>
           </div>
-          <Reveal>
-            <Placeholder
-              href={`/${locale}/work/${sky.slug}`}
-              label={sky.screenshotLabel}
-              img={CARD_SHOTS.sky}
-              className="mt-5"
-            />
-          </Reveal>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
-            <Reveal className="max-w-[640px] flex-[1.5]">
+          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14">
+            <Reveal className="flex-[1.25] max-[860px]:h-[clamp(220px,64vw,420px)]">
+              <Placeholder
+                href={`/${locale}/work/${sky.slug}`}
+                label={sky.screenshotLabel}
+                img={CARD_SHOTS.sky}
+                className="h-full"
+              />
+            </Reveal>
+            <Reveal delay={0.1} className="flex flex-1 flex-col">
               <Link href={`/${locale}/work/${sky.slug}`}>
-                <h3 className="font-archivo text-[clamp(24px,3.4vw,46px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+                <h3 className="font-archivo text-[clamp(24px,3.4vw,44px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
                   {sky.title}
                 </h3>
               </Link>
@@ -155,37 +155,39 @@ export default async function HomePage({
                   <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
+              <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6">
+                {sky.cardMetrics.map((m) => (
+                  <Stat
+                    key={m.label}
+                    metric={m}
+                    numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
+                    labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
+                    tbdClassName="text-muted-light"
+                  />
+                ))}
+              </div>
               <ProjectCTA href={`/${locale}/work/${sky.slug}`} liveUrl={sky.liveUrl} />
-            </Reveal>
-            <Reveal delay={0.1} className="flex-1 grid grid-cols-2 gap-x-6 gap-y-5 pt-2">
-              {sky.cardMetrics.map((m) => (
-                <Stat
-                  key={m.label}
-                  metric={m}
-                  numberClassName="font-archivo text-[32px] leading-[1] font-extrabold tracking-[-.04em]"
-                  labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-                  tbdClassName="text-muted-light"
-                />
-              ))}
             </Reveal>
           </div>
         </article>
 
         {/* 02 — Identity5 Pick: left images, right text */}
-        <article className="mx-auto mt-16 max-w-[1440px] sm:mt-28">
+        <article className="mx-auto mt-14 max-w-[1440px] sm:mt-20">
           <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {identity5.eyebrow}
             </span>
           </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
-            <Reveal className="flex-[1.35]">
-              <Placeholder
-                href={`/${locale}/work/${identity5.slug}`}
-                label={identity5.screenshotLabel}
-                img={CARD_SHOTS.identity5.main}
-                className=""
-              />
+          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14">
+            <Reveal className="flex flex-[1.35] flex-col max-[860px]:block">
+              <div className="min-h-0 flex-1 max-[860px]:h-[clamp(200px,58vw,360px)]">
+                <Placeholder
+                  href={`/${locale}/work/${identity5.slug}`}
+                  label={identity5.screenshotLabel}
+                  img={CARD_SHOTS.identity5.main}
+                  className="h-full"
+                />
+              </div>
               <div className="mt-3 grid grid-cols-3 gap-2.5 sm:mt-4 sm:gap-4">
                 {CARD_SHOTS.identity5.thumbs.map((thumb) => (
                   <Placeholder
@@ -228,13 +230,13 @@ export default async function HomePage({
         </article>
 
         {/* 03 — Heartopia Archive: left text, right images */}
-        <article className="mx-auto mt-16 max-w-[1440px] sm:mt-28">
+        <article className="mx-auto mt-14 max-w-[1440px] sm:mt-20">
           <div className="border-b border-line-2 pb-3.5">
             <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
               {heartopia.eyebrow}
             </span>
           </div>
-          <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14 items-start">
+          <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14">
             <Reveal className="max-w-[460px] flex-1 pt-1">
               <Link href={`/${locale}/work/${heartopia.slug}`}>
                 <h3 className="font-archivo text-[clamp(22px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
@@ -268,13 +270,15 @@ export default async function HomePage({
               </div>
               <ProjectCTA href={`/${locale}/work/${heartopia.slug}`} liveUrl={heartopia.liveUrl} />
             </Reveal>
-            <Reveal delay={0.1} className="flex-[1.35]">
-              <Placeholder
-                href={`/${locale}/work/${heartopia.slug}`}
-                label={heartopia.screenshotLabel}
-                img={CARD_SHOTS.heartopia.main}
-                className=""
-              />
+            <Reveal delay={0.1} className="flex flex-[1.35] flex-col max-[860px]:block">
+              <div className="min-h-0 flex-1 max-[860px]:h-[clamp(200px,58vw,360px)]">
+                <Placeholder
+                  href={`/${locale}/work/${heartopia.slug}`}
+                  label={heartopia.screenshotLabel}
+                  img={CARD_SHOTS.heartopia.main}
+                  className="h-full"
+                />
+              </div>
               <div className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-4 sm:gap-4">
                 {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
                   <Placeholder

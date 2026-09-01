@@ -599,7 +599,12 @@ export default async function Identity5PickPage({
                       <div className="font-mono text-[12.5px] font-semibold tracking-[.02em]">{it.name}</div>
                       <p className="mt-2 text-[13.5px] leading-[1.5] text-ink-70">{it.desc}</p>
                       {ITEM_SHOTS[it.name] && (
-                        <Placeholder variant="alt" label={it.name} img={ITEM_SHOTS[it.name]} className="mt-3.5" />
+                        <Placeholder
+                          variant="alt"
+                          label={it.name}
+                          img={ITEM_SHOTS[it.name]}
+                          className="mt-3.5 flex-1 min-h-[180px]"
+                        />
                       )}
                     </div>
                   ))}
