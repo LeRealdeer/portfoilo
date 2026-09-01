@@ -16,7 +16,7 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
   ko: [
     {
       period: "2026.04 — Present",
-      org: "AI 서비스 스타트업",
+      org: "온이츠에이아이",
       role: "Service Planner / 서비스 기획자",
       body: "AI 기반 서비스의 요구사항 분석, 기능 정의, 서비스 구조 설계, 개발 협업을 담당하고 있습니다.",
       focus: "Service Planning",
@@ -67,7 +67,7 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
   en: [
     {
       period: "2026.04 — Present",
-      org: "AI service startup",
+      org: "OnitsAI",
       role: "Service Planner",
       body: "On an AI-based service I own requirements analysis, feature definition, service structure, and collaboration with the dev team.",
       focus: "Service Planning",
