@@ -483,27 +483,38 @@ export default async function Identity5PickPage({
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-14 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
-        <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
-        <h1 className="mt-4 font-archivo text-[clamp(32px,7vw,92px)] leading-[1.02] font-extrabold tracking-[-.042em]">
-          {project.title}
-        </h1>
-        <p className="mt-5 max-w-[680px] font-archivo text-[clamp(16.5px,2.2vw,26px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
-          {c.heroSubtitle}
-        </p>
-        <p className="mt-5 max-w-[620px] text-[15.5px] leading-[1.55] text-ink-70 text-pretty sm:text-[16.5px] sm:leading-[1.6]">
-          {project.heroBody}
-        </p>
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13.5px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
-          >
-            {project.liveUrl.replace(/^https?:\/\//, "")} ↗
-          </a>
-        )}
+        <div className="flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
+            <h1 className="mt-4 font-archivo text-[clamp(32px,5.4vw,80px)] leading-[1.02] font-extrabold tracking-[-.042em]">
+              {project.title}
+            </h1>
+            <p className="mt-5 font-archivo text-[clamp(16.5px,2vw,24px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
+              {c.heroSubtitle}
+            </p>
+            <p className="mt-5 text-[15.5px] leading-[1.55] text-ink-70 text-pretty sm:text-[16.5px] sm:leading-[1.6]">
+              {project.heroBody}
+            </p>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13.5px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
+              >
+                {project.liveUrl.replace(/^https?:\/\//, "")} ↗
+              </a>
+            )}
+          </div>
 
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="w-full" />
+          </Reveal>
+        </div>
+
+        {/* meta + stats — full width beneath the title/image row */}
         <div className="mt-10 flex max-[860px]:flex-col gap-8 sm:gap-16 items-start border-t border-line-2 pt-7 sm:mt-16">
           <div className="grid flex-[1.6] grid-cols-2 gap-x-5 gap-y-6 sm:gap-x-7">
             {project.meta.map((m) => (
@@ -533,12 +544,6 @@ export default async function Identity5PickPage({
           </div>
         </div>
       </section>
-
-      <div className="px-5 sm:px-9">
-        <Reveal>
-          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
-        </Reveal>
-      </div>
 
       {/* 01 — User Problem */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
@@ -666,19 +671,29 @@ export default async function Identity5PickPage({
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.qa.h2}</h2>
         </Reveal>
-        <p className="mt-6 max-w-[600px] border-l-2 border-accent pl-5 font-archivo text-[clamp(17px,1.9vw,20px)] font-bold leading-[1.45] tracking-[-.02em]">
-          {c.qa.quote}
-        </p>
+        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <p className="border-l-2 border-accent pl-5 font-archivo text-[clamp(17px,1.9vw,20px)] font-bold leading-[1.45] tracking-[-.02em]">
+              {c.qa.quote}
+            </p>
 
-        <div className="mt-8 rounded-xl border border-line-2 px-5 py-5">
-          <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
-            {c.qa.whyLabel}
+            <div className="mt-8 rounded-xl border border-line-2 px-5 py-5">
+              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
+                {c.qa.whyLabel}
+              </div>
+              <ul className="mt-3 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-ink-70">
+                {c.qa.why.map((w) => (
+                  <li key={w}>· {w}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <ul className="mt-3 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-ink-70">
-            {c.qa.why.map((w) => (
-              <li key={w}>· {w}</li>
-            ))}
-          </ul>
+
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={c.qa.shot} img={QA_SHOT} className="w-full" />
+          </Reveal>
         </div>
 
         <div className="mt-8">
@@ -705,10 +720,6 @@ export default async function Identity5PickPage({
             </div>
           ))}
         </div>
-
-        <Reveal delay={0.1}>
-          <Placeholder label={c.qa.shot} img={QA_SHOT} className="mt-8" />
-        </Reveal>
       </section>
 
       {/* 06 — User Feedback */}

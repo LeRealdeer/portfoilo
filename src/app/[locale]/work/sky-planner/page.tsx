@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
@@ -28,6 +29,10 @@ export async function generateMetadata({
         : "Sky: Children of the Light 유저의 반복적인 플레이 불편을 발견해 8개 기능으로 확장하고, GA4와 VOC로 운영한 데이터 기반 게임 유틸리티 서비스 케이스 스터디.",
   };
 }
+
+// wider than the shared CASE_LEAD (560px) — this page pairs section intros with a
+// full-width image row below, so the lead text can afford to run longer per line
+const LEAD_WIDE = LEAD.replace("max-w-[560px]", "max-w-[820px]");
 
 const heroMetrics = [
   { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
@@ -512,6 +517,30 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
+/**
+ * A row of `cols` images shares one height, sized so the widest-aspect
+ * (naturally shortest) image in the set is shown at its true height —
+ * no crop for that one, minimal crop for the rest.
+ */
+const ROW_GAP = 12; // gap-3
+const ROW_MAX_W = 1440; // section max-w
+const ROW_PAD = 72; // sm:px-9 on both sides
+const ROW_SM_VP = 640; // sm breakpoint
+const ROW_LG_VP = ROW_MAX_W + ROW_PAD;
+
+// dummy trigger for Placeholder's HAS_HEIGHT check — the real height comes from rowHeightStyle below
+const ROW_H_CLASS = "h-56";
+
+function rowHeightStyle(shots: Shot[], cols: number): CSSProperties {
+  const maxAspect = Math.max(...shots.map((s) => s.w / s.h));
+  const colWLarge = (ROW_MAX_W - (cols - 1) * ROW_GAP) / cols;
+  const colWSmall = (ROW_SM_VP - ROW_PAD - (cols - 1) * ROW_GAP) / cols;
+  const hLarge = colWLarge / maxAspect;
+  const hSmall = colWSmall / maxAspect;
+  const vw = (hLarge / ROW_LG_VP) * 100;
+  return { height: `clamp(${Math.round(hSmall)}px, ${vw.toFixed(1)}vw, ${Math.round(hLarge)}px)` };
+}
+
 function FeatureBlock({
   f,
   alt,
@@ -586,7 +615,8 @@ function FeatureBlock({
                   variant={alt ? "alt" : "light"}
                   label={galleryCaptions?.[i] ?? ""}
                   img={g}
-                  className="h-[clamp(280px,32vw,380px)]"
+                  className={ROW_H_CLASS}
+                  style={rowHeightStyle(gallery, 3)}
                 />
               ))}
             </div>
@@ -627,33 +657,49 @@ export default async function SkyPlannerPage({
   const project = getProject("sky-planner", locale);
   const c = COPY[locale];
 
+  const useGalleryH = rowHeightStyle([SHOTS.use1, SHOTS.use2, SHOTS.use3], 3);
+  const growthGalleryH = rowHeightStyle([SHOTS.growth1, SHOTS.growth2, SHOTS.growth3], 3);
+  const eventsGalleryH = rowHeightStyle([SHOTS.events1, SHOTS.events2], 2);
+  const o2oGalleryH = rowHeightStyle([SHOTS.o2o1, SHOTS.o2o2], 2);
+
   return (
     <div className="min-h-screen">
       <Header locale={locale} variant="case" serviceUrl={project.liveUrl} />
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-12 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
-        <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
-        <h1 className="mt-4 font-archivo text-[clamp(34px,7vw,92px)] leading-[1] font-extrabold tracking-[-.042em]">
-          {project.title}
-        </h1>
-        <p className="mt-5 max-w-[680px] font-archivo text-[clamp(17px,2.2vw,26px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
-          {c.heroSubtitle}
-        </p>
-        <p className="mt-4 max-w-[600px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
-          {project.heroBody}
-        </p>
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
-          >
-            {project.liveUrl.replace(/^https?:\/\//, "")} ↗
-          </a>
-        )}
+        <div className="flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
+            <h1 className="mt-4 font-archivo text-[clamp(34px,5.4vw,80px)] leading-[1] font-extrabold tracking-[-.042em]">
+              {project.title}
+            </h1>
+            <p className="mt-5 font-archivo text-[clamp(17px,2vw,24px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
+              {c.heroSubtitle}
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
+              {project.heroBody}
+            </p>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
+              >
+                {project.liveUrl.replace(/^https?:\/\//, "")} ↗
+              </a>
+            )}
+          </div>
 
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="w-full" />
+          </Reveal>
+        </div>
+
+        {/* meta + stats — full width beneath the title/image row */}
         <div className="mt-9 flex max-[860px]:flex-col gap-7 sm:gap-16 items-start border-t border-line-2 pt-6 sm:mt-14">
           <div className="grid flex-[1.6] grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-7">
             {project.meta.map((m) => (
@@ -684,23 +730,17 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      <div className="px-5 sm:px-9">
-        <Reveal>
-          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
-        </Reveal>
-      </div>
-
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
         <div className={EYEBROW}>01 / CONTEXT</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.ctx.h2}</h2>
         </Reveal>
-        <p className={LEAD}>{c.ctx.lead}</p>
-        <p className="mt-5 max-w-[560px] border-l-2 border-accent pl-5 font-archivo text-[clamp(18px,2vw,22px)] font-bold leading-[1.35] tracking-[-.02em]">
+        <p className={LEAD_WIDE}>{c.ctx.lead}</p>
+        <p className="mt-5 max-w-[760px] border-l-2 border-accent pl-5 font-archivo text-[clamp(18px,2vw,22px)] font-bold leading-[1.35] tracking-[-.02em]">
           &ldquo;{c.ctx.quote}&rdquo;
         </p>
-        <p className="mt-5 max-w-[600px] text-[15px] leading-[1.55] text-muted sm:text-[15.5px]">{c.ctx.note}</p>
+        <p className="mt-5 max-w-[760px] text-[15px] leading-[1.55] text-muted sm:text-[15.5px]">{c.ctx.note}</p>
 
         <div className="mt-8">
           <FlowChips steps={c.ctx.flow} />
@@ -708,7 +748,7 @@ export default async function SkyPlannerPage({
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {[SHOTS.use1, SHOTS.use2, SHOTS.use3].map((s, i) => (
-            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className="h-[clamp(200px,26vw,300px)]" />
+            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className={ROW_H_CLASS} style={useGalleryH} />
           ))}
         </div>
       </section>
@@ -720,7 +760,7 @@ export default async function SkyPlannerPage({
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.evo.h2}</h2>
           </Reveal>
-          <p className={LEAD}>{c.evo.lead}</p>
+          <p className={LEAD_WIDE}>{c.evo.lead}</p>
 
           <div className="mt-8 flex items-end gap-3">
             <div className="font-archivo text-[clamp(38px,5vw,64px)] leading-[1] font-extrabold tracking-[-.045em]">8</div>
@@ -755,7 +795,7 @@ export default async function SkyPlannerPage({
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.feat.h2}</h2>
         </Reveal>
-        <p className={LEAD}>{c.feat.lead}</p>
+        <p className={LEAD_WIDE}>{c.feat.lead}</p>
       </section>
 
       {c.feat.items.map((f, i) => (
@@ -857,7 +897,7 @@ export default async function SkyPlannerPage({
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.fb.h2}</h2>
         </Reveal>
-        <p className={LEAD}>{c.fb.lead}</p>
+        <p className={LEAD_WIDE}>{c.fb.lead}</p>
 
         <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
           {/* left — write-up */}
@@ -899,7 +939,7 @@ export default async function SkyPlannerPage({
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.growth.h2}</h2>
           </Reveal>
-          <p className={LEAD}>{c.growth.lead}</p>
+          <p className={LEAD_WIDE}>{c.growth.lead}</p>
 
           <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3">
             {c.growth.channels.map((ch) => (
@@ -911,9 +951,9 @@ export default async function SkyPlannerPage({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <Placeholder variant="alt" label={c.growth.shot1} img={SHOTS.growth1} className="h-[clamp(220px,28vw,320px)]" />
-            <Placeholder variant="alt" label={c.growth.shot2} img={SHOTS.growth2} className="h-[clamp(220px,28vw,320px)]" />
-            <Placeholder variant="alt" label={c.growth.shot3} img={SHOTS.growth3} className="h-[clamp(220px,28vw,320px)]" />
+            <Placeholder variant="alt" label={c.growth.shot1} img={SHOTS.growth1} className={ROW_H_CLASS} style={growthGalleryH} />
+            <Placeholder variant="alt" label={c.growth.shot2} img={SHOTS.growth2} className={ROW_H_CLASS} style={growthGalleryH} />
+            <Placeholder variant="alt" label={c.growth.shot3} img={SHOTS.growth3} className={ROW_H_CLASS} style={growthGalleryH} />
           </div>
         </div>
       </section>
@@ -924,7 +964,7 @@ export default async function SkyPlannerPage({
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.events.h2}</h2>
         </Reveal>
-        <p className={LEAD}>{c.events.lead}</p>
+        <p className={LEAD_WIDE}>{c.events.lead}</p>
 
         <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
           {c.events.list.map((e) => (
@@ -936,8 +976,8 @@ export default async function SkyPlannerPage({
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Placeholder label={c.events.shot1} img={SHOTS.events1} className="h-[clamp(240px,34vw,380px)]" />
-          <Placeholder label={c.events.shot2} img={SHOTS.events2} className="h-[clamp(240px,34vw,380px)]" />
+          <Placeholder label={c.events.shot1} img={SHOTS.events1} className={ROW_H_CLASS} style={eventsGalleryH} />
+          <Placeholder label={c.events.shot2} img={SHOTS.events2} className={ROW_H_CLASS} style={eventsGalleryH} />
         </div>
       </section>
 
@@ -948,7 +988,7 @@ export default async function SkyPlannerPage({
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.o2o.h2}</h2>
           </Reveal>
-          <p className={LEAD}>{c.o2o.lead}</p>
+          <p className={LEAD_WIDE}>{c.o2o.lead}</p>
 
           <div className="mt-8 sm:mt-12">
             <FlowChips steps={c.o2o.flow} />
@@ -970,18 +1010,8 @@ export default async function SkyPlannerPage({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Placeholder
-              variant="alt"
-              label={c.o2o.shot1}
-              img={SHOTS.o2o1}
-              className="h-[clamp(220px,30vw,320px)]"
-            />
-            <Placeholder
-              variant="alt"
-              label={c.o2o.shot2}
-              img={SHOTS.o2o2}
-              className="h-[clamp(220px,30vw,320px)]"
-            />
+            <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className={ROW_H_CLASS} style={o2oGalleryH} />
+            <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className={ROW_H_CLASS} style={o2oGalleryH} />
           </div>
         </div>
       </section>

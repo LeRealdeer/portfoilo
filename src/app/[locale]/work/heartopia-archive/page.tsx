@@ -343,27 +343,38 @@ export default async function HeartopiaArchivePage({
 
       {/* Hero */}
       <section className="mx-auto max-w-[1440px] px-5 pt-12 pb-10 sm:px-9 sm:pt-24 sm:pb-16">
-        <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
-        <h1 className="mt-4 font-archivo text-[clamp(32px,7vw,92px)] leading-[1.02] font-extrabold tracking-[-.042em]">
-          {project.title}
-        </h1>
-        <p className="mt-5 max-w-[680px] font-archivo text-[clamp(16.5px,2.2vw,26px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
-          {c.heroSubtitle}
-        </p>
-        <p className="mt-5 max-w-[620px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
-          {project.heroBody}
-        </p>
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
-          >
-            {project.liveUrl.replace(/^https?:\/\//, "")} ↗
-          </a>
-        )}
+        <div className="flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <div className="font-archivo text-[12px] font-semibold tracking-[.18em] text-accent">{project.eyebrow}</div>
+            <h1 className="mt-4 font-archivo text-[clamp(32px,5.4vw,80px)] leading-[1.02] font-extrabold tracking-[-.042em]">
+              {project.title}
+            </h1>
+            <p className="mt-5 font-archivo text-[clamp(16.5px,2vw,24px)] font-bold leading-[1.4] tracking-[-.02em] text-ink-70">
+              {c.heroSubtitle}
+            </p>
+            <p className="mt-5 text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
+              {project.heroBody}
+            </p>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
+              >
+                {project.liveUrl.replace(/^https?:\/\//, "")} ↗
+              </a>
+            )}
+          </div>
 
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="w-full" />
+          </Reveal>
+        </div>
+
+        {/* meta + stats — full width beneath the title/image row */}
         <div className="mt-9 flex max-[860px]:flex-col gap-7 sm:gap-16 items-start border-t border-line-2 pt-6 sm:mt-14">
           <div className="grid flex-[1.6] grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-7">
             {project.meta.map((m) => (
@@ -393,12 +404,6 @@ export default async function HeartopiaArchivePage({
           </div>
         </div>
       </section>
-
-      <div className="px-5 sm:px-9">
-        <Reveal>
-          <Placeholder label={project.screenshotLabel} img={HERO_SHOT} className="mx-auto max-w-[1440px]" />
-        </Reveal>
-      </div>
 
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
@@ -461,7 +466,7 @@ export default async function HeartopiaArchivePage({
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Placeholder label={c.solution.shot} img={SHOTS.solution} className="h-[clamp(240px,32vw,360px)]" />
-          <Placeholder label={c.solution.shot2} img={SHOTS.solutionFavorites} className="h-[clamp(240px,32vw,360px)]" />
+          <Placeholder label={c.solution.shot2} img={SHOTS.solutionTerms} className="h-[clamp(240px,32vw,360px)]" />
         </div>
       </section>
 
@@ -498,12 +503,7 @@ export default async function HeartopiaArchivePage({
               </p>
             </Reveal>
             <Reveal delay={0.1} className="w-full flex-1">
-              <Placeholder
-                variant="dark"
-                label={c.rights.shotAttr}
-                img={SHOTS.rightsAttribution}
-                className="h-[clamp(280px,42vw,520px)]"
-              />
+              <Placeholder variant="dark" label={c.rights.shotAttr} img={SHOTS.rightsAttribution} className="w-full" />
             </Reveal>
           </div>
 

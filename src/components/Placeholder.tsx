@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 const VARIANT_BG: Record<"light" | "alt" | "dark", string> = {
   light:
@@ -43,12 +43,15 @@ export function Placeholder({
   label,
   variant = "light",
   className = "h-[240px]",
+  style,
   href,
   img,
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
   className?: string;
+  /** height computed at runtime (e.g. per-row aspect-ratio math) — Tailwind can't see a class built at runtime, so pass the px/clamp() value here instead */
+  style?: CSSProperties;
   href?: string;
   /** when set, renders the real screenshot */
   img?: Shot;
@@ -68,6 +71,7 @@ export function Placeholder({
       // gallery cell: fixed-height box so a row of shots lines up; fill it (no letterbox)
       content = (
         <span
+          style={style}
           className={`${link ? "group/ph " : ""}relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
         >
           <Image
