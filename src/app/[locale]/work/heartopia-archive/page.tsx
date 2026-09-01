@@ -476,7 +476,7 @@ export default async function HeartopiaArchivePage({
           </Reveal>
           <p className={LEAD_DARK}>{c.rights.lead}</p>
 
-          <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-16 sm:mt-14">
+          <div className="mt-10 flex max-[860px]:flex-col gap-6 sm:gap-16 items-start sm:mt-14">
             <Reveal className="flex-[1.1] flex flex-col gap-3">
               {c.rights.outreach.map((row) => (
                 <div
@@ -499,13 +499,19 @@ export default async function HeartopiaArchivePage({
                 {c.rights.quote}
               </p>
             </Reveal>
-            <Reveal delay={0.1} className="flex flex-1 flex-col gap-4 max-[860px]:block">
-              <div className="min-h-0 flex-1 max-[860px]:mb-4 max-[860px]:h-[clamp(200px,52vw,300px)]">
-                <Placeholder variant="dark" label={c.rights.shotDm} img={SHOTS.rightsCreator} className="h-full" />
-              </div>
-              <div className="min-h-0 flex-1 max-[860px]:h-[clamp(200px,52vw,300px)]">
-                <Placeholder variant="dark" label={c.rights.shotAttr} img={SHOTS.rightsAttribution} className="h-full" />
-              </div>
+            <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
+              <Placeholder
+                variant="dark"
+                label={c.rights.shotDm}
+                img={SHOTS.rightsCreator}
+                className="h-[clamp(200px,26vw,320px)]"
+              />
+              <Placeholder
+                variant="dark"
+                label={c.rights.shotAttr}
+                img={SHOTS.rightsAttribution}
+                className="h-[clamp(200px,26vw,320px)]"
+              />
             </Reveal>
           </div>
 

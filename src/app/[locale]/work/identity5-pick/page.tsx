@@ -603,7 +603,7 @@ export default async function Identity5PickPage({
                           variant="alt"
                           label={it.name}
                           img={ITEM_SHOTS[it.name]}
-                          className="mt-3.5 flex-1 min-h-[180px]"
+                          className="mt-3.5 h-[clamp(190px,22vw,280px)]"
                         />
                       )}
                     </div>

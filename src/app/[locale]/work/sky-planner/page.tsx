@@ -538,7 +538,7 @@ function FeatureBlock({
           {f.name}
         </h3>
 
-        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14">
+        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
           {/* left — write-up */}
           <div className="min-w-0 flex-1">
             <div className="flex flex-col gap-3">
@@ -561,9 +561,14 @@ function FeatureBlock({
             </p>
           </div>
 
-          {/* right — image, matched to the write-up height */}
-          <div className="w-full flex-1 max-[900px]:h-[clamp(240px,62vw,420px)]">
-            <Placeholder variant={alt ? "alt" : "light"} label={f.shot} img={shot} className="h-full" />
+          {/* right — image */}
+          <div className="w-full flex-1">
+            <Placeholder
+              variant={alt ? "alt" : "light"}
+              label={f.shot}
+              img={shot}
+              className="h-[clamp(260px,34vw,460px)]"
+            />
           </div>
         </div>
 
@@ -722,7 +727,7 @@ export default async function SkyPlannerPage({
             <div className="pb-2 font-archivo text-[11px] font-semibold tracking-[.13em] text-muted">{c.evo.count}</div>
           </div>
 
-          <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14">
+          <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:gap-14 items-start">
             {/* left — 8 features */}
             <div className="min-w-0 flex-1 grid content-start gap-2.5 sm:grid-cols-2">
               {c.evo.list.map((e) => (
@@ -736,9 +741,9 @@ export default async function SkyPlannerPage({
               ))}
             </div>
 
-            {/* right — image, matched to the feature list height */}
-            <Reveal delay={0.1} className="w-full flex-1 max-[900px]:h-[clamp(240px,62vw,400px)]">
-              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="h-full" />
+            {/* right — image */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="h-[clamp(260px,34vw,460px)]" />
             </Reveal>
           </div>
         </div>
@@ -773,7 +778,7 @@ export default async function SkyPlannerPage({
             <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
-          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
+          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
             {/* left — write-up */}
             <div className="min-w-0 flex-1 flex flex-col gap-3">
               {(
@@ -789,9 +794,9 @@ export default async function SkyPlannerPage({
               ))}
             </div>
 
-            {/* right — image, matched to the card column height */}
-            <Reveal delay={0.1} className="w-full flex-1 max-[900px]:h-[clamp(240px,62vw,400px)]">
-              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="h-full" />
+            {/* right — image */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="h-[clamp(240px,30vw,380px)]" />
             </Reveal>
           </div>
         </div>
@@ -854,7 +859,7 @@ export default async function SkyPlannerPage({
         </Reveal>
         <p className={LEAD}>{c.fb.lead}</p>
 
-        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
+        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
           {/* left — write-up */}
           <div className="min-w-0 flex-1 flex flex-col gap-3">
             <div className="rounded-xl border border-line-2 px-5 py-5">
@@ -880,9 +885,9 @@ export default async function SkyPlannerPage({
             </div>
           </div>
 
-          {/* right — image, matched to the card column height */}
-          <Reveal delay={0.1} className="w-full flex-1 max-[900px]:h-[clamp(240px,62vw,400px)]">
-            <Placeholder label={c.fb.shot} img={SHOTS.fb} className="h-full" />
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={c.fb.shot} img={SHOTS.fb} className="h-[clamp(240px,32vw,420px)]" />
           </Reveal>
         </div>
       </section>
@@ -988,7 +993,7 @@ export default async function SkyPlannerPage({
           <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
         </Reveal>
 
-        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14">
+        <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
           {/* left — write-up */}
           <div className="min-w-0 flex-1 flex flex-col gap-3">
             <div className="rounded-xl border border-line-2 px-5 py-5">
@@ -1003,8 +1008,8 @@ export default async function SkyPlannerPage({
           </div>
 
           {/* right — image */}
-          <Reveal delay={0.1} className="w-full flex-1 max-[900px]:h-[clamp(240px,62vw,400px)]">
-            <Placeholder label={c.learn.shot} img={SHOTS.learn} className="h-full" />
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder label={c.learn.shot} img={SHOTS.learn} className="h-[clamp(240px,30vw,380px)]" />
           </Reveal>
         </div>
       </section>
