@@ -54,13 +54,13 @@ const COPY = {
     problem: {
       h2: "팬덤은 이미 취향을 표현하고 있었습니다.",
       lead:
-        "제5인격은 캐릭터 87종, 스킨 842종이고 시즌마다 늘어납니다. 그런데 공식은 “내 취향을 구조화해서 남에게 보여주는” 수단을 주지 않습니다. 중견~고인물, 듀오를 구하는 유저, 뉴비 — 거의 전부 모바일에서 접속하는 이들이 각자 손으로 문제를 해결하고 있었습니다.",
+        "제5인격은 캐릭터 87종, 스킨 842종이고 시즌마다 늘어납니다. 팬덤에서는 게임 밖에서 최애 순위, 티어표, CP표 등을 직접 만들어 공유하는 문화가 형성돼 있었고, 유저들은 이미지 편집 앱이나 자유 형식의 게시글로 이를 해결하고 있었습니다.",
       behaviors: [
         { behavior: "캐릭터 취향 공유", friction: "최애 순위를 매기려면 캐릭터 자료를 직접 모아 이미지로 편집해야 합니다." },
-        { behavior: "티어표 제작", friction: "아이콘 90여 개를 모으고 크기를 맞추고 격자를 그려야 시작할 수 있습니다." },
+        { behavior: "티어표 제작", friction: "캐릭터 아이콘을 하나씩 모으고 크기를 맞춘 뒤 격자를 만들어야 시작할 수 있습니다." },
         { behavior: "관계성(CP) 콘텐츠 제작", friction: "캐릭터를 늘어놓고 선을 긋다가, 하나를 옮기면 선을 전부 다시 그어야 합니다." },
         { behavior: "보유 스킨 정리·인증", friction: "무엇을 갖고 무엇이 없는지, 한국어로 한곳에 정리된 곳이 없습니다." },
-        { behavior: "듀오·파티 모집", friction: "모집글이 자유 서술이라 조건이 누락되고 댓글로 되묻게 됩니다." },
+        { behavior: "듀오·파티 모집", friction: "자유 형식의 모집글은 티어·시간대·마이크 여부 등 필요한 정보를 한눈에 비교하기 어렵습니다." },
       ],
     },
     solution: {
@@ -108,30 +108,30 @@ const COPY = {
           line: "결과물이 곧 콘텐츠, 유통은 커뮤니티에서.",
           items: [
             { name: "Character Sort", desc: "두 명씩 비교해 최애 순위를 만드는 랭킹 도구입니다. “잘 모르겠어요”는 공동 순위로 묶고, 진행률은 매 선택마다 재계산합니다. 결과는 이미지로 저장해 커뮤니티에 공유합니다." },
-            { name: "Visual Novel", desc: "선택지로 진행하는 5~8분짜리 웹 비주얼 노벨입니다. 유저가 결과를 커뮤니티에 공유하며 자연스럽게 퍼집니다. 엔진과 스토리 데이터를 분리하고 세 언어의 분기 판정을 한 곳에 모아, 비개발자도 새 편을 추가할 수 있습니다." },
+            { name: "Visual Novel", desc: "선택지에 따라 이야기가 달라지는 5~8분짜리 웹 비주얼 노벨로, 결과를 이미지로 저장해 커뮤니티에 공유할 수 있습니다." },
           ],
         },
       ],
     },
     data: {
-      h2: "확보가 아니라 운영을 설계했습니다.",
+      h2: "공개 데이터를 서비스 데이터로 전환하는 검수 프로세스를 설계했습니다.",
       lead:
-        "“공개 데이터를 가져왔다”가 아닙니다. 사용자가 신뢰할 수 있는 게임 데이터 경험을 만들기 위해, 확보 · 정제 · 검수 · 공개로 이어지는 재현 가능한 프로세스를 직접 설계했습니다.",
+        "Fandom Wiki와 MediaWiki API로 초기 데이터를 수집한 뒤, 캐릭터 매칭·이미지·등급을 정제하고 한국어명을 직접 검수해 공개했습니다. 시즌마다 다시 실행해도 흔들리지 않도록 확보 · 정제 · 검수 · 공개 단계를 분리했습니다.",
       steps: [
         { n: "01", label: "데이터 확보", note: "Fandom Wiki의 SS·S·A 등급 의상 카테고리 전량" },
-        { n: "02", label: "API 수집", note: "MediaWiki API로 continuation 끝까지 순회 · 857건 확보" },
-        { n: "03", label: "정제", note: "캐릭터 매칭·이미지·등급 확정 → canonical JSON 842건" },
+        { n: "02", label: "API 수집", note: "MediaWiki API로 전체 목록을 끝까지 수집 · 857건" },
+        { n: "03", label: "정제", note: "캐릭터 매칭·이미지·등급 확정 → 정제 데이터 842건" },
         { n: "04", label: "한국어명 변환·검수", note: "영문명을 한국어로 변환하고 사람이 확인·확정" },
         { n: "05", label: "공개 기준", note: "검수를 통과한 스킨만 서비스에 노출" },
       ],
       layerLabel: "수집 → 정제 → 공개의 3단 분리",
       layers: [
-        ["원본 수집", "matched.json", "위키 스크랩 그대로 · 파이프라인 내부"],
-        ["정제 (canonical)", "canonical.json · 842건", "캐릭터 매칭 · 이미지 · 등급 확정"],
-        ["수동 검토 · 제외", "manual-review · excluded", "메타 항목 · 오프라인 한정판 등"],
-        ["운영 DB", "skins 테이블", "is_active AND is_published만 공개 API 노출"],
+        ["원본 수집", "Raw Data", "위키 스크랩 원본 · 파이프라인 내부"],
+        ["정제", "Clean Data · 842건", "캐릭터 매칭 · 이미지 · 등급 확정"],
+        ["수동 검토 · 제외", "Manual QA", "메타 항목 · 오프라인 한정판 등"],
+        ["운영 DB", "Published Data", "검수를 통과한 스킨만 공개 API 노출"],
       ],
-      shot: "canonical 리포트 · 이미지 교차검증 화면",
+      shot: "정제 리포트 · 이미지 교차검증 화면",
     },
     qa: {
       h2: "자동화를 어디서 멈출지 정했습니다.",
@@ -141,6 +141,7 @@ const COPY = {
         "팬덤 위키는 영문명만 제공해, 한국어명은 직접 변환해야 합니다",
         "AI 번역만으로는 커뮤니티에서 실제로 쓰는 표기와 어긋납니다",
         "그래서 변환한 이름을 사람이 확인하고 확정하는 단계를 뒀습니다",
+        "검수 기준을 정리한 뒤 캐릭터별로 작업을 나눠 함께 확인했습니다",
       ],
       pipeline: ["영문 데이터 수집", "한국어명 변환(초안)", "사람 확인·확정", "공개 판정", "운영 DB 반영"],
       criteria: (
@@ -186,9 +187,9 @@ const COPY = {
       improvementLabel: "IMPROVEMENT",
     },
     ux: {
-      h2: "저장하는 순간이 전환이었습니다.",
+      h2: "저장이 제작형 기능의 완료 지점입니다.",
       lead:
-        "가장 중요한 사용자 행동은 “결과물을 PNG로 저장한다”입니다. 저장이 곧 전환이고 GA 이벤트도 이 순간에 발화합니다. 저장이 없으면 커뮤니티에 아무것도 유통되지 않고, 유통이 없으면 신규 유입도 없습니다.",
+        "결과물 저장을 제작형 기능의 핵심 완료 행동으로 정의하고 GA4 이벤트로 측정했습니다. 생성된 이미지는 사용자가 기존 커뮤니티에 바로 공유할 수 있도록 설계했습니다.",
       metrics: [
         { value: 18356, label: "조회수" },
         { value: 3400, label: "활성 사용자" },
@@ -200,37 +201,15 @@ const COPY = {
       signals: [
         {
           label: "서비스 정체성",
-          body: "캐릭터 소트는 “취향을 구조화한다”는 본질을 30초 안에 이해시킵니다. CP표는 범용 툴로는 못 만드는, 팬덤 문화에 정확히 밀착한 기능입니다.",
+          body: "캐릭터 소트는 “취향을 구조화한다”는 본질을 빠르게 보여줍니다. CP표는 일반적인 이미지 편집기보다 팬덤의 관계성 표현 방식에 맞춰 제작 과정을 단순화한 기능입니다.",
         },
         {
           label: "재방문 장치",
-          body: "스킨 체크표(진행 중 상태)와 티어리스트 프리셋 주제(주제 교체)가 각각 다른 방식으로 다시 오게 만듭니다.",
+          body: "스킨 체크표(진행 중 상태)와 티어리스트 프리셋 주제(주제 교체)를 반복 이용을 고려해 설계했습니다.",
         },
         {
           label: "바이럴 접점",
           body: "CP표·캐릭터 소트 결과 PNG는 “내 결과 vs 너” 비교로, 연애 시뮬레이터는 결과 공유로 — 커뮤니티 게시글의 소재가 됩니다.",
-        },
-      ],
-    },
-    priority: {
-      h2: "무엇을 강조할지 나눴습니다.",
-      lead:
-        "사용자 가치 · 기획 난이도 · 운영 경험 · 게임 CM 직무 연관성을 기준으로, 각 기능을 다룰 깊이를 나눴습니다.",
-      tiers: [
-        {
-          tier: "TIER A",
-          note: "기획·운영 판단이 드러나는 기능",
-          items: ["스킨 데이터 & QA 파이프라인", "캐릭터 소트", "CP표 메이커", "듀오표", "연애 시뮬레이터"],
-        },
-        {
-          tier: "TIER B",
-          note: "확장·재활용 설계를 보여줌",
-          items: ["스킨 체크표", "티어리스트", "스킨 도감"],
-        },
-        {
-          tier: "TIER C",
-          note: "표준 구현 · 언급만",
-          items: ["스킨리스트 만들기", "캐릭터 목록 페이지", "GA4 이벤트"],
         },
       ],
     },
@@ -262,12 +241,12 @@ const COPY = {
         {
           n: "05",
           title: "운영 실수를 구조로 막았습니다",
-          body: "테스트로 캐릭터 총원·3개 언어명 존재를 강제하고, 자택 전용 캐릭터를 단일 쿼리로 전 기능에서 차단하고, PNG 이벤트는 캡처 성공 후에만 발화하게 했습니다 — 조심해서가 아니라 시스템이 강제합니다.",
+          body: "반복적으로 발생할 수 있는 운영 오류는 수동 확인에 의존하지 않고 데이터 검증 규칙으로 방지했습니다. 캐릭터 수·언어별 명칭·공개 대상 판정을 코드가 강제합니다.",
         },
         {
           n: "06",
-          title: "재방문·공유 루프를 의도적으로 배치했습니다",
-          body: "스킨 체크표(습관적 재방문) · 티어리스트 프리셋(반복 놀이) · CP표·소트 결과·연애 시뮬레이터(공유·바이럴) · 워터마크(유입) — 각 기능이 루프의 어느 지점을 담당하는지 명확합니다.",
+          title: "기능마다 다른 사용 패턴에 맞춰 설계했습니다",
+          body: "운영하면서 기능마다 서로 다른 사용 패턴이 나타났습니다. 체크형 기능은 이어서 관리할 수 있도록 상태를 남기고, 제작형 기능은 결과물을 이미지로 저장해 기존 커뮤니티에서 활용할 수 있도록 설계했습니다.",
         },
       ],
       myRole: [
@@ -284,13 +263,13 @@ const COPY = {
     problem: {
       h2: "The fandom was already expressing its taste.",
       lead:
-        "Identity V has 87 characters and 842 skins, and it grows every season. But the game gives you no way to structure your taste and show it to someone. Veterans, players looking for a duo, newbies — nearly all on mobile — were each solving that by hand.",
+        "Identity V has 87 characters and 842 skins, and it grows every season. Outside the game, the fandom had built a culture of making and sharing favorite rankings, tier lists, and ship charts — done with image editors or free-form posts.",
       behaviors: [
         { behavior: "Sharing character taste", friction: "To rank favorites you have to gather character assets and edit an image yourself." },
-        { behavior: "Making a tier list", friction: "You have to collect ~90 icons, size them, and draw a grid before you even start." },
+        { behavior: "Making a tier list", friction: "You have to gather character icons one by one, size them, and build a grid before you even start." },
         { behavior: "Making relationship (CP) content", friction: "You lay out characters and draw lines — move one and you redraw every line." },
         { behavior: "Tracking and showing owned skins", friction: "There's no single place, in Korean, for what you have and don't." },
-        { behavior: "Recruiting for duos and parties", friction: "Recruitment posts are free-form, so conditions get dropped and people ask again in the comments." },
+        { behavior: "Recruiting for duos and parties", friction: "Free-form recruitment posts make it hard to compare the info that matters — tier, time zone, mic — at a glance." },
       ],
     },
     solution: {
@@ -338,30 +317,30 @@ const COPY = {
           line: "The output is the content; distribution happens in the community.",
           items: [
             { name: "Character Sort", desc: "A ranking tool that builds your favorites list from pairwise comparisons. “Not sure” groups two characters as a tie, and progress recalculates on every choice. You save the result as an image and post it to the community." },
-            { name: "Visual Novel", desc: "A 5–8 minute web visual novel played through choices. Players share their result to the community, and it spreads from there. I split the engine from the story data and kept the branching logic for all three languages in one place, so even a non-developer can add episodes." },
+            { name: "Visual Novel", desc: "A 5–8 minute web visual novel where the story branches on your choices; you save the result as an image and share it to the community." },
           ],
         },
       ],
     },
     data: {
-      h2: "I designed the operation, not just the acquisition.",
+      h2: "I designed a review process that turns public data into service data.",
       lead:
-        "This isn't “I pulled public data.” To make a game-data experience users can trust, I designed a repeatable process — acquire, refine, review, publish — myself.",
+        "I collected initial data through the Fandom wiki and the MediaWiki API, then refined character matching, images, and rarity, and reviewed the Korean names by hand before publishing. The acquire, refine, review, and publish stages are separated so it holds up when re-run each season.",
       steps: [
         { n: "01", label: "Acquisition", note: "Every SS·S·A rarity outfit category on the Fandom wiki" },
-        { n: "02", label: "API collection", note: "Walked MediaWiki API continuation to the end — 857 records" },
-        { n: "03", label: "Refinement", note: "Character matching, images, rarity confirmed → canonical JSON, 842 records" },
+        { n: "02", label: "API collection", note: "Walked the full MediaWiki API listing to the end — 857 records" },
+        { n: "03", label: "Refinement", note: "Character matching, images, rarity confirmed → clean data, 842 records" },
         { n: "04", label: "Korean name — convert & review", note: "Convert English names to Korean; a human checks and confirms each" },
         { n: "05", label: "Publish criteria", note: "Only reviewed skins are shown in the service" },
       ],
       layerLabel: "A three-layer split: collect → refine → publish",
       layers: [
-        ["Raw collection", "matched.json", "Wiki scrape as-is · pipeline internal"],
-        ["Refined (canonical)", "canonical.json · 842", "Character matching · images · rarity confirmed"],
-        ["Manual review · excluded", "manual-review · excluded", "Meta entries · offline-limited, etc."],
-        ["Operational DB", "skins table", "Only is_active AND is_published exposed via the public API"],
+        ["Raw collection", "Raw Data", "Wiki scrape as-is · pipeline internal"],
+        ["Refined", "Clean Data · 842", "Character matching · images · rarity confirmed"],
+        ["Manual review · excluded", "Manual QA", "Meta entries · offline-limited, etc."],
+        ["Operational DB", "Published Data", "Only reviewed skins exposed via the public API"],
       ],
-      shot: "Canonical report · image cross-check screen",
+      shot: "Clean-data report · image cross-check screen",
     },
     qa: {
       h2: "I decided where to stop automating.",
@@ -371,6 +350,7 @@ const COPY = {
         "The fandom wiki only gives English names, so the Korean name has to be converted by hand",
         "AI translation alone drifts from what the community actually uses",
         "So a human confirms and finalizes each converted name before it's published",
+        "I wrote up the review criteria, then split the work by character and checked it together",
       ],
       pipeline: ["Collect English data", "Convert Korean name (draft)", "Human check & confirm", "Publish decision", "Push to operational DB"],
       criteria: (
@@ -417,9 +397,9 @@ const COPY = {
       improvementLabel: "IMPROVEMENT",
     },
     ux: {
-      h2: "The moment of saving was the conversion.",
+      h2: "Saving is the completion point of a make-style feature.",
       lead:
-        "The most important user action is “save the result as a PNG.” Saving is the conversion, and the GA event fires at that moment. No save, nothing goes to the community; no distribution, no new visitors.",
+        "I defined saving the result as the key completion action for make-style features and measured it as a GA4 event. The generated image is designed so users can share it straight to their existing communities.",
       metrics: [
         { value: 18356, label: "Views" },
         { value: 3400, label: "Active users" },
@@ -431,37 +411,15 @@ const COPY = {
       signals: [
         {
           label: "Service identity",
-          body: "Character Sort gets the essence — “structure your taste” — across in 30 seconds. CP Chart is something a generic tool can't make; it sits exactly on fandom culture.",
+          body: "Character Sort shows the essence — “structure your taste” — quickly. CP Chart simplifies the making process to fit how the fandom expresses relationships, more than a generic image editor does.",
         },
         {
           label: "Return hooks",
-          body: "Skin Checklist (in-progress state) and Tier List preset themes (theme swap) each pull people back a different way.",
+          body: "Skin Checklist (in-progress state) and Tier List preset themes (theme swap) were designed with repeat use in mind.",
         },
         {
           label: "Viral surface",
           body: "CP Chart / Character Sort result PNGs (“my result vs yours”) and the Visual Novel (shared results) become material for community posts.",
-        },
-      ],
-    },
-    priority: {
-      h2: "I split what to emphasize.",
-      lead:
-        "By user value, planning difficulty, operating experience, and relevance to a game CM role, I sorted how deeply to cover each feature.",
-      tiers: [
-        {
-          tier: "TIER A",
-          note: "Where planning and operating calls show",
-          items: ["Skin data & QA pipeline", "Character Sort", "CP Chart Maker", "Duo Card", "Visual Novel"],
-        },
-        {
-          tier: "TIER B",
-          note: "Shows extension and reuse design",
-          items: ["Skin Checklist", "Tier List", "Skin Catalog"],
-        },
-        {
-          tier: "TIER C",
-          note: "Standard implementation · mention only",
-          items: ["Skin Board", "Character list page", "GA4 events"],
         },
       ],
     },
@@ -493,12 +451,12 @@ const COPY = {
         {
           n: "05",
           title: "I blocked operational mistakes with structure",
-          body: "Tests enforce the character count and all three language names, one query blocks lobby-only characters across every feature, and the PNG event fires only after a successful capture — the system enforces it, not care.",
+          body: "Operational errors that could recur are prevented by data-validation rules rather than manual checks. Character count, per-language names, and publish eligibility are enforced by code.",
         },
         {
           n: "06",
-          title: "I placed the return and viral loops on purpose",
-          body: "Skin Checklist (habitual return), Tier List presets (repeat play), CP Chart / Sort results and the Visual Novel (sharing / viral), watermark (acquisition) — it's clear which point of the loop each feature owns.",
+          title: "I designed for the different usage pattern of each feature",
+          body: "Different usage patterns showed per feature in operation. Check-style features keep state so you can keep managing them; make-style features save the result as an image for use in existing communities.",
         },
       ],
       myRole: [
@@ -844,41 +802,12 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      {/* 08 — Feature Priority */}
-      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
-        <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>07 / FEATURE PRIORITY</div>
-          <Reveal>
-            <h2 className={`mt-4 ${H2}`}>{c.priority.h2}</h2>
-          </Reveal>
-          <p className={LEAD}>{c.priority.lead}</p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {c.priority.tiers.map((t) => (
-              <Reveal key={t.tier} className="rounded-xl border border-line-2 bg-paper px-5 py-5">
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-archivo text-[13px] font-bold tracking-[.12em] text-accent">{t.tier}</span>
-                  <span className="text-[13px] text-muted">{t.note}</span>
-                </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {t.items.map((it) => (
-                    <span key={it} className="rounded-md border border-line-2 px-3 py-1.5 text-[13px] text-ink-70">
-                      {it}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 09 — Learning (dark) */}
+      {/* 08 — Learning (dark) */}
       <section id="learning" className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="flex-[1.2]">
-              <div className={EYEBROW_DARK}>08 / LEARNING</div>
+              <div className={EYEBROW_DARK}>07 / LEARNING</div>
               <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
             </Reveal>
             <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">

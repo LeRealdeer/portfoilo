@@ -45,6 +45,7 @@ export function Placeholder({
   className = "h-[240px]",
   href,
   img,
+  fit = "cover",
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
@@ -52,6 +53,13 @@ export function Placeholder({
   href?: string;
   /** when set, renders the real screenshot */
   img?: Shot;
+  /**
+   * How a fixed-height box treats the image.
+   * "cover" (default) fills the box and crops the overflow.
+   * "contain" fits the whole image inside the box (no crop) — use for tall
+   * portrait screenshots where the box height is only a minimum guarantee.
+   */
+  fit?: "cover" | "contain";
 }) {
   if (img) {
     const alt = typeof label === "string" ? label : "";
@@ -65,7 +73,8 @@ export function Placeholder({
     let content: ReactNode;
 
     if (HAS_HEIGHT.test(className)) {
-      // gallery cell: fixed-height box so a row of shots lines up; fill it (no letterbox)
+      // gallery cell: the height class is a floor so a row of shots lines up.
+      // "cover" fills and crops; "contain" fits the whole image (height = minimum).
       content = (
         <span
           className={`${link ? "group/ph " : ""}relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
@@ -75,7 +84,7 @@ export function Placeholder({
             alt={alt}
             fill
             sizes="(max-width: 768px) 100vw, 640px"
-            className={`object-cover object-top${hover}`}
+            className={`${fit === "contain" ? "object-contain" : "object-cover object-top"}${hover}`}
           />
           {ring}
         </span>

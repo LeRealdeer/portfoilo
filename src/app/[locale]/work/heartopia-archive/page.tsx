@@ -64,7 +64,7 @@ const COPY = {
       h2: "좋은 콘텐츠는 많았지만 찾을 수가 없었습니다.",
       lead:
         "두근두근타운은 유저가 직접 만든 의상·가구 같은 커스터마이징 콘텐츠 공유가 활발한 게임입니다. 하지만 그 콘텐츠는 Xiaohongshu, Discord, 개인 SNS에 흩어져 있어, 한국 유저가 원하는 것을 찾으려면 매번 같은 과정을 반복해야 했습니다.",
-      note: "“다시 찾기”가 매번 처음부터였습니다 — 저장해둔 이미지에는 출처가 남지 않았기 때문입니다.",
+      note: "“다시 찾기”가 매번 처음부터였습니다 — 이미지만 따로 저장하면 원작자와 원본 게시물을 다시 확인하기 어려운 경우가 많았기 때문입니다.",
       shot: "커뮤니티에 흩어져 있던 유저 제작 콘텐츠",
     },
     problem: {
@@ -78,7 +78,7 @@ const COPY = {
     solution: {
       h2: "이미지 모음이 아니라, 신뢰 가능한 UGC 라이브러리.",
       lead:
-        "원작자의 권리를 지키면서 유저가 쉽게 탐색하는 플랫폼을 목표로, 서비스 방향을 세 가지로 정했습니다. 콘텐츠 양이 많고 수요가 낮은 그림 도안은 초기 범위에서 제외하고 의상·가구에 집중했습니다.",
+        "원작자의 권리를 지키면서 유저가 쉽게 탐색하는 플랫폼을 목표로, 서비스 방향을 세 가지로 정했습니다. 초기에는 탐색 요구가 명확했던 의상·가구를 중심으로 범위를 좁혀 시작했습니다.",
       directions: ["콘텐츠 탐색 경험 개선", "원작자 출처 관리", "한국 유저 접근성 개선"],
       serviceFlow: ["Creator", "콘텐츠 발견", "허락 확인", "출처 관리", "Archive 등록", "User"],
       shot: "도안 훑어보기 — 카테고리 · 태그 필터",
@@ -89,9 +89,9 @@ const COPY = {
       lead:
         "해외 창작물을 단순히 모으지 않았습니다. 한 장이라도 원작자의 허락 없이 올리지 않는다는 원칙을 먼저 정하고, 그 원칙이 지켜지도록 운영 절차를 설계했습니다.",
       outreach: [
-        { label: "PROBLEM", solution: false, body: "Xiaohongshu 지역 제한으로 원작자에게 직접 DM·댓글을 보낼 수 없었습니다." },
-        { label: "ACTION", solution: false, body: "중국인 친구를 통해 창작자와 연결하고, 서비스의 운영 목적과 출처 표기 방식을 설명한 뒤 사용 허락을 요청했습니다." },
-        { label: "RESULT", solution: true, body: "Xiaohongshu 작가 세 명에게 실제 사용 허락을 확보해, 원작자·원본 링크를 고정한 채 콘텐츠를 게시 중입니다." },
+        { label: "PROBLEM", solution: false, body: "해외 플랫폼의 메시지 제한으로 원작자에게 직접 연락하기 어려운 경우가 있었습니다." },
+        { label: "ACTION", solution: false, body: "현지 커뮤니케이션 지원을 받아 창작자와 연결하고, 비상업 운영 목적과 출처 표기 방식을 설명한 뒤 사용 허락을 요청했습니다." },
+        { label: "RESULT", solution: true, body: "원작자에게 직접 사용 허락을 확보하고, 원작자·원본 링크를 고정한 채 대리 게시 형태로 콘텐츠를 운영하고 있습니다." },
       ],
       quote: "허가는 기능이 아니라 관계의 결과였습니다.",
       shotDm: "크리에이터 페이지 — 원작자별 콘텐츠 · 원본 링크",
@@ -125,14 +125,14 @@ const COPY = {
     editor: {
       h2: "탐색에서 창작으로.",
       lead:
-        "유저는 도안을 보기만 하지 않았습니다. “내 방 사진에 이 도안을 얹어보고 싶다”는 요청이 반복됐는데, 그러려면 일일이 촬영하고 외부 앱에서 수동으로 배치해야 했습니다. 이 과정을 서비스 안 웹 사진 편집 기능 하나로 합쳤습니다.",
+        "유저는 도안을 보기만 하지 않았습니다. 사용자 의견에서 “내 방 사진에 이 도안을 미리 배치해보고 싶다”는 니즈를 발견했는데, 그러려면 일일이 촬영하고 외부 앱에서 수동으로 배치해야 했습니다. 이 과정을 서비스 안 웹 사진 편집 기능 하나로 합쳤습니다.",
       before: ["직접 촬영", "외부 편집 앱 실행", "수동 배치"],
       afterLabel: "서비스 안에서 바로 편집",
       shotBefore: "사진 편집기 — BEFORE (외부 앱 합성)",
       shotAfter: "사진 편집기 — AFTER (서비스 내 편집)",
     },
     ops: {
-      h2: "알리는 일과 고치는 일.",
+      h2: "출시 이후 커뮤니티 반응을 확인하며 운영했습니다.",
       cases: [
         {
           label: "COMMUNITY",
@@ -148,20 +148,19 @@ const COPY = {
       shot: "게임 커뮤니티에 올린 아카이브 홍보 글",
     },
     metrics: {
-      h2: "규모가 아니라 신뢰의 신호입니다.",
-      dateline: "2026.07.15 ~ 운영 중 · 콘텐츠는 하루 1개씩 증가",
-      footnote: "Daily Visitors는 최근 확인 기준 추정치이며, 누적 방문자·다운로드 등은 GA 재확인 후 반영합니다.",
+      h2: "초기 운영 지표.",
+      dateline: "2026.07.15 ~ 운영 중",
     },
     learn: {
       h2: "콘텐츠의 양보다 신뢰가 중요했습니다.",
       lead:
         "좋은 콘텐츠를 모으는 것만으로는 아카이브가 지속되지 않았습니다. 창작자 권리 보호, 출처 관리, 사용자 경험, 운영 정책이 함께 있어야 커뮤니티가 유지된다는 것을 배웠습니다.",
       quote:
-        "UGC 서비스에서 가장 중요한 것은 콘텐츠의 양이 아니라, 콘텐츠가 만들어지고 공유되는 과정에 대한 신뢰였습니다.",
+        "UGC 아카이브의 품질은 콘텐츠 수뿐 아니라, 누가 만들었는지와 어떤 방식으로 공유되는지를 함께 보존할 때 만들어진다는 것을 배웠습니다.",
       takeaways: [
         {
           n: "01",
-          title: "허락은 기능이 아니라 관계의 결과였습니다",
+          title: "가장 오래 걸린 일은 개발이 아니라 사람을 찾는 일이었습니다",
           body: "가장 오래 걸린 일은 개발이 아니라 해외 원작자를 찾아 연락하고 허락을 받는 일이었고, 그 절차가 곧 서비스의 정체성이 됐습니다.",
         },
         {
@@ -185,7 +184,7 @@ const COPY = {
       h2: "There was plenty of good content — you just couldn't find it.",
       lead:
         "Heartopia has an active culture of sharing user-made customization content like outfits and furniture. But that content lives scattered across Xiaohongshu, Discord, and personal social media, so a Korean player had to repeat the same process every time they wanted to find something.",
-      note: "“Search again” started from scratch every time — the saved image kept no record of where it came from.",
+      note: "“Search again” started from scratch every time — saving just the image often left no easy way back to the creator or the original post.",
       shot: "User-made content scattered across the community",
     },
     problem: {
@@ -199,7 +198,7 @@ const COPY = {
     solution: {
       h2: "Not an image dump — a UGC library you can trust.",
       lead:
-        "Aiming for a platform where users browse easily while creators' rights are protected, I set three directions for the service. Drawing patterns — high in volume, low in demand — were left out of the initial scope, and I focused on outfits and furniture.",
+        "Aiming for a platform where users browse easily while creators' rights are protected, I set three directions for the service. I started by narrowing the scope to outfits and furniture, where the discovery need was clearest.",
       directions: ["Improve the content discovery experience", "Manage creator attribution", "Improve access for Korean users"],
       serviceFlow: ["Creator", "Content found", "Permission confirmed", "Attribution managed", "Added to Archive", "User"],
       shot: "Browsing patterns — category and tag filters",
@@ -210,9 +209,9 @@ const COPY = {
       lead:
         "I didn't just gather overseas creations. I set the principle first — not a single image goes up without the creator's permission — and designed the operating process so that principle holds.",
       outreach: [
-        { label: "PROBLEM", solution: false, body: "Xiaohongshu's regional restrictions meant I couldn't DM or comment on creators directly." },
-        { label: "ACTION", solution: false, body: "I connected with creators through a Chinese friend, explained the service's non-commercial purpose and how attribution works, and asked for permission to use their work." },
-        { label: "RESULT", solution: true, body: "I secured actual permission from three Xiaohongshu creators, and I post their content with the creator and original link pinned." },
+        { label: "PROBLEM", solution: false, body: "Platform messaging restrictions sometimes made it hard to contact creators directly." },
+        { label: "ACTION", solution: false, body: "I connected with creators through local communication support, explained the non-commercial purpose and how attribution works, and asked for permission to use their work." },
+        { label: "RESULT", solution: true, body: "I secured permission directly from the creators and run the content as attributed proxy posts, with the creator and original link pinned." },
       ],
       quote: "Permission wasn't a feature — it was the result of a relationship.",
       shotDm: "Creator page — content and original links by creator",
@@ -246,14 +245,14 @@ const COPY = {
     editor: {
       h2: "From browsing to making.",
       lead:
-        "Users didn't just look at the patterns. “I want to lay this pattern over a photo of my room” came up again and again — and doing that meant shooting each photo and placing things by hand in an external app. I folded that whole process into one in-service web photo editor.",
+        "Users didn't just look at the patterns. From user feedback I found the need — “I want to preview this pattern placed over a photo of my room” — and doing that meant shooting each photo and placing things by hand in an external app. I folded that whole process into one in-service web photo editor.",
       before: ["Shoot it yourself", "Open an external editing app", "Place it by hand"],
       afterLabel: "Edit right inside the service",
       shotBefore: "Photo editor — BEFORE (composited in an external app)",
       shotAfter: "Photo editor — AFTER (edited in-service)",
     },
     ops: {
-      h2: "Getting the word out, and fixing what breaks.",
+      h2: "Operating after launch while watching community response.",
       cases: [
         {
           label: "COMMUNITY",
@@ -269,21 +268,19 @@ const COPY = {
       shot: "Archive promo posts in the game community",
     },
     metrics: {
-      h2: "Not scale — a signal of trust.",
-      dateline: "Since 2026.07.15 · content grows by one a day",
-      footnote:
-        "Daily visitors is an estimate as of the latest check; cumulative visitors, downloads, and the like will be updated after re-checking GA.",
+      h2: "Early operating metrics.",
+      dateline: "Since 2026.07.15",
     },
     learn: {
       h2: "Trust mattered more than the amount of content.",
       lead:
         "Collecting good content alone didn't keep the archive going. I learned that a community holds together only when creator-rights protection, attribution, user experience, and operating policy are all in place together.",
       quote:
-        "The most important thing in a UGC service isn't the amount of content — it's trust in the process by which content gets made and shared.",
+        "I learned that the quality of a UGC archive comes not just from the number of items, but from preserving who made each one and how it's shared.",
       takeaways: [
         {
           n: "01",
-          title: "Permission was the result of a relationship, not a feature",
+          title: "The longest part wasn't development — it was finding the people",
           body: "The longest part wasn't development — it was finding overseas creators, reaching out, and getting permission, and that process became the service's identity.",
         },
         {
@@ -652,7 +649,6 @@ export default async function HeartopiaArchivePage({
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-[13.5px] leading-[1.55] text-muted-light">{c.metrics.footnote}</p>
       </section>
 
       {/* 09 — Learning (dark) */}

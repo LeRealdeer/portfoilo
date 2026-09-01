@@ -79,7 +79,7 @@ type Copy = {
   growth: { h2: string; lead: string; channels: { title: string; body: string }[]; shot1: string; shot2: string; shot3: string };
   events: { h2: string; lead: string; list: { title: string; body: string }[]; shot1: string; shot2: string };
   o2o: { h2: string; lead: string; flow: string[]; onSite: string; dayUsers: string; shot1: string; shot2: string };
-  learn: { h2: string; musicLabel: string; music: string; examLabel: string; exam: string; shot: string; quote: string };
+  learn: { h2: string; musicLabel: string; music: string; shot: string; quote: string };
   final: { h2: string; body: string };
 };
 
@@ -87,9 +87,9 @@ const COPY: Record<Locale, Copy> = {
   ko: {
     heroSubtitle: "게임 플레이 과정에서 반복되던 관리·계산·정보 탐색을 하나로 정리한 게임 유틸리티 서비스",
     ctx: {
-      h2: "유저가 계속 묻는 질문에는 반복되는 문제가 있습니다.",
+      h2: "“제 키가 몇 단인가요?” 반복되는 질문에서 첫 기능이 나왔습니다.",
       lead:
-        "부트캠프에서 서비스를 만들고 배포하는 법을 배운 뒤, 내가 만들 수 있으니 유저에게 실제로 도움이 되는 것을 만들고 싶었습니다. 네이버 Sky 카페에는 하나의 질문이 계속 올라오고 있었습니다.",
+        "네이버 Sky 카페를 이용하면서, 하나의 질문이 반복해서 올라오는 것을 발견했습니다.",
       quote: "제 캐릭터 키가 몇 단인가요? 이 키가 맞나요?",
       note:
         "Sky에는 캐릭터 키를 바꾸는 키 물약이 있지만 인게임에는 키를 재는 방법이 없습니다. 커뮤니티가 스스로 만든 규칙을, 유저들은 외부 앱으로 일일이 해결하고 있었습니다.",
@@ -99,7 +99,7 @@ const COPY: Record<Locale, Copy> = {
     evo: {
       h2: "기능 하나에서 플레이 플랫폼으로.",
       lead:
-        "키재기 하나로 시작해, 커뮤니티에서 반복되는 질문을 하나씩 기능으로 옮겨 8개까지 확장했습니다. 유랑대백과에서 방문자가 본격적으로 늘었고, 성향 테스트가 첫 바이럴을 만들었습니다.",
+        "키재기 하나로 시작해, 플레이 과정에서 반복되는 계산·탐색·정리 문제를 하나씩 기능으로 확장했습니다.",
       count: "게임 플레이 보조 기능 운영 중",
       list: [
         { tag: "01", name: "키재기", line: "커뮤니티의 '키 몇 단?' 질문을 도구화한 첫 기능" },
@@ -127,7 +127,7 @@ const COPY: Record<Locale, Copy> = {
           solution:
             "가이드라인을 제공하고, 유저는 사진을 올려 이동·확대/축소만으로 키를 확인합니다. 네이버 카페의 '제 키가 몇 단인가요?' 질문을 그대로 도구로 옮겼습니다.",
           iteration:
-            "처음엔 카페에 배포된 다른 유저의 가이드라인 파일을 썼지만, 이후 가이드라인과 키재기 가이드를 직접 제작했습니다. '사진 위치 조정이 불편하다'는 피드백을 받고 스케일 조정 UX를 개선했습니다.",
+            "초기에는 커뮤니티에서 공유되던 가이드라인을 활용했고, 이후 서비스에 맞는 가이드라인과 사용 가이드를 직접 제작했습니다. '사진 위치 조정이 불편하다'는 피드백을 받고 스케일 조정 UX를 개선했습니다.",
           impact: "카페 인기글에 올랐고, 유저들이 키 잰 결과물을 카페에 공유하며 자연스럽게 확산됐습니다.",
           shot: "키재기 UI — 가이드라인 위 사진 조정",
         },
@@ -140,7 +140,7 @@ const COPY: Record<Locale, Copy> = {
           solution:
             "보유 재화와 목표 아이템을 입력하면 필요한 양초·예상 획득량·소요 일수를 계산합니다. 아이콘과 자료는 해외 Sky 팬덤 관리자와 카페 유저에게 직접 사용 허락을 받아 확보했습니다.",
           iteration:
-            "결과만 보여주던 방식에서, 앞으로 얻을 재화·아이템 총합·소요 일수까지 계산 과정을 상세히 보여주도록 개선했습니다. 시즌 아이템 획득 방식이 완전히 바뀌어 종료를 고려했지만, 계속 쓰는 유저가 있어 완전히 다른 방식·디자인으로 리뉴얼했습니다.",
+            "결과만 보여주던 방식에서, 앞으로 얻을 재화·아이템 총합·소요 일수까지 계산 과정을 상세히 보여주도록 개선했습니다. 게임 시스템 변경으로 기존 계산 방식의 유효성이 낮아졌지만, 지속적인 이용이 확인되어 새로운 시즌 구조에 맞게 계산 방식과 UI를 전면 재설계했습니다.",
           impact: "출시 이후 지금까지 사이트의 대표 기능. GA4 기준 활성 사용자 1,977명으로 전 기능 중 최다입니다.",
           shot: "양초 계산기 — 계산 과정 시각화 (리뉴얼 전·후)",
         },
@@ -149,7 +149,7 @@ const COPY: Record<Locale, Copy> = {
           name: "유랑대백과",
           tag: "방문자가 본격적으로 늘기 시작한 지점",
           problem:
-            "Sky는 2주마다 과거 시즌 아이템을 파는 '유랑 영혼'을 보냅니다. 유저들은 '내 위시 유랑이 언제 올까'를 궁금해했지만, 커뮤니티 정리글은 업데이트가 멈추고 잘못된 정보와 오래된 레퍼런스가 섞여 있었습니다.",
+            "Sky는 2주마다 과거 시즌 아이템을 파는 '유랑 영혼'을 보냅니다. 유저들은 '내 위시 유랑이 언제 올까'를 궁금해했지만, 기존 커뮤니티 자료는 작성 시점과 형식이 달라 최신 정보와 과거 기록을 한 번에 비교하기 어려웠습니다.",
           solution:
             "모든 유랑 기록·아이템·재화 가격·위치를 데이터베이스로 만들고 검색과 시즌별 분류를 넣었습니다. 시즌마다 색을 달리해 한눈에 구분되게 했습니다.",
           iteration:
@@ -162,7 +162,7 @@ const COPY: Record<Locale, Copy> = {
           name: "성향 테스트",
           tag: "홍보를 위해 만든 공유형 콘텐츠",
           problem:
-            "핵심 도구가 자리잡은 뒤, 사이트를 알릴 방법이 필요했습니다. 유저의 자기표현 욕구를 활용하기로 했습니다.",
+            "정보형 기능 외에, 유저가 친구들과 가볍게 공유하며 대화가 이어지는 참여형 콘텐츠가 필요하다고 판단했습니다.",
           solution:
             "15개 질문으로 8가지 결과를 Sky 크리쳐에 연결하고, 결과지에 각 성향의 특징·장단점과 잘 맞는/안 맞는 성향까지 넣어 친구에게 권유하고 싶게 만들었습니다.",
           iteration: "MBTI처럼 결과를 공유하는 구조에 집중해, 결과 이미지가 그대로 SNS에 올라가도록 설계했습니다.",
@@ -174,7 +174,7 @@ const COPY: Record<Locale, Copy> = {
           name: "시즌 대백과",
           tag: "유저 요청에서 출발한 최대 조회수 기능",
           problem:
-            "Google 만족도 조사에서 가장 많았던 요청이 '시즌별로 영혼을 정리해 보고 싶다'였습니다. 마침 AWS 서버 장애로 유랑대백과 데이터가 유실되면서, 재구축과 함께 이 기능을 제대로 만들 기회가 생겼습니다.",
+            "만족도 조사에서 '시즌별로 영혼을 정리해 보고 싶다'는 요청이 반복적으로 확인됐습니다. 기존 데이터 구조를 재정비하는 시점에 이를 함께 반영해, 시즌 단위로 탐색할 수 있는 대백과를 새로 설계했습니다.",
           solution:
             "Railway·Vercel로 이전하며 엔티티 구조를 새로 설계하고, 모든 시즌 영혼과 미복각 영혼까지 등록한 시즌 대백과를 만들었습니다.",
           iteration:
@@ -191,11 +191,11 @@ const COPY: Record<Locale, Copy> = {
       ],
     },
     ops: {
-      h2: "장애를 구조 개선의 기회로.",
+      h2: "운영하며 서비스 구조를 재정비했습니다.",
       migration:
-        "'시즌별로 영혼을 정리해 보고 싶다'는 유저 요청이 꾸준했습니다. 마침 AWS EC2 서버 장애로 데이터가 유실되면서, 이를 기회로 Railway·Vercel로 이전하고 엔티티 구조를 새로 설계해 시즌 대백과를 만들었습니다.",
+        "'시즌별로 영혼을 정리해 보고 싶다'는 요청이 꾸준해, 데이터 구조를 재정비하는 시점에 Railway·Vercel로 인프라를 이전하고 엔티티 구조를 새로 설계해 시즌 대백과를 만들었습니다.",
       qa:
-        "자동 테스트 없이 직접 돌려보며 QA하고, 친구에게 어색한 부분을 짚어달라고 부탁했습니다. 영혼 등록 오류 등 운영 중 버그는 재현·수정·배포를 반복하며 처리했습니다.",
+        "주요 사용자 플로우를 직접 검수하고 외부 사용자 피드백을 함께 확인했습니다. 운영 중 발견된 오류는 재현 → 수정 → 배포 → 재검증 과정을 거쳐 처리했습니다.",
       shot: "서버 이전 · 영혼 등록 관리자 화면",
     },
     data: {
@@ -205,12 +205,12 @@ const COPY: Record<Locale, Copy> = {
       insights: [
         {
           n: "INSIGHT 1",
-          title: "유저는 플레이 보조 도구를 반복 사용합니다",
+          title: "목적이 명확한 플레이 보조 기능에 사용자가 집중됩니다",
           detail: "양초 계산기 활성 1,977 · 키재기 활성 1,009 — 목적이 명확한 계산·비교 기능의 사용성이 높음",
         },
         {
           n: "INSIGHT 2",
-          title: "정보형 콘텐츠는 긴 체류 시간을 만듭니다",
+          title: "정보 탐색 기능에서 상대적으로 긴 참여 시간이 나타납니다",
           detail: "시즌 대백과 평균 참여 4분 39초 · 유랑대백과 4분 16초 — 탐색 가능한 정보 구조가 핵심",
         },
         {
@@ -240,9 +240,9 @@ const COPY: Record<Locale, Copy> = {
       shot: "Google 만족도 조사 결과 · 개선 전후",
     },
     growth: {
-      h2: "유저가 자연스럽게 확산하는 구조.",
+      h2: "직접 홍보에서 커뮤니티 내 자연 확산으로.",
       lead:
-        "직접 홍보로 시작하되, 이후에는 유저와 커뮤니티가 서로 공유하며 퍼지도록 채널을 설계했습니다. 자연 확산의 시작점은 성향 테스트였습니다.",
+        "초기에는 직접 서비스를 알렸고, 이후에는 사용자 공유와 커뮤니티 추천을 통해 유입 경로가 확장됐습니다. 자연 확산의 시작점은 성향 테스트였습니다.",
       channels: [
         {
           title: "네이버 카페",
@@ -259,7 +259,7 @@ const COPY: Record<Locale, Copy> = {
       ],
       shot1: "네이버 카페 베스트 팁 게시판 등극",
       shot2: "오픈채팅 봇 등록",
-      shot3: "해외 팬사이트 관리자에게 받은 사용 허락",
+      shot3: "대형 해외 Sky 팬사이트에 등재된 사이트 링크",
     },
     events: {
       h2: "서비스 밖에서도 커뮤니티를 움직였습니다.",
@@ -276,7 +276,7 @@ const COPY: Record<Locale, Copy> = {
     o2o: {
       h2: "온라인 서비스를 오프라인 현장으로.",
       lead:
-        "Sky 공식 오프라인 행사에서 사이트를 활용한 이벤트를 진행했습니다. 현장 진행이 불발될 수 있어, 기획 문서를 만들어 댓게임 코리아에 메일로 허락을 받았습니다.",
+        "Sky 공식 오프라인 행사에서 웹 기반 참여 이벤트를 진행하기 위해, 기획안을 작성해 댓게임 코리아에 사전 승인을 요청하고 확보했습니다.",
       flow: ["QR 스캔", "비행 자격 테스트", "점수 통과", "명함형 비행 자격증 출력"],
       onSite:
         "점수를 통과하면 명함형 비행 자격증을 뽑아 갈 수 있게 했습니다. 성향 테스트 스티커(사이트 QR 포함)와 크리쳐 띠부실을 함께 배포했습니다.",
@@ -289,9 +289,6 @@ const COPY: Record<Locale, Copy> = {
       musicLabel: "악보 만들기",
       music:
         "커뮤니티가 이미 표준으로 쓰는 앱이 있어, 그 개발자에게 악보 변환 키를 받아 연동까지 했습니다. 하지만 익숙한 도구를 두고 옮겨올 이유를 만들지 못해 잘 쓰이지 않았습니다.",
-      examLabel: "모의고사 시스템",
-      exam:
-        "매달 1일 새 문제를 올리며 정기적인 재방문을 만든 좋은 유입원이었습니다. 다만 매달 문제를 출제하고 검수하는 운영 비용 부담으로 마무리하게 되었습니다.",
       shot: "악보 만들기 화면 — 사이트 최하단",
       quote:
         "기능을 만들기 전에 ‘유저가 지금 쓰는 것을 두고 옮겨올 이유가 있는가’를 먼저 확인합니다. 완성도보다 전환할 이유가 채택을 결정한다는 것을 배웠습니다.",
@@ -305,9 +302,9 @@ const COPY: Record<Locale, Copy> = {
   en: {
     heroSubtitle: "A game utility that folds the repeat management, calculation, and lookup of Sky play into one place.",
     ctx: {
-      h2: "A question people keep asking hides a recurring problem.",
+      h2: "“How tall is my character?” — the first feature came from one repeated question.",
       lead:
-        "After a bootcamp taught me how to build and ship a service, I wanted to make something that actually helped players — because now I could. One question kept coming up in the Korean Sky community.",
+        "While using the Korean Sky community, I noticed one question coming up again and again.",
       quote: "How tall is my character? Is this reading right?",
       note:
         "Sky has a potion that changes your character's height, but no in-game way to measure it. Players were solving a community-invented rule one screenshot at a time, in an external app.",
@@ -317,7 +314,7 @@ const COPY: Record<Locale, Copy> = {
     evo: {
       h2: "From one feature to a play platform.",
       lead:
-        "It started as just the height checker, then grew to eight — each feature a recurring community question turned into a tool. Traffic really began climbing with the Traveling Spirits Archive, and the personality test drove the first viral spike.",
+        "It started as just the height checker, then grew as I turned each recurring calculation, lookup, and tracking problem in play into its own feature.",
       count: "play-assist features live",
       list: [
         { tag: "01", name: "Height Checker", line: "The community's 'how tall am I?' question, turned into a tool" },
@@ -345,7 +342,7 @@ const COPY: Record<Locale, Copy> = {
           solution:
             "I provide the guideline; the player uploads a photo and checks their height with just move and zoom. It's the community's 'how tall am I?' question ported straight into a tool.",
           iteration:
-            "At first I used another player's guideline file that was circulating, then made my own guideline and how-to. After feedback that 'positioning the photo is fiddly,' I improved the scaling UX.",
+            "Early on I used a guideline that was already circulating in the community, then made my own guideline and how-to fitted to the service. After feedback that 'positioning the photo is fiddly,' I improved the scaling UX.",
           impact: "It hit the community's popular posts, and players spread it themselves by sharing their measured results there.",
           shot: "Height-checker UI — adjusting a photo over the guideline",
         },
@@ -358,7 +355,7 @@ const COPY: Record<Locale, Copy> = {
           solution:
             "Enter your currency and target item and it calculates the candles needed, expected earnings, and days required. The icons and data came from asking overseas Sky-fandom admins and community members for permission directly.",
           iteration:
-            "From just showing a result, I improved it to show the whole calculation — future earnings, item totals, days required. When the season item system changed completely I considered shutting it down, but players kept using it, so I rebuilt it with a completely different approach and design.",
+            "From just showing a result, I improved it to show the whole calculation — future earnings, item totals, days required. When the season item system changed, the old calculation lost its footing, but continued use showed in the data, so I fully redesigned the calculation and UI around the new season structure.",
           impact: "It's been the site's flagship feature since launch. GA4 shows 1,977 active users — the most of any feature.",
           shot: "Candle calculator — calculation walkthrough (before / after redesign)",
         },
@@ -367,7 +364,7 @@ const COPY: Record<Locale, Copy> = {
           name: "Traveling Spirits Archive",
           tag: "Where visitor numbers really started to climb",
           problem:
-            "Every two weeks Sky sends a 'traveling spirit' that sells past-season items. Players wanted to know 'when is my wishlist spirit coming?' — but the community summary posts had stopped updating and were mixed with wrong info and stale references.",
+            "Every two weeks Sky sends a 'traveling spirit' that sells past-season items. Players wanted to know 'when is my wishlist spirit coming?' — but the community summary posts were written at different times in different formats, making it hard to compare current info and past records in one place.",
           solution:
             "I put every travel record, item, price, and location into a database with search and per-season filtering, giving each season its own color so it reads at a glance.",
           iteration:
@@ -380,7 +377,7 @@ const COPY: Record<Locale, Copy> = {
           name: "Personality Test",
           tag: "Shareable content, built for reach",
           problem:
-            "Once the core tools were in place, I needed a way to get the site known. I decided to lean on people's urge to express themselves.",
+            "Beyond the informational features, I judged we needed participatory content users could share casually with friends to keep a conversation going.",
           solution:
             "15 questions map to 8 results tied to Sky creatures. The result page includes each type's traits, pros and cons, and compatible / incompatible types, so people want to send it to a friend.",
           iteration: "I focused on an MBTI-style shareable structure, designing the result image to post straight to social media.",
@@ -392,7 +389,7 @@ const COPY: Record<Locale, Copy> = {
           name: "Season Encyclopedia",
           tag: "Started from a user request — the most-viewed feature",
           problem:
-            "The top request in the Google satisfaction survey was to 'see the spirits organized by season.' When an AWS outage then wiped the Traveling Spirits Archive data, the rebuild gave me the opening to build it properly.",
+            "The satisfaction survey repeatedly surfaced one request — 'let me see the spirits organized by season.' While reorganizing the underlying data structure, I folded this in and designed a new encyclopedia you can browse by season.",
           solution:
             "Moving to Railway and Vercel, I redesigned the entity structure and built the Season Encyclopedia, registering every season's spirits including the ones never re-released.",
           iteration:
@@ -405,11 +402,11 @@ const COPY: Record<Locale, Copy> = {
       ptViral: ["Player reactions (redacted)", "Community spread 1", "Community spread 2"],
     },
     ops: {
-      h2: "An incident, used as a chance to improve the structure.",
+      h2: "Reorganizing the service structure while operating it.",
       migration:
-        "Players kept asking to 'see the spirits organized by season.' When an AWS EC2 outage then lost data, I took it as the opening to move to Railway and Vercel, redesign the entity structure, and build the Season Encyclopedia.",
+        "The request to 'see the spirits organized by season' kept coming, so while reorganizing the data structure I moved the infrastructure to Railway and Vercel, redesigned the entity structure, and built the Season Encyclopedia.",
       qa:
-        "No automated tests — I QA'd by running through it myself and asking friends to point out anything awkward. I handled live bugs like spirit-registration errors with a repeat cycle of reproduce, fix, deploy, recheck.",
+        "I reviewed the main user flows myself and checked external user feedback alongside. Errors found in operation went through reproduce → fix → deploy → reverify.",
       shot: "Server migration · spirit-registration admin screen",
     },
     data: {
@@ -419,12 +416,12 @@ const COPY: Record<Locale, Copy> = {
       insights: [
         {
           n: "INSIGHT 1",
-          title: "Players use play-assist tools over and over",
+          title: "Users concentrate on play-assist features with a clear purpose",
           detail: "Candle Calculator 1,977 active · Height Checker 1,009 — features with a clear purpose get high usage",
         },
         {
           n: "INSIGHT 2",
-          title: "Informational content builds long dwell time",
+          title: "Info-lookup features show relatively long engagement time",
           detail: "Season Encyclopedia 4m 39s avg · Traveling Spirits Archive 4m 16s — a browsable info structure is the key",
         },
         {
@@ -454,9 +451,9 @@ const COPY: Record<Locale, Copy> = {
       shot: "Google survey results · before / after",
     },
     growth: {
-      h2: "A structure where users spread it on their own.",
+      h2: "From direct promotion to organic spread in the community.",
       lead:
-        "I started with direct promotion, then designed the channels so users and the community would share it around themselves. The personality test was where organic spread began.",
+        "At first I promoted the service directly; after that, user sharing and community recommendations expanded how people found it. Organic spread began with the personality test.",
       channels: [
         {
           title: "Naver Café",
@@ -473,7 +470,7 @@ const COPY: Record<Locale, Copy> = {
       ],
       shot1: "Made the Naver café best-tips board",
       shot2: "Open-chat bot registration",
-      shot3: "Use permission from an overseas fan-site admin",
+      shot3: "Site link listed on a large overseas Sky fan site",
     },
     events: {
       h2: "I moved the community outside the service too.",
@@ -490,7 +487,7 @@ const COPY: Record<Locale, Copy> = {
     o2o: {
       h2: "The online service, taken to an offline venue.",
       lead:
-        "I ran a site-based event at Sky's official offline event. Since on-site execution could fall through, I wrote a plan doc and got permission from thatgamecompany Korea by email.",
+        "To run a web-based participation event at Sky's official offline event, I wrote a plan doc and requested and secured advance approval from thatgamecompany Korea.",
       flow: ["Scan the QR", "Flight aptitude test", "Pass the score", "Print a business-card flight license"],
       onSite:
         "Passing the score let you print a business-card flight license to take home. I also handed out personality-test stickers (with the site QR) and creature keyring charms.",
@@ -503,9 +500,6 @@ const COPY: Record<Locale, Copy> = {
       musicLabel: "Sheet Music Maker",
       music:
         "The community already had a standard app for this, so I got a conversion key from its developer and integrated it. But I couldn't give players a reason to leave a tool they knew, so it never caught on.",
-      examLabel: "Mock Exam System",
-      exam:
-        "A new set on the 1st of every month made it a real draw, bringing people back on a regular cadence. It wound down under the operating cost of authoring and vetting a fresh set each month.",
       shot: "Sheet Music Maker screen — bottom of the site",
       quote:
         "Before building a feature I now check first: is there a reason for users to leave what they already use? I learned that a reason to switch, not polish, decides adoption.",
@@ -714,7 +708,14 @@ export default async function SkyPlannerPage({
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {[SHOTS.use1, SHOTS.use2, SHOTS.use3].map((s, i) => (
-            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className="h-[clamp(200px,26vw,300px)]" />
+            <Placeholder
+              key={s.src}
+              variant="alt"
+              label={c.ctx.uses[i]}
+              img={s}
+              fit="contain"
+              className="h-[clamp(320px,42vw,420px)]"
+            />
           ))}
         </div>
       </section>
@@ -1021,12 +1022,6 @@ export default async function SkyPlannerPage({
                 {c.learn.musicLabel}
               </div>
               <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.music}</p>
-            </div>
-            <div className="rounded-xl border border-line-2 px-5 py-5">
-              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
-                {c.learn.examLabel}
-              </div>
-              <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{c.learn.exam}</p>
             </div>
             <p className="mt-3 border-l-2 border-accent pl-5 font-archivo text-[clamp(16px,1.8vw,19px)] font-bold leading-[1.5] tracking-[-.02em]">
               {c.learn.quote}

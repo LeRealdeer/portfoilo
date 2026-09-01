@@ -119,9 +119,9 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     ko: {
       cardSubtitle: "팬덤에서 발생하는 취향 공유 행동을 콘텐츠 제작 경험으로 확장한 커뮤니티 도구",
       heroBody:
-        "제5인격 팬덤에는 이미 최애 순위를 매기고, 캐릭터를 평가하고, CP를 이야기하고, 보유 스킨을 공유하고, 듀오를 구하는 문화가 있었습니다. Identity5 Pick은 없던 행동을 만든 게 아니라, 이미 일어나던 행동에 도구를 붙이고 그 도구가 쓸 수 있는 데이터를 직접 정제한 서비스입니다.",
+        "제5인격 팬덤에는 이미 최애 순위를 매기고, 캐릭터를 평가하고, CP를 이야기하고, 보유 스킨을 공유하고, 듀오를 구하는 문화가 있었습니다. 팬덤에서 이미 일어나고 있던 이 행동들을 전용 도구로 옮기고, 이를 안정적으로 사용할 수 있도록 게임 데이터까지 직접 구축했습니다.",
       meta: [
-        { label: "ROLE", value: "1인 기획 / 개발\n데이터 구축 / 콘텐츠 검수" },
+        { label: "ROLE", value: "1인 기획 · 개발 · 데이터 구축 · 콘텐츠 검수" },
         { label: "CATEGORY", value: "Community Creation Tool" },
         { label: "PERIOD", value: "2026.07.17 — Present" },
         { label: "GAME", value: "Identity V / 제5인격" },
@@ -132,9 +132,9 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     en: {
       cardSubtitle: "A community tool that extends the taste-sharing fans already do into hands-on content creation.",
       heroBody:
-        "The Identity V fandom was already ranking favorites, rating characters, talking ships, sharing owned skins, and looking for duo partners. Identity5 Pick didn't invent a behavior — it attached tools to what was already happening, and refined the data those tools needed by hand.",
+        "The Identity V fandom was already ranking favorites, rating characters, talking ships, sharing owned skins, and looking for duo partners. I moved those existing behaviors into dedicated tools, and built the game data by hand so the tools would hold up.",
       meta: [
-        { label: "ROLE", value: "Solo planning / dev\nData pipeline / content review" },
+        { label: "ROLE", value: "Solo planning · dev · data pipeline · content review" },
         { label: "CATEGORY", value: "Community Creation Tool" },
         { label: "PERIOD", value: "2026.07.17 — Present" },
         { label: "GAME", value: "Identity V" },
@@ -147,7 +147,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     ko: {
       cardSubtitle: "흩어진 유저 제작 콘텐츠를 연결하는 신뢰 기반 UGC 아카이브",
       heroBody:
-        "Heartopia 도안 아카이브는 기술 문제로 시작하지 않았습니다. 이 콘텐츠를 올려도 되는가라는 질문에서 시작했습니다. 그래서 이 프로젝트에서 가장 오래 걸린 일은 개발이 아니라, 해외 원작자를 찾아 연락하고 허락을 받는 일이었습니다.",
+        "해외 플랫폼에 흩어진 두근두근타운 도안을 한국 유저가 쉽게 찾도록 모으고 싶었습니다. 하지만 아카이브를 만들기 전에 먼저 풀어야 할 질문이 있었습니다 — 이 콘텐츠를 원작자의 허락 없이 옮겨도 되는가. 그래서 이 프로젝트에서 가장 오래 걸린 일은 개발이 아니라, 해외 원작자를 찾아 연락하고 허락을 받는 일이었습니다.",
       meta: [
         { label: "ROLE", value: "1인 기획 / 개발\n콘텐츠 운영 / 커뮤니티 운영" },
         { label: "PERIOD", value: "2026.07.15 — Present" },
@@ -159,7 +159,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     en: {
       cardSubtitle: "A trust-based UGC archive that connects user-made content scattered across platforms.",
       heroBody:
-        "Heartopia Archive didn't start as a technical problem. It started with a question — is it okay to post this? So the longest part of the project wasn't development; it was finding overseas creators, reaching them, and getting permission.",
+        "I wanted to gather the Heartopia patterns scattered across overseas platforms so Korean players could find them easily. But before building the archive there was a question to settle first — is it okay to move this content without the creator's permission? So the longest part of the project wasn't development; it was finding overseas creators, reaching them, and getting permission.",
       meta: [
         { label: "ROLE", value: "Solo planning / dev\nContent ops / community ops" },
         { label: "PERIOD", value: "2026.07.15 — Present" },

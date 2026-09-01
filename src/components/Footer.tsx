@@ -52,8 +52,6 @@ export function Footer({ locale }: { locale: Locale }) {
 
         <div className="mt-12 flex flex-wrap gap-4 font-mono text-[11px] text-muted-light">
           <span>{profile.copyright}</span>
-          <span className="flex-1" />
-          <span>{profile.footerNote}</span>
         </div>
       </div>
     </footer>

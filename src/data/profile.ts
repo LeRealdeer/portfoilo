@@ -32,11 +32,10 @@ const byLocale = {
       "게임 유저가 실제로 하는 행동 — 반복 관리, 콘텐츠 탐색, 취향 표현 — 을 관찰하고, 그 행동을 더 편하고 즐거운 서비스 경험으로 설계합니다. 세 개의 게임 서비스를 직접 기획하고 운영하며 유저 리서치, 서비스 기획, 라이브 운영, 게임 데이터 구축, 글로벌 커뮤니케이션을 경험했습니다.",
     aboutParagraphs: [
       "저에게 게임은 언제나 사람과 사람이 만나는 공간이었습니다. 플레이하면서 커뮤니티를 관찰했고, 반복되는 질문과 불편을 직접 서비스로 만들기 시작했습니다.",
-      "Sky, Identity V, Heartopia — 서로 다른 세 게임 커뮤니티에서 실제 서비스를 운영하며 Product · Event · Community · Analytics · VOC · QA · Creator Relations · Localization 전 영역을 경험했습니다. 장기적으로는 게임의 한국 서비스에서 유저와 글로벌 팀을 연결하는 사람이 되고 싶습니다.",
+      "Sky, Identity V, Heartopia — 서로 다른 세 게임 커뮤니티에서 서비스를 운영하며 서비스 기획, 커뮤니티 운영, 데이터 분석, VOC 대응, 콘텐츠 QA, 글로벌 창작자 커뮤니케이션을 경험했습니다. 장기적으로는 게임의 한국 서비스에서 유저와 글로벌 팀을 연결하는 사람이 되고 싶습니다.",
     ],
     aboutMore: "READ MORE ABOUT ME →",
     interestedIn: "CURRENTLY INTERESTED IN",
-    footerNote: "TBD 표기 수치는 실제 Analytics 확인 후 교체 예정",
     copyright: "© 2026 서인하",
   },
   en: {
@@ -45,11 +44,10 @@ const byLocale = {
       "I watch what players actually do — the repeat management, the hunting for content, the urge to show their taste — and design those behaviors into services that are easier and more fun to use. Across three game services I've planned and run on my own, I've done user research, service planning, live ops, game-data pipelines, and global communication.",
     aboutParagraphs: [
       "Games have always been where people meet people, to me. I watched the communities while I played, and started turning the questions and friction that kept coming up into actual services.",
-      "Sky, Identity V, Heartopia — three different game communities where I've run real services and touched every part of the job: product, events, community, analytics, VOC, QA, creator relations, localization. Long term, I want to be the person who connects players and the global team inside a game's Korea operation.",
+      "Sky, Identity V, Heartopia — three different game communities where I've run real services: service planning, community operation, data analysis, VOC, content QA, and working with global creators. Long term, I want to be the person who connects players and the global team inside a game's Korea operation.",
     ],
     aboutMore: "READ MORE ABOUT ME →",
     interestedIn: "CURRENTLY INTERESTED IN",
-    footerNote: "Figures marked TBD are placeholders pending analytics confirmation.",
     copyright: "© 2026 Inha Seo",
   },
 } as const;

@@ -25,22 +25,22 @@ export async function generateMetadata({
 
 const COPY: Record<Locale, Record<string, string>> = {
   ko: {
-    workSub: "게임 셋, 서로 다른 커뮤니티 셋,\n서로 다른 운영 과제 셋.",
+    workSub: "세 게임에서 서로 다른 유저 행동과\n운영 문제를 다뤘습니다.",
     capH2: "유저의 목소리에서 라이브 서비스까지",
     capSub: "유저의 목소리가 실제 서비스가 되기까지, 제가 직접 해온 일들.",
     buildH3: "기획한 것을 직접 만들 수도 있습니다.",
     buildBody:
-      "아이디어를 문서에서 끝내지 않고 직접 프로토타입과 서비스로 만들 수 있습니다. 기술은 직무 정체성이 아니라 실행 수단입니다.",
+      "개발 경험을 바탕으로 아이디어를 빠르게 프로토타입하고, 실제 서비스까지 직접 연결할 수 있습니다.",
     expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
     permission: "Permission before publication.",
   },
   en: {
-    workSub: "Three games. Three different communities.\nThree different operational challenges.",
+    workSub: "Three games — different player behaviors\nand operational problems in each.",
     capH2: "From player voice to live service",
     capSub: "What I've personally done to turn player voice into a running service.",
     buildH3: "I can also build what I plan.",
     buildBody:
-      "I don't leave ideas in a doc — I can take them to a prototype and a running service. Tech isn't my job identity; it's how I execute.",
+      "With a background in development, I can take an idea to a fast prototype and connect it through to a running service myself.",
     expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
     permission: "Permission before publication.",
   },

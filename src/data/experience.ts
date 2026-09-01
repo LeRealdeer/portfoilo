@@ -18,7 +18,7 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
       period: "2026.04 — Present",
       org: "AI 서비스 스타트업",
       role: "Service Planner / 서비스 기획자",
-      body: "AI 기반 서비스에서 사용자 요구사항 분석, 서비스 구조 설계, 기능 정의, 협업 프로세스를 담당하며 실제 서비스 개발·운영 흐름을 이해했습니다.",
+      body: "AI 기반 서비스의 요구사항 분석, 기능 정의, 서비스 구조 설계, 개발 협업을 담당하고 있습니다.",
       focus: "Service Planning",
     },
     {
@@ -46,14 +46,14 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
       period: "2025.03 — 2025.05",
       org: "세종대학교 글로벌친친 (Global Chin-Chin)",
       role: "Mentor",
-      body: "외국인 학생들과 교류하며 언어·문화 차이를 이해하고, 글로벌 사용자와 커뮤니케이션하는 역량을 강화했습니다.",
+      body: "다양한 문화적 배경의 외국인 학생들과 교류하며 언어와 문화 차이를 고려한 커뮤니케이션을 경험했습니다.",
       focus: "Global Communication",
     },
     {
       period: "2022.04 — 2023.05",
       org: "게임 개발 동아리",
       role: "Member",
-      body: "Unity·C# 기반 게임 프로젝트에 참여해 게임 제작 과정과 UI/UX 설계를 경험하며 게임 서비스에 대한 이해를 넓혔습니다.",
+      body: "Unity·C# 기반 팀·개인 게임 프로젝트를 제작하며 게임 UI와 인터랙션 구현을 경험했습니다.",
       focus: "Game Community",
     },
     {
@@ -69,7 +69,7 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
       period: "2026.04 — Present",
       org: "AI service startup",
       role: "Service Planner",
-      body: "On an AI-based service I own requirements analysis, service structure, feature definition, and the collaboration process — and I've learned how real service development and operation flow.",
+      body: "On an AI-based service I own requirements analysis, feature definition, service structure, and collaboration with the dev team.",
       focus: "Service Planning",
     },
     {
@@ -97,14 +97,14 @@ const byLocale: Record<Locale, ExperienceRow[]> = {
       period: "2025.03 — 2025.05",
       org: "Sejong University · Global Chin-Chin",
       role: "Mentor",
-      body: "Exchanged with international students, learning to read language and cultural differences and strengthening how I communicate with global users.",
+      body: "Exchanged with international students from a range of cultural backgrounds, communicating with attention to language and cultural differences.",
       focus: "Global Communication",
     },
     {
       period: "2022.04 — 2023.05",
       org: "Game Development Club",
       role: "Member",
-      body: "Worked on Unity · C# game projects — the making of a game and UI/UX design, which widened how I understand game services.",
+      body: "Built team and solo game projects in Unity · C# — hands-on with game UI and interaction implementation.",
       focus: "Game Community",
     },
     {
