@@ -15,20 +15,20 @@ function shot(img: StaticImageData, mw?: number): Shot {
 }
 
 export const CARD_SHOTS = {
-  sky: shot(skyplannerHome),
+  sky: shot(skyplannerHome, 900),
   identity5: {
-    main: shot(identity5Home),
+    main: shot(identity5Home, 760),
     thumbs: [
-      { label: "CP MAP", ...shot(identity5Cp) },
-      { label: "SKIN ARCHIVE", ...shot(identity5Skin) },
-      { label: "TIER LIST", ...shot(identity5Tierlist) },
+      { label: "CP MAP", ...shot(identity5Cp, 260) },
+      { label: "SKIN ARCHIVE", ...shot(identity5Skin, 260) },
+      { label: "TIER LIST", ...shot(identity5Tierlist, 260) },
     ],
   },
   heartopia: {
-    main: shot(heartopiaHome),
+    main: shot(heartopiaHome, 760),
     thumbs: [
-      { label: "CREATOR PAGE", ...shot(heartopiaCreator) },
-      { label: "CONTENT DETAIL", ...shot(heartopiaDetail) },
+      { label: "CREATOR PAGE", ...shot(heartopiaCreator, 380) },
+      { label: "CONTENT DETAIL", ...shot(heartopiaDetail, 380) },
     ],
   },
 };

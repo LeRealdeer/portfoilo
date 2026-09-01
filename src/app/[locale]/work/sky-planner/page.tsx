@@ -708,14 +708,7 @@ export default async function SkyPlannerPage({
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {[SHOTS.use1, SHOTS.use2, SHOTS.use3].map((s, i) => (
-            <Placeholder
-              key={s.src}
-              variant="alt"
-              label={c.ctx.uses[i]}
-              img={s}
-              fit="contain"
-              className="h-[clamp(320px,42vw,420px)]"
-            />
+            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className="h-[clamp(200px,26vw,300px)]" />
           ))}
         </div>
       </section>
