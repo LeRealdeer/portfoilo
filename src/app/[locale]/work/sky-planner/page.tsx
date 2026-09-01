@@ -35,13 +35,13 @@ export async function generateMetadata({
 const LEAD_WIDE = LEAD.replace("max-w-[560px]", "max-w-[820px]");
 
 const heroMetrics = [
-  { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
+  { value: 340, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
   { value: 393, label: "PEAK DAU" },
   { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "PEAK MAU" },
 ];
 
 const performanceMetrics = [
-  { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
+  { value: 340, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
   { value: 15, suffix: "K", accentSuffix: "+", label: "CUMULATIVE USERS" },
   { value: 393, label: "PEAK DAU" },
   { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "PEAK MAU" },
@@ -152,26 +152,28 @@ const COPY: Record<Locale, Copy> = {
         {
           n: "03",
           name: "유랑대백과",
-          tag: "방문자가 본격적으로 늘기 시작한 지점",
+          tag: "흩어진 정보를 하나의 경험으로 정리한 기능",
           problem:
-            "Sky는 2주마다 과거 시즌 아이템을 파는 '유랑 영혼'을 보냅니다. 유저들은 '내 위시 유랑이 언제 올까'를 궁금해했지만, 기존 커뮤니티 자료는 작성 시점과 형식이 달라 최신 정보와 과거 기록을 한 번에 비교하기 어려웠습니다.",
+            "Sky에서는 주기적으로 과거 시즌 아이템을 판매하는 유랑 영혼이 등장합니다. 하지만 유저가 원하는 아이템의 등장 시점을 확인하려면 여러 커뮤니티 글과 자료를 직접 찾아봐야 했고, 기록 형식도 통일되어 있지 않았습니다.",
           solution:
-            "모든 유랑 기록·아이템·재화 가격·위치를 데이터베이스로 만들고 검색과 시즌별 분류를 넣었습니다. 시즌마다 색을 달리해 한눈에 구분되게 했습니다.",
+            "흩어진 유랑 정보를 아이템, 등장 시기, 위치, 필요 재화 기준으로 구조화하고 검색과 시즌별 필터를 추가했습니다. 사용자가 원하는 정보를 빠르게 찾을 수 있도록 탐색 경험을 개선했습니다.",
           iteration:
-            "100개가 넘는 유랑을 카드 + 페이지네이션으로 보기 어려워('내가 보던 게 몇 페이지였더라'), 한 줄에 영혼 하나씩 스크롤 방식으로 바꿨습니다.",
-          impact: "카페 베스트 팁 게시판에 등극했고, 이 시점부터 방문자가 본격적으로 늘었습니다.",
+            "초기에는 100개가 넘는 유랑 데이터를 카드와 페이지네이션으로 제공했지만, 사용자가 원하는 기록 위치를 다시 찾기 어려웠습니다. 이후 한 줄에 하나의 유랑 정보를 확인하는 스크롤 방식으로 변경해 탐색 흐름을 개선했습니다.",
+          impact: "커뮤니티 베스트 팁 게시판에 공유되며 신규 사용자가 유입되었고, 이후 반복적으로 활용되는 정보 페이지로 자리 잡았습니다.",
           shot: "유랑대백과 — 스크롤 리스트 · 시즌 색 구분",
         },
         {
           n: "04",
           name: "성향 테스트",
-          tag: "홍보를 위해 만든 공유형 콘텐츠",
+          tag: "정보 서비스에 참여 경험을 추가한 콘텐츠",
           problem:
-            "정보형 기능 외에, 유저가 친구들과 가볍게 공유하며 대화가 이어지는 참여형 콘텐츠가 필요하다고 판단했습니다.",
+            "Sky Planner는 일정과 정보를 확인하는 기능 중심의 서비스였고, 사용자가 가볍게 참여하거나 자신의 결과를 확인할 수 있는 콘텐츠 경험은 부족했습니다.",
           solution:
-            "15개 질문으로 8가지 결과를 Sky 크리쳐에 연결하고, 결과지에 각 성향의 특징·장단점과 잘 맞는/안 맞는 성향까지 넣어 친구에게 권유하고 싶게 만들었습니다.",
-          iteration: "MBTI처럼 결과를 공유하는 구조에 집중해, 결과 이미지가 그대로 SNS에 올라가도록 설계했습니다.",
-          impact: "SNS에서 바이럴을 타 일일 방문자 최고치를 기록했습니다. GA4 기준 조회 15,624·활성 822명.",
+            "15개의 질문을 기반으로 8가지 성향 결과를 제공하고, 각 결과에 특징·장단점·다른 성향과의 관계 정보를 추가해 단순한 테스트 결과가 아닌 탐색 가능한 콘텐츠로 설계했습니다.",
+          iteration:
+            "초기 결과 화면은 정보 전달 중심이었지만, 사용자가 자신의 결과를 하나의 콘텐츠처럼 확인할 수 있도록 이미지 중심의 결과 화면과 캐릭터 기반 표현으로 개선했습니다.",
+          impact:
+            "GA4 기준 조회수 15,624회, 활성 사용자 822명을 기록하며 정보 제공뿐 아니라 참여형 콘텐츠가 서비스 방문 경험을 확장할 수 있음을 확인했습니다.",
           shot: "성향 테스트 — 결과 카드 (Sky 크리쳐 8종)",
         },
         {
@@ -290,13 +292,13 @@ const COPY: Record<Locale, Copy> = {
       shot2: "비행 자격 테스트 결과 화면",
     },
     learn: {
-      h2: "채택은 완성도가 아니라 전환 이유가 결정합니다.",
+      h2: "필요한 기능과 사용하는 기능은 달랐습니다.",
       musicLabel: "악보 만들기",
       music:
-        "커뮤니티가 이미 표준으로 쓰는 앱이 있어, 그 개발자에게 악보 변환 키를 받아 연동까지 했습니다. 하지만 익숙한 도구를 두고 옮겨올 이유를 만들지 못해 잘 쓰이지 않았습니다.",
+        "커뮤니티에서 이미 많이 사용하던 악보 변환 도구가 있었고, 사용자의 불편을 줄이기 위해 해당 기능을 서비스 안으로 가져오려 했습니다. 하지만 기존 도구를 계속 사용하는 사용자에게 새로운 기능을 사용할 충분한 이유를 만들지는 못했습니다.",
       shot: "악보 만들기 화면 — 사이트 최하단",
       quote:
-        "기능을 만들기 전에 ‘유저가 지금 쓰는 것을 두고 옮겨올 이유가 있는가’를 먼저 확인합니다. 완성도보다 전환할 이유가 채택을 결정한다는 것을 배웠습니다.",
+        "기능을 추가하기 전에 ‘사용자가 기존 방식을 바꾸면서까지 사용할 이유가 있는가’를 먼저 고민하게 되었습니다. 서비스의 완성도보다 중요한 것은 사용자가 실제로 찾는 이유를 만드는 것임을 배웠습니다.",
     },
     final: {
       h2: "Sky 유저들의 반복적인 플레이 불편을 해결하기 위해 설계하고 운영한 데이터 기반 게임 유틸리티 서비스.",
@@ -367,26 +369,28 @@ const COPY: Record<Locale, Copy> = {
         {
           n: "03",
           name: "Traveling Spirits Archive",
-          tag: "Where visitor numbers really started to climb",
+          tag: "Turned scattered information into one experience",
           problem:
-            "Every two weeks Sky sends a 'traveling spirit' that sells past-season items. Players wanted to know 'when is my wishlist spirit coming?' — but the community summary posts were written at different times in different formats, making it hard to compare current info and past records in one place.",
+            "Sky periodically sends a 'traveling spirit' that sells past-season items. To check when an item they wanted would show up, players had to dig through scattered community posts, and the record format wasn't consistent from one post to the next.",
           solution:
-            "I put every travel record, item, price, and location into a database with search and per-season filtering, giving each season its own color so it reads at a glance.",
+            "I structured the scattered travel records by item, timing, location, and currency needed, then added search and per-season filters — improving the browsing experience so players could find what they wanted faster.",
           iteration:
-            "Over 100 records were hard to browse as cards + pagination ('which page was that on again?'), so I switched to a scroll list with one spirit per row.",
-          impact: "It made the community's best-tips board, and visitor numbers started climbing in earnest from that point.",
+            "At first I presented 100+ records as cards with pagination, but players had trouble finding their way back to a specific record. I switched to a scroll list — one spirit per row — to improve the browsing flow.",
+          impact: "It was shared on the community's best-tips board, bringing in new users, and it became a page people kept coming back to.",
           shot: "Traveling Spirits Archive — scroll list, season colors",
         },
         {
           n: "04",
           name: "Personality Test",
-          tag: "Shareable content, built for reach",
+          tag: "Content that added a participatory layer to an info service",
           problem:
-            "Beyond the informational features, I judged we needed participatory content users could share casually with friends to keep a conversation going.",
+            "Sky Planner was built around checking schedules and information. It had no lightweight, participatory content where users could get involved or see a personal result.",
           solution:
-            "15 questions map to 8 results tied to Sky creatures. The result page includes each type's traits, pros and cons, and compatible / incompatible types, so people want to send it to a friend.",
-          iteration: "I focused on an MBTI-style shareable structure, designing the result image to post straight to social media.",
-          impact: "It went viral on social and set the daily-visitor record. GA4: 15,624 views, 822 active users.",
+            "15 questions map to 8 personality results, each with its own traits, pros and cons, and compatible / incompatible types — designed to read as browsable content, not just a quiz result.",
+          iteration:
+            "The result screen started out information-first. I redesigned it around imagery and character-based visuals so a result reads like a piece of content, not a report.",
+          impact:
+            "GA4 shows 15,624 views and 822 active users — confirming that participatory content, not just information, can expand how people engage with the service.",
           shot: "Personality test — result card (8 Sky creatures)",
         },
         {
@@ -501,13 +505,13 @@ const COPY: Record<Locale, Copy> = {
       shot2: "Flight aptitude test — result screen",
     },
     learn: {
-      h2: "Adoption is decided by a reason to switch, not by polish.",
+      h2: "The feature I thought was needed wasn't the one people used.",
       musicLabel: "Sheet Music Maker",
       music:
-        "The community already had a standard app for this, so I got a conversion key from its developer and integrated it. But I couldn't give players a reason to leave a tool they knew, so it never caught on.",
+        "There was already a tool many in the community used for sheet-music conversion, and I tried to bring that into the service to cut the friction. But I couldn't give players who already used that tool a strong enough reason to switch.",
       shot: "Sheet Music Maker screen — bottom of the site",
       quote:
-        "Before building a feature I now check first: is there a reason for users to leave what they already use? I learned that a reason to switch, not polish, decides adoption.",
+        "Before adding a feature, I now ask first: is there a reason for users to change how they already do things? I learned that what matters more than polish is giving users an actual reason to reach for it.",
     },
     final: {
       h2: "A data-driven game utility I designed and ran to solve the repeat play friction Sky players faced.",

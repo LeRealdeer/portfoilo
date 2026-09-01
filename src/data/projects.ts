@@ -44,7 +44,7 @@ const base: Record<ProjectSlug, ProjectBase> = {
     tags: ["Player Management", "Game Utility", "Repeat Experience"],
     cardMetrics: [
       { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "MAU" },
-      { value: 335, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
+      { value: 340, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
       { value: 15, suffix: "K", accentSuffix: "+", label: "USERS" },
       { value: 393, label: "PEAK DAU" },
     ],
