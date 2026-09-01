@@ -94,7 +94,6 @@ const COPY = {
         { label: "RESULT", solution: true, body: "원작자에게 직접 사용 허락을 확보하고, 원작자·원본 링크를 고정한 채 대리 게시 형태로 콘텐츠를 운영하고 있습니다." },
       ],
       quote: "허가는 기능이 아니라 관계의 결과였습니다.",
-      shotDm: "크리에이터 페이지 — 원작자별 콘텐츠 · 원본 링크",
       shotAttr: "커뮤니티 게시글의 원작자 출처 표기",
       steps: [
         { n: "01", label: "창작자 확인", note: "원작자와 원본 게시물을 특정" },
@@ -214,7 +213,6 @@ const COPY = {
         { label: "RESULT", solution: true, body: "I secured permission directly from the creators and run the content as attributed proxy posts, with the creator and original link pinned." },
       ],
       quote: "Permission wasn't a feature — it was the result of a relationship.",
-      shotDm: "Creator page — content and original links by creator",
       shotAttr: "Source credit shown in the community post",
       steps: [
         { n: "01", label: "Identify the creator", note: "Pin down the original creator and post" },
@@ -499,18 +497,12 @@ export default async function HeartopiaArchivePage({
                 {c.rights.quote}
               </p>
             </Reveal>
-            <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
-              <Placeholder
-                variant="dark"
-                label={c.rights.shotDm}
-                img={SHOTS.rightsCreator}
-                className="h-[clamp(200px,26vw,320px)]"
-              />
+            <Reveal delay={0.1} className="w-full flex-1">
               <Placeholder
                 variant="dark"
                 label={c.rights.shotAttr}
                 img={SHOTS.rightsAttribution}
-                className="h-[clamp(200px,26vw,320px)]"
+                className="h-[clamp(280px,42vw,520px)]"
               />
             </Reveal>
           </div>
@@ -581,31 +573,45 @@ export default async function HeartopiaArchivePage({
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.editor.h2}</h2>
         </Reveal>
-        <p className={LEAD}>{c.editor.lead}</p>
 
-        <div className="mt-8 flex gap-4 max-[560px]:flex-col sm:mt-12">
-          <div className="flex-1">
-            <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">BEFORE</div>
-            <div className="flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
-              {c.editor.before.map((step, i, arr) => (
-                <span key={step} className="contents">
-                  <span className="rounded-md border border-line-2 bg-paper px-3 py-1.5">{step}</span>
-                  {i < arr.length - 1 && <span className="text-muted-light">→</span>}
+        <div className="mt-6 flex max-[900px]:flex-col gap-8 sm:mt-10 sm:gap-14 items-start">
+          {/* left — write-up */}
+          <div className="min-w-0 flex-1">
+            <p className="max-w-[560px] text-[15px] leading-[1.55] text-ink-70 text-pretty sm:text-[16px] sm:leading-[1.6]">
+              {c.editor.lead}
+            </p>
+            <div className="mt-6 flex flex-col gap-4">
+              <div>
+                <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-muted-light">
+                  BEFORE
+                </div>
+                <div className="flex flex-wrap items-center gap-2 font-archivo text-[12px] font-semibold">
+                  {c.editor.before.map((step, i, arr) => (
+                    <span key={step} className="contents">
+                      <span className="rounded-md border border-line-2 bg-paper px-3 py-1.5">{step}</span>
+                      {i < arr.length - 1 && <span className="text-muted-light">→</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-accent">AFTER</div>
+                <span className="inline-block rounded-md border border-accent/25 bg-accent/10 px-3 py-1.5 font-archivo text-[12px] font-semibold text-accent">
+                  {c.editor.afterLabel}
                 </span>
-              ))}
+              </div>
             </div>
           </div>
-          <div className="flex-1">
-            <div className="mb-2 font-archivo text-[10px] font-semibold tracking-[.16em] text-accent">AFTER</div>
-            <span className="inline-block rounded-md border border-accent/25 bg-accent/10 px-3 py-1.5 font-archivo text-[12px] font-semibold text-accent">
-              {c.editor.afterLabel}
-            </span>
-          </div>
-        </div>
 
-        <Reveal delay={0.1}>
-          <Placeholder label={c.editor.shotAfter} img={SHOTS.editorAfter} className="mt-6" />
-        </Reveal>
+          {/* right — image */}
+          <Reveal delay={0.1} className="w-full flex-1">
+            <Placeholder
+              label={c.editor.shotAfter}
+              img={SHOTS.editorAfter}
+              className="h-[clamp(240px,32vw,400px)]"
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* 07 — Operation & Growth */}
@@ -616,27 +622,29 @@ export default async function HeartopiaArchivePage({
             <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
           </Reveal>
 
-          <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {c.ops.cases.map((oc, i) => (
-              <Reveal
-                key={oc.title}
-                delay={i * 0.04}
-                className="rounded-xl border border-line-2 bg-paper px-5 py-5 sm:flex sm:gap-10"
-              >
-                <div className="flex-none sm:w-[150px]">
+          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
+            {/* left — cases */}
+            <div className="min-w-0 flex-1 flex flex-col gap-3">
+              {c.ops.cases.map((oc, i) => (
+                <Reveal
+                  key={oc.title}
+                  delay={i * 0.04}
+                  className="rounded-xl border border-line-2 bg-paper px-5 py-5"
+                >
                   <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{oc.label}</div>
                   <div className="mt-2 font-archivo text-[15.5px] font-bold leading-[1.3] tracking-[-.02em]">
                     {oc.title}
                   </div>
-                </div>
-                <p className="mt-3 flex-1 text-[14px] leading-[1.55] text-ink-70 sm:mt-0">{oc.body}</p>
-              </Reveal>
-            ))}
-          </div>
+                  <p className="mt-2.5 text-[14px] leading-[1.55] text-ink-70">{oc.body}</p>
+                </Reveal>
+              ))}
+            </div>
 
-          <Reveal delay={0.1}>
-            <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="mt-8" />
-          </Reveal>
+            {/* right — image */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="h-[clamp(240px,30vw,380px)]" />
+            </Reveal>
+          </div>
         </div>
       </section>
 

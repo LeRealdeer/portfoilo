@@ -2,7 +2,6 @@ import type { StaticImageData } from "next/image";
 import type { Shot } from "@/components/Placeholder";
 
 import home from "../../../../../public/main_heartopia_home.png";
-import creator from "../../../../../public/main_heartopia_creator.png";
 import detail from "../../../../../public/main_heartopia_detail.png";
 import cafePosts from "../../../../../public/heartopia/cafe-posts.png";
 import archiveGrid from "../../../../../public/heartopia/archive-grid.png";
@@ -20,7 +19,6 @@ export const HERO_SHOT = shot(home, 1180);
 export const SHOTS = {
   solution: shot(archiveGrid, 620),
   solutionFavorites: shot(favorites, 620),
-  rightsCreator: shot(creator, 720),
   rightsAttribution: shot(cafeAttribution, 480),
   featOutfit: shot(outfitsPopular, 820),
   featSearch: shot(detail, 900),
