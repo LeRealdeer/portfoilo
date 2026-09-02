@@ -68,18 +68,21 @@ export function Placeholder({
     let content: ReactNode;
 
     if (HAS_HEIGHT.test(className)) {
-      // gallery cell: fixed-height box so a row of shots lines up; fill it (no letterbox)
+      // Fixed-height box so a row/column of shots lines up — cover-crop on
+      // wide screens. Below 900px (where these layouts stack to one column)
+      // the box collapses to h-auto and the image flows at its natural ratio,
+      // so nothing is cropped on mobile.
       content = (
         <span
           style={style}
-          className={`${link ? "group/ph " : ""}relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className}`}
+          className={`${link ? "group/ph " : ""}relative block overflow-hidden rounded-xl border ${VARIANT_BORDER[variant]} ${IMAGE_BG[variant]} ${className} max-[900px]:h-auto!`}
         >
           <Image
             src={img.src}
             alt={alt}
             fill
-            sizes="(max-width: 768px) 100vw, 640px"
-            className={`object-cover object-top${hover}`}
+            sizes="(max-width: 900px) 100vw, 640px"
+            className={`object-cover object-top max-[900px]:static! max-[900px]:h-auto! max-[900px]:w-full!${hover}`}
           />
           {ring}
         </span>
