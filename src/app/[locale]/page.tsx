@@ -4,9 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
-import { ProjectCTA } from "@/components/Bits";
 import { Placeholder } from "@/components/Placeholder";
-import { getProfile, getCapabilities } from "@/data/profile";
+import { getProfile } from "@/data/profile";
 import { impactStrip } from "@/data/metrics";
 import { getProjects, type Project } from "@/data/projects";
 import { getExperience } from "@/data/experience";
@@ -25,51 +24,122 @@ export async function generateMetadata({
 
 const COPY: Record<Locale, Record<string, string>> = {
   ko: {
-    workSub: "세 게임에서 서로 다른 유저 행동과\n운영 과제를 다뤘습니다.",
-    more: "더 보기 →",
-    capH2: "라이브 운영과 커뮤니티, 실제로 해온 일",
-    capSub: "각 역량 아래는 실제 프로젝트에서 한 일입니다.",
-    buildH3: "기획한 것을 직접 만들 수도 있습니다.",
-    buildBody:
-      "기획부터 개발·배포까지 직접 하기 때문에, 아이디어를 빠르게 검증하고 데이터를 직접 뽑아 의사결정에 활용할 수 있습니다.",
+    workSub: "세 게임 라이브 서비스에서\n데이터·이벤트·유저 소통을 직접 담당했습니다.",
+    resultLabel: "결과",
+    projectMore: "이 프로젝트 자세히 보기",
+    projectMoreSub: "기술스택 · 전체 기능 · GA4 세부 수치",
     expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
   },
   en: {
-    workSub: "Three games — different player behaviors\nand operational problems in each.",
-    more: "More →",
-    capH2: "Live ops and community — what I've actually done",
-    capSub: "Under each is what I actually did on a real project.",
-    buildH3: "I can also build what I plan.",
-    buildBody:
-      "Because I do the planning, building, and deploying myself, I can validate an idea fast and pull the data I need for decisions directly.",
+    workSub: "Across three live game services I owned\nthe data, the events, and player communication.",
+    resultLabel: "RESULT",
+    projectMore: "See this project in detail",
+    projectMoreSub: "tech stack · all features · full GA4 numbers",
     expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
   },
 };
 
-/** The text column of a Selected Work card — a self-contained summary. */
-function CardText({ p, locale, more }: { p: Project; locale: Locale; more: string }) {
+const SECTION_SHOT = {
+  "sky-planner": CARD_SHOTS.sky,
+  "identity5-pick": CARD_SHOTS.identity5.main,
+  "heartopia-archive": CARD_SHOTS.heartopia.main,
+} as const;
+
+/** One project as a full main-page section: screenshot, the community case, result, CTA. */
+function ProjectSection({
+  p,
+  locale,
+  alt,
+  resultLabel,
+  moreLabel,
+  moreSub,
+}: {
+  p: Project;
+  locale: Locale;
+  alt: boolean;
+  resultLabel: string;
+  moreLabel: string;
+  moreSub: string;
+}) {
   const href = `/${locale}/work/${p.slug}`;
   return (
-    <>
-      <Link href={href}>
-        <h3 className="font-archivo text-[clamp(23px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
-          {p.title}
-        </h3>
-      </Link>
-      <p className="mt-3 font-archivo text-[clamp(15px,1.7vw,17px)] font-bold leading-[1.4] tracking-[-.01em] text-ink-70">
-        {p.cardSubtitle}
-      </p>
-      <ul className="mt-5 flex flex-col gap-2 border-t border-line pt-5">
-        {p.cardActions.map((a) => (
-          <li key={a} className="flex gap-2.5 text-[13.5px] leading-[1.55] text-ink-70 sm:text-[14px]">
-            <span className="mt-px flex-none font-bold text-accent">·</span>
-            <span>{a}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-4 font-archivo text-[13.5px] font-bold tracking-[.01em] text-ink">{p.cardResult}</p>
-      <ProjectCTA href={href} label={more} liveUrl={p.liveUrl} />
-    </>
+    <section className={`border-t border-line px-5 py-14 sm:px-9 sm:py-20 ${alt ? "bg-bg-alt" : ""}`}>
+      <div className="mx-auto max-w-[1440px]">
+        <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{p.eyebrow}</div>
+        <Reveal>
+          <Link href={href}>
+            <h3 className="mt-4 font-archivo text-[clamp(26px,4vw,52px)] leading-[1.05] font-extrabold tracking-[-.04em] transition-colors duration-300 hover:text-accent">
+              {p.title}
+            </h3>
+          </Link>
+        </Reveal>
+        <p className="mt-3 max-w-[820px] font-archivo text-[clamp(15px,1.8vw,18px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
+          {p.cardSubtitle}
+        </p>
+
+        <Reveal delay={0.1} className="mt-7 sm:mt-9">
+          <Placeholder
+            href={href}
+            label={p.screenshotLabel}
+            img={SECTION_SHOT[p.slug]}
+            className="h-[clamp(220px,34vw,440px)]"
+          />
+        </Reveal>
+
+        <div className="mt-9 sm:mt-12">
+          {p.sections.map((s, i) => (
+            <Reveal
+              key={s.heading}
+              delay={i * 0.05}
+              className="flex max-[820px]:flex-col gap-3 border-t border-line-2 py-6 sm:gap-12 sm:py-7"
+            >
+              <div className="flex-none sm:w-[240px]">
+                <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">
+                  {`0${i + 1}`}
+                </div>
+                <h4 className="mt-1.5 font-archivo text-[clamp(15px,1.7vw,18px)] font-bold leading-[1.3] tracking-[-.02em]">
+                  {s.heading}
+                </h4>
+              </div>
+              <p className="max-w-[760px] flex-1 text-[14px] leading-[1.7] text-ink-70 sm:text-[14.5px]">
+                {s.body}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-4 border-t-2 border-ink pt-6">
+          <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
+            {resultLabel}
+          </div>
+          <p className="mt-2 font-archivo text-[clamp(16px,2.1vw,24px)] font-extrabold leading-[1.3] tracking-[-.025em]">
+            {p.cardResult}
+          </p>
+        </div>
+
+        <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-9">
+          <Link
+            href={href}
+            className="group inline-flex flex-col rounded-lg bg-ink px-8 py-4 transition-colors duration-300 hover:bg-accent"
+          >
+            <span className="font-archivo text-[13.5px] font-bold tracking-[.05em] text-bg">{moreLabel} →</span>
+            <span className="mt-0.5 font-archivo text-[10.5px] font-semibold tracking-[.08em] text-[rgba(244,241,234,.55)]">
+              {moreSub}
+            </span>
+          </Link>
+          {p.liveUrl && (
+            <a
+              href={p.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-archivo text-[12.5px] font-bold tracking-[.04em] text-ink-50 transition-colors duration-300 hover:text-accent"
+            >
+              {p.liveUrl.replace(/^https?:\/\//, "")} ↗
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -82,9 +152,8 @@ export default async function HomePage({
   const locale = toLocale(rawLocale);
   const t = COPY[locale];
   const profile = getProfile(locale);
-  const capabilities = getCapabilities(locale);
   const experience = getExperience(locale);
-  const [sky, identity5, heartopia] = getProjects(locale);
+  const projects = getProjects(locale);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -139,146 +208,32 @@ export default async function HomePage({
       </section>
 
       {/* Selected Work */}
-      <section id="work" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
-        <div className="mx-auto flex max-w-[1440px] max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
-          <Reveal className="flex-1">
-            <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
-              Selected Work
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1} className="mb-1.5 max-w-[280px] whitespace-pre-line text-[15px] leading-[1.7] text-muted">
-            {t.workSub}
-          </Reveal>
-        </div>
-
-        {/* 01 — Sky Planner: image left, text right */}
-        <article className="mx-auto mt-11 max-w-[1440px] sm:mt-20">
-          <div className="border-b border-line-2 pb-3.5">
-            <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
-              {sky.eyebrow}
-            </span>
-          </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
-            <Reveal className="w-full flex-[1.2]">
-              <Placeholder
-                href={`/${locale}/work/${sky.slug}`}
-                label={sky.screenshotLabel}
-                img={CARD_SHOTS.sky}
-                className="h-[clamp(240px,32vw,420px)]"
-              />
-            </Reveal>
-            <Reveal delay={0.1} className="w-full flex-1">
-              <CardText p={sky} locale={locale} more={t.more} />
-            </Reveal>
-          </div>
-        </article>
-
-        {/* 02 — Identity5 Pick: left images, right text */}
-        <article className="mx-auto mt-14 max-w-[1440px] sm:mt-20">
-          <div className="border-b border-line-2 pb-3.5">
-            <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
-              {identity5.eyebrow}
-            </span>
-          </div>
-          <div className="mt-6 flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
-            <Reveal className="w-full flex-[1.35]">
-              <Placeholder
-                href={`/${locale}/work/${identity5.slug}`}
-                label={identity5.screenshotLabel}
-                img={CARD_SHOTS.identity5.main}
-                className="h-[clamp(200px,24vw,300px)]"
-              />
-              <div className="mt-3 grid grid-cols-3 gap-2.5 sm:mt-4 sm:gap-4">
-                {CARD_SHOTS.identity5.thumbs.map((thumb) => (
-                  <Placeholder
-                    key={thumb.label}
-                    label={thumb.label}
-                    img={thumb}
-                    className="h-[clamp(82px,17vw,150px)] text-[11px]"
-                  />
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={0.1} className="w-full max-w-[460px] flex-1 pt-1">
-              <CardText p={identity5} locale={locale} more={t.more} />
-            </Reveal>
-          </div>
-        </article>
-
-        {/* 03 — Heartopia Archive: left text, right images */}
-        <article className="mx-auto mt-14 max-w-[1440px] sm:mt-20">
-          <div className="border-b border-line-2 pb-3.5">
-            <span className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">
-              {heartopia.eyebrow}
-            </span>
-          </div>
-          <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14 items-start">
-            <Reveal className="w-full max-w-[460px] flex-1 pt-1">
-              <CardText p={heartopia} locale={locale} more={t.more} />
-            </Reveal>
-            <Reveal delay={0.1} className="w-full flex-[1.35]">
-              <Placeholder
-                href={`/${locale}/work/${heartopia.slug}`}
-                label={heartopia.screenshotLabel}
-                img={CARD_SHOTS.heartopia.main}
-                className="h-[clamp(200px,24vw,300px)]"
-              />
-              <div className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-4 sm:gap-4">
-                {CARD_SHOTS.heartopia.thumbs.map((thumb) => (
-                  <Placeholder
-                    key={thumb.label}
-                    label={thumb.label}
-                    img={thumb}
-                    className="h-[clamp(110px,20vw,170px)] text-[11px]"
-                  />
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </article>
-      </section>
-
-      {/* Capabilities */}
-      <section id="capabilities" className="border-t border-line bg-bg-alt px-5 py-16 sm:px-9 sm:py-24">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="flex max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
+      <div id="work">
+        <section className="border-t border-line px-5 pt-16 pb-2 sm:px-9 sm:pt-24">
+          <div className="mx-auto flex max-w-[1440px] max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
             <Reveal className="flex-1">
-              <h2 className="max-w-[30rem] font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.16] font-extrabold tracking-[-.04em] text-balance">
-                {t.capH2}
+              <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
+                Selected Work
               </h2>
             </Reveal>
-            <Reveal delay={0.1} className="mb-1.5 max-w-[280px] text-[15px] leading-[1.7] text-muted">
-              {t.capSub}
+            <Reveal delay={0.1} className="mb-1.5 max-w-[340px] whitespace-pre-line text-[15px] leading-[1.7] text-muted">
+              {t.workSub}
             </Reveal>
           </div>
+        </section>
 
-          <div className="mt-10 grid grid-cols-3 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-16">
-            {capabilities.map((c, i) => (
-              <Reveal key={c.number} delay={(i % 3) * 0.05} className="bg-bg-alt px-6 pt-7 pb-8">
-                <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">
-                  {c.number}
-                </div>
-                <h3 className="mt-3.5 font-archivo text-[19px] font-bold leading-[1.15] tracking-[-.025em]">
-                  {c.titleEn}
-                </h3>
-                <p className="mt-2 text-[13px] leading-[1.55] text-muted">{c.lineEn}</p>
-                <p className="mt-3 text-[14px] leading-[1.5] text-ink-70">{c.body}</p>
-                <p className="mt-3 flex gap-2 text-[12.5px] leading-[1.5] text-ink-50">
-                  <span className="flex-none font-bold text-accent">→</span>
-                  <span>{c.evidence}</span>
-                </p>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-10 max-w-[640px] sm:mt-16">
-            <h3 className="font-archivo text-[clamp(19px,2.2vw,28px)] leading-[1.15] font-bold tracking-[-.03em]">
-              {t.buildH3}
-            </h3>
-            <p className="mt-3 text-[14.5px] leading-[1.65] text-ink-70 sm:text-[15.5px]">{t.buildBody}</p>
-          </Reveal>
-        </div>
-      </section>
+        {projects.map((p, i) => (
+          <ProjectSection
+            key={p.slug}
+            p={p}
+            locale={locale}
+            alt={i % 2 === 1}
+            resultLabel={t.resultLabel}
+            moreLabel={t.projectMore}
+            moreSub={t.projectMoreSub}
+          />
+        ))}
+      </div>
 
       {/* Experience */}
       <section id="experience" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
