@@ -9,7 +9,6 @@ import termsOfService from "../../../../../public/heartopia/이용약관.png";
 import cafeAttribution from "../../../../../public/heartopia/cafe-attribution.png";
 import outfitsPopular from "../../../../../public/heartopia/outfits-popular.png";
 import photoEditor from "../../../../../public/heartopia/photo-editor.png";
-import htCreator from "../../../../../public/main_heartopia_creator.png";
 
 function shot(img: StaticImageData, mw?: number): Shot {
   return { src: img.src, w: img.width, h: img.height, mw };
@@ -26,6 +25,3 @@ export const SHOTS = {
   editorAfter: shot(photoEditor, 480),
   ops: shot(cafePosts, 480),
 } satisfies Record<string, Shot>;
-
-/** the two operating-case images in the CaseIntro opener */
-export const INTRO_SHOTS: Shot[] = [shot(htCreator, 460), shot(termsOfService, 460)];

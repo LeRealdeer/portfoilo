@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
-import { CaseIntro } from "@/components/CaseIntro";
-import { HERO_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS, INTRO_SHOTS } from "./shots";
+import { CaseSummary } from "@/components/CaseSummary";
+import { HERO_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -51,39 +51,11 @@ const techStack = ["Next.js", "TypeScript", "next-intl", "MediaWiki API", "Cloud
 const COPY = {
   ko: {
     heroSubtitle: "제5인격 팬들이 이미 하고 있던 취향 공유 행동을 더 쉽고 재미있는 경험으로 확장했습니다",
-    intro: {
-      oneLiner: "제5인격 팬덤 문화를 지원하는 커뮤니티 기반 유저 서비스",
-      para: [
-        "제5인격 유저들이 캐릭터, 스킨, 관계성 등 자신만의 취향을 표현하는 팬덤 문화를 관찰하고, 이를 더 편하게 즐길 수 있는 한국어 기반 커뮤니티 도구를 제작했습니다.",
-        "유저가 원하는 기능을 직접 정의하고, 커뮤니티 의견을 반영하며 서비스를 성장시켰습니다.",
-      ],
-      roleTitle: "Community Manager · Service Planner",
-      roleItems: [
-        "팬덤 문화 분석",
-        "신규 기능 기획",
-        "유저 피드백 대응",
-        "커뮤니티 채널 운영",
-        "서비스 홍보 전략 수립",
-      ],
-      cases: [
-        {
-          n: "01",
-          heading: "팬덤 문화를 서비스로 연결하다",
-          body: "제5인격 커뮤니티에는 캐릭터 티어, 스킨 평가, CP 관계 표현 등 다양한 팬 문화가 존재했습니다. 하지만 이를 쉽게 활용할 수 있는 한국어 서비스가 부족했고, 유저들이 자신의 취향을 표현하고 공유할 수 있는 도구를 제작했습니다.",
-        },
-        {
-          n: "02",
-          heading: "유저 의견을 기반으로 기능 우선순위 결정",
-          body: "서비스 방향을 혼자 결정하지 않고 커뮤니티 의견을 적극 반영했습니다. 공식 카페 무기명 투표를 통해 신규 기능 선호도를 조사했고, 연애 시뮬레이터 기능이 67.4%의 선택을 받아 개발 방향으로 결정했습니다. 또한 한 유저가 요청한 CP표 관계 유형 수정 기능은 의견 확인 후 빠르게 반영하고 결과를 공유했습니다.",
-        },
-        {
-          n: "03",
-          heading: "신규 채널 운영과 커뮤니티 확장",
-          body: "서비스 초기 인지도를 높이기 위해 X(트위터) 계정을 직접 개설했습니다. 기능 소개 콘텐츠와 서비스 업데이트 내용을 게시하며 새로운 유저 유입 채널을 운영했습니다.",
-        },
-      ],
-      resultNumbers: "출시 6주 기준 활성 사용자 3,400명 · 평균 참여 시간 6분 13초",
-      resultNote: "팬덤 커뮤니티의 니즈를 발견하고, 유저와 함께 서비스를 발전시키는 운영 경험을 쌓았습니다.",
+    summary: {
+      problem: "제5인격 팬덤엔 취향을 표현하는 문화가 이미 있었지만, 이를 도와줄 한국어 도구가 없었습니다.",
+      action:
+        "8개 도구를 만들고 스킨 842종 데이터를 검수했습니다. 신기능마다 공식카페에 사용법 공지를 작성하고, 댓글·쪽지로 들어오는 개별 문의에 대응했습니다. 커뮤니티 무기명 투표로 다음 기능 우선순위를 정했고(연애 시뮬레이터 67.4% 득표로 개발 확정), 유저 댓글 요청을 익일 기능으로 반영했습니다. 초기 인지도 확보를 위해 X 계정을 직접 개설해 홍보 채널을 운영했습니다.",
+      result: "출시 6주 만에 활성 사용자 3,400명, 평균 참여 시간 6분+.",
     },
     problem: {
       h2: "팬덤은 이미 취향을 표현하고 있었습니다.",
@@ -283,39 +255,11 @@ const COPY = {
   },
   en: {
     heroSubtitle: "I took the taste-sharing that Identity V fans were already doing and made it easier and more fun.",
-    intro: {
-      oneLiner: "A community-based user service supporting the Identity V fandom's culture",
-      para: [
-        "I watched the Identity V fandom's culture of expressing personal taste — characters, skins, relationships — and built a Korean-language community tool to make it easier to enjoy.",
-        "I defined the features users wanted directly and grew the service by reflecting community opinion.",
-      ],
-      roleTitle: "Community Manager · Service Planner",
-      roleItems: [
-        "Fandom-culture analysis",
-        "New-feature planning",
-        "User-feedback response",
-        "Community channel operation",
-        "Service promotion strategy",
-      ],
-      cases: [
-        {
-          n: "01",
-          heading: "Connecting fandom culture to a service",
-          body: "The Identity V community had all kinds of fan culture — character tiers, skin ratings, CP relationship charts. But there wasn't an easy Korean service for it, so I built a tool where users can express and share their taste.",
-        },
-        {
-          n: "02",
-          heading: "Setting feature priority from user opinion",
-          body: "I didn't decide the direction alone — I actively reflected community opinion. I surveyed preference for new features by anonymous poll on the official café, and the dating-sim feature was chosen by 67.4%, so I set it as the development direction. When a user requested an edit feature for CP-chart relationship types, I shipped it quickly after confirming the feedback and shared the result.",
-        },
-        {
-          n: "03",
-          heading: "Running a new channel and growing the community",
-          body: "To raise early awareness I opened an X (Twitter) account myself, posting feature intros and service updates as a new acquisition channel.",
-        },
-      ],
-      resultNumbers: "3,400 active users at six weeks post-launch · 6 min 13 sec average engagement",
-      resultNote: "I built operating experience discovering a fandom community's needs and growing a service together with its users.",
+    summary: {
+      problem: "The Identity V fandom already had a culture of expressing taste, but no Korean tools to support it.",
+      action:
+        "I built eight tools and reviewed data for 842 skins. For each new feature I wrote a how-to notice on the official café and answered individual questions by comment and DM. I set the next feature's priority by an anonymous community poll (the dating sim won with 67.4% and was greenlit) and turned a user's comment request into a shipped feature the next day. To build early awareness I opened an X account and ran it as a promotion channel.",
+      result: "3,400 active users within six weeks of launch, 6+ minutes average engagement.",
     },
     problem: {
       h2: "The fandom was already expressing its taste.",
@@ -614,25 +558,14 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      <CaseIntro
-        oneLiner={c.intro.oneLiner}
-        intro={c.intro.para}
-        myRoleLabel="MY ROLE"
-        roleTitle={c.intro.roleTitle}
-        roleItems={c.intro.roleItems}
-        cases={c.intro.cases}
-        caseShots={INTRO_SHOTS}
-        resultLabel="RESULT"
-        resultNumbers={c.intro.resultNumbers}
-        resultNote={c.intro.resultNote}
+      <CaseSummary
+        items={[
+          { k: "PROBLEM", v: c.summary.problem },
+          { k: "ACTION", v: c.summary.action },
+          { k: "RESULT", v: c.summary.result },
+        ]}
         tags={project.tags}
       />
-
-      <div className="border-t border-line bg-bg-alt px-5 py-6 sm:px-9">
-        <div className="mx-auto max-w-[1440px] font-archivo text-[11px] font-semibold tracking-[.18em] text-muted-light">
-          상세 운영 및 기능 / DETAIL
-        </div>
-      </div>
 
       {/* 01 — User Problem */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
