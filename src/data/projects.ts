@@ -447,7 +447,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       callouts: [
         { tag: "CREATOR POLICY", title: "창작자 보호 기준", lines: ["허락받은 콘텐츠만 업로드", "원작자명 및 원문 링크 표시", "삭제 요청 대응", "창작자 권리 우선 운영"] },
-        { tag: "CONTENT OPERATION", title: "콘텐츠 관리 프로세스", lines: ["업로드 콘텐츠 검수", "카테고리·태그 기준 관리", "중복 콘텐츠 관리", "유저 수정 요청 반영"] },
+        { tag: "CONTENT DISCOVERY", title: "콘텐츠 탐색 경험 설계", lines: ["카테고리·태그 기반 탐색 구조 설계", "작가별 콘텐츠 페이지 구성", "찜 기능을 통한 개인 저장 경험 제공", "인기순·최신순 기반 콘텐츠 발견 구조 구축"] },
       ],
       resultNote: "글로벌 유저 콘텐츠를 관리하고, 창작자와 이용자 사이의 신뢰를 구축하는 커뮤니티 운영 경험을 얻었습니다.",
       heroBody:
@@ -510,7 +510,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       callouts: [
         { tag: "CREATOR POLICY", title: "Creator-protection standard", lines: ["Only permitted content is uploaded", "Creator name and original link shown", "Takedown requests handled", "Creator rights come first"] },
-        { tag: "CONTENT OPERATION", title: "Content management process", lines: ["Uploaded content is reviewed", "Category and tag standards", "Duplicate-content management", "User edit requests reflected"] },
+        { tag: "CONTENT DISCOVERY", title: "Designing the discovery experience", lines: ["Category- and tag-based browsing structure", "Per-creator content pages", "Personal saves via a bookmark feature", "Popular / latest discovery ordering"] },
       ],
       resultNote: "I gained community-operating experience managing global user content and building trust between creators and users.",
       heroBody:
