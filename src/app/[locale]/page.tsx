@@ -91,11 +91,27 @@ function ProjectSection({
             </h3>
           </Link>
         </Reveal>
-        <p className="mt-3 max-w-[820px] font-archivo text-[clamp(15px,1.8vw,18px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
+        <p className="mt-3 max-w-[820px] font-archivo text-[clamp(15px,1.8vw,19px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
           {p.cardSubtitle}
         </p>
 
-        <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-16">
+        {/* My Role */}
+        <div className="mt-7 rounded-2xl border border-line-2 bg-bg px-6 py-6 sm:mt-9 sm:px-8">
+          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">MY ROLE</div>
+          <div className="mt-2 font-archivo text-[clamp(14.5px,1.6vw,17px)] font-bold tracking-[-.01em]">
+            {p.myRole.title}
+          </div>
+          <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+            {p.myRole.items.map((it) => (
+              <li key={it} className="flex gap-2 text-[13.5px] leading-[1.6] text-ink-70">
+                <span className="flex-none font-bold text-accent">·</span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-11 flex flex-col gap-10 sm:mt-14 sm:gap-16">
           {p.sections.map((s, i) => (
             <div
               key={s.heading}
@@ -113,26 +129,34 @@ function ProjectSection({
                 <p className="mt-3 max-w-[560px] text-[14px] leading-[1.75] text-ink-70 sm:text-[15px]">
                   {s.body}
                 </p>
+                {s.note && (
+                  <div className="mt-4 inline-block rounded-xl border border-line-2 px-4 py-3.5">
+                    <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
+                      {s.note.label}
+                    </div>
+                    <ul className="mt-2 flex flex-col gap-1 text-[13px] leading-[1.5] text-ink-70">
+                      {s.note.lines.map((l) => (
+                        <li key={l}>· {l}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </Reveal>
-              <Reveal delay={0.1} className="w-full flex-1">
-                <Placeholder
-                  variant="alt"
-                  label={s.heading}
-                  img={shots[i]}
-                  className="h-[clamp(200px,26vw,360px)]"
-                />
-              </Reveal>
+              {shots[i] && (
+                <Reveal delay={0.1} className="w-full flex-1">
+                  <Placeholder variant="alt" label={s.heading} img={shots[i]} className="" />
+                </Reveal>
+              )}
             </div>
           ))}
         </div>
 
-        <div className="mt-10 border-t-2 border-ink pt-6 sm:mt-14">
-          <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
-            {resultLabel}
-          </div>
-          <p className="mt-2 font-archivo text-[clamp(16px,2.1vw,24px)] font-extrabold leading-[1.3] tracking-[-.025em]">
+        <div className="mt-12 rounded-2xl border-2 border-ink px-6 py-8 sm:mt-16 sm:px-9">
+          <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{resultLabel}</div>
+          <p className="mt-2.5 font-archivo text-[clamp(18px,2.6vw,32px)] font-extrabold leading-[1.2] tracking-[-.03em] text-balance">
             {p.cardResult}
           </p>
+          <p className="mt-3.5 max-w-[640px] text-[14px] leading-[1.7] text-ink-70 sm:text-[15px]">{p.resultNote}</p>
         </div>
 
         <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-9">
