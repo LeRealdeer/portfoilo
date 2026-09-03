@@ -32,6 +32,8 @@ type ProjectBase = {
 type ProjectContent = {
   /** one-line project definition — what it solved */
   cardSubtitle: string;
+  /** two intro paragraphs under the one-line definition */
+  intro: string[];
   /** MY ROLE — role title + responsibilities */
   myRole: { title: string; items: string[] };
   /**
@@ -101,6 +103,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
   "sky-planner": {
     ko: {
       cardSubtitle: "Sky: Children of the Light 플레이어 커뮤니티의 반복적인 불편을 해결한 게임 유틸리티 서비스",
+      intro: [
+        "Sky 플레이어들이 커뮤니티에서 반복적으로 질문하는 정보 탐색 문제를 발견하고, 이를 해결하기 위한 게임 유틸리티 서비스를 직접 기획·개발·운영했습니다.",
+        "단순한 기능 제작을 목표로 하지 않고, 유저가 실제로 어떤 정보를 필요로 하는지 관찰하고, 커뮤니티 VOC와 사용 데이터를 기반으로 지속적으로 개선하는 라이브 서비스 운영 경험을 쌓았습니다.",
+      ],
       myRole: {
         title: "Game Service Planner · Community Operator",
         items: [
@@ -122,7 +128,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
         },
         {
           heading: "커뮤니티 이벤트 운영과 유저 소통",
-          body: "서비스 이용 활성화를 위해 네이버 공식 카페에서 커뮤니티 이벤트를 직접 기획했습니다. 신규 기능 출시 및 서비스 장애 발생 시 직접 공지를 작성하고, 댓글과 쪽지를 통해 개별 문의에 대응하며 유저와 지속적으로 소통했습니다.",
+          body: "서비스 이용 활성화를 위해 네이버 공식 카페에서 커뮤니티 이벤트를 직접 기획했습니다. 유저 참여형 이벤트를 통해 서비스 활용을 자연스럽게 유도했고, 신규 기능 출시 및 서비스 장애 발생 시에는 직접 공지를 작성하고 댓글과 쪽지를 통해 개별 문의에 대응하며 유저와 지속적으로 소통했습니다.",
           note: { label: "운영 사례 — 보물찾기 이벤트", lines: ["댓글 143개", "조회 657회"] },
         },
       ],
@@ -142,6 +148,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     },
     en: {
       cardSubtitle: "A game utility that solved the recurring friction of the Sky: Children of the Light player community",
+      intro: [
+        "I noticed the information-lookup questions Sky players kept asking in the community, and I planned, built, and ran a game utility myself to solve them.",
+        "The goal wasn't just to build features — I watched what information users actually needed and built live-service operating experience, improving continuously from community VOC and usage data.",
+      ],
       myRole: {
         title: "Game Service Planner · Community Operator",
         items: [
@@ -163,7 +173,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
         },
         {
           heading: "Running community events and talking to users",
-          body: "To drive usage I planned community events myself on the official Naver café. For new features and outages I wrote the announcements myself and answered individual questions by comment and DM, staying in constant contact with users.",
+          body: "To drive usage I planned community events myself on the official Naver café. Participation events pulled people into using the service naturally, and for new features and outages I wrote the announcements myself and answered individual questions by comment and DM, staying in constant contact with users.",
           note: { label: "Operating example — treasure-hunt event", lines: ["143 comments", "657 views"] },
         },
       ],
@@ -185,6 +195,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
   "identity5-pick": {
     ko: {
       cardSubtitle: "제5인격 팬덤 문화를 지원하는 커뮤니티 기반 유저 서비스",
+      intro: [
+        "제5인격 유저들이 캐릭터, 스킨, 관계성 등 자신만의 취향을 표현하는 팬덤 문화를 관찰하고, 이를 더 편하게 즐길 수 있는 한국어 기반 커뮤니티 도구를 제작했습니다.",
+        "유저가 원하는 기능을 직접 정의하고, 커뮤니티 의견을 반영하며 서비스를 성장시켰습니다.",
+      ],
       myRole: {
         title: "Community Manager · Service Planner",
         items: [
@@ -224,6 +238,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     },
     en: {
       cardSubtitle: "A community-based user service supporting the Identity V fandom's culture",
+      intro: [
+        "I watched the Identity V fandom's culture of expressing personal taste — characters, skins, relationships — and built a Korean-language community tool to enjoy it more easily.",
+        "I defined the features users wanted directly and grew the service by reflecting community opinion.",
+      ],
       myRole: {
         title: "Community Manager · Service Planner",
         items: [
@@ -265,6 +283,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
   "heartopia-archive": {
     ko: {
       cardSubtitle: "해외 플랫폼에 흩어진 유저 창작 콘텐츠를 연결하는 허가 기반 UGC 아카이브",
+      intro: [
+        "두근두근타운 유저 창작 콘텐츠가 여러 플랫폼에 분산되어 있어 한국 유저가 접근하기 어렵다는 문제를 발견했습니다.",
+        "창작자의 권리를 보호하면서 유저가 쉽게 콘텐츠를 찾을 수 있도록 허가 기반 아카이브 서비스를 운영했습니다.",
+      ],
       myRole: {
         title: "Community Operator · Content Manager",
         items: [
@@ -299,6 +321,10 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
     },
     en: {
       cardSubtitle: "A permission-based UGC archive connecting user-made content scattered across overseas platforms",
+      intro: [
+        "I found that Heartopia user-made content was spread across several platforms, making it hard for Korean users to reach.",
+        "I ran a permission-based archive so users could find content easily while creators' rights stayed protected.",
+      ],
       myRole: {
         title: "Community Operator · Content Manager",
         items: [

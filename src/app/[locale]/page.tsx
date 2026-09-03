@@ -27,7 +27,6 @@ const COPY: Record<Locale, Record<string, string>> = {
     workSub: "세 게임 라이브 서비스에서\n데이터·이벤트·유저 소통을 직접 담당했습니다.",
     resultLabel: "결과",
     projectMore: "프로젝트 더 보기",
-    projectMoreSub: "기술스택 · 전체 기능 · GA4 세부 수치",
     highlightsH2: "Community Operation Highlights",
     howH2: "How I Work",
     howSub: "각 항목 아래는 위 프로젝트에서 실제로 한 일입니다.",
@@ -39,7 +38,6 @@ const COPY: Record<Locale, Record<string, string>> = {
     workSub: "Across three live game services I owned\nthe data, the events, and player communication.",
     resultLabel: "RESULT",
     projectMore: "See the full project",
-    projectMoreSub: "tech stack · all features · full GA4 numbers",
     highlightsH2: "Community Operation Highlights",
     howH2: "How I Work",
     howSub: "Under each is what I actually did on the projects above.",
@@ -69,14 +67,12 @@ function ProjectSection({
   alt,
   resultLabel,
   moreLabel,
-  moreSub,
 }: {
   p: Project;
   locale: Locale;
   alt: boolean;
   resultLabel: string;
   moreLabel: string;
-  moreSub: string;
 }) {
   const href = `/${locale}/work/${p.slug}`;
   const shots = SECTION_SHOTS[p.slug];
@@ -94,6 +90,13 @@ function ProjectSection({
         <p className="mt-3 max-w-[820px] font-archivo text-[clamp(15px,1.8vw,19px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
           {p.cardSubtitle}
         </p>
+        <div className="mt-5 max-w-[760px] space-y-3">
+          {p.intro.map((para) => (
+            <p key={para} className="text-[14.5px] leading-[1.75] text-ink-70 sm:text-[15px]">
+              {para}
+            </p>
+          ))}
+        </div>
 
         {/* My Role */}
         <div className="mt-7 rounded-2xl border border-line-2 bg-bg px-6 py-6 sm:mt-9 sm:px-8">
@@ -159,15 +162,12 @@ function ProjectSection({
           <p className="mt-3.5 max-w-[640px] text-[14px] leading-[1.7] text-ink-70 sm:text-[15px]">{p.resultNote}</p>
         </div>
 
-        <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-9">
+        <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 sm:mt-10">
           <Link
             href={href}
-            className="group inline-flex flex-col rounded-lg bg-ink px-8 py-4 transition-colors duration-300 hover:bg-accent"
+            className="inline-flex items-center gap-2.5 rounded-lg bg-ink px-10 py-5 font-archivo text-[clamp(14px,1.6vw,16px)] font-bold tracking-[.06em] text-bg transition-colors duration-300 hover:bg-accent"
           >
-            <span className="font-archivo text-[13.5px] font-bold tracking-[.05em] text-bg">{moreLabel} →</span>
-            <span className="mt-0.5 font-archivo text-[10.5px] font-semibold tracking-[.08em] text-[rgba(244,241,234,.55)]">
-              {moreSub}
-            </span>
+            {moreLabel} <span aria-hidden>→</span>
           </Link>
           {p.liveUrl && (
             <a
@@ -273,7 +273,6 @@ export default async function HomePage({
             alt={i % 2 === 1}
             resultLabel={t.resultLabel}
             moreLabel={t.projectMore}
-            moreSub={t.projectMoreSub}
           />
         ))}
       </div>

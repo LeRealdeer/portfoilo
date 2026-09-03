@@ -29,7 +29,7 @@ export const CARD_SHOTS: Record<ProjectSlug, Shot> = {
 
 /** screenshots aligned to each project's Selected Work subsections */
 export const SECTION_SHOTS: Record<ProjectSlug, Shot[]> = {
-  "sky-planner": [shot(skyQuestion, 500), shot(skyCafeSurvey, 500), shot(skyCafeEvent, 500)],
-  "identity5-pick": [shot(id5CharacterSort, 500), shot(id5CommentFix, 500), shot(id5XPromo, 500)],
-  "heartopia-archive": [shot(htCreator, 500), shot(htTerms, 500)],
+  "sky-planner": [shot(skyQuestion, 460), shot(skyCafeSurvey, 460), shot(skyCafeEvent, 460)],
+  "identity5-pick": [shot(id5CharacterSort, 460), shot(id5CommentFix, 460), shot(id5XPromo, 460)],
+  "heartopia-archive": [shot(htCreator, 460), shot(htTerms, 460)],
 };
