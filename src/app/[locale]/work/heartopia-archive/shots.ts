@@ -3,7 +3,6 @@ import type { Shot } from "@/components/Placeholder";
 
 import home from "../../../../../public/heartopia/메인화면.png";
 import detail from "../../../../../public/main_heartopia_detail.png";
-import cafePosts from "../../../../../public/heartopia/cafe-posts.png";
 import archiveGrid from "../../../../../public/heartopia/archive-grid.png";
 import termsOfService from "../../../../../public/heartopia/이용약관.png";
 import cafeAttribution from "../../../../../public/heartopia/cafe-attribution.png";
@@ -23,5 +22,5 @@ export const SHOTS = {
   featOutfit: shot(outfitsPopular, 480),
   featSearch: shot(detail, 480),
   editorAfter: shot(photoEditor, 480),
-  ops: shot(cafePosts, 480),
+  ops: shot(cafeAttribution, 480),
 } satisfies Record<string, Shot>;
