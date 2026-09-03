@@ -172,7 +172,7 @@ const COPY = {
         {
           n: "02",
           title: "출처 표기를 정책이 아니라 구조로 만들었습니다",
-          body: "업로드 페이지에 원본 링크 URL 입력 칸과 업로드 권한 보유 확인 체크박스를 넣어, 출처와 허락이 없는 콘텐츠는 등록 자체가 되지 않게 했습니다. 신뢰는 약속이 아니라 시스템이 지켜야 한다고 봤습니다.",
+          body: "업로드 페이지에 원본 링크 URL 입력 칸과 업로드 권한 보유 확인 체크박스를 넣었습니다. 신뢰는 약속이 아니라 시스템이 지켜야 한다고 봤습니다.",
         },
         {
           n: "03",
@@ -297,7 +297,7 @@ const COPY = {
         {
           n: "02",
           title: "I made attribution structural, not a policy",
-          body: "The upload page has a field for the original-link URL and a checkbox to confirm the uploader has permission, so content without a source or consent can't be registered at all. Trust has to be enforced by the system, not promised.",
+          body: "The upload page has a field for the original-link URL and a checkbox to confirm the uploader has permission. Trust has to be enforced by the system, not promised.",
         },
         {
           n: "03",
