@@ -176,8 +176,8 @@ const COPY = {
         },
         {
           n: "03",
-          title: "아카이브는 탐색에서 창작으로 확장됩니다",
-          body: "“도안을 실제 사진에 얹어보고 싶다”는 요청에서, 아카이브가 보는 곳을 넘어 만드는 시작점이 될 수 있다는 것을 확인했습니다.",
+          title: "글로벌 콘텐츠를 연결하는 운영 경험을 쌓았습니다",
+          body: "중국 Xiaohongshu 창작자와 직접 소통하며 콘텐츠 사용 허락을 확보하고, 원작자 표기·원문 링크 제공 기준을 수립했습니다. 단순한 콘텐츠 수집이 아닌 창작자와 이용자가 함께 신뢰할 수 있는 UGC 운영 구조를 만들었습니다.",
         },
       ],
     },
@@ -301,8 +301,8 @@ const COPY = {
         },
         {
           n: "03",
-          title: "An archive extends from browsing into making",
-          body: "From the request “I want to lay a pattern over a real photo,” I saw that an archive can be more than a place to look — it can be a starting point for making.",
+          title: "I built experience connecting global content",
+          body: "Communicating directly with Chinese Xiaohongshu creators, I secured permission to use their content and set the standards for creator credit and original links. Rather than just collecting content, I built a UGC operating structure that creators and users can both trust.",
         },
       ],
     },
