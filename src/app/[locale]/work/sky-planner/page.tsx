@@ -823,15 +823,6 @@ export default async function SkyPlannerPage({
                 </Reveal>
               ))}
             </div>
-
-            <Reveal delay={0.1}>
-              <Placeholder
-                variant="dark"
-                label={c.data.shot}
-                img={SHOTS.data}
-                className="mt-8"
-              />
-            </Reveal>
           </div>
         </div>
       </section>
