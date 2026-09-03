@@ -4,11 +4,11 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
-import { Chip, ProjectCTA } from "@/components/Bits";
+import { ProjectCTA } from "@/components/Bits";
 import { Placeholder } from "@/components/Placeholder";
 import { getProfile, getCapabilities } from "@/data/profile";
 import { impactStrip } from "@/data/metrics";
-import { getProjects } from "@/data/projects";
+import { getProjects, type Project } from "@/data/projects";
 import { getExperience } from "@/data/experience";
 import { toLocale, type Locale } from "@/lib/i18n";
 import { CARD_SHOTS } from "./shots";
@@ -26,26 +26,52 @@ export async function generateMetadata({
 const COPY: Record<Locale, Record<string, string>> = {
   ko: {
     workSub: "세 게임에서 서로 다른 유저 행동과\n운영 과제를 다뤘습니다.",
-    capH2: "유저의 목소리에서 라이브 서비스까지",
-    capSub: "유저의 목소리가 실제 서비스가 되기까지, 제가 직접 해온 일들.",
+    more: "더 보기 →",
+    capH2: "라이브 운영과 커뮤니티, 실제로 해온 일",
+    capSub: "각 역량 아래는 실제 프로젝트에서 한 일입니다.",
     buildH3: "기획한 것을 직접 만들 수도 있습니다.",
     buildBody:
       "기획부터 개발·배포까지 직접 하기 때문에, 아이디어를 빠르게 검증하고 데이터를 직접 뽑아 의사결정에 활용할 수 있습니다.",
     expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
-    permission: "Permission before publication.",
   },
   en: {
     workSub: "Three games — different player behaviors\nand operational problems in each.",
-    capH2: "From player voice to live service",
-    capSub: "What I've personally done to turn player voice into a running service.",
+    more: "More →",
+    capH2: "Live ops and community — what I've actually done",
+    capSub: "Under each is what I actually did on a real project.",
     buildH3: "I can also build what I plan.",
     buildBody:
       "Because I do the planning, building, and deploying myself, I can validate an idea fast and pull the data I need for decisions directly.",
     expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
-    permission: "Permission before publication.",
   },
 };
 
+/** The text column of a Selected Work card — a self-contained summary. */
+function CardText({ p, locale, more }: { p: Project; locale: Locale; more: string }) {
+  const href = `/${locale}/work/${p.slug}`;
+  return (
+    <>
+      <Link href={href}>
+        <h3 className="font-archivo text-[clamp(23px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
+          {p.title}
+        </h3>
+      </Link>
+      <p className="mt-3 font-archivo text-[clamp(15px,1.7vw,17px)] font-bold leading-[1.4] tracking-[-.01em] text-ink-70">
+        {p.cardSubtitle}
+      </p>
+      <ul className="mt-5 flex flex-col gap-2 border-t border-line pt-5">
+        {p.cardActions.map((a) => (
+          <li key={a} className="flex gap-2.5 text-[13.5px] leading-[1.55] text-ink-70 sm:text-[14px]">
+            <span className="mt-px flex-none font-bold text-accent">·</span>
+            <span>{a}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 font-archivo text-[13.5px] font-bold tracking-[.01em] text-ink">{p.cardResult}</p>
+      <ProjectCTA href={href} label={more} liveUrl={p.liveUrl} />
+    </>
+  );
+}
 
 export default async function HomePage({
   params,
@@ -142,31 +168,7 @@ export default async function HomePage({
               />
             </Reveal>
             <Reveal delay={0.1} className="w-full flex-1">
-              <Link href={`/${locale}/work/${sky.slug}`}>
-                <h3 className="font-archivo text-[clamp(24px,3.4vw,44px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
-                  {sky.title}
-                </h3>
-              </Link>
-              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {sky.cardSubtitle}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {sky.tags.map((tag) => (
-                  <Chip key={tag}>{tag}</Chip>
-                ))}
-              </div>
-              <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6">
-                {sky.cardMetrics.map((m) => (
-                  <Stat
-                    key={m.label}
-                    metric={m}
-                    numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
-                    labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-                    tbdClassName="text-muted-light"
-                  />
-                ))}
-              </div>
-              <ProjectCTA href={`/${locale}/work/${sky.slug}`} liveUrl={sky.liveUrl} />
+              <CardText p={sky} locale={locale} more={t.more} />
             </Reveal>
           </div>
         </article>
@@ -198,31 +200,7 @@ export default async function HomePage({
               </div>
             </Reveal>
             <Reveal delay={0.1} className="w-full max-w-[460px] flex-1 pt-1">
-              <Link href={`/${locale}/work/${identity5.slug}`}>
-                <h3 className="font-archivo text-[clamp(22px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
-                  {identity5.title}
-                </h3>
-              </Link>
-              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {identity5.cardSubtitle}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {identity5.tags.map((tag) => (
-                  <Chip key={tag}>{tag}</Chip>
-                ))}
-              </div>
-              <div className="mt-6 flex gap-8 border-t border-line pt-5">
-                {identity5.cardMetrics.map((m) => (
-                  <Stat
-                    key={m.label}
-                    metric={m}
-                    numberClassName="font-archivo text-[30px] leading-[1] font-extrabold tracking-[-.04em]"
-                    labelClassName="mt-1.5 font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted"
-                    tbdClassName="text-muted-light"
-                  />
-                ))}
-              </div>
-              <ProjectCTA href={`/${locale}/work/${identity5.slug}`} liveUrl={identity5.liveUrl} />
+              <CardText p={identity5} locale={locale} more={t.more} />
             </Reveal>
           </div>
         </article>
@@ -236,37 +214,7 @@ export default async function HomePage({
           </div>
           <div className="mt-6 flex max-[860px]:flex-col-reverse gap-6 sm:gap-14 items-start">
             <Reveal className="w-full max-w-[460px] flex-1 pt-1">
-              <Link href={`/${locale}/work/${heartopia.slug}`}>
-                <h3 className="font-archivo text-[clamp(22px,3vw,42px)] leading-[1.06] font-extrabold tracking-[-.035em] transition-colors duration-300 hover:text-accent">
-                  {heartopia.title}
-                </h3>
-              </Link>
-              <p className="mt-3 text-[15px] leading-[1.5] text-ink-70 text-pretty sm:text-[16px]">
-                {heartopia.cardSubtitle}
-              </p>
-              <blockquote className="mt-6 border-l-2 border-accent pl-4.5 font-archivo text-[20px] font-bold leading-[1.3] tracking-[-.02em]">
-                {t.permission}
-              </blockquote>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {heartopia.tags.map((tag) => (
-                  <Chip key={tag}>{tag}</Chip>
-                ))}
-              </div>
-              <div className="mt-6 flex flex-col gap-3.5 border-t border-line pt-5">
-                {heartopia.cardMetrics.map((m) => (
-                  <div key={m.label} className="flex items-baseline gap-3.5">
-                    <Stat
-                      metric={m}
-                      numberClassName="font-archivo text-[19px] leading-[1.1] font-extrabold tracking-[-.02em]"
-                      labelClassName="hidden"
-                    />
-                    <span className="font-archivo text-[10.5px] font-semibold tracking-[.12em] text-muted">
-                      {m.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <ProjectCTA href={`/${locale}/work/${heartopia.slug}`} liveUrl={heartopia.liveUrl} />
+              <CardText p={heartopia} locale={locale} more={t.more} />
             </Reveal>
             <Reveal delay={0.1} className="w-full flex-[1.35]">
               <Placeholder
@@ -315,6 +263,10 @@ export default async function HomePage({
                 </h3>
                 <p className="mt-2 text-[13px] leading-[1.55] text-muted">{c.lineEn}</p>
                 <p className="mt-3 text-[14px] leading-[1.5] text-ink-70">{c.body}</p>
+                <p className="mt-3 flex gap-2 text-[12.5px] leading-[1.5] text-ink-50">
+                  <span className="flex-none font-bold text-accent">→</span>
+                  <span>{c.evidence}</span>
+                </p>
               </Reveal>
             ))}
           </div>

@@ -564,6 +564,7 @@ export default async function Identity5PickPage({
           { k: "ACTION", v: c.summary.action },
           { k: "RESULT", v: c.summary.result },
         ]}
+        tags={project.tags}
       />
 
       {/* 01 — User Problem */}

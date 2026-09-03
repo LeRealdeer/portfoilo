@@ -70,23 +70,29 @@ const capabilitiesRaw = [
   {
     number: "01",
     title: "Live Operations",
-    line: "Analyze VOC and keep improving after launch.",
-    ko: "출시 이후 VOC를 분석하고 지속적인 개선을 이어갑니다.",
-    en: "I analyze VOC and keep improving the service after launch.",
+    line: "Update / incident announcements, community post management, response.",
+    ko: "업데이트·장애 공지 작성, 커뮤니티 게시물 관리, 이슈 발생 시 대응.",
+    en: "Writing update and incident announcements, managing community posts, and responding when issues arise.",
+    evKo: "Sky Planner AWS 서버 장애 공지 및 복구 · Identity5 Pick 업데이트 공지",
+    evEn: "Sky Planner AWS outage announcement and recovery · Identity5 Pick update announcements",
   },
   {
     number: "02",
     title: "Community Management",
-    line: "Announcements, comment & DM response, channel operation.",
-    ko: "공지 작성부터 댓글·쪽지 대응, 신규 채널 운영까지 커뮤니티와 직접 소통하며 경험을 개선합니다.",
-    en: "From writing announcements to handling comments and DMs and running new channels, I talk to the community directly and improve the experience.",
+    line: "Comment / DM response, roadmap by community vote, new SNS channels.",
+    ko: "댓글·쪽지 문의 대응, 커뮤니티 투표로 로드맵 결정, SNS 채널 신규 개설·운영.",
+    en: "Handling comments and DMs, deciding the roadmap by community vote, and opening and running new SNS channels.",
+    evKo: "Identity5 Pick 무기명 투표(연애 시뮬레이터 67.4%) · X 계정 직접 개설·운영",
+    evEn: "Identity5 Pick anonymous poll (dating sim, 67.4%) · self-started and self-run X account",
   },
   {
     number: "03",
     title: "Player Research",
-    line: "Observe how players behave and where the friction is.",
-    ko: "유저 행동과 커뮤니티 문화를 관찰하고 문제를 발견합니다.",
-    en: "I observe player behavior and community culture to find the real problem.",
+    line: "Read user needs from surveys and GA4 data.",
+    ko: "설문조사와 GA4 데이터로 유저 니즈를 직접 확인합니다.",
+    en: "I confirm user needs directly through surveys and GA4 data.",
+    evKo: "Sky Planner Google 설문조사 기반 기능 개선·추가",
+    evEn: "Sky Planner feature improvements and additions driven by a Google survey",
   },
   {
     number: "04",
@@ -94,6 +100,8 @@ const capabilitiesRaw = [
     line: "Turn user needs into service features.",
     ko: "사용자의 불편과 니즈를 서비스 기능으로 설계합니다.",
     en: "I turn user friction and needs into concrete service features.",
+    evKo: "세 서비스 모두 반복되는 유저 요청을 기능으로 정의·출시",
+    evEn: "Across all three services, recurring user requests defined and shipped as features",
   },
   {
     number: "05",
@@ -101,6 +109,8 @@ const capabilitiesRaw = [
     line: "Work with overseas creators and global users.",
     ko: "해외 창작자 및 글로벌 사용자와 직접 커뮤니케이션합니다.",
     en: "I communicate directly with overseas creators and global users.",
+    evKo: "Heartopia Archive 중국 창작자 3인 컨택 및 사용 허락 확보",
+    evEn: "Heartopia Archive — contacted three Chinese creators and secured usage permission",
   },
   {
     number: "06",
@@ -108,6 +118,8 @@ const capabilitiesRaw = [
     line: "Build game data, design review criteria, manage quality.",
     ko: "게임 데이터 구축, 검수 기준 설계, 품질 관리를 담당합니다.",
     en: "I build game data, design the review criteria, and manage quality.",
+    evKo: "Identity5 Pick 스킨 842종 데이터 파이프라인 및 한국어명 검수",
+    evEn: "Identity5 Pick — 842-skin data pipeline and Korean-name review",
   },
 ] as const;
 
@@ -117,5 +129,6 @@ export function getCapabilities(locale: Locale) {
     titleEn: c.title,
     lineEn: c.line,
     body: c[locale],
+    evidence: locale === "en" ? c.evEn : c.evKo,
   }));
 }

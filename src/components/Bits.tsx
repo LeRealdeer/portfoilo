@@ -28,21 +28,29 @@ export function Chip({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ProjectCTA({ href, liveUrl }: { href: string; liveUrl?: string }) {
+export function ProjectCTA({
+  href,
+  label,
+  liveUrl,
+}: {
+  href: string;
+  label: string;
+  liveUrl?: string;
+}) {
   return (
-    <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+    <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
       <Link
         href={href}
-        className="inline-flex items-center gap-2 rounded-lg bg-ink px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-bg transition-colors duration-300 hover:bg-accent"
+        className="inline-flex items-center gap-1.5 border-b border-ink pb-0.5 font-archivo text-[12.5px] font-bold tracking-[.06em] transition-colors duration-300 hover:border-accent hover:text-accent"
       >
-        VIEW CASE STUDY →
+        {label}
       </Link>
       {liveUrl && (
         <a
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-archivo text-[12.5px] font-bold tracking-[.04em] text-ink-70 transition-colors duration-300 hover:text-accent"
+          className="font-archivo text-[12px] font-bold tracking-[.04em] text-ink-50 transition-colors duration-300 hover:text-accent"
         >
           {liveUrl.replace(/^https?:\/\//, "")} ↗
         </a>

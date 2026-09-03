@@ -424,6 +424,7 @@ export default async function HeartopiaArchivePage({
           { k: "ACTION", v: c.summary.action },
           { k: "RESULT", v: c.summary.result },
         ]}
+        tags={project.tags}
       />
 
       {/* 01 — Context */}

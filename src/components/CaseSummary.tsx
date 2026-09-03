@@ -6,8 +6,11 @@ import { Reveal } from "./Reveal";
  */
 export function CaseSummary({
   items,
+  tags,
 }: {
   items: { k: string; v: string }[];
+  /** the card tags, moved off the home card and shown here as secondary context */
+  tags?: string[];
 }) {
   return (
     <section className="mx-auto max-w-[1440px] px-5 sm:px-9">
@@ -23,6 +26,18 @@ export function CaseSummary({
             </div>
           ))}
         </dl>
+        {tags && tags.length > 0 && (
+          <div className="mt-6 flex flex-wrap gap-2 border-t border-line-2 pt-5 sm:mt-7">
+            {tags.map((tg) => (
+              <span
+                key={tg}
+                className="rounded-md border border-line-2 px-3 py-1.5 font-archivo text-[10.5px] font-semibold tracking-[.08em] text-ink-50"
+              >
+                {tg}
+              </span>
+            ))}
+          </div>
+        )}
       </Reveal>
     </section>
   );
