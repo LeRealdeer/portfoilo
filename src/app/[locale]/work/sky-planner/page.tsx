@@ -787,63 +787,10 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      {/* 03 — Key Features */}
-      <section className="mx-auto max-w-[1440px] px-5 pt-14 sm:px-9 sm:pt-24">
-        <div className={EYEBROW}>03 / KEY FEATURES</div>
-        <Reveal>
-          <h2 className={`mt-4 ${H2}`}>{c.feat.h2}</h2>
-        </Reveal>
-        <p className={LEAD_WIDE}>{c.feat.lead}</p>
-      </section>
-
-      {c.feat.items.map((f, i) => (
-        <FeatureBlock
-          key={f.n}
-          f={f}
-          alt={i % 2 === 1}
-          shot={FEATURE_SHOTS[i]}
-          gallery={i === 3 ? PT_VIRAL : undefined}
-          galleryLabel={i === 3 ? c.feat.ptViralLabel : undefined}
-          galleryCaptions={i === 3 ? c.feat.ptViral : undefined}
-        />
-      ))}
-
-      {/* 04 — Operation & Infrastructure */}
-      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
-        <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>04 / OPERATION &amp; INFRASTRUCTURE</div>
-          <Reveal>
-            <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
-          </Reveal>
-
-          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
-            {/* left — write-up */}
-            <div className="min-w-0 flex-1 flex flex-col gap-3">
-              {(
-                [
-                  ["MIGRATION", c.ops.migration],
-                  ["QA", c.ops.qa],
-                ] as const
-              ).map(([label, body]) => (
-                <div key={label} className="rounded-xl border border-line-2 px-5 py-5">
-                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{label}</div>
-                  <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{body}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* right — image */}
-            <Reveal delay={0.1} className="w-full flex-1">
-              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 05 — Data Analysis (dark) */}
+      {/* 03 — Data Analysis (dark) */}
       <section className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW_DARK}>05 / DATA ANALYSIS</div>
+          <div className={EYEBROW_DARK}>03 / DATA ANALYSIS</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.data.h2}</h2>
           </Reveal>
@@ -889,9 +836,9 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      {/* 06 — User Feedback */}
+      {/* 04 — User Feedback */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>06 / USER FEEDBACK</div>
+        <div className={EYEBROW}>04 / USER FEEDBACK</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.fb.h2}</h2>
         </Reveal>
@@ -930,10 +877,10 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      {/* 07 — Growth */}
+      {/* 05 — Growth */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>07 / GROWTH</div>
+          <div className={EYEBROW}>05 / GROWTH</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.growth.h2}</h2>
           </Reveal>
@@ -956,9 +903,9 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      {/* 08 — Community & Events */}
+      {/* 06 — Community & Events */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>08 / COMMUNITY &amp; EVENTS</div>
+        <div className={EYEBROW}>06 / COMMUNITY &amp; EVENTS</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.events.h2}</h2>
         </Reveal>
@@ -979,10 +926,10 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      {/* 09 — O2O Event */}
+      {/* 07 — O2O Event */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>09 / O2O EVENT</div>
+          <div className={EYEBROW}>07 / O2O EVENT</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.o2o.h2}</h2>
           </Reveal>
@@ -1010,6 +957,61 @@ export default async function SkyPlannerPage({
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className="" />
             <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className="" />
+          </div>
+        </div>
+      </section>
+
+      {/* 08 — Key Features */}
+      <section className="border-t border-line px-5 pt-14 sm:px-9 sm:pt-24">
+        <div className="mx-auto max-w-[1440px]">
+          <div className={EYEBROW}>08 / KEY FEATURES</div>
+          <Reveal>
+            <h2 className={`mt-4 ${H2}`}>{c.feat.h2}</h2>
+          </Reveal>
+          <p className={LEAD_WIDE}>{c.feat.lead}</p>
+        </div>
+      </section>
+
+      {c.feat.items.map((f, i) => (
+        <FeatureBlock
+          key={f.n}
+          f={f}
+          alt={i % 2 === 1}
+          shot={FEATURE_SHOTS[i]}
+          gallery={i === 3 ? PT_VIRAL : undefined}
+          galleryLabel={i === 3 ? c.feat.ptViralLabel : undefined}
+          galleryCaptions={i === 3 ? c.feat.ptViral : undefined}
+        />
+      ))}
+
+      {/* 09 — Operation & Infrastructure */}
+      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className={EYEBROW}>09 / OPERATION &amp; INFRASTRUCTURE</div>
+          <Reveal>
+            <h2 className={`mt-4 ${H2}`}>{c.ops.h2}</h2>
+          </Reveal>
+
+          <div className="mt-8 flex max-[900px]:flex-col gap-8 sm:mt-12 sm:gap-14 items-start">
+            {/* left — write-up */}
+            <div className="min-w-0 flex-1 flex flex-col gap-3">
+              {(
+                [
+                  ["MIGRATION", c.ops.migration],
+                  ["QA", c.ops.qa],
+                ] as const
+              ).map(([label, body]) => (
+                <div key={label} className="rounded-xl border border-line-2 px-5 py-5">
+                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{label}</div>
+                  <p className="mt-2 text-[14px] leading-[1.55] text-ink-70">{body}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* right — image */}
+            <Reveal delay={0.1} className="w-full flex-1">
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
+            </Reveal>
           </div>
         </div>
       </section>
