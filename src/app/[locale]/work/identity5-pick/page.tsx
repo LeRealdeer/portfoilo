@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
 import { CaseSummary } from "@/components/CaseSummary";
-import { HERO_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
+import { HERO_SHOT, QA_SHOT, ITEM_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -191,33 +191,6 @@ const COPY = {
       problemLabel: "PROBLEM",
       improvementLabel: "IMPROVEMENT",
     },
-    ux: {
-      h2: "저장이 제작형 기능의 완료 지점입니다.",
-      lead:
-        "결과물 저장을 제작형 기능의 핵심 완료 행동으로 정의하고 GA4 이벤트로 측정했습니다. 생성된 이미지는 사용자가 기존 커뮤니티에 바로 공유할 수 있도록 설계했습니다.",
-      metrics: [
-        { value: 18356, label: "조회수" },
-        { value: 3400, label: "활성 사용자" },
-        { value: 0, raw: "6:13", label: "평균 참여 시간" },
-        { value: 39661, label: "이벤트" },
-      ],
-      gaLine: "GA4 · 2026.07.17 ~ 운영 중",
-      shot: "GA4 — 기능별 페이지 조회수 · 참여 시간",
-      signals: [
-        {
-          label: "서비스 정체성",
-          body: "캐릭터 소트는 “취향을 구조화한다”는 본질을 빠르게 보여줍니다. CP표는 일반적인 이미지 편집기보다 팬덤의 관계성 표현 방식에 맞춰 제작 과정을 단순화한 기능입니다.",
-        },
-        {
-          label: "재방문 장치",
-          body: "스킨 체크표(진행 중 상태)와 티어리스트 프리셋 주제(주제 교체)를 반복 이용을 고려해 설계했습니다.",
-        },
-        {
-          label: "바이럴 접점",
-          body: "CP표·캐릭터 소트 결과·연애 시뮬레이터 결과를 모두 커뮤니티에서 바로 공유할 수 있는 이미지 형태로 설계했습니다.",
-        },
-      ],
-    },
     learn: {
       h2: "이미 하고 있는 행동을 발견하는 것.",
       lead:
@@ -396,33 +369,6 @@ const COPY = {
       problemLabel: "PROBLEM",
       improvementLabel: "IMPROVEMENT",
     },
-    ux: {
-      h2: "Saving is the completion point of a make-style feature.",
-      lead:
-        "I defined saving the result as the key completion action for make-style features and measured it as a GA4 event. The generated image is designed so users can share it straight to their existing communities.",
-      metrics: [
-        { value: 18356, label: "Views" },
-        { value: 3400, label: "Active users" },
-        { value: 0, raw: "6:13", label: "Avg. engagement" },
-        { value: 39661, label: "Events" },
-      ],
-      gaLine: "GA4 · since 2026.07.17",
-      shot: "GA4 — page views and engagement by feature",
-      signals: [
-        {
-          label: "Service identity",
-          body: "Character Sort shows the essence — “structure your taste” — quickly. CP Chart simplifies the making process to fit how the fandom expresses relationships, more than a generic image editor does.",
-        },
-        {
-          label: "Return hooks",
-          body: "Skin Checklist (in-progress state) and Tier List preset themes (theme swap) were designed with repeat use in mind.",
-        },
-        {
-          label: "Viral surface",
-          body: "CP Chart, Character Sort, and Visual Novel results are all shaped as images you can post straight to the community.",
-        },
-      ],
-    },
     learn: {
       h2: "Finding what people are already doing.",
       lead:
@@ -591,10 +537,49 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      {/* 02 — Solution */}
+      {/* 02 — User Feedback */}
       <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>02 / SOLUTION</div>
+          <div className={EYEBROW}>02 / USER FEEDBACK &amp; IMPROVEMENT</div>
+          <Reveal>
+            <h2 className={`mt-4 ${H2}`}>{c.fb.h2}</h2>
+          </Reveal>
+
+          <div className="mt-8 flex flex-col gap-3 sm:mt-12">
+            {c.fb.cases.map((fc, i) => (
+              <Reveal
+                key={fc.title}
+                delay={i * 0.04}
+                className="rounded-xl border border-line-2 bg-paper px-5 py-5 sm:flex sm:gap-12"
+              >
+                <div className="flex-none sm:w-[210px]">
+                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{fc.tag}</div>
+                  <div className="mt-2 font-archivo text-[16px] font-bold tracking-[-.02em]">{fc.title}</div>
+                </div>
+                <div className="mt-4 grid flex-1 gap-x-10 gap-y-3 sm:mt-0 sm:grid-cols-2">
+                  <div>
+                    <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-muted-light">
+                      {fc.tag === "ISSUE" ? c.fb.problemLabel : c.fb.askLabel}
+                    </div>
+                    <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{fc.ask}</p>
+                  </div>
+                  <div>
+                    <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-accent">
+                      {c.fb.improvementLabel}
+                    </div>
+                    <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{fc.change}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 03 — Solution */}
+      <section className="border-t border-line px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className={EYEBROW}>03 / SOLUTION</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.solution.h2}</h2>
           </Reveal>
@@ -642,10 +627,10 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      {/* 03 — Data Operation (dark) */}
+      {/* 04 — Data Operation (dark) */}
       <section className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW_DARK}>03 / DATA OPERATION</div>
+          <div className={EYEBROW_DARK}>04 / DATA OPERATION</div>
           <Reveal>
             <h2 className={`mt-4 ${H2}`}>{c.data.h2}</h2>
           </Reveal>
@@ -689,7 +674,7 @@ export default async function Identity5PickPage({
 
       {/* 05 — QA Process */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>04 / QA PROCESS</div>
+        <div className={EYEBROW}>05 / QA PROCESS</div>
         <Reveal>
           <h2 className={`mt-4 ${H2}`}>{c.qa.h2}</h2>
         </Reveal>
@@ -744,85 +729,12 @@ export default async function Identity5PickPage({
         </div>
       </section>
 
-      {/* 06 — User Feedback */}
-      <section className="border-t border-line bg-bg-alt px-5 py-14 sm:px-9 sm:py-20">
-        <div className="mx-auto max-w-[1440px]">
-          <div className={EYEBROW}>05 / USER FEEDBACK &amp; IMPROVEMENT</div>
-          <Reveal>
-            <h2 className={`mt-4 ${H2}`}>{c.fb.h2}</h2>
-          </Reveal>
-
-          <div className="mt-8 flex flex-col gap-3 sm:mt-12">
-            {c.fb.cases.map((fc, i) => (
-              <Reveal
-                key={fc.title}
-                delay={i * 0.04}
-                className="rounded-xl border border-line-2 bg-paper px-5 py-5 sm:flex sm:gap-12"
-              >
-                <div className="flex-none sm:w-[210px]">
-                  <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{fc.tag}</div>
-                  <div className="mt-2 font-archivo text-[16px] font-bold tracking-[-.02em]">{fc.title}</div>
-                </div>
-                <div className="mt-4 grid flex-1 gap-x-10 gap-y-3 sm:mt-0 sm:grid-cols-2">
-                  <div>
-                    <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-muted-light">
-                      {fc.tag === "ISSUE" ? c.fb.problemLabel : c.fb.askLabel}
-                    </div>
-                    <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{fc.ask}</p>
-                  </div>
-                  <div>
-                    <div className="font-archivo text-[10px] font-semibold tracking-[.13em] text-accent">
-                      {c.fb.improvementLabel}
-                    </div>
-                    <p className="mt-1 text-[14px] leading-[1.5] text-ink-70">{fc.change}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 07 — UX Insight */}
-      <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
-        <div className={EYEBROW}>06 / UX INSIGHT</div>
-        <Reveal>
-          <h2 className={`mt-4 ${H2}`}>{c.ux.h2}</h2>
-        </Reveal>
-        <p className={LEAD}>{c.ux.lead}</p>
-
-        <div className="mt-9 flex flex-wrap gap-x-12 gap-y-6 border-t border-line-3 pt-7 sm:mt-12">
-          {c.ux.metrics.map((m) => (
-            <Stat
-              key={m.label}
-              metric={m}
-              numberClassName="font-archivo text-[clamp(24px,2.6vw,36px)] leading-[1] font-extrabold tracking-[-.04em]"
-              labelClassName="mt-2 text-[12px] text-muted"
-            />
-          ))}
-        </div>
-        <div className="mt-4 font-mono text-[12px] text-muted-light">{c.ux.gaLine}</div>
-
-        <Reveal delay={0.1}>
-          <Placeholder label={c.ux.shot} img={UX_SHOT} className="mt-8" />
-        </Reveal>
-
-        <div className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3">
-          {c.ux.signals.map((s) => (
-            <div key={s.label} className="rounded-xl border border-line-2 px-5 py-5">
-              <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-accent">{s.label}</div>
-              <p className="mt-2.5 text-[13.5px] leading-[1.55] text-ink-70">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 08 — Learning (dark) */}
+      {/* 06 — Learning (dark) */}
       <section id="learning" className="border-t border-line bg-ink px-5 py-14 text-ink-on-dark sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
           <div className="flex max-[860px]:flex-col gap-6 sm:gap-14 items-start">
             <Reveal className="flex-[1.2]">
-              <div className={EYEBROW_DARK}>07 / LEARNING</div>
+              <div className={EYEBROW_DARK}>06 / LEARNING</div>
               <h2 className={`mt-4 ${H2}`}>{c.learn.h2}</h2>
             </Reveal>
             <Reveal delay={0.1} className="max-w-[520px] flex-1 text-[15.5px] leading-[1.58] text-[rgba(244,241,234,.78)] text-pretty sm:text-[16.5px]">

@@ -11,7 +11,6 @@ import skinChecklist from "../../../../../public/identity5/skin-checklist.png";
 import duoMaker from "../../../../../public/identity5/duo-maker.png";
 import visualNovel from "../../../../../public/identity5/visual-novel.png";
 import skinReviewTool from "../../../../../public/identity5/skin-review-tool.png";
-import ga4Pages from "../../../../../public/identity5/ga4-pages.png";
 
 function shot(img: StaticImageData, mw?: number): Shot {
   return { src: img.src, w: img.width, h: img.height, mw };
@@ -19,7 +18,6 @@ function shot(img: StaticImageData, mw?: number): Shot {
 
 export const HERO_SHOT = shot(home, 760);
 export const QA_SHOT = shot(skinReviewTool, 500);
-export const UX_SHOT = shot(ga4Pages, 500);
 
 /** keyed by the feature item's name (same string in both locales) */
 export const ITEM_SHOTS: Record<string, Shot> = {
