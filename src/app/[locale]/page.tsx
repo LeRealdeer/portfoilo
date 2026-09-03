@@ -10,7 +10,7 @@ import { impactStrip } from "@/data/metrics";
 import { getProjects, type Project } from "@/data/projects";
 import { getExperience } from "@/data/experience";
 import { toLocale, type Locale } from "@/lib/i18n";
-import { SECTION_SHOTS } from "./shots";
+import { SECTION_SHOTS, CARD_SHOTS } from "./shots";
 
 export async function generateMetadata({
   params,
@@ -81,11 +81,13 @@ function ProjectSection({
 }) {
   const href = `/${locale}/work/${p.slug}`;
   const shots = SECTION_SHOTS[p.slug];
+  const hero = CARD_SHOTS[p.slug];
   const L = PAR_LABELS[locale];
+  const liveHost = p.liveUrl?.replace(/^https?:\/\//, "");
   return (
     <section className={`border-t border-line px-5 py-14 sm:px-9 sm:py-20 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
-        {/* Hero: eyebrow + keywords + title + one-line definition */}
+        {/* eyebrow + keywords */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{p.eyebrow}</div>
           <div className="flex flex-wrap gap-1.5">
@@ -99,42 +101,64 @@ function ProjectSection({
             ))}
           </div>
         </div>
-        <Reveal>
-          <Link href={href}>
-            <h3 className="mt-4 font-archivo text-[clamp(26px,4vw,52px)] leading-[1.05] font-extrabold tracking-[-.04em] transition-colors duration-300 hover:text-accent">
-              {p.title}
-            </h3>
-          </Link>
-        </Reveal>
-        <p className="mt-3 max-w-[820px] font-archivo text-[clamp(15px,1.8vw,19px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
-          {p.cardSubtitle}
-        </p>
-        <div className="mt-5 max-w-[760px] space-y-3">
-          {p.intro.map((para) => (
-            <p key={para} className="text-[14.5px] leading-[1.75] text-ink-70 sm:text-[15px]">
-              {para}
-            </p>
-          ))}
-        </div>
 
-        {/* My Role */}
-        <div className="mt-7 rounded-2xl border border-line-2 bg-bg px-6 py-6 sm:mt-9 sm:px-8">
-          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.role}</div>
-          <div className="mt-2 font-archivo text-[clamp(14.5px,1.6vw,17px)] font-bold tracking-[-.01em]">
-            {p.myRole.title}
+        {/* Hero: text (40%) + representative service screenshot (60%) */}
+        <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] lg:gap-14">
+          <div>
+            <Reveal>
+              <Link href={href}>
+                <h3 className="font-archivo text-[clamp(26px,4vw,52px)] leading-[1.05] font-extrabold tracking-[-.04em] transition-colors duration-300 hover:text-accent">
+                  {p.title}
+                </h3>
+              </Link>
+            </Reveal>
+            <p className="mt-3 font-archivo text-[clamp(15px,1.8vw,19px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
+              {p.cardSubtitle}
+            </p>
+            <div className="mt-4 space-y-3">
+              {p.intro.map((para) => (
+                <p key={para} className="text-[14px] leading-[1.7] text-ink-70">
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            {/* My Role */}
+            <div className="mt-6 rounded-2xl border border-line-2 bg-bg px-6 py-6">
+              <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.role}</div>
+              <div className="mt-2 font-archivo text-[clamp(14.5px,1.6vw,17px)] font-bold tracking-[-.01em]">
+                {p.myRole.title}
+              </div>
+              <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+                {p.myRole.items.map((it) => (
+                  <li key={it} className="flex gap-2 text-[13.5px] leading-[1.6] text-ink-70">
+                    <span className="flex-none font-bold text-accent">·</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
-            {p.myRole.items.map((it) => (
-              <li key={it} className="flex gap-2 text-[13.5px] leading-[1.6] text-ink-70">
-                <span className="flex-none font-bold text-accent">·</span>
-                <span>{it}</span>
-              </li>
-            ))}
-          </ul>
+
+          {/* representative screenshot — framed as operating evidence */}
+          <Reveal delay={0.1}>
+            <figure className="overflow-hidden rounded-2xl border-2 border-ink bg-bg">
+              <figcaption className="flex items-center justify-between gap-3 border-b border-line-2 px-4 py-2.5">
+                <span className="flex items-center gap-2 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-ink-70">
+                  <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden />
+                  {p.keywords[0]}
+                </span>
+                {liveHost && <span className="font-mono text-[11px] text-muted">{liveHost}</span>}
+              </figcaption>
+              <Link href={href} className="block">
+                <Placeholder variant="alt" label={p.title} img={hero} className="" />
+              </Link>
+            </figure>
+          </Reveal>
         </div>
 
         {/* Result numbers — shown before the prose */}
-        <div className="mt-7 rounded-2xl border-2 border-ink bg-bg px-6 py-7 sm:mt-9 sm:px-9 sm:py-9">
+        <div className="mt-9 rounded-2xl border-2 border-ink bg-bg px-6 py-7 sm:mt-12 sm:px-9 sm:py-9">
           <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{L.stats}</div>
           <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
             {p.resultStats.map((m, i) => (
@@ -172,32 +196,38 @@ function ProjectSection({
           </Reveal>
         </div>
 
-        {/* Operating cases — category + title + body + one evidence image */}
+        {/* Operating cases — parallel cards: evidence image on top, then label / title / body / metric */}
         <div className="mt-11 sm:mt-14">
           <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.cases}</div>
-          <div className="mt-6 flex flex-col gap-10 sm:gap-14">
+          <div
+            className={`mt-6 grid gap-3 sm:gap-4 ${
+              p.cases.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+            }`}
+          >
             {p.cases.map((c, i) => (
-              <div
+              <Reveal
                 key={c.title}
-                className="flex max-[860px]:flex-col items-start gap-6 sm:gap-12"
+                delay={i * 0.06}
+                className="flex flex-col overflow-hidden rounded-2xl border border-line-2 bg-bg"
               >
-                <Reveal className="w-full sm:basis-[55%] sm:flex-none">
-                  <div className="font-archivo text-[11px] font-semibold tracking-[.14em] text-muted-light">
+                {shots[i] && (
+                  <Placeholder variant="alt" label={c.title} img={shots[i]} className="h-[190px] border-0! rounded-none!" />
+                )}
+                <div className="flex flex-1 flex-col px-5 py-5">
+                  <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
                     {c.category}
                   </div>
-                  <h4 className="mt-2 font-archivo text-[clamp(17px,2vw,23px)] font-bold leading-[1.3] tracking-[-.025em]">
+                  <h4 className="mt-2 font-archivo text-[16.5px] font-bold leading-[1.3] tracking-[-.02em]">
                     {c.title}
                   </h4>
-                  <p className="mt-3 max-w-[520px] text-[14px] leading-[1.75] text-ink-70 sm:text-[15px]">
-                    {c.body}
-                  </p>
-                </Reveal>
-                {shots[i] && (
-                  <Reveal delay={0.1} className="w-full sm:basis-[45%] sm:flex-none">
-                    <Placeholder variant="alt" label={c.title} img={shots[i]} className="" />
-                  </Reveal>
-                )}
-              </div>
+                  <p className="mt-2.5 text-[13px] leading-[1.65] text-ink-70">{c.body}</p>
+                  <div className="mt-auto pt-4">
+                    <span className="inline-block rounded-md border border-accent/40 bg-accent/5 px-2.5 py-1 font-archivo text-[11px] font-bold tracking-[.03em] text-accent">
+                      {c.tag}
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

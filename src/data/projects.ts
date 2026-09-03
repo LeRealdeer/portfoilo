@@ -43,7 +43,7 @@ type ProjectContent = {
   /** Problem / Action / Result, compressed into three cards */
   par: { problem: string; action: string[]; result: string };
   /** operating-case cards: a category label, a short title, 2–3 lines, one screenshot */
-  cases: { category: string; title: string; body: string }[];
+  cases: { category: string; title: string; body: string; tag: string }[];
   /** highlight boxes — the moments worth calling out (a quote, a metric, an event) */
   callouts: { tag: string; title: string; lines: string[] }[];
   /** one closing line in the result banner */
@@ -143,16 +143,19 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "COMMUNITY INSIGHT",
           title: "반복되는 질문에서 서비스 기회 발견",
           body: "커뮤니티에서 반복되는 질문을 분석하고, 유저가 필요로 하는 정보를 서비스 기능으로 연결했습니다. 초기 단순 도구에서 8개 기능으로 확장했습니다.",
+          tag: "기능 8개로 확장",
         },
         {
           category: "DATA DRIVEN",
           title: "설문과 GA4 기반 개선",
           body: "사용자 만족도 조사와 행동 데이터를 기반으로 업데이트 우선순위를 결정했습니다. 양초 계산기 활성 1,977명, 성향 테스트 조회 15,624회 등 실제 사용 데이터로 기능 가치를 검증했습니다.",
+          tag: "만족도 4.84 / 5",
         },
         {
           category: "COMMUNITY EVENT",
           title: "유저 참여형 이벤트 운영",
           body: "네이버 공식 카페 이벤트를 직접 기획하고 참여 데이터를 확인하며 커뮤니티 활성화를 유도했습니다. 신규 기능·장애 발생 시 공지 작성과 댓글·쪽지 문의 대응도 직접 했습니다.",
+          tag: "댓글 143 · 조회 657",
         },
       ],
       callouts: [
@@ -212,16 +215,19 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "COMMUNITY INSIGHT",
           title: "Finding service opportunities in repeated questions",
           body: "I analyzed the questions the community kept asking and connected the information users needed to service features. It grew from a simple tool to eight features.",
+          tag: "Grew to 8 features",
         },
         {
           category: "DATA DRIVEN",
           title: "Improving from a survey and GA4",
           body: "I set update priorities from a satisfaction survey and behavior data. Real usage — 1,977 active users on the candle calculator, 15,624 views on the personality test — validated each feature's value.",
+          tag: "Rating 4.84 / 5",
         },
         {
           category: "COMMUNITY EVENT",
           title: "Running player-participation events",
           body: "I planned the official Naver café events myself, watched the participation data, and drove community activity. For new features and outages I wrote the announcements and answered comment and DM inquiries directly.",
+          tag: "143 comments · 657 views",
         },
       ],
       callouts: [
@@ -283,16 +289,19 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "FAN CULTURE",
           title: "팬덤 문화를 서비스로 연결",
           body: "캐릭터 소트·티어리스트·CP표 등 이미 존재하던 팬 문화를 한국어 웹 도구로 옮겨, 유저가 취향을 쉽게 표현하고 공유하도록 했습니다.",
+          tag: "소트 · 티어 · CP표",
         },
         {
           category: "USER FEEDBACK",
           title: "유저 의견으로 로드맵 결정",
           body: "공식카페 무기명 투표로 연애 시뮬레이터가 67.4% 득표해 개발이 확정됐고, CP표 관계 유형 수정 요청은 익일 반영 후 결과를 댓글로 공유했습니다.",
+          tag: "67.4% Vote · 익일 반영",
         },
         {
           category: "COMMUNITY CHANNEL",
           title: "X 채널로 초기 커뮤니티 확장",
           body: "서비스 초기 인지도를 높이기 위해 X 계정을 직접 개설해 기능 소개와 업데이트를 게시하며 신규 유입 채널을 운영했습니다.",
+          tag: "신규 유입 채널",
         },
       ],
       callouts: [
@@ -351,16 +360,19 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "FAN CULTURE",
           title: "Connecting fandom culture to a service",
           body: "I moved existing fan culture — character sort, tier lists, CP charts — into Korean web tools so users could express and share their taste easily.",
+          tag: "Sort · Tier · CP chart",
         },
         {
           category: "USER FEEDBACK",
           title: "Deciding the roadmap from user opinion",
           body: "An anonymous café poll gave the dating sim 67.4% and greenlit it, and a request to edit CP-chart relationship types shipped the next day with the result shared in the comments.",
+          tag: "67.4% Vote · next-day ship",
         },
         {
           category: "COMMUNITY CHANNEL",
           title: "Growing the early community on X",
           body: "To raise early awareness I opened an X account myself, posting feature intros and updates as a new acquisition channel.",
+          tag: "New acquisition channel",
         },
       ],
       callouts: [
@@ -419,11 +431,13 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "CREATOR RELATION",
           title: "창작자와 유저를 연결하는 콘텐츠 운영",
           body: "중국 Xiaohongshu 창작자에게 직접 연락해 사용 허락을 요청했습니다. 단순 수집이 아니라 창작자의 권리를 존중하는 운영 방식을 선택했습니다.",
+          tag: "창작자 3인 직접 협업",
         },
         {
           category: "OPERATING POLICY",
           title: "신뢰 기반 운영 정책 구축",
           body: "허락받은 콘텐츠만 업로드하고 원작자명·원문 링크를 표기했으며, 삭제 요청에 대응했습니다. 비상업 아카이브로서 개인정보처리방침·이용약관도 직접 작성했습니다.",
+          tag: "100% 허락 기반 운영",
         },
       ],
       callouts: [
@@ -478,11 +492,13 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           category: "CREATOR RELATION",
           title: "Content ops that connect creators and users",
           body: "I contacted Chinese Xiaohongshu creators directly to ask for permission. Rather than just collecting, I chose an operating approach that respects creators' rights.",
+          tag: "3 creators contacted",
         },
         {
           category: "OPERATING POLICY",
           title: "Building a trust-based operating policy",
           body: "Only permitted content is uploaded, with the creator name and original link shown, and takedown requests are handled. As a non-commercial archive I also wrote the privacy policy and terms of service myself.",
+          tag: "100% permission-based",
         },
       ],
       callouts: [
