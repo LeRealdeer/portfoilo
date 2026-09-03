@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
@@ -537,30 +536,6 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
-/**
- * A row of `cols` images shares one height, sized so the widest-aspect
- * (naturally shortest) image in the set is shown at its true height —
- * no crop for that one, minimal crop for the rest.
- */
-const ROW_GAP = 12; // gap-3
-const ROW_MAX_W = 1440; // section max-w
-const ROW_PAD = 72; // sm:px-9 on both sides
-const ROW_SM_VP = 640; // sm breakpoint
-const ROW_LG_VP = ROW_MAX_W + ROW_PAD;
-
-// dummy trigger for Placeholder's HAS_HEIGHT check — the real height comes from rowHeightStyle below
-const ROW_H_CLASS = "h-56";
-
-function rowHeightStyle(shots: Shot[], cols: number): CSSProperties {
-  const maxAspect = Math.max(...shots.map((s) => s.w / s.h));
-  const colWLarge = (ROW_MAX_W - (cols - 1) * ROW_GAP) / cols;
-  const colWSmall = (ROW_SM_VP - ROW_PAD - (cols - 1) * ROW_GAP) / cols;
-  const hLarge = colWLarge / maxAspect;
-  const hSmall = colWSmall / maxAspect;
-  const vw = (hLarge / ROW_LG_VP) * 100;
-  return { height: `clamp(${Math.round(hSmall)}px, ${vw.toFixed(1)}vw, ${Math.round(hLarge)}px)` };
-}
-
 function FeatureBlock({
   f,
   alt,
@@ -616,7 +591,7 @@ function FeatureBlock({
               variant={alt ? "alt" : "light"}
               label={f.shot}
               img={shot}
-              className="h-[clamp(260px,34vw,460px)]"
+              className=""
             />
           </div>
         </div>
@@ -635,8 +610,7 @@ function FeatureBlock({
                   variant={alt ? "alt" : "light"}
                   label={galleryCaptions?.[i] ?? ""}
                   img={g}
-                  className={ROW_H_CLASS}
-                  style={rowHeightStyle(gallery, 3)}
+                  className=""
                 />
               ))}
             </div>
@@ -676,11 +650,6 @@ export default async function SkyPlannerPage({
   const locale = toLocale((await params).locale);
   const project = getProject("sky-planner", locale);
   const c = COPY[locale];
-
-  const useGalleryH = rowHeightStyle([SHOTS.use1, SHOTS.use2, SHOTS.use3], 3);
-  const growthGalleryH = rowHeightStyle([SHOTS.growth1, SHOTS.growth2, SHOTS.growth3], 3);
-  const eventsGalleryH = rowHeightStyle([SHOTS.events1, SHOTS.events2], 2);
-  const o2oGalleryH = rowHeightStyle([SHOTS.o2o1, SHOTS.o2o2], 2);
 
   return (
     <div className="min-h-screen">
@@ -777,7 +746,7 @@ export default async function SkyPlannerPage({
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {[SHOTS.use1, SHOTS.use2, SHOTS.use3].map((s, i) => (
-            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className={ROW_H_CLASS} style={useGalleryH} />
+            <Placeholder key={s.src} variant="alt" label={c.ctx.uses[i]} img={s} className="" />
           ))}
         </div>
       </section>
@@ -812,7 +781,7 @@ export default async function SkyPlannerPage({
 
             {/* right — image */}
             <Reveal delay={0.1} className="w-full flex-1">
-              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="h-[clamp(260px,34vw,460px)]" />
+              <Placeholder variant="alt" label={c.evo.shot} img={SHOTS.evo} className="" />
             </Reveal>
           </div>
         </div>
@@ -865,7 +834,7 @@ export default async function SkyPlannerPage({
 
             {/* right — image */}
             <Reveal delay={0.1} className="w-full flex-1">
-              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="h-[clamp(240px,30vw,380px)]" />
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
             </Reveal>
           </div>
         </div>
@@ -956,7 +925,7 @@ export default async function SkyPlannerPage({
 
           {/* right — image */}
           <Reveal delay={0.1} className="w-full flex-1">
-            <Placeholder label={c.fb.shot} img={SHOTS.fb} className="h-[clamp(240px,32vw,420px)]" />
+            <Placeholder label={c.fb.shot} img={SHOTS.fb} className="" />
           </Reveal>
         </div>
       </section>
@@ -980,9 +949,9 @@ export default async function SkyPlannerPage({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <Placeholder variant="alt" label={c.growth.shot1} img={SHOTS.growth1} className={ROW_H_CLASS} style={growthGalleryH} />
-            <Placeholder variant="alt" label={c.growth.shot2} img={SHOTS.growth2} className={ROW_H_CLASS} style={growthGalleryH} />
-            <Placeholder variant="alt" label={c.growth.shot3} img={SHOTS.growth3} className={ROW_H_CLASS} style={growthGalleryH} />
+            <Placeholder variant="alt" label={c.growth.shot1} img={SHOTS.growth1} className="" />
+            <Placeholder variant="alt" label={c.growth.shot2} img={SHOTS.growth2} className="" />
+            <Placeholder variant="alt" label={c.growth.shot3} img={SHOTS.growth3} className="" />
           </div>
         </div>
       </section>
@@ -1005,8 +974,8 @@ export default async function SkyPlannerPage({
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Placeholder label={c.events.shot1} img={SHOTS.events1} className={ROW_H_CLASS} style={eventsGalleryH} />
-          <Placeholder label={c.events.shot2} img={SHOTS.events2} className={ROW_H_CLASS} style={eventsGalleryH} />
+          <Placeholder label={c.events.shot1} img={SHOTS.events1} className="" />
+          <Placeholder label={c.events.shot2} img={SHOTS.events2} className="" />
         </div>
       </section>
 
@@ -1039,8 +1008,8 @@ export default async function SkyPlannerPage({
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className={ROW_H_CLASS} style={o2oGalleryH} />
-            <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className={ROW_H_CLASS} style={o2oGalleryH} />
+            <Placeholder variant="alt" label={c.o2o.shot1} img={SHOTS.o2o1} className="" />
+            <Placeholder variant="alt" label={c.o2o.shot2} img={SHOTS.o2o2} className="" />
           </div>
         </div>
       </section>
@@ -1068,7 +1037,7 @@ export default async function SkyPlannerPage({
 
           {/* right — image */}
           <Reveal delay={0.1} className="w-full flex-1">
-            <Placeholder label={c.learn.shot} img={SHOTS.learn} className="h-[clamp(240px,30vw,380px)]" />
+            <Placeholder label={c.learn.shot} img={SHOTS.learn} className="" />
           </Reveal>
         </div>
       </section>

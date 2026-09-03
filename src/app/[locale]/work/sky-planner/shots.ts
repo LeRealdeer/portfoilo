@@ -31,32 +31,32 @@ function shot(img: StaticImageData, mw?: number): Shot {
   return { src: img.src, w: img.width, h: img.height, mw };
 }
 
-export const HERO_SHOT = shot(skyHome, 1180);
+export const HERO_SHOT = shot(skyHome, 760);
 
 export const SHOTS = {
   use1: shot(heightExample1, 360),
   use2: shot(heightExample2, 360),
   use3: shot(heightExample3, 360),
-  evo: shot(skyHero, 960),
-  ops: shot(tsArchiveDetail, 760),
-  data: shot(gaUsersNov, 980),
-  fb: shot(survey2, 980),
+  evo: shot(skyHero, 480),
+  ops: shot(tsArchiveDetail, 480),
+  data: shot(gaUsersNov, 500),
+  fb: shot(survey2, 500),
   growth1: shot(cafeBestTip, 380),
   growth2: shot(openchat, 380),
   growth3: shot(overseasAdminPermission, 380),
-  events1: shot(cafeEventFlirting, 520),
-  events2: shot(cafeEventTreasure, 520),
-  o2o1: shot(offlineBooth, 520),
+  events1: shot(cafeEventFlirting, 460),
+  events2: shot(cafeEventTreasure, 460),
+  o2o1: shot(offlineBooth, 460),
   o2o2: shot(offlineFlightResult, 360),
-  learn: shot(sheetMusicWorkspace, 560),
+  learn: shot(sheetMusicWorkspace, 460),
 } satisfies Record<string, Shot>;
 
 export const FEATURE_SHOTS: Shot[] = [
-  shot(heightChecker, 720),
-  shot(candleHowto, 480),
-  shot(tsArchive, 640),
-  shot(personalityTest, 620),
-  shot(seasonEncyclopedia, 700),
+  shot(heightChecker, 460),
+  shot(candleHowto, 460),
+  shot(tsArchive, 460),
+  shot(personalityTest, 460),
+  shot(seasonEncyclopedia, 460),
 ];
 
 /** personality-test viral spread — shown as an extra gallery under FEATURE 04 */

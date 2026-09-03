@@ -487,8 +487,8 @@ export default async function HeartopiaArchivePage({
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Placeholder label={c.solution.shot} img={SHOTS.solution} className="h-[clamp(240px,32vw,360px)]" />
-          <Placeholder label={c.solution.shot2} img={SHOTS.solutionTerms} className="h-[clamp(240px,32vw,360px)]" />
+          <Placeholder label={c.solution.shot} img={SHOTS.solution} className="" />
+          <Placeholder label={c.solution.shot2} img={SHOTS.solutionTerms} className="" />
         </div>
       </section>
 
@@ -630,7 +630,7 @@ export default async function HeartopiaArchivePage({
             <Placeholder
               label={c.editor.shotAfter}
               img={SHOTS.editorAfter}
-              className="h-[clamp(240px,32vw,400px)]"
+              className=""
             />
           </Reveal>
         </div>
@@ -664,7 +664,7 @@ export default async function HeartopiaArchivePage({
 
             {/* right — image */}
             <Reveal delay={0.1} className="w-full flex-1">
-              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="h-[clamp(240px,30vw,380px)]" />
+              <Placeholder variant="alt" label={c.ops.shot} img={SHOTS.ops} className="" />
             </Reveal>
           </div>
         </div>

@@ -14,14 +14,14 @@ function shot(img: StaticImageData, mw?: number): Shot {
   return { src: img.src, w: img.width, h: img.height, mw };
 }
 
-export const HERO_SHOT = shot(home, 1180);
+export const HERO_SHOT = shot(home, 760);
 
 export const SHOTS = {
-  solution: shot(archiveGrid, 620),
-  solutionTerms: shot(termsOfService, 620),
+  solution: shot(archiveGrid, 480),
+  solutionTerms: shot(termsOfService, 480),
   rightsAttribution: shot(cafeAttribution, 480),
-  featOutfit: shot(outfitsPopular, 820),
-  featSearch: shot(detail, 900),
-  editorAfter: shot(photoEditor, 640),
-  ops: shot(cafePosts, 720),
+  featOutfit: shot(outfitsPopular, 480),
+  featSearch: shot(detail, 480),
+  editorAfter: shot(photoEditor, 480),
+  ops: shot(cafePosts, 480),
 } satisfies Record<string, Shot>;
