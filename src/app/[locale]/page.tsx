@@ -5,12 +5,12 @@ import { Footer } from "@/components/Footer";
 import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
-import { getProfile } from "@/data/profile";
+import { getProfile, getCapabilities } from "@/data/profile";
 import { impactStrip } from "@/data/metrics";
 import { getProjects, type Project } from "@/data/projects";
 import { getExperience } from "@/data/experience";
 import { toLocale, type Locale } from "@/lib/i18n";
-import { CARD_SHOTS } from "./shots";
+import { SECTION_SHOTS } from "./shots";
 
 export async function generateMetadata({
   params,
@@ -26,26 +26,24 @@ const COPY: Record<Locale, Record<string, string>> = {
   ko: {
     workSub: "세 게임 라이브 서비스에서\n데이터·이벤트·유저 소통을 직접 담당했습니다.",
     resultLabel: "결과",
-    projectMore: "이 프로젝트 자세히 보기",
+    projectMore: "프로젝트 더 보기",
     projectMoreSub: "기술스택 · 전체 기능 · GA4 세부 수치",
+    howH2: "How I Work",
+    howSub: "각 항목 아래는 위 프로젝트에서 실제로 한 일입니다.",
     expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
   },
   en: {
     workSub: "Across three live game services I owned\nthe data, the events, and player communication.",
     resultLabel: "RESULT",
-    projectMore: "See this project in detail",
+    projectMore: "See the full project",
     projectMoreSub: "tech stack · all features · full GA4 numbers",
+    howH2: "How I Work",
+    howSub: "Under each is what I actually did on the projects above.",
     expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
   },
 };
 
-const SECTION_SHOT = {
-  "sky-planner": CARD_SHOTS.sky,
-  "identity5-pick": CARD_SHOTS.identity5.main,
-  "heartopia-archive": CARD_SHOTS.heartopia.main,
-} as const;
-
-/** One project as a full main-page section: screenshot, the community case, result, CTA. */
+/** One project as a full main-page section: identity, three CM subsections with a shot each, result, CTA. */
 function ProjectSection({
   p,
   locale,
@@ -62,6 +60,7 @@ function ProjectSection({
   moreSub: string;
 }) {
   const href = `/${locale}/work/${p.slug}`;
+  const shots = SECTION_SHOTS[p.slug];
   return (
     <section className={`border-t border-line px-5 py-14 sm:px-9 sm:py-20 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
@@ -77,38 +76,38 @@ function ProjectSection({
           {p.cardSubtitle}
         </p>
 
-        <Reveal delay={0.1} className="mt-7 sm:mt-9">
-          <Placeholder
-            href={href}
-            label={p.screenshotLabel}
-            img={SECTION_SHOT[p.slug]}
-            className="h-[clamp(220px,34vw,440px)]"
-          />
-        </Reveal>
-
-        <div className="mt-9 sm:mt-12">
+        <div className="mt-10 flex flex-col gap-10 sm:mt-14 sm:gap-16">
           {p.sections.map((s, i) => (
-            <Reveal
+            <div
               key={s.heading}
-              delay={i * 0.05}
-              className="flex max-[820px]:flex-col gap-3 border-t border-line-2 py-6 sm:gap-12 sm:py-7"
+              className={`flex max-[860px]:flex-col gap-6 sm:gap-14 items-start ${
+                i % 2 === 1 ? "sm:flex-row-reverse" : ""
+              }`}
             >
-              <div className="flex-none sm:w-[240px]">
+              <Reveal className="w-full flex-1">
                 <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">
                   {`0${i + 1}`}
                 </div>
-                <h4 className="mt-1.5 font-archivo text-[clamp(15px,1.7vw,18px)] font-bold leading-[1.3] tracking-[-.02em]">
+                <h4 className="mt-2 font-archivo text-[clamp(17px,2vw,23px)] font-bold leading-[1.3] tracking-[-.025em]">
                   {s.heading}
                 </h4>
-              </div>
-              <p className="max-w-[760px] flex-1 text-[14px] leading-[1.7] text-ink-70 sm:text-[14.5px]">
-                {s.body}
-              </p>
-            </Reveal>
+                <p className="mt-3 max-w-[560px] text-[14px] leading-[1.75] text-ink-70 sm:text-[15px]">
+                  {s.body}
+                </p>
+              </Reveal>
+              <Reveal delay={0.1} className="w-full flex-1">
+                <Placeholder
+                  variant="alt"
+                  label={s.heading}
+                  img={shots[i]}
+                  className="h-[clamp(200px,26vw,360px)]"
+                />
+              </Reveal>
+            </div>
           ))}
         </div>
 
-        <div className="mt-4 border-t-2 border-ink pt-6">
+        <div className="mt-10 border-t-2 border-ink pt-6 sm:mt-14">
           <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-muted-light">
             {resultLabel}
           </div>
@@ -152,6 +151,7 @@ export default async function HomePage({
   const locale = toLocale(rawLocale);
   const t = COPY[locale];
   const profile = getProfile(locale);
+  const capabilities = getCapabilities(locale);
   const experience = getExperience(locale);
   const projects = getProjects(locale);
 
@@ -234,6 +234,39 @@ export default async function HomePage({
           />
         ))}
       </div>
+
+      {/* How I Work */}
+      <section id="how" className="border-t border-line bg-bg-alt px-5 py-16 sm:px-9 sm:py-24">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="flex max-[860px]:flex-col items-end max-[860px]:items-start gap-6 sm:gap-10">
+            <Reveal className="flex-1">
+              <h2 className="font-archivo text-[clamp(27px,4.4vw,60px)] leading-[1.14] font-extrabold tracking-[-.04em]">
+                {t.howH2}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1} className="mb-1.5 max-w-[300px] text-[15px] leading-[1.7] text-muted">
+              {t.howSub}
+            </Reveal>
+          </div>
+
+          <div className="mt-10 grid grid-cols-3 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14">
+            {capabilities.map((c, i) => (
+              <Reveal key={c.number} delay={(i % 3) * 0.05} className="bg-bg-alt px-6 pt-7 pb-8">
+                <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{c.number}</div>
+                <h3 className="mt-3.5 font-archivo text-[19px] font-bold leading-[1.15] tracking-[-.025em]">
+                  {c.titleEn}
+                </h3>
+                <p className="mt-2 text-[13px] leading-[1.55] text-muted">{c.lineEn}</p>
+                <p className="mt-3 text-[13.5px] leading-[1.5] text-ink-70">{c.body}</p>
+                <p className="mt-3.5 flex gap-2 border-t border-line-3 pt-3.5 text-[12.5px] leading-[1.55] text-ink-50">
+                  <span className="flex-none font-bold text-accent">→</span>
+                  <span>{c.evidence}</span>
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Experience */}
       <section id="experience" className="border-t border-line px-5 py-16 sm:px-9 sm:py-24">
