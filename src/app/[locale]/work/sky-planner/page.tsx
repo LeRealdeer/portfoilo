@@ -249,7 +249,7 @@ const COPY: Record<Locale, Copy> = {
         "시즌 대백과(영혼 백과) 신설",
       ],
       notReflected: [
-        { req: "시즌 유료 아이템 · 영혼 위치 데이터", why: "매 시즌 수작업 등록 부담이 큼" },
+        { req: "시즌 유료 아이템 · 영혼 위치 데이터", why: "구현 공수가 크고 매 시즌 작업 범위가 두 배로 늘어남" },
         { req: "보유 옷 룰렛 랜덤 뽑기 기능", why: "저장 구조 대비 구현 공수가 큼" },
       ],
       shot: "Google 만족도 조사 결과 · 개선 전후",
@@ -469,7 +469,7 @@ const COPY: Record<Locale, Copy> = {
         "Built the Season Encyclopedia",
       ],
       notReflected: [
-        { req: "Paid season items · spirit-location data", why: "Heavy manual entry every season" },
+        { req: "Paid season items · spirit-location data", why: "High build cost, and the workload doubles every season" },
         { req: "A roulette to randomly pick from owned outfits", why: "Build cost too high for the storage structure" },
       ],
       shot: "Google survey results · before / after",
