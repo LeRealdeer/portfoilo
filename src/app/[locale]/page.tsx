@@ -60,7 +60,12 @@ const HIGHLIGHTS: Record<Locale, { title: string; flow: string[] }[]> = {
   ],
 };
 
-/** One project as a full main-page section: identity, three CM subsections with a shot each, result, CTA. */
+const PAR_LABELS: Record<Locale, { problem: string; action: string; result: string; role: string; cases: string; stats: string }> = {
+  ko: { problem: "PROBLEM", action: "ACTION", result: "RESULT", role: "MY ROLE", cases: "운영 사례", stats: "성과" },
+  en: { problem: "PROBLEM", action: "ACTION", result: "RESULT", role: "MY ROLE", cases: "OPERATING CASES", stats: "RESULTS" },
+};
+
+/** One project as a full main-page section: identity → role → result numbers → P/A/R → operating cases → callouts → banner. */
 function ProjectSection({
   p,
   locale,
@@ -76,10 +81,24 @@ function ProjectSection({
 }) {
   const href = `/${locale}/work/${p.slug}`;
   const shots = SECTION_SHOTS[p.slug];
+  const L = PAR_LABELS[locale];
   return (
     <section className={`border-t border-line px-5 py-14 sm:px-9 sm:py-20 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
-        <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{p.eyebrow}</div>
+        {/* Hero: eyebrow + keywords + title + one-line definition */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{p.eyebrow}</div>
+          <div className="flex flex-wrap gap-1.5">
+            {p.keywords.map((k) => (
+              <span
+                key={k}
+                className="rounded-md border border-line-2 bg-bg px-2.5 py-1 font-archivo text-[10.5px] font-bold tracking-[.1em] text-ink-70"
+              >
+                {k}
+              </span>
+            ))}
+          </div>
+        </div>
         <Reveal>
           <Link href={href}>
             <h3 className="mt-4 font-archivo text-[clamp(26px,4vw,52px)] leading-[1.05] font-extrabold tracking-[-.04em] transition-colors duration-300 hover:text-accent">
@@ -100,7 +119,7 @@ function ProjectSection({
 
         {/* My Role */}
         <div className="mt-7 rounded-2xl border border-line-2 bg-bg px-6 py-6 sm:mt-9 sm:px-8">
-          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">MY ROLE</div>
+          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.role}</div>
           <div className="mt-2 font-archivo text-[clamp(14.5px,1.6vw,17px)] font-bold tracking-[-.01em]">
             {p.myRole.title}
           </div>
@@ -114,52 +133,100 @@ function ProjectSection({
           </ul>
         </div>
 
-        <div className="mt-11 flex flex-col gap-10 sm:mt-14 sm:gap-16">
-          {p.sections.map((s, i) => (
-            <div
-              key={s.heading}
-              className={`flex max-[860px]:flex-col gap-6 sm:gap-14 items-start ${
-                i % 2 === 1 ? "sm:flex-row-reverse" : ""
-              }`}
-            >
-              <Reveal className="w-full flex-1">
-                <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">
-                  {`0${i + 1}`}
-                </div>
-                <h4 className="mt-2 font-archivo text-[clamp(17px,2vw,23px)] font-bold leading-[1.3] tracking-[-.025em]">
-                  {s.heading}
-                </h4>
-                <p className="mt-3 max-w-[560px] text-[14px] leading-[1.75] text-ink-70 sm:text-[15px]">
-                  {s.body}
-                </p>
-                {s.note && (
-                  <div className="mt-4 inline-block rounded-xl border border-line-2 px-4 py-3.5">
-                    <div className="font-archivo text-[10px] font-semibold tracking-[.14em] text-muted-light">
-                      {s.note.label}
-                    </div>
-                    <ul className="mt-2 flex flex-col gap-1 text-[13px] leading-[1.5] text-ink-70">
-                      {s.note.lines.map((l) => (
-                        <li key={l}>· {l}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+        {/* Result numbers — shown before the prose */}
+        <div className="mt-7 rounded-2xl border-2 border-ink bg-bg px-6 py-7 sm:mt-9 sm:px-9 sm:py-9">
+          <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{L.stats}</div>
+          <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
+            {p.resultStats.map((m, i) => (
+              <Reveal key={m.label} delay={i * 0.06} className={i > 0 ? "sm:border-l sm:border-line-2 sm:pl-8" : ""}>
+                <Stat
+                  metric={m}
+                  numberClassName="font-archivo text-[clamp(30px,4.6vw,52px)] leading-[1] font-extrabold tracking-[-.045em]"
+                  labelClassName="mt-2.5 font-archivo text-[11px] font-semibold tracking-[.08em] text-muted"
+                />
               </Reveal>
-              {shots[i] && (
-                <Reveal delay={0.1} className="w-full flex-1">
-                  <Placeholder variant="alt" label={s.heading} img={shots[i]} className="" />
-                </Reveal>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
+        {/* Problem / Action / Result */}
+        <div className="mt-7 grid gap-3 sm:mt-9 sm:grid-cols-3">
+          <Reveal className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
+            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.problem}</div>
+            <p className="mt-3 text-[13.5px] leading-[1.7] text-ink-70">{p.par.problem}</p>
+          </Reveal>
+          <Reveal delay={0.06} className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
+            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.action}</div>
+            <ul className="mt-3 flex flex-col gap-1.5 text-[13.5px] leading-[1.6] text-ink-70">
+              {p.par.action.map((a) => (
+                <li key={a} className="flex gap-2">
+                  <span className="flex-none font-bold text-accent">·</span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.12} className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
+            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.result}</div>
+            <p className="mt-3 text-[13.5px] leading-[1.7] text-ink-70">{p.par.result}</p>
+          </Reveal>
+        </div>
+
+        {/* Operating cases — category + title + body + one evidence image */}
+        <div className="mt-11 sm:mt-14">
+          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.cases}</div>
+          <div className="mt-6 flex flex-col gap-10 sm:gap-14">
+            {p.cases.map((c, i) => (
+              <div
+                key={c.title}
+                className="flex max-[860px]:flex-col items-start gap-6 sm:gap-12"
+              >
+                <Reveal className="w-full sm:basis-[55%] sm:flex-none">
+                  <div className="font-archivo text-[11px] font-semibold tracking-[.14em] text-muted-light">
+                    {c.category}
+                  </div>
+                  <h4 className="mt-2 font-archivo text-[clamp(17px,2vw,23px)] font-bold leading-[1.3] tracking-[-.025em]">
+                    {c.title}
+                  </h4>
+                  <p className="mt-3 max-w-[520px] text-[14px] leading-[1.75] text-ink-70 sm:text-[15px]">
+                    {c.body}
+                  </p>
+                </Reveal>
+                {shots[i] && (
+                  <Reveal delay={0.1} className="w-full sm:basis-[45%] sm:flex-none">
+                    <Placeholder variant="alt" label={c.title} img={shots[i]} className="" />
+                  </Reveal>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Callouts — highlighted moments */}
+        {p.callouts.length > 0 && (
+          <div className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2">
+            {p.callouts.map((co) => (
+              <Reveal key={co.title} className="rounded-2xl border border-dashed border-line-4 bg-bg-alt px-5 py-5">
+                <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">{co.tag}</div>
+                <div className="mt-2 font-archivo text-[14.5px] font-bold leading-[1.4] tracking-[-.01em]">
+                  {co.title}
+                </div>
+                <ul className="mt-2 flex flex-col gap-1 text-[13px] leading-[1.55] text-ink-70">
+                  {co.lines.map((l) => (
+                    <li key={l}>{l}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+        )}
+
+        {/* Closing banner */}
         <div className="mt-12 rounded-2xl border-2 border-ink px-6 py-8 sm:mt-16 sm:px-9">
           <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{resultLabel}</div>
-          <p className="mt-2.5 font-archivo text-[clamp(18px,2.6vw,32px)] font-extrabold leading-[1.2] tracking-[-.03em] text-balance">
-            {p.cardResult}
+          <p className="mt-3 max-w-[680px] font-archivo text-[clamp(16px,2.2vw,24px)] font-extrabold leading-[1.35] tracking-[-.025em] text-balance">
+            {p.resultNote}
           </p>
-          <p className="mt-3.5 max-w-[640px] text-[14px] leading-[1.7] text-ink-70 sm:text-[15px]">{p.resultNote}</p>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 sm:mt-10">
