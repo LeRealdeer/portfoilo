@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder, type Shot } from "@/components/Placeholder";
+import { CaseSummary } from "@/components/CaseSummary";
 import { HERO_SHOT, SHOTS, FEATURE_SHOTS, PT_VIRAL } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
@@ -75,6 +76,7 @@ type Feature = {
 
 type Copy = {
   heroSubtitle: string;
+  summary: { problem: string; action: string; result: string };
   ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; uses: string[] };
   evo: { h2: string; lead: string; count: string; list: { tag: string; name: string; line: string }[]; shot: string };
   feat: { h2: string; lead: string; items: Feature[]; ptViralLabel: string; ptViral: string[] };
@@ -91,6 +93,13 @@ type Copy = {
 const COPY: Record<Locale, Copy> = {
   ko: {
     heroSubtitle: "게임 플레이 과정에서 반복되던 관리·계산·정보 탐색을 하나로 정리한 게임 유틸리티 서비스",
+    summary: {
+      problem: "Sky 플레이어들이 반복적으로 같은 질문·불편을 커뮤니티에 올렸습니다.",
+      action:
+        "8개 기능으로 직접 해결했습니다. GA4와 자체 Google 설문조사로 VOC를 정식 수집해 우선순위를 검증하고 기능 개선·추가에 반영했습니다. 신기능 출시·서버 점검 시 커뮤니티에 직접 공지를 작성하고, 댓글·쪽지로 들어오는 개별 문의에 대응했으며, 월간 커뮤니티 이벤트(이달의 모의고사)를 운영했습니다.",
+      result:
+        "누적 1.5만 명, 최근 30일 재방문율 49%. AWS 서버 장애도 인프라 이전으로 직접 복구했습니다.",
+    },
     ctx: {
       h2: "“제 키가 몇 단인가요?” 반복되는 질문에서 첫 기능이 나왔습니다.",
       lead:
@@ -308,6 +317,13 @@ const COPY: Record<Locale, Copy> = {
   },
   en: {
     heroSubtitle: "A game utility that folds the repeat management, calculation, and lookup of Sky play into one place.",
+    summary: {
+      problem: "Sky players kept posting the same questions and friction to the community.",
+      action:
+        "I solved them directly with eight features. I collected VOC formally through GA4 and my own Google survey, used it to validate priorities, and fed it into feature fixes and additions. I wrote the community announcements for new features and server maintenance myself, answered individual questions coming in by comment and DM, and ran a monthly community event (Mock Exam of the Month).",
+      result:
+        "15K cumulative users, 49% returning in the last 30 days. I also recovered the AWS outage myself by migrating the infrastructure.",
+    },
     ctx: {
       h2: "“How tall is my character?” — the first feature came from one repeated question.",
       lead:
@@ -733,6 +749,14 @@ export default async function SkyPlannerPage({
           </div>
         </div>
       </section>
+
+      <CaseSummary
+        items={[
+          { k: "PROBLEM", v: c.summary.problem },
+          { k: "ACTION", v: c.summary.action },
+          { k: "RESULT", v: c.summary.result },
+        ]}
+      />
 
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">

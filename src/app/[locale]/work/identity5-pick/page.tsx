@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
+import { CaseSummary } from "@/components/CaseSummary";
 import { HERO_SHOT, QA_SHOT, UX_SHOT, ITEM_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
@@ -50,6 +51,12 @@ const techStack = ["Next.js", "TypeScript", "next-intl", "MediaWiki API", "Cloud
 const COPY = {
   ko: {
     heroSubtitle: "제5인격 팬들이 이미 하고 있던 취향 공유 행동을 더 쉽고 재미있는 경험으로 확장했습니다",
+    summary: {
+      problem: "제5인격 팬덤엔 취향을 표현하는 문화가 이미 있었지만, 이를 도와줄 한국어 도구가 없었습니다.",
+      action:
+        "8개 도구를 만들고 스킨 842종 데이터를 검수했습니다. 신기능마다 공식카페에 사용법 공지를 작성하고, 댓글·쪽지로 들어오는 개별 문의에 대응했습니다. 커뮤니티 무기명 투표로 다음 기능 우선순위를 정했고(연애 시뮬레이터 67.4% 득표로 개발 확정), 유저 댓글 요청을 익일 기능으로 반영했습니다. 초기 인지도 확보를 위해 X 계정을 직접 개설해 홍보 채널을 운영했습니다.",
+      result: "출시 6주 만에 활성 사용자 3,400명, 평균 참여 시간 6분+.",
+    },
     problem: {
       h2: "팬덤은 이미 취향을 표현하고 있었습니다.",
       lead:
@@ -248,6 +255,12 @@ const COPY = {
   },
   en: {
     heroSubtitle: "I took the taste-sharing that Identity V fans were already doing and made it easier and more fun.",
+    summary: {
+      problem: "The Identity V fandom already had a culture of expressing taste, but no Korean tools to support it.",
+      action:
+        "I built eight tools and reviewed data for 842 skins. For each new feature I wrote a how-to notice on the official café and answered individual questions by comment and DM. I set the next feature's priority by an anonymous community poll (the dating sim won with 67.4% and was greenlit) and turned a user's comment request into a shipped feature the next day. To build early awareness I opened an X account and ran it as a promotion channel.",
+      result: "3,400 active users within six weeks of launch, 6+ minutes average engagement.",
+    },
     problem: {
       h2: "The fandom was already expressing its taste.",
       lead:
@@ -544,6 +557,14 @@ export default async function Identity5PickPage({
           </div>
         </div>
       </section>
+
+      <CaseSummary
+        items={[
+          { k: "PROBLEM", v: c.summary.problem },
+          { k: "ACTION", v: c.summary.action },
+          { k: "RESULT", v: c.summary.result },
+        ]}
+      />
 
       {/* 01 — User Problem */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">

@@ -41,7 +41,7 @@ const base: Record<ProjectSlug, ProjectBase> = {
     index: "01",
     eyebrow: "01 / LIVE SERVICE",
     title: "Sky Planner",
-    tags: ["Player Management", "Game Utility", "Repeat Experience"],
+    tags: ["VOC-Driven Improvement", "Community Events", "Live Incident Response"],
     cardMetrics: [
       { value: 1.7, decimals: 1, suffix: "K", accentSuffix: "+", label: "MAU" },
       { value: 340, suffix: "K", accentSuffix: "+", label: "PAGE VIEWS" },
@@ -57,7 +57,7 @@ const base: Record<ProjectSlug, ProjectBase> = {
     index: "02",
     eyebrow: "02 / COMMUNITY CREATION TOOL",
     title: "Identity5 Pick",
-    tags: ["Fan Expression", "Community Tool", "User Generated Content"],
+    tags: ["User Feedback Response", "Data-Driven Prioritization", "Fandom Community"],
     cardMetrics: [
       { value: 3.4, decimals: 1, suffix: "K", accentSuffix: "+", label: "ACTIVE USERS" },
       { value: 18.4, decimals: 1, suffix: "K", accentSuffix: "+", label: "VIEWS" },
@@ -72,7 +72,7 @@ const base: Record<ProjectSlug, ProjectBase> = {
     index: "03",
     eyebrow: "03 / GLOBAL COMMUNITY",
     title: "Heartopia Archive",
-    tags: ["UGC Archive", "Creator Relationship", "Content Operation"],
+    tags: ["Creator Communication", "Cross-border Coordination", "Permission-Based Operation"],
     cardMetrics: [
       { value: 119, accentSuffix: "+", label: "ARCHIVED CONTENTS" },
       { value: 0, raw: "Permission-based", label: "CREATOR CONTENT" },

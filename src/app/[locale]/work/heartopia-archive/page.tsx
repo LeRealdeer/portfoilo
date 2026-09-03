@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
+import { CaseSummary } from "@/components/CaseSummary";
 import { HERO_SHOT, SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
@@ -59,6 +60,12 @@ const COPY = {
   ko: {
     heroSubtitle:
       "여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브",
+    summary: {
+      problem: "두근두근타운 UGC가 여러 플랫폼에 흩어져 있었고, 창작자 권리 문제도 있었습니다.",
+      action:
+        "중국 창작자 3인에게 직접 연락해 사용 허락을 확보하고, 원작자명·원문 링크 고정 표기 등 신뢰 기반 운영 정책을 수립했습니다.",
+      result: "비상업·허락 기반 UGC 아카이브를 운영하며 크로스보더 커뮤니케이션 경험을 확보했습니다.",
+    },
     discoveryFlow: ["커뮤니티 검색", "해외 플랫폼 이동 · 회원가입", "번역", "이미지 저장", "다시 찾기"],
     ctx: {
       h2: "좋은 콘텐츠는 많았지만, 다시 찾고 비교하기 어려웠습니다.",
@@ -178,6 +185,12 @@ const COPY = {
   en: {
     heroSubtitle:
       "A global fan archive that connects user-made content scattered across platforms — built on creator permission and a source policy.",
+    summary: {
+      problem: "Heartopia UGC was scattered across platforms, and there were creator-rights concerns.",
+      action:
+        "I contacted three Chinese creators directly to secure permission, and set a trust-based operating policy — the creator name and original link pinned to every piece.",
+      result: "Running a non-commercial, permission-based UGC archive, with hands-on cross-border communication experience.",
+    },
     discoveryFlow: ["Search the community", "Go to an overseas platform · sign up", "Translate", "Save the image", "Search again"],
     ctx: {
       h2: "There was plenty of good content — it was just hard to find again and compare.",
@@ -404,6 +417,14 @@ export default async function HeartopiaArchivePage({
           </div>
         </div>
       </section>
+
+      <CaseSummary
+        items={[
+          { k: "PROBLEM", v: c.summary.problem },
+          { k: "ACTION", v: c.summary.action },
+          { k: "RESULT", v: c.summary.result },
+        ]}
+      />
 
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">
