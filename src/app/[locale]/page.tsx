@@ -146,7 +146,7 @@ function ProjectSection({
               <figcaption className="flex items-center justify-between gap-3 border-b border-line-2 px-4 py-2.5">
                 <span className="flex items-center gap-2 font-archivo text-[11.5px] font-semibold tracking-[.13em] text-ink-70">
                   <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden />
-                  {p.keywords[0]}
+                  LIVE SERVICE
                 </span>
                 {liveHost && <span className="font-mono text-[11px] text-muted">{liveHost}</span>}
               </figcaption>
