@@ -446,7 +446,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
         },
       ],
       callouts: [
-        { tag: "OPERATING RULES", title: "콘텐츠 운영 기준", lines: ["허락받은 콘텐츠만 업로드", "원작자명 표시 · 원문 링크 제공", "삭제 요청 대응"] },
+        { tag: "CREATOR POLICY", title: "창작자 보호 기준", lines: ["허락받은 콘텐츠만 업로드", "원작자명 및 원문 링크 표시", "삭제 요청 대응", "창작자 권리 우선 운영"] },
+        { tag: "CONTENT OPERATION", title: "콘텐츠 관리 프로세스", lines: ["업로드 콘텐츠 검수", "카테고리·태그 기준 관리", "중복 콘텐츠 관리", "유저 수정 요청 반영"] },
       ],
       resultNote: "글로벌 유저 콘텐츠를 관리하고, 창작자와 이용자 사이의 신뢰를 구축하는 커뮤니티 운영 경험을 얻었습니다.",
       heroBody:
@@ -508,7 +509,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
         },
       ],
       callouts: [
-        { tag: "OPERATING RULES", title: "Content operating standard", lines: ["Only permitted content is uploaded", "Creator name shown · original link provided", "Takedown requests handled"] },
+        { tag: "CREATOR POLICY", title: "Creator-protection standard", lines: ["Only permitted content is uploaded", "Creator name and original link shown", "Takedown requests handled", "Creator rights come first"] },
+        { tag: "CONTENT OPERATION", title: "Content management process", lines: ["Uploaded content is reviewed", "Category and tag standards", "Duplicate-content management", "User edit requests reflected"] },
       ],
       resultNote: "I gained community-operating experience managing global user content and building trust between creators and users.",
       heroBody:
