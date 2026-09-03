@@ -128,7 +128,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       par: {
         problem:
-          "커뮤니티에서 특정 위치·아이템·수집 정보에 대한 질문이 반복적으로 발생했습니다. 유저들이 이미 존재하는 정보를 찾기 위해 반복적으로 시간을 소비하고 있었습니다.",
+          "Sky 커뮤니티에서는 특정 위치, 아이템, 수집 정보에 대한 질문이 지속적으로 반복되었습니다. 유저들이 이미 존재하는 정보를 찾기 위해 여러 게시글을 검색해야 했고, 필요한 정보를 빠르게 확인하기 어려운 문제가 있었습니다.",
         action: [
           "커뮤니티 반복 질문 분석",
           "Google 설문조사 제작·배포",
@@ -136,7 +136,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "신규 기능 우선순위 결정",
           "업데이트 반영 및 공지 작성",
         ],
-        result: "유저 피드백을 반영해 8개 기능까지 확장하고, 장기간 운영되는 라이브 서비스로 정착시켰습니다.",
+        result:
+          "커뮤니티 VOC와 사용 데이터를 기반으로 기능을 지속 개선하며 8개 기능을 갖춘 서비스로 확장했습니다. 누적 사용자 1.5만 명, 최고 MAU 1.7K, 최근 30일 재방문율 49%를 기록하며 장기간 운영되는 게임 유틸리티 서비스로 성장시켰습니다.",
       },
       cases: [
         {
@@ -200,7 +201,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       par: {
         problem:
-          "Questions about specific locations, items, and collection info came up over and over in the community. Users were spending time again and again to find information that already existed.",
+          "Questions about specific locations, items, and collection info came up continuously in the Sky community. Users had to search through many posts to find information that already existed, with no fast way to check what they needed.",
         action: [
           "Analyzed recurring community questions",
           "Built and distributed a Google survey",
@@ -208,7 +209,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "Set new-feature priorities",
           "Shipped updates and wrote the announcements",
         ],
-        result: "I grew it to eight features from user feedback and settled it into a long-running live service.",
+        result:
+          "Improving features continuously from community VOC and usage data, I grew it into a service with eight features. It reached 15,000 cumulative users, a 1.7K peak MAU, and 49% returning users over the last 30 days — a long-running game utility service.",
       },
       cases: [
         {
@@ -274,7 +276,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       par: {
         problem:
-          "제5인격 팬덤에는 캐릭터 티어·스킨 평가·CP 관계 표현 등 취향 공유 문화가 있었지만, 이를 쉽게 할 수 있는 한국어 도구가 없었습니다.",
+          "제5인격 커뮤니티에는 캐릭터 티어, 스킨 평가, CP 관계 표현 등 다양한 팬덤 문화가 존재했습니다. 하지만 이러한 취향을 표현하고 공유할 수 있는 한국어 기반 도구가 부족해 유저들은 직접 제작하거나 여러 플랫폼을 활용해야 했습니다.",
         action: [
           "팬덤 문화 관찰 및 기능 정의",
           "공식카페 댓글·쪽지 VOC 대응",
@@ -282,7 +284,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "유저 요청 익일 반영",
           "X 계정 개설·운영",
         ],
-        result: "커뮤니티가 직접 다음 기능을 선택했고, 출시 6주 만에 활성 사용자 3,400명을 확보했습니다.",
+        result:
+          "커뮤니티 투표와 VOC를 기반으로 기능 방향을 결정하고, 유저 요청을 실제 업데이트에 반영했습니다. 출시 6주 만에 활성 사용자 3,400명, 평균 참여 시간 6분 13초를 기록하며 팬덤 기반 서비스로 성장했습니다.",
       },
       cases: [
         {
@@ -345,7 +348,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       par: {
         problem:
-          "The Identity V fandom had a taste-sharing culture — character tiers, skin ratings, CP relationship charts — but no easy Korean tool for it.",
+          "The Identity V community had a rich fandom culture — character tiers, skin ratings, CP relationships — but few Korean-language tools to express and share that taste, so users had to build their own or work across several platforms.",
         action: [
           "Observed fandom culture and defined features",
           "Handled official-café comment and DM VOC",
@@ -353,7 +356,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "Shipped user requests the next day",
           "Opened and ran an X account",
         ],
-        result: "The community chose the next feature itself, and I reached 3,400 active users within six weeks of launch.",
+        result:
+          "I set feature direction from community votes and VOC and shipped user requests into real updates. Within six weeks of launch it reached 3,400 active users and a 6:13 average engagement time, growing into a fandom-based service.",
       },
       cases: [
         {
@@ -416,7 +420,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       ],
       par: {
         problem:
-          "두근두근타운 유저 창작 콘텐츠가 여러 해외 플랫폼에 분산돼 한국 유저의 접근성이 낮았고, 원작자 권리 관리가 필요했습니다.",
+          "두근두근타운 유저 창작 콘텐츠가 Xiaohongshu 등 여러 해외 플랫폼에 흩어져 있어 한국 유저가 원하는 콘텐츠를 찾기 어려웠습니다. 또한 UGC 서비스 특성상 원작자의 권리를 보호하면서 콘텐츠를 운영할 기준이 필요했습니다.",
         action: [
           "중국 Xiaohongshu 창작자 직접 커뮤니케이션",
           "콘텐츠 사용·대리 업로드 허락 확보",
@@ -424,7 +428,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "삭제 요청 대응 기준 마련",
           "회원가입·개인정보·이용약관 직접 작성",
         ],
-        result: "허락받은 콘텐츠만 운영하는 신뢰 기반 UGC 아카이브를 구축하고, 크로스보더 창작자 커뮤니케이션 경험을 확보했습니다.",
+        result:
+          "중국 창작자와 직접 커뮤니케이션하며 콘텐츠 사용 허락 체계를 구축하고, 원작자 표기·삭제 요청 대응 등 운영 기준을 마련했습니다. 허가 기반 UGC 아카이브를 운영하며 글로벌 창작자와 유저를 연결하는 커뮤니티 운영 경험을 확보했습니다.",
       },
       cases: [
         {
@@ -485,7 +490,8 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
           "Defined a takedown-response standard",
           "Wrote the sign-up policy, privacy policy, and terms myself",
         ],
-        result: "I built a trust-based UGC archive that runs only permitted content, and gained cross-border creator-communication experience.",
+        result:
+          "Communicating directly with Chinese creators, I built a content-permission system and set operating standards — creator credit, takedown response. Running a permission-based UGC archive, I gained community-operating experience connecting global creators with users.",
       },
       cases: [
         {

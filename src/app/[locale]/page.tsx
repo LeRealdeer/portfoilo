@@ -94,7 +94,7 @@ function ProjectSection({
             {p.keywords.map((k) => (
               <span
                 key={k}
-                className="rounded-md border border-line-2 bg-bg px-2.5 py-1 font-archivo text-[10.5px] font-bold tracking-[.1em] text-ink-70"
+                className="rounded-md border border-line-2 bg-bg px-2.5 py-1 font-archivo text-[11px] font-bold tracking-[.1em] text-ink-70"
               >
                 {k}
               </span>
@@ -125,13 +125,13 @@ function ProjectSection({
 
             {/* My Role */}
             <div className="mt-6 rounded-2xl border border-line-2 bg-bg px-6 py-6">
-              <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.role}</div>
-              <div className="mt-2 font-archivo text-[clamp(14.5px,1.6vw,17px)] font-bold tracking-[-.01em]">
+              <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{L.role}</div>
+              <div className="mt-2 font-archivo text-[clamp(15px,1.7vw,18px)] font-bold tracking-[-.01em]">
                 {p.myRole.title}
               </div>
               <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
                 {p.myRole.items.map((it) => (
-                  <li key={it} className="flex gap-2 text-[13.5px] leading-[1.6] text-ink-70">
+                  <li key={it} className="flex gap-2 text-[14px] leading-[1.6] text-ink-70">
                     <span className="flex-none font-bold text-accent">·</span>
                     <span>{it}</span>
                   </li>
@@ -144,7 +144,7 @@ function ProjectSection({
           <Reveal delay={0.1}>
             <figure className="overflow-hidden rounded-2xl border-2 border-ink bg-bg">
               <figcaption className="flex items-center justify-between gap-3 border-b border-line-2 px-4 py-2.5">
-                <span className="flex items-center gap-2 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-ink-70">
+                <span className="flex items-center gap-2 font-archivo text-[11.5px] font-semibold tracking-[.13em] text-ink-70">
                   <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden />
                   {p.keywords[0]}
                 </span>
@@ -159,14 +159,14 @@ function ProjectSection({
 
         {/* Result numbers — shown before the prose */}
         <div className="mt-9 rounded-2xl border-2 border-ink bg-bg px-6 py-7 sm:mt-12 sm:px-9 sm:py-9">
-          <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{L.stats}</div>
+          <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{L.stats}</div>
           <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
             {p.resultStats.map((m, i) => (
               <Reveal key={m.label} delay={i * 0.06} className={i > 0 ? "sm:border-l sm:border-line-2 sm:pl-8" : ""}>
                 <Stat
                   metric={m}
                   numberClassName="font-archivo text-[clamp(30px,4.6vw,52px)] leading-[1] font-extrabold tracking-[-.045em]"
-                  labelClassName="mt-2.5 font-archivo text-[11px] font-semibold tracking-[.08em] text-muted"
+                  labelClassName="mt-2.5 font-archivo text-[12px] font-semibold tracking-[.07em] text-muted"
                 />
               </Reveal>
             ))}
@@ -176,12 +176,12 @@ function ProjectSection({
         {/* Problem / Action / Result */}
         <div className="mt-7 grid gap-3 sm:mt-9 sm:grid-cols-3">
           <Reveal className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
-            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.problem}</div>
-            <p className="mt-3 text-[13.5px] leading-[1.7] text-ink-70">{p.par.problem}</p>
+            <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{L.problem}</div>
+            <p className="mt-3 text-[14px] leading-[1.72] text-ink-70">{p.par.problem}</p>
           </Reveal>
           <Reveal delay={0.06} className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
-            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.action}</div>
-            <ul className="mt-3 flex flex-col gap-1.5 text-[13.5px] leading-[1.6] text-ink-70">
+            <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{L.action}</div>
+            <ul className="mt-3 flex flex-col gap-1.5 text-[14px] leading-[1.65] text-ink-70">
               {p.par.action.map((a) => (
                 <li key={a} className="flex gap-2">
                   <span className="flex-none font-bold text-accent">·</span>
@@ -191,14 +191,14 @@ function ProjectSection({
             </ul>
           </Reveal>
           <Reveal delay={0.12} className="rounded-2xl border border-line-2 bg-bg px-5 py-6">
-            <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.result}</div>
-            <p className="mt-3 text-[13.5px] leading-[1.7] text-ink-70">{p.par.result}</p>
+            <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{L.result}</div>
+            <p className="mt-3 text-[14px] leading-[1.72] text-ink-70">{p.par.result}</p>
           </Reveal>
         </div>
 
         {/* Operating cases — parallel cards: evidence image on top, then label / title / body / metric */}
         <div className="mt-11 sm:mt-14">
-          <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{L.cases}</div>
+          <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{L.cases}</div>
           <div
             className={`mt-6 grid gap-3 sm:gap-4 ${
               p.cases.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
@@ -214,15 +214,15 @@ function ProjectSection({
                   <Placeholder variant="alt" label={c.title} img={shots[i]} className="h-[190px] border-0! rounded-none!" />
                 )}
                 <div className="flex flex-1 flex-col px-5 py-5">
-                  <div className="font-archivo text-[10.5px] font-semibold tracking-[.14em] text-muted-light">
+                  <div className="font-archivo text-[11.5px] font-semibold tracking-[.13em] text-muted-light">
                     {c.category}
                   </div>
-                  <h4 className="mt-2 font-archivo text-[16.5px] font-bold leading-[1.3] tracking-[-.02em]">
+                  <h4 className="mt-2 font-archivo text-[19px] font-bold leading-[1.28] tracking-[-.02em]">
                     {c.title}
                   </h4>
-                  <p className="mt-2.5 text-[13px] leading-[1.65] text-ink-70">{c.body}</p>
+                  <p className="mt-2.5 text-[13.5px] leading-[1.7] text-ink-70">{c.body}</p>
                   <div className="mt-auto pt-4">
-                    <span className="inline-block rounded-md border border-accent/40 bg-accent/5 px-2.5 py-1 font-archivo text-[11px] font-bold tracking-[.03em] text-accent">
+                    <span className="inline-block rounded-md border border-accent/40 bg-accent/5 px-2.5 py-1 font-archivo text-[11.5px] font-bold tracking-[.03em] text-accent">
                       {c.tag}
                     </span>
                   </div>
@@ -237,11 +237,11 @@ function ProjectSection({
           <div className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2">
             {p.callouts.map((co) => (
               <Reveal key={co.title} className="rounded-2xl border border-dashed border-line-4 bg-bg-alt px-5 py-5">
-                <div className="font-archivo text-[10.5px] font-semibold tracking-[.16em] text-accent">{co.tag}</div>
-                <div className="mt-2 font-archivo text-[14.5px] font-bold leading-[1.4] tracking-[-.01em]">
+                <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{co.tag}</div>
+                <div className="mt-2 font-archivo text-[15.5px] font-bold leading-[1.4] tracking-[-.01em]">
                   {co.title}
                 </div>
-                <ul className="mt-2 flex flex-col gap-1 text-[13px] leading-[1.55] text-ink-70">
+                <ul className="mt-2 flex flex-col gap-1 text-[13.5px] leading-[1.55] text-ink-70">
                   {co.lines.map((l) => (
                     <li key={l}>{l}</li>
                   ))}
@@ -253,7 +253,7 @@ function ProjectSection({
 
         {/* Closing banner */}
         <div className="mt-12 rounded-2xl border-2 border-ink px-6 py-8 sm:mt-16 sm:px-9">
-          <div className="font-archivo text-[11px] font-semibold tracking-[.18em] text-accent">{resultLabel}</div>
+          <div className="font-archivo text-[12px] font-semibold tracking-[.16em] text-accent">{resultLabel}</div>
           <p className="mt-3 max-w-[680px] font-archivo text-[clamp(16px,2.2vw,24px)] font-extrabold leading-[1.35] tracking-[-.025em] text-balance">
             {p.resultNote}
           </p>
@@ -419,7 +419,7 @@ export default async function HomePage({
           <div className="mt-10 grid grid-cols-3 max-[1100px]:grid-cols-2 max-[760px]:grid-cols-1 gap-px border-t border-b border-line-4 bg-line-4 sm:mt-14">
             {capabilities.map((c, i) => (
               <Reveal key={c.number} delay={(i % 3) * 0.05} className="bg-bg-alt px-6 pt-7 pb-8">
-                <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-accent">{c.number}</div>
+                <div className="font-archivo text-[12px] font-semibold tracking-[.14em] text-accent">{c.number}</div>
                 <h3 className="mt-3.5 font-archivo text-[19px] font-bold leading-[1.15] tracking-[-.025em]">
                   {c.titleEn}
                 </h3>
@@ -469,7 +469,7 @@ export default async function HomePage({
                 </div>
                 <div className="flex-[1.7]">
                   <p className="text-[15px] leading-[1.5] text-ink-70">{row.body}</p>
-                  <div className="mt-2.5 font-archivo text-[10.5px] font-semibold tracking-[.14em] text-accent">
+                  <div className="mt-2.5 font-archivo text-[11.5px] font-semibold tracking-[.13em] text-accent">
                     {row.focus}
                   </div>
                 </div>
