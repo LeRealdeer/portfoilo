@@ -28,8 +28,11 @@ const COPY: Record<Locale, Record<string, string>> = {
     resultLabel: "결과",
     projectMore: "프로젝트 더 보기",
     projectMoreSub: "기술스택 · 전체 기능 · GA4 세부 수치",
+    highlightsH2: "Community Operation Highlights",
     howH2: "How I Work",
     howSub: "각 항목 아래는 위 프로젝트에서 실제로 한 일입니다.",
+    buildNote:
+      "기획부터 개발·배포까지 직접 수행하기 때문에, 아이디어를 빠르게 검증하고 데이터를 기반으로 개선할 수 있습니다. 기술 상세는 각 프로젝트 페이지 하단에 있습니다.",
     expSub: "역사학·소프트웨어학 복수전공. 유저를 이해하는 관점과 직접 만들 수 있는 역량을 함께 쌓았습니다.",
   },
   en: {
@@ -37,10 +40,26 @@ const COPY: Record<Locale, Record<string, string>> = {
     resultLabel: "RESULT",
     projectMore: "See the full project",
     projectMoreSub: "tech stack · all features · full GA4 numbers",
+    highlightsH2: "Community Operation Highlights",
     howH2: "How I Work",
     howSub: "Under each is what I actually did on the projects above.",
+    buildNote:
+      "Because I do the planning, building, and deploying myself, I can validate an idea fast and improve it from the data. The technical detail lives at the bottom of each project page.",
     expSub: "Double major in History and Software — a lens for understanding users, plus the ability to ship.",
   },
+};
+
+const HIGHLIGHTS: Record<Locale, { title: string; flow: string[] }[]> = {
+  ko: [
+    { title: "VOC Response", flow: ["유저 의견 수집", "개선", "업데이트"] },
+    { title: "Community Event", flow: ["이벤트 기획", "참여 유도", "결과 분석"] },
+    { title: "Global Communication", flow: ["해외 창작자 협업", "콘텐츠 운영 정책 수립"] },
+  ],
+  en: [
+    { title: "VOC Response", flow: ["Collect feedback", "Improve", "Ship"] },
+    { title: "Community Event", flow: ["Plan the event", "Drive participation", "Analyze results"] },
+    { title: "Global Communication", flow: ["Partner with overseas creators", "Set content-ops policy"] },
+  ],
 };
 
 /** One project as a full main-page section: identity, three CM subsections with a shot each, result, CTA. */
@@ -235,6 +254,34 @@ export default async function HomePage({
         ))}
       </div>
 
+      {/* Community Operation Highlights */}
+      <section className="border-t border-line px-5 py-14 sm:px-9 sm:py-20">
+        <div className="mx-auto max-w-[1440px]">
+          <h2 className="font-archivo text-[clamp(22px,3.4vw,40px)] leading-[1.14] font-extrabold tracking-[-.035em]">
+            {t.highlightsH2}
+          </h2>
+          <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3">
+            {HIGHLIGHTS[locale].map((h, i) => (
+              <Reveal
+                key={h.title}
+                delay={i * 0.05}
+                className="rounded-xl border border-line-2 px-5 py-6"
+              >
+                <div className="font-archivo text-[13px] font-bold tracking-[.06em] text-accent">{h.title}</div>
+                <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 font-archivo text-[12px] font-semibold">
+                  {h.flow.map((step, j) => (
+                    <span key={step} className="contents">
+                      <span className="rounded-md border border-line-2 bg-bg-alt px-2.5 py-1">{step}</span>
+                      {j < h.flow.length - 1 && <span className="text-accent">→</span>}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* How I Work */}
       <section id="how" className="border-t border-line bg-bg-alt px-5 py-16 sm:px-9 sm:py-24">
         <div className="mx-auto max-w-[1440px]">
@@ -265,6 +312,8 @@ export default async function HomePage({
               </Reveal>
             ))}
           </div>
+
+          <p className="mt-8 max-w-[680px] text-[13.5px] leading-[1.7] text-muted sm:mt-10">{t.buildNote}</p>
         </div>
       </section>
 
