@@ -12,6 +12,8 @@ import duoMaker from "../../../../../public/identity5/duo-maker.png";
 import visualNovel from "../../../../../public/identity5/visual-novel.png";
 import skinReviewTool from "../../../../../public/identity5/skin-review-tool.png";
 import ga4Pages from "../../../../../public/identity5/ga4-pages.png";
+import id5CommentFix from "../../../../../public/identity5/cp-comment-fix.jpeg";
+import id5XPromo from "../../../../../public/identity5/x-promo.jpeg";
 
 function shot(img: StaticImageData, mw?: number): Shot {
   return { src: img.src, w: img.width, h: img.height, mw };
@@ -32,3 +34,6 @@ export const ITEM_SHOTS: Record<string, Shot> = {
   "Duo Card": shot(duoMaker, 460),
   "Visual Novel": shot(visualNovel, 460),
 };
+
+/** the three operating-case images in the CaseIntro opener */
+export const INTRO_SHOTS: Shot[] = [shot(characterSort, 460), shot(id5CommentFix, 460), shot(id5XPromo, 460)];

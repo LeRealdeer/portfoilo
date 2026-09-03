@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
-import { CaseSummary } from "@/components/CaseSummary";
-import { HERO_SHOT, SHOTS } from "./shots";
+import { CaseIntro } from "@/components/CaseIntro";
+import { HERO_SHOT, SHOTS, INTRO_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -60,11 +60,37 @@ const COPY = {
   ko: {
     heroSubtitle:
       "여러 플랫폼에 흩어진 유저 제작 콘텐츠를, 원작자 허락과 출처 정책을 기반으로 연결한 글로벌 팬 아카이브",
-    summary: {
-      problem: "두근두근타운 UGC가 여러 플랫폼에 흩어져 있었고, 창작자 권리 문제도 있었습니다.",
-      action:
-        "중국 창작자 3인에게 직접 연락해 사용 허락을 확보하고, 원작자명·원문 링크 고정 표기 등 신뢰 기반 운영 정책을 수립했습니다.",
-      result: "비상업·허락 기반 UGC 아카이브를 운영하며 크로스보더 커뮤니케이션 경험을 확보했습니다.",
+    intro: {
+      oneLiner: "해외 플랫폼에 흩어진 유저 창작 콘텐츠를 연결하는 허가 기반 UGC 아카이브",
+      para: [
+        "두근두근타운 유저 창작 콘텐츠가 여러 플랫폼에 분산되어 있어 한국 유저가 접근하기 어렵다는 문제를 발견했습니다.",
+        "창작자의 권리를 보호하면서 유저가 쉽게 콘텐츠를 찾을 수 있도록 허가 기반 아카이브 서비스를 운영했습니다.",
+      ],
+      roleTitle: "Community Operator · Content Manager",
+      roleItems: [
+        "콘텐츠 운영 정책 수립",
+        "해외 창작자 커뮤니케이션",
+        "UGC 검수 및 관리",
+        "원작자 권리 보호 기준 마련",
+      ],
+      cases: [
+        {
+          n: "01",
+          heading: "창작자와 유저를 연결하는 콘텐츠 운영",
+          body: "중국 Xiaohongshu에서 활동하는 창작자들에게 직접 연락해 콘텐츠 사용 허락을 요청했습니다. 단순 수집이 아닌, 창작자의 권리를 존중하는 운영 방식을 선택했습니다.",
+        },
+        {
+          n: "02",
+          heading: "신뢰 기반 운영 정책 구축",
+          body: "UGC 서비스 특성상 원작자 보호가 중요하다고 판단했습니다.",
+          note: {
+            label: "운영 기준",
+            lines: ["허락받은 콘텐츠만 업로드", "원작자명 표시", "원문 링크 제공", "삭제 요청 대응"],
+          },
+        },
+      ],
+      resultNumbers: "허가 기반 UGC 아카이브 운영 · 크로스보더 커뮤니케이션 경험 확보",
+      resultNote: "글로벌 유저 콘텐츠를 관리하고, 창작자와 이용자 사이의 신뢰를 구축하는 커뮤니티 운영 경험을 얻었습니다.",
     },
     discoveryFlow: ["커뮤니티 검색", "해외 플랫폼 이동 · 회원가입", "번역", "이미지 저장", "다시 찾기"],
     ctx: {
@@ -185,11 +211,42 @@ const COPY = {
   en: {
     heroSubtitle:
       "A global fan archive that connects user-made content scattered across platforms — built on creator permission and a source policy.",
-    summary: {
-      problem: "Heartopia UGC was scattered across platforms, and there were creator-rights concerns.",
-      action:
-        "I contacted three Chinese creators directly to secure permission, and set a trust-based operating policy — the creator name and original link pinned to every piece.",
-      result: "Running a non-commercial, permission-based UGC archive, with hands-on cross-border communication experience.",
+    intro: {
+      oneLiner: "A permission-based UGC archive connecting user-made content scattered across overseas platforms",
+      para: [
+        "I found that Heartopia user-made content was spread across several platforms, making it hard for Korean players to reach.",
+        "I ran a permission-based archive so users could find content easily while creators' rights stayed protected.",
+      ],
+      roleTitle: "Community Operator · Content Manager",
+      roleItems: [
+        "Content operating policy",
+        "Overseas creator communication",
+        "UGC review and management",
+        "Creator-rights protection standards",
+      ],
+      cases: [
+        {
+          n: "01",
+          heading: "Content ops that connect creators and users",
+          body: "I contacted creators active on China's Xiaohongshu directly and asked for permission to use their content. Rather than just collecting, I chose an operating approach that respects the creator's rights.",
+        },
+        {
+          n: "02",
+          heading: "Building a trust-based operating policy",
+          body: "Given the nature of a UGC service, I judged that protecting original creators was essential.",
+          note: {
+            label: "Operating rules",
+            lines: [
+              "Only permitted content is uploaded",
+              "Creator name shown",
+              "Original link provided",
+              "Takedown requests handled",
+            ],
+          },
+        },
+      ],
+      resultNumbers: "Running a permission-based UGC archive · cross-border communication experience",
+      resultNote: "I gained community-operating experience managing global user content and building trust between creators and users.",
     },
     discoveryFlow: ["Search the community", "Go to an overseas platform · sign up", "Translate", "Save the image", "Search again"],
     ctx: {
@@ -418,14 +475,25 @@ export default async function HeartopiaArchivePage({
         </div>
       </section>
 
-      <CaseSummary
-        items={[
-          { k: "PROBLEM", v: c.summary.problem },
-          { k: "ACTION", v: c.summary.action },
-          { k: "RESULT", v: c.summary.result },
-        ]}
+      <CaseIntro
+        oneLiner={c.intro.oneLiner}
+        intro={c.intro.para}
+        myRoleLabel="MY ROLE"
+        roleTitle={c.intro.roleTitle}
+        roleItems={c.intro.roleItems}
+        cases={c.intro.cases}
+        caseShots={INTRO_SHOTS}
+        resultLabel="RESULT"
+        resultNumbers={c.intro.resultNumbers}
+        resultNote={c.intro.resultNote}
         tags={project.tags}
       />
+
+      <div className="border-t border-line bg-bg-alt px-5 py-6 sm:px-9">
+        <div className="mx-auto max-w-[1440px] font-archivo text-[11px] font-semibold tracking-[.18em] text-muted-light">
+          상세 운영 및 기능 / DETAIL
+        </div>
+      </div>
 
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">

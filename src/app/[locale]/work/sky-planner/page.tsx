@@ -4,8 +4,8 @@ import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder, type Shot } from "@/components/Placeholder";
-import { CaseSummary } from "@/components/CaseSummary";
-import { HERO_SHOT, SHOTS, FEATURE_SHOTS, PT_VIRAL } from "./shots";
+import { CaseIntro } from "@/components/CaseIntro";
+import { HERO_SHOT, SHOTS, FEATURE_SHOTS, PT_VIRAL, INTRO_SHOTS } from "./shots";
 import { getProject } from "@/data/projects";
 import { toLocale, type Locale } from "@/lib/i18n";
 import {
@@ -73,9 +73,20 @@ type Feature = {
   shot: string;
 };
 
+type IntroCase = { n: string; heading: string; body: string; note?: { label: string; lines: string[] } };
+type Intro = {
+  oneLiner: string;
+  para: string[];
+  roleTitle: string;
+  roleItems: string[];
+  cases: IntroCase[];
+  resultNumbers: string;
+  resultNote: string;
+};
+
 type Copy = {
   heroSubtitle: string;
-  summary: { problem: string; action: string; result: string };
+  intro: Intro;
   ctx: { h2: string; lead: string; quote: string; note: string; flow: string[]; uses: string[] };
   evo: { h2: string; lead: string; count: string; list: { tag: string; name: string; line: string }[]; shot: string };
   feat: { h2: string; lead: string; items: Feature[]; ptViralLabel: string; ptViral: string[] };
@@ -92,12 +103,40 @@ type Copy = {
 const COPY: Record<Locale, Copy> = {
   ko: {
     heroSubtitle: "게임 플레이 과정에서 반복되던 관리·계산·정보 탐색을 하나로 정리한 게임 유틸리티 서비스",
-    summary: {
-      problem: "Sky 플레이어들이 반복적으로 같은 질문·불편을 커뮤니티에 올렸습니다.",
-      action:
-        "8개 기능으로 직접 해결했습니다. GA4와 자체 Google 설문조사로 VOC를 정식 수집해 우선순위를 검증하고 기능 개선·추가에 반영했습니다. 신기능 출시·서버 점검 시 커뮤니티에 직접 공지를 작성하고, 댓글·쪽지로 들어오는 개별 문의에 대응했으며, 월간 커뮤니티 이벤트(이달의 모의고사)를 운영했습니다.",
-      result:
-        "누적 1.5만 명, 최근 30일 재방문율 49%. AWS 서버 장애도 인프라 이전으로 직접 복구했습니다.",
+    intro: {
+      oneLiner: "Sky: Children of the Light 플레이어 커뮤니티의 반복적인 불편을 해결한 게임 유틸리티 서비스",
+      para: [
+        "Sky 플레이어들이 커뮤니티에서 반복적으로 질문하는 정보 탐색 문제를 발견하고, 이를 해결하기 위한 게임 유틸리티 서비스를 직접 기획·개발·운영했습니다.",
+        "단순한 기능 제작을 목표로 하지 않고, 유저가 실제로 어떤 정보를 필요로 하는지 관찰하고, 커뮤니티 VOC와 사용 데이터를 기반으로 지속적으로 개선하는 라이브 서비스 운영 경험을 쌓았습니다.",
+      ],
+      roleTitle: "Game Service Planner · Community Operator",
+      roleItems: [
+        "플레이어 니즈 분석 및 기능 기획",
+        "VOC 수집 및 개선 우선순위 결정",
+        "커뮤니티 이벤트 기획 및 운영",
+        "업데이트 공지 작성 및 유저 문의 대응",
+        "GA4 기반 사용자 행동 분석",
+      ],
+      cases: [
+        {
+          n: "01",
+          heading: "반복되는 커뮤니티 질문에서 시작된 서비스",
+          body: "Sky: Children of the Light 커뮤니티에서는 특정 위치, 아이템, 수집 정보에 대한 질문이 반복적으로 발생했습니다. 유저들이 이미 가지고 있는 정보를 다시 찾느라 시간을 소비하고 있다는 점에 주목했고, 필요한 정보를 한 곳에서 쉽게 확인할 수 있는 서비스를 기획했습니다. 초기 단순 정보 도구에서 시작해, 유저 피드백을 반영하며 총 8개의 기능을 갖춘 서비스로 확장했습니다.",
+        },
+        {
+          n: "02",
+          heading: "VOC와 데이터를 기반으로 서비스 개선",
+          body: "유저 의견을 감에 의존하지 않기 위해 Google 설문조사를 직접 제작하고 배포했습니다. 설문을 통해 사용 만족도, 불편했던 기능, 필요한 신규 기능을 수집했고, 실제 업데이트 우선순위 결정에 활용했습니다. 또한 GA4를 활용해 기능별 이용 데이터를 분석하며, 어떤 기능이 실제 사용자에게 가치가 있는지 확인했습니다.",
+        },
+        {
+          n: "03",
+          heading: "커뮤니티 이벤트 운영과 유저 소통",
+          body: "서비스 이용 활성화를 위해 네이버 공식 카페에서 커뮤니티 이벤트를 직접 기획했습니다. 신규 기능 출시 및 서비스 장애 발생 시 직접 공지를 작성하고, 댓글과 쪽지를 통해 개별 문의에 대응하며 유저와 지속적으로 소통했습니다.",
+          note: { label: "운영 사례 — 보물찾기 이벤트", lines: ["댓글 143개", "조회 657회"] },
+        },
+      ],
+      resultNumbers: "누적 사용자 1.5만명 · 최고 MAU 1.7K · 최근 30일 재방문율 49%",
+      resultNote: "장기간 운영하며 유저 행동과 피드백을 기반으로 서비스를 개선하는 라이브 운영 경험을 확보했습니다.",
     },
     ctx: {
       h2: "“제 키가 몇 단인가요?” 반복되는 질문에서 첫 기능이 나왔습니다.",
@@ -316,12 +355,40 @@ const COPY: Record<Locale, Copy> = {
   },
   en: {
     heroSubtitle: "A game utility that folds the repeat management, calculation, and lookup of Sky play into one place.",
-    summary: {
-      problem: "Sky players kept posting the same questions and friction to the community.",
-      action:
-        "I solved them directly with eight features. I collected VOC formally through GA4 and my own Google survey, used it to validate priorities, and fed it into feature fixes and additions. I wrote the community announcements for new features and server maintenance myself, answered individual questions coming in by comment and DM, and ran a monthly community event (Mock Exam of the Month).",
-      result:
-        "15K cumulative users, 49% returning in the last 30 days. I also recovered the AWS outage myself by migrating the infrastructure.",
+    intro: {
+      oneLiner: "A game utility that solved the recurring friction of the Sky: Children of the Light player community",
+      para: [
+        "I noticed the community kept asking the same information-lookup questions, and I planned, built, and ran a game utility myself to solve them.",
+        "The goal wasn't just to ship features — I watched what information players actually needed and kept improving from community VOC and usage data, building real live-service operating experience.",
+      ],
+      roleTitle: "Game Service Planner · Community Operator",
+      roleItems: [
+        "Player-needs analysis and feature planning",
+        "VOC collection and improvement prioritization",
+        "Community event planning and operation",
+        "Writing update announcements and answering user inquiries",
+        "GA4-based user-behavior analysis",
+      ],
+      cases: [
+        {
+          n: "01",
+          heading: "A service that started from repeated community questions",
+          body: "In the Sky: Children of the Light community, questions about specific locations, items, and collection info came up over and over. I saw that players were spending time re-finding information they already had, and planned a service where the info they need is easy to check in one place. It started as a simple info tool and grew, from user feedback, into a service with eight features.",
+        },
+        {
+          n: "02",
+          heading: "Improving the service from VOC and data",
+          body: "To avoid relying on gut feel for user opinion, I built and distributed a Google survey myself. Through it I collected satisfaction, painful features, and requested new features, and used that to set real update priorities. I also used GA4 to analyze per-feature usage and confirm which features were actually valuable to users.",
+        },
+        {
+          n: "03",
+          heading: "Running community events and talking to users",
+          body: "To drive usage I planned community events myself on the official Naver café. For new features and outages I wrote the announcements myself and answered individual questions by comment and DM, staying in constant contact with users.",
+          note: { label: "Operating example — treasure-hunt event", lines: ["143 comments", "657 views"] },
+        },
+      ],
+      resultNumbers: "15K cumulative users · 1.7K peak MAU · 49% returning in the last 30 days",
+      resultNote: "Through long-term operation I built experience improving a service from user behavior and feedback.",
     },
     ctx: {
       h2: "“How tall is my character?” — the first feature came from one repeated question.",
@@ -719,14 +786,25 @@ export default async function SkyPlannerPage({
         </div>
       </section>
 
-      <CaseSummary
-        items={[
-          { k: "PROBLEM", v: c.summary.problem },
-          { k: "ACTION", v: c.summary.action },
-          { k: "RESULT", v: c.summary.result },
-        ]}
+      <CaseIntro
+        oneLiner={c.intro.oneLiner}
+        intro={c.intro.para}
+        myRoleLabel="MY ROLE"
+        roleTitle={c.intro.roleTitle}
+        roleItems={c.intro.roleItems}
+        cases={c.intro.cases}
+        caseShots={INTRO_SHOTS}
+        resultLabel="RESULT"
+        resultNumbers={c.intro.resultNumbers}
+        resultNote={c.intro.resultNote}
         tags={project.tags}
       />
+
+      <div className="border-t border-line bg-bg-alt px-5 py-6 sm:px-9">
+        <div className="mx-auto max-w-[1440px] font-archivo text-[11px] font-semibold tracking-[.18em] text-muted-light">
+          상세 운영 및 기능 / DETAIL
+        </div>
+      </div>
 
       {/* 01 — Context */}
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-9 sm:py-24">

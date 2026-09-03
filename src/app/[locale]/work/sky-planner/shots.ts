@@ -61,3 +61,6 @@ export const FEATURE_SHOTS: Shot[] = [
 
 /** personality-test viral spread — shown as an extra gallery under FEATURE 04 */
 export const PT_VIRAL: Shot[] = [shot(twUserReactions, 360), shot(twViral1, 360), shot(twViral2, 360)];
+
+/** the three operating-case images in the CaseIntro opener */
+export const INTRO_SHOTS: Shot[] = [shot(heightChecker, 460), shot(survey2, 460), shot(cafeEventTreasure, 460)];
