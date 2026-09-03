@@ -272,7 +272,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       resultStats: [
         { value: 3400, label: "출시 6주 활성 사용자" },
         { value: 0, raw: "6:13", label: "평균 참여 시간" },
-        { value: 67.4, decimals: 1, suffix: "%", label: "연애 시뮬레이터 투표 득표율" },
+        { value: 18000, accentSuffix: "+", label: "페이지뷰" },
       ],
       par: {
         problem:
@@ -344,7 +344,7 @@ const content: Record<ProjectSlug, Record<Locale, ProjectContent>> = {
       resultStats: [
         { value: 3400, label: "active users, 6 weeks in" },
         { value: 0, raw: "6:13", label: "avg. engagement time" },
-        { value: 67.4, decimals: 1, suffix: "%", label: "dating-sim vote share" },
+        { value: 18000, accentSuffix: "+", label: "pageviews" },
       ],
       par: {
         problem:
