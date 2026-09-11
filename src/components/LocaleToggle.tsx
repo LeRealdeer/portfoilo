@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SUPPORTED_LOCALES, type Locale } from "@/lib/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 export function LocaleToggle({ locale }: { locale: Locale }) {
   const pathname = usePathname() || `/${locale}`;
@@ -22,7 +23,13 @@ export function LocaleToggle({ locale }: { locale: Locale }) {
           {l === locale ? (
             <span className="font-bold text-ink">{l.toUpperCase()}</span>
           ) : (
-            <Link href={swapTo(l)} className="transition-colors duration-200 hover:text-ink">
+            <Link
+              href={swapTo(l)}
+              onClick={() =>
+                trackEvent("language_change", { from_language: locale, to_language: l })
+              }
+              className="transition-colors duration-200 hover:text-ink"
+            >
               {l.toUpperCase()}
             </Link>
           )}

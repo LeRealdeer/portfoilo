@@ -1,9 +1,14 @@
 import { getProfile } from "@/data/profile";
+import { getProjects } from "@/data/projects";
 import { Reveal } from "./Reveal";
+import { TrackedAnchor } from "./Tracked";
 import type { Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
   const profile = getProfile(locale);
+  const liveNameByHref = new Map(
+    getProjects(locale).map((p) => [p.liveUrl, p.title]),
+  );
   return (
     <footer id="contact" className="px-5 pt-14 pb-11 sm:px-9 sm:pt-24">
       <div className="mx-auto max-w-[1440px]">
@@ -20,32 +25,53 @@ export function Footer({ locale }: { locale: Locale }) {
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               EMAIL
             </div>
-            <a href={`mailto:${profile.contact.email}`} className="mt-2 block text-[16px]">
+            <TrackedAnchor
+              event="contact_click"
+              eventParams={{
+                contact_type: "email",
+                destination_url: `mailto:${profile.contact.email}`,
+              }}
+              href={`mailto:${profile.contact.email}`}
+              className="mt-2 block text-[16px]"
+            >
               {profile.contact.email}
-            </a>
+            </TrackedAnchor>
           </div>
           <div className="min-w-[150px] flex-1">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               GITHUB
             </div>
-            <a href={`https://${profile.contact.github}`} className="mt-2 block text-[16px]">
+            <TrackedAnchor
+              event="contact_click"
+              eventParams={{
+                contact_type: "github",
+                destination_url: `https://${profile.contact.github}`,
+              }}
+              href={`https://${profile.contact.github}`}
+              className="mt-2 block text-[16px]"
+            >
               {profile.contact.github} ↗
-            </a>
+            </TrackedAnchor>
           </div>
           <div className="min-w-[190px] flex-[1.4]">
             <div className="font-archivo text-[11px] font-semibold tracking-[.16em] text-muted-light">
               LIVE PROJECTS
             </div>
             {profile.liveProjects.map((p) => (
-              <a
+              <TrackedAnchor
                 key={p.label}
+                event="project_link_click"
+                eventParams={{
+                  project_name: liveNameByHref.get(p.href) ?? p.label,
+                  destination_url: p.href,
+                }}
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-1.5 block text-[16px] transition-colors duration-300 hover:text-accent first:mt-2"
               >
                 {p.label} ↗
-              </a>
+              </TrackedAnchor>
             ))}
           </div>
         </div>

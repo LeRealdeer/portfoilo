@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { archivo, notoSansKR } from "@/lib/fonts";
+import { GA_ID } from "@/lib/analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={`${archivo.variable} ${notoSansKR.variable}`}>
       <body>{children}</body>
+      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }

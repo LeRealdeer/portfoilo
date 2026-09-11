@@ -535,3 +535,10 @@ export function getProject(slug: ProjectSlug, locale: Locale): Project {
 export function getProjects(locale: Locale): Project[] {
   return PROJECT_SLUGS.map((slug) => getProject(slug, locale));
 }
+
+/** Project display name for a live-service URL — used for analytics attribution. */
+export function projectNameByLiveUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  const slug = PROJECT_SLUGS.find((s) => base[s].liveUrl === url);
+  return slug ? base[slug].title : undefined;
+}

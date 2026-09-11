@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TrackedLink, TrackedAnchor } from "@/components/Tracked";
 import { Reveal, RevealLines } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
@@ -106,11 +106,15 @@ function ProjectSection({
         <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] lg:gap-14">
           <div>
             <Reveal>
-              <Link href={href}>
+              <TrackedLink
+                href={href}
+                event="project_click"
+                eventParams={{ project_name: p.title, destination_url: href }}
+              >
                 <h3 className="font-archivo text-[clamp(26px,4vw,52px)] leading-[1.05] font-extrabold tracking-[-.04em] transition-colors duration-300 hover:text-accent">
                   {p.title}
                 </h3>
-              </Link>
+              </TrackedLink>
             </Reveal>
             <p className="mt-3 font-archivo text-[clamp(15px,1.8vw,19px)] font-bold leading-[1.45] tracking-[-.01em] text-ink-70">
               {p.cardSubtitle}
@@ -150,9 +154,14 @@ function ProjectSection({
                 </span>
                 {liveHost && <span className="font-mono text-[11px] text-muted">{liveHost}</span>}
               </figcaption>
-              <Link href={href} className="block">
+              <TrackedLink
+                href={href}
+                event="project_click"
+                eventParams={{ project_name: p.title, destination_url: href }}
+                className="block"
+              >
                 <Placeholder variant="alt" label={p.title} img={hero} className="" />
-              </Link>
+              </TrackedLink>
             </figure>
           </Reveal>
         </div>
@@ -260,21 +269,25 @@ function ProjectSection({
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 sm:mt-10">
-          <Link
+          <TrackedLink
             href={href}
+            event="project_click"
+            eventParams={{ project_name: p.title, destination_url: href }}
             className="inline-flex items-center gap-2.5 rounded-lg bg-ink px-10 py-5 font-archivo text-[clamp(14px,1.6vw,16px)] font-bold tracking-[.06em] text-bg transition-colors duration-300 hover:bg-accent"
           >
             {moreLabel} <span aria-hidden>→</span>
-          </Link>
+          </TrackedLink>
           {p.liveUrl && (
-            <a
+            <TrackedAnchor
+              event="project_link_click"
+              eventParams={{ project_name: p.title, destination_url: p.liveUrl }}
               href={p.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="font-archivo text-[12.5px] font-bold tracking-[.04em] text-ink-50 transition-colors duration-300 hover:text-accent"
             >
               {p.liveUrl.replace(/^https?:\/\//, "")} ↗
-            </a>
+            </TrackedAnchor>
           )}
         </div>
       </div>
@@ -322,12 +335,14 @@ export default async function HomePage({
             >
               VIEW WORK
             </a>
-            <a
+            <TrackedAnchor
+              event="contact_click"
+              eventParams={{ contact_type: "hero_button", destination_url: "#contact" }}
               href="#contact"
               className="rounded-lg border border-line-2 px-7 py-3.5 font-archivo text-[12.5px] font-bold tracking-[.1em] text-ink-70 transition-colors duration-300 hover:border-ink hover:text-ink"
             >
               CONTACT
-            </a>
+            </TrackedAnchor>
           </Reveal>
         </div>
       </section>

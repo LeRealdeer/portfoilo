@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { TrackedAnchor } from "@/components/Tracked";
 import { Reveal } from "@/components/Reveal";
 import { Stat } from "@/components/Stat";
 import { Placeholder } from "@/components/Placeholder";
@@ -370,14 +371,16 @@ export default async function HeartopiaArchivePage({
               {project.heroBody}
             </p>
             {project.liveUrl && (
-              <a
+              <TrackedAnchor
+                event="project_link_click"
+                eventParams={{ project_name: project.title, destination_url: project.liveUrl }}
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center gap-1.5 border-b border-accent pb-0.5 font-archivo text-[13px] font-bold tracking-[.04em] text-accent transition-colors duration-300 hover:border-ink hover:text-ink"
               >
                 {project.liveUrl.replace(/^https?:\/\//, "")} ↗
-              </a>
+              </TrackedAnchor>
             )}
           </div>
 

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getProfile } from "@/data/profile";
+import { projectNameByLiveUrl } from "@/data/projects";
 import { LocaleToggle } from "@/components/LocaleToggle";
+import { TrackedAnchor } from "@/components/Tracked";
 import type { Locale } from "@/lib/i18n";
 
 export function Header({
@@ -16,6 +18,7 @@ export function Header({
   const home = `/${locale}`;
   const profile = getProfile(locale);
   const serviceLabel = serviceUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const serviceName = projectNameByLiveUrl(serviceUrl) ?? serviceLabel ?? "";
 
   return (
     <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-line-3 bg-bg/88 px-5 py-4 backdrop-blur-md sm:gap-8 sm:px-9 sm:py-5">
@@ -31,15 +34,17 @@ export function Header({
           {profile.tagline}
         </span>
       ) : (
-        serviceLabel && (
-          <a
+        serviceUrl && serviceLabel && (
+          <TrackedAnchor
+            event="project_link_click"
+            eventParams={{ project_name: serviceName, destination_url: serviceUrl }}
             href={serviceUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden font-mono text-[11.5px] text-muted transition-colors duration-300 hover:text-accent sm:inline"
           >
             {serviceLabel} ↗
-          </a>
+          </TrackedAnchor>
         )
       )}
 
@@ -53,9 +58,14 @@ export function Header({
         <Link href={`${home}#about`} className="hidden sm:inline">
           ABOUT
         </Link>
-        <a href={`${home}#contact`} className="text-accent">
+        <TrackedAnchor
+          event="contact_click"
+          eventParams={{ contact_type: "header_nav", destination_url: `${home}#contact` }}
+          href={`${home}#contact`}
+          className="text-accent"
+        >
           CONTACT
-        </a>
+        </TrackedAnchor>
         <LocaleToggle locale={locale} />
       </nav>
     </header>
