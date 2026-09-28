@@ -84,6 +84,17 @@ function ProjectSection({
   const hero = CARD_SHOTS[p.slug];
   const L = PAR_LABELS[locale];
   const liveHost = p.liveUrl?.replace(/^https?:\/\//, "");
+
+  // Operating-case thumbnails sit in equal-width grid columns, so give them
+  // all the same box: the aspect ratio of whichever shot is tallest at that
+  // shared width. That one fills the box exactly (no letterbox); the wider
+  // ones stay full-width and pick up only the letterbox they actually need.
+  const rowShots = shots.filter(Boolean);
+  const tallestShot = rowShots.reduce(
+    (tallest, s) => (s.w / s.h < tallest.w / tallest.h ? s : tallest),
+    rowShots[0]
+  );
+  const caseRowStyle = tallestShot ? { aspectRatio: `${tallestShot.w} / ${tallestShot.h}` } : undefined;
   return (
     <section className={`border-t border-line px-5 py-14 sm:px-9 sm:py-20 ${alt ? "bg-bg-alt" : ""}`}>
       <div className="mx-auto max-w-[1440px]">
@@ -220,7 +231,14 @@ function ProjectSection({
                 className="flex flex-col overflow-hidden rounded-2xl border border-line-2 bg-bg"
               >
                 {shots[i] && (
-                  <Placeholder variant="alt" label={c.title} img={shots[i]} className="h-[190px] border-0! rounded-none!" />
+                  <Placeholder
+                    variant="alt"
+                    label={c.title}
+                    img={shots[i]}
+                    fit="contain"
+                    style={caseRowStyle}
+                    className="border-0! rounded-none!"
+                  />
                 )}
                 <div className="flex flex-1 flex-col px-5 py-5">
                   <div className="font-archivo text-[11.5px] font-semibold tracking-[.13em] text-muted-light">

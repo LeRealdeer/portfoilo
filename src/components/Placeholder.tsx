@@ -46,6 +46,7 @@ export function Placeholder({
   style,
   href,
   img,
+  fit = "cover",
 }: {
   label: ReactNode;
   variant?: "light" | "alt" | "dark";
@@ -55,6 +56,8 @@ export function Placeholder({
   href?: string;
   /** when set, renders the real screenshot */
   img?: Shot;
+  /** only applies in the fixed-height box: "cover" crops to fill (default), "contain" always shows the whole image width, letterboxing top/bottom instead of cropping the sides */
+  fit?: "cover" | "contain";
 }) {
   if (img) {
     const alt = typeof label === "string" ? label : "";
@@ -66,12 +69,14 @@ export function Placeholder({
     ) : null;
 
     let content: ReactNode;
+    const hasRuntimeHeight = Boolean(style?.height || style?.aspectRatio);
 
-    if (HAS_HEIGHT.test(className)) {
+    if (HAS_HEIGHT.test(className) || hasRuntimeHeight) {
       // Fixed-height box so a row/column of shots lines up — cover-crop on
       // wide screens. Below 900px (where these layouts stack to one column)
       // the box collapses to h-auto and the image flows at its natural ratio,
       // so nothing is cropped on mobile.
+      const fitClass = fit === "contain" ? "object-contain" : "object-cover object-top";
       content = (
         <span
           style={style}
@@ -82,7 +87,7 @@ export function Placeholder({
             alt={alt}
             fill
             sizes="(max-width: 900px) 100vw, 640px"
-            className={`object-cover object-top max-[900px]:static! max-[900px]:h-auto! max-[900px]:w-full!${hover}`}
+            className={`${fitClass} max-[900px]:static! max-[900px]:h-auto! max-[900px]:w-full!${hover}`}
           />
           {ring}
         </span>
